@@ -88,7 +88,7 @@ Here is a high-level description of how it works:
 
     Next, the SPA requests content (for example, via `XMLHttpRequest` or the  [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)) and page content is fetched and used to populate the view. Each request triggers a `fetch` event inside the service worker that can be handled any way you choose. Once those handlers complete, your service worker enters into an idle state. So, the service worker is idle until a network request fires off a new event. And, in response to a network request, a `fetch` event handler intercepts the request and responds as you see fit. After a period of idleness your service worker script is stopped automatically but when the next network request is made when the page is loaded again the service worker is started back up and can immediately respond to `fetch` events. 
 
-![Service Worker Lifecycle](img/c9f7d527c81ed1a1.png)
+![Service Worker Lifecycle](../img/c9f7d527c81ed1a1.png)
 
 <div class="note">
 
@@ -452,7 +452,7 @@ All resources that are precached are fetched by a service worker that runs in a 
 
 The app shell keeps your UI local and pulls in content dynamically through an API but does not sacrifice the linkability and discoverability of the web. The next time the user accesses your app, the latest version displays automatically. There is no need to download new versions before using it. 
 
-![Application Shell](img/a153ef8c0cdd2345.png)
+![Application Shell](../img/a153ef8c0cdd2345.png)
 
 Building a PWA does not mean starting from scratch. If you are building a modern  [single-page app (SPA)](https://en.wikipedia.org/wiki/Single-page_application), then you are probably using something similar to an app shell already whether you call it that or not. The details might vary a bit depending upon which libraries or frameworks you are using, but the concept itself is framework agnostic. 
 

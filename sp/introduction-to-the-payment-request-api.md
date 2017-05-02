@@ -102,7 +102,7 @@ Payment Request demos are available at these URLs:
 
 Using the Payment Request API, the transaction process is made as seamless as possible for both users and merchants.
 
-![Payment Request Processing](img/e108534a11ad1075.png)
+![Payment Request Processing](../img/e108534a11ad1075.png)
 
 The process begins when the merchant site creates a new `PaymentRequest` and passes to the browser all the information required to make the purchase: the amount to be charged, what currency they expect payment in, and what payment methods are accepted by the site. The browser determines compatibility between the accepted payment methods for the site and the methods the user has installed on the target device.
 

@@ -56,7 +56,7 @@ Google Analytics is free, relatively simple to integrate, and customizable.
 
 Google Analytics requires creating a Google Analytics account. An account has  [properties](https://support.google.com/analytics/answer/2649554) that represent individual collections of data. These properties have tracking IDs (also called property IDs) that identify them to Google Analytics. For example, an account might represent a company. One property in that account might represent the company's web site, while another property might represent the company's iOS app. 
 
-![Accounts and Properties](img/766f9ab38e16446b.png)
+![Accounts and Properties](../img/766f9ab38e16446b.png)
 
 If you only have one app, the simplest scenario is to create a single Google Analytics account, and add a single property to that account. That property can represent your app. 
 
@@ -72,7 +72,7 @@ __Note: __The Google Analytics UI is subject to updates and may not look exactly
 
 Create another one. Select the __Admin__ tab. Under __account__, select your current Google Analytics account and choose __create new account__. A single Gmail account can have multiple (currently 100) Google Analytics accounts. 
 
-![Adding an account](img/638621a4df8de3ce.png)
+![Adding an account](../img/638621a4df8de3ce.png)
 
 #### If you don't have a Google Analytics account
 
@@ -80,7 +80,7 @@ Select __Sign up__ to begin creating your account.
 
 The account creation screen should look like this:
 
-![Creating an account](img/77f0da1cc8479fea.png)
+![Creating an account](../img/77f0da1cc8479fea.png)
 
 #### What would you like to track? 
 
@@ -119,7 +119,7 @@ Once you have created an account, you need to add the tracking snippet to your a
 3. Then under __property__, select your property (for example "GA Code Lab Site") from the dropdown list. 
 4. Now choose __Tracking Info__, and then __Tracking Code__. 
 
-![Finding the snippet](img/e6c84f2ccde27125.png)
+![Finding the snippet](../img/e6c84f2ccde27125.png)
 
 Your tracking ID looks like `UA-XXXXXXXX-Y` and your tracking code snippet looks like:
 
@@ -209,21 +209,21 @@ All of the data that is sent to Google Analytics can be viewed in the reporting 
 
 From the overview page you can see general information such as pageview records, bounce rate, ratio of new and returning visitor, and other statistics.
 
-![Records overview](img/1b6463f39646e4e1.png)
+![Records overview](../img/1b6463f39646e4e1.png)
 
 You can also see specific information like visitors' language, country, city, browser, operating system, service provider, screen resolution, and device.
 
-![Records details](img/66759e07d712dd12.png)
+![Records details](../img/66759e07d712dd12.png)
 
 ### Real time analytics
 
 It's also possible to view analytics information in real time. From the same __Reporting__ tab, select __Real-Time__ and __Overview__:
 
-![Real-time navigation](img/b2dba5f011013e99.png)
+![Real-time navigation](../img/b2dba5f011013e99.png)
 
 If you are visiting your app in another tab or window, you should see yourself being tracked. The screen should look similar to this:
 
-![Real-time screen](img/83ce80dc15443148.png)
+![Real-time screen](../img/83ce80dc15443148.png)
 
 These are only the basic aspects of the Google Analytics dashboard. There is an extensive set of features and functionality. 
 
@@ -264,11 +264,11 @@ __Note:__ Many of the <code>ga</code> commands are flexible and can use multiple
 
 Event data can be viewed in the __Reporting__ tab of the Google Analytics dashboard. Real-time events are found in the __Events__ subsection, as shown below:
 
-![Real-time events](img/3107f35a9adc1fb3.png)
+![Real-time events](../img/3107f35a9adc1fb3.png)
 
 You can view past events in the Google Analytics dashboard from the __Reporting__ tab by selecting __Behavior__, followed by __Events__ and then __Overview__:
 
-![Recorded events](img/3107f35a9adc1fb3.png)
+![Recorded events](../img/3107f35a9adc1fb3.png)
 
 #### For more information
 
@@ -502,7 +502,7 @@ We import and initialize the __offline-google-analytics-import.js__ library. Thi
 
 You can test this by  [simulating offline behavior](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/tools_for_pwa_developers.html#offline), and then firing hit events. You will see an error in the console since you are offline and can't make requests to Google Analytics servers. Then  [check IndexedDB](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/tools_for_pwa_developers.html#indexeddb). Open __offline-google-analytics__. You should see URLs cached in __urls__ (you may need to click the refresh icon inside the indexedDB interface). These are the stored hits.
 
-![Offline hits](img/88188d9545f98f83.png)
+![Offline hits](../img/88188d9545f98f83.png)
 
 Now disable offline mode, and refresh the page. Check __IndexedDB__ again, and observe that the URL is no longer cached (and has been sent to analytics servers).
 
