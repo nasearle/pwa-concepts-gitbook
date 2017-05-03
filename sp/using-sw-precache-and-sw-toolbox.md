@@ -274,11 +274,6 @@ Example 5 presents our default route. If the request did not match any prior rou
 
 `sw-precache` is a module for generating a service worker that precaches resources. It integrates with your build process. `sw-precache` gives you fine control over the behavior of the generated service worker. At the time of creation we can specify files to precache, scripts to import, and many other options that determine how the service worker behaves (see the  [sw-precache Github page](https://github.com/GoogleChrome/sw-precache) for more information).
 
-For this tutorial we'll break the process into the following steps:
-
-* Integrating `sw-precache` into a gulp build system
-* Creating routes with <code>sw-toolbox</code>
-
 ### Integrating sw-precache into a gulp build system
 
 To use `sw-precache` in gulp, we first import the plugin at the top of the gulp file.
