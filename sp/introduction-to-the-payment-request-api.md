@@ -8,22 +8,22 @@
 
 
 
-[<strong>About Web Payments</strong>](#about)
+<a href="#about"><strong>About Web Payments</strong></a>
 
-[<strong>Introduction to the Payment Request API</strong>](#introduction)
+<a href="#introduction"><strong>Introduction to the Payment Request API</strong></a>
 
-[<strong>How Payment Request Processing Works</strong>](#howitworks)
+<a href="#howitworks"><strong>How Payment Request Processing Works</strong></a>
 
-[<strong>Using the Payment Request API</strong>](#using)
+<a href="#using"><strong>Using the Payment Request API</strong></a>
 
-[<strong>Resources</strong>](#resources)
+<a href="#resources"><strong>Resources</strong></a>
 
 The Payment Request API improves mobile web checkout (shopping cart) and accepts credit cards electronically (and eventually a number of other payment services and solutions in the wild). 
 
 The Payment Request API allows merchants to easily collect payment information with minimal integration. 
 
 <div class="note">
-<strong>Note:</strong> The <a href="https://github.com/w3c/browser-payment-api">Payment Request API</a> is very new and still subject to developmental changes, especially while it is under development in the  [W3C Web Payments Working Group](https://www.w3.org/TR/payment-request/). Google tracks updates on <a class="https://developers.google.com/web/fundamentals/primers/payment-request/">this page</a>. Please keep checking back. Also on this page is <a class="https://storage.googleapis.com/prshim/v1/payment-shim.js">a shim</a> that you can embed on your site to paper over API differences for two major Chrome versions.
+<strong>Note:</strong> The <a href="https://github.com/w3c/browser-payment-api">Payment Request API</a> is very new and still subject to developmental changes, especially while it is under development in the <a href="https://www.w3.org/TR/payment-request/">W3C Web Payments Working Group</a>. Google tracks updates on <a class="https://developers.google.com/web/fundamentals/primers/payment-request/">this page</a>. Please keep checking back. Also on this page is <a class="https://storage.googleapis.com/prshim/v1/payment-shim.js">a shim</a> that you can embed on your site to paper over API differences for two major Chrome versions.
 </div>
 
 <a id="about" />
@@ -36,11 +36,11 @@ The Payment Request API allows merchants to easily collect payment information w
 
 For mobile device users, making purchases on the web, particularly on mobile devices, can be a frustrating experience. Every web site has its own flow and its own validation rules, and most require us to manually type in the same set of information over and over again. Likewise, it is difficult and time consuming for developers to create good checkout flows that support various payment schemes.
 
-For businesses, checkout can be a complicated process to develop and complete. That's why it is worthwhile investing in capabilities such as the  [Payment Request API](https://github.com/w3c/browser-payment-api/) and enhanced autofill to assist your users with the task of accurately filling in forms. 
+For businesses, checkout can be a complicated process to develop and complete. That's why it is worthwhile investing in capabilities such as the <a href="https://github.com/w3c/browser-payment-api/">Payment Request API</a> and enhanced autofill to assist your users with the task of accurately filling in forms. 
 
 Mobile users are likely to abandon online purchase forms that are user-intensive, difficult to use, slow to load and refresh, and require multiple steps to complete. This is because two primary components of online payments – security and convenience – often work at cross-purposes, where more of one typically means less of the other. 
 
-Any system that improves or solves one or more of those problems is a welcome change. We've found that forms and payments are completed 25% more when autofill is available, increasing odds for conversion. We started solving the problem already with  [Autofill](https://developers.google.com/web/updates/2015/06/checkout-faster-with-autofill), but now we're talking about a more comprehensive solution called the Payment Request API.
+Any system that improves or solves one or more of those problems is a welcome change. We've found that forms and payments are completed 25% more when autofill is available, increasing odds for conversion. We started solving the problem already with <a href="https://developers.google.com/web/updates/2015/06/checkout-faster-with-autofill">Autofill</a>, but now we're talking about a more comprehensive solution called the Payment Request API.
 
 <a id="introduction" />
 
@@ -52,7 +52,7 @@ Any system that improves or solves one or more of those problems is a welcome ch
 
 The Payment Request API's open-web approach is designed:
 
-* For developers to minimize the need to fill out checkout forms and improve user's payment experience from the ground up. This API follows the recommendations in the  [W3C Payment Request API specification](https://www.w3.org/TR/payment-request/) published by the  [Web Payments Working Group](https://www.w3.org/Payments/WG/). 
+* For developers to minimize the need to fill out checkout forms and improve user's payment experience from the ground up. This API follows the recommendations in the <a href="https://www.w3.org/TR/payment-request/">W3C Payment Request API specification</a> published by the <a href="https://www.w3.org/Payments/WG/">Web Payments Working Group</a>. 
 * For users to check out, make a payment, or fill in forms with minimal use of the mobile device keyboard. 
 
 The API uses securely cached data to facilitate payment interaction between the user and the merchant's site. The API also gets the data necessary to process transactions as quickly as possible.
@@ -82,13 +82,13 @@ Best of all, the browser acts as an intermediary, storing all the information ne
 
 Payment Request demos are available at these URLs:
 
-* Demo:  [https://emerald-eon.appspot.com/](https://emerald-eon.appspot.com/)
-* Polymer Shop demo:  [https://polykart-credential-payment.appspot.com/](https://polykart-credential-payment.appspot.com/)
-* Simple demos and sample code:  [https://googlechrome.github.io/samples/paymentrequest/](https://googlechrome.github.io/samples/paymentrequest/)
-* Deep dive documentation:  [https://developers.google.com/web/fundamentals/discovery-and-monetization/payment-request/deep-dive-into-payment-request](https://developers.google.com/web/fundamentals/discovery-and-monetization/payment-request/deep-dive-into-payment-request)
+* Demo: <a href="https://emerald-eon.appspot.com/">https://emerald-eon.appspot.com/</a>
+* Polymer Shop demo: <a href="https://polykart-credential-payment.appspot.com/">https://polykart-credential-payment.appspot.com/</a>
+* Simple demos and sample code: <a href="https://googlechrome.github.io/samples/paymentrequest/">https://googlechrome.github.io/samples/paymentrequest/</a>
+* Deep dive documentation: <a href="https://developers.google.com/web/fundamentals/discovery-and-monetization/payment-request/deep-dive-into-payment-request">https://developers.google.com/web/fundamentals/discovery-and-monetization/payment-request/deep-dive-into-payment-request</a>
 * Samsung Internet demos: 
-*  [https://samsunginter.net/examples/payment-request-demo-simple/](https://samsunginter.net/examples/payment-request-demo-simple/)
-*  [https://samsunginter.net/examples/payment-request-demo-options/](https://samsunginter.net/examples/payment-request-demo-options/)
+* <a href="https://samsunginter.net/examples/payment-request-demo-simple/">https://samsunginter.net/examples/payment-request-demo-simple/</a>
+* <a href="https://samsunginter.net/examples/payment-request-demo-options/">https://samsunginter.net/examples/payment-request-demo-options/</a>
 
 <a id="howitworks" />
 
@@ -100,7 +100,7 @@ Payment Request demos are available at these URLs:
 
 Using the Payment Request API, the transaction process is made as seamless as possible for both users and merchants.
 
-![Payment Request Processing](../img/e108534a11ad1075.png)
+!<a href="../img/e108534a11ad1075.png">Payment Request Processing</a>
 
 The process begins when the merchant site creates a new <code>PaymentRequest</code> and passes to the browser all the information required to make the purchase: the amount to be charged, what currency they expect payment in, and what payment methods are accepted by the site. The browser determines compatibility between the accepted payment methods for the site and the methods the user has installed on the target device.
 
@@ -118,9 +118,9 @@ From the user's perspective, all the previously tedious interaction—request, a
 
 
 
-[Bringing Easy and Fast Checkout with Payment Request API](https://developers.google.com/web/updates/2016/07/payment-request)
+<a href="https://developers.google.com/web/updates/2016/07/payment-request">Bringing Easy and Fast Checkout with Payment Request API</a>
 
-[Payment Request API: an Integration Guide](https://developers.google.com/web/fundamentals/primers/payment-request/)
+<a href="https://developers.google.com/web/fundamentals/primers/payment-request/">Payment Request API: an Integration Guide</a>
 
 <a id="resources" />
 
@@ -132,9 +132,9 @@ From the user's perspective, all the previously tedious interaction—request, a
 
 To learn more about Payment Request API, see these documents and resources:
 
-*  [Official specification](http://ift.tt/1WHbRmb)
-*  [Payment Request API integration guide](http://ift.tt/2alR15H)
-*  [Demo](http://ift.tt/2ayc1cO)
-*  [Simple demos and sample code](http://ift.tt/2alPZ9Q)
+* <a href="http://ift.tt/1WHbRmb">Official specification</a>
+* <a href="http://ift.tt/2alR15H">Payment Request API integration guide</a>
+* <a href="http://ift.tt/2ayc1cO">Demo</a>
+* <a href="http://ift.tt/2alPZ9Q">Simple demos and sample code</a>
 
 

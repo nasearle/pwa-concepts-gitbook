@@ -8,13 +8,13 @@
 
 
 
-[<strong>Introduction</strong>](#introduction)<strong>        </strong>
+<a href="#introduction"><strong>Introduction</strong></a><strong>        </strong>
 
-[<strong>Running Lighthouse as a Chrome extension</strong>](#extension)
+<a href="#extension"><strong>Running Lighthouse as a Chrome extension</strong></a>
 
-[<strong>Running Lighthouse from the command line</strong>](#commandline)
+<a href="#commandline"><strong>Running Lighthouse from the command line</strong></a>
 
-Codelab:  [Auditing with Lighthouse](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_auditing_with_lighthouse.html)
+Codelab: <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_auditing_with_lighthouse.html">Auditing with Lighthouse</a>
 
 <a id="introduction" />
 
@@ -24,7 +24,7 @@ Codelab:  [Auditing with Lighthouse](https://google-developer-training.gitbooks.
 
 
 
-How do I tell if all of my Progressive Web App (PWA) features are in order?  [Lighthouse](https://github.com/GoogleChrome/lighthouse) is an open-source tool from Google that audits a web app for PWA features. It provides a set of metrics to help guide you in building a PWA with a full application-like experience for your users. 
+How do I tell if all of my Progressive Web App (PWA) features are in order? <a href="https://github.com/GoogleChrome/lighthouse">Lighthouse</a> is an open-source tool from Google that audits a web app for PWA features. It provides a set of metrics to help guide you in building a PWA with a full application-like experience for your users. 
 
 Lighthouse tests if your app:
 
@@ -43,17 +43,17 @@ Lighthouse is available as a Chrome extension for Chrome 52 (and later) and a co
 
 
 
-Download the Lighthouse Chrome extension from the  [Chrome Web Store](http://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk). 
+Download the Lighthouse Chrome extension from the <a href="http://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk">Chrome Web Store</a>. 
 
 When installed it places an <img src="../img/91e97511ef44e440.png" style="width:20px;height:20px;" alt="Lighthouse Icon ">  icon in your taskbar. 
 
 Run Lighthouse on your application by selecting the icon and choosing <strong>Generate report</strong> (with your app open in the browser page).
 
-![Lighthouse extension showing generate report button](../img/92c3177801055abb.png)
+!<a href="../img/92c3177801055abb.png">Lighthouse extension showing generate report button</a>
 
 Lighthouse generates an HTML page with the results. An example page is shown below. 
 
-![Lighthouse report](../img/76f48671607bf2b2.png)
+!<a href="../img/76f48671607bf2b2.png">Lighthouse report</a>
 
 <div class="note">
 <strong>Note: </strong>You can test it out on an example PWA, <a href="https://www.airhorner.com/">airhorner.com</a>.
@@ -67,9 +67,9 @@ Lighthouse generates an HTML page with the results. An example page is shown bel
 
 
 
-If you want to run Lighthouse from the command line (for example, to integrate it with a build process) it is available as a  [Node](https://nodejs.org/en/) module. 
+If you want to run Lighthouse from the command line (for example, to integrate it with a build process) it is available as a <a href="https://nodejs.org/en/">Node</a> module. 
 
-You can download Node from  [nodejs.org](https://nodejs.org/en/) (select the version that best suits your environment and operating system). 
+You can download Node from <a href="https://nodejs.org/en/">nodejs.org</a> (select the version that best suits your environment and operating system). 
 
 <div class="note">
 <strong>Note:</strong> You need the --harmony <a href="http://stackoverflow.com/questions/13351965/what-does-node-harmony-do">flag</a> with Node v5+ or Node v4.
@@ -79,7 +79,7 @@ To install Lighthouse's Node module from the command line, use the following com
 
     npm install -g lighthouse
 
-This installs the tool globally. You can then run Lighthouse from the command line (where  [https://airhorner.com/](https://airhorner.com/) is your app):
+This installs the tool globally. You can then run Lighthouse from the command line (where <a href="https://airhorner.com/">https://airhorner.com/</a> is your app):
 
     lighthouse https://airhorner.com/
 

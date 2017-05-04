@@ -8,17 +8,17 @@
 
 
 
-[<strong>Introduction</strong>](#intro)<strong>        </strong>
+<a href="#intro"><strong>Introduction</strong></a><strong>        </strong>
 
-[<strong>Why use promises?</strong>](#why)<strong>        </strong>
+<a href="#why"><strong>Why use promises?</strong></a><strong>        </strong>
 
-[<strong>Promise terminology</strong>](#terms)<strong>        </strong>
+<a href="#terms"><strong>Promise terminology</strong></a><strong>        </strong>
 
-[<strong>How to use promises</strong>](#howto)<strong>        </strong>
+<a href="#howto"><strong>How to use promises</strong></a><strong>        </strong>
 
-[<strong>Further reading</strong>](#further)
+<a href="#further"><strong>Further reading</strong></a>
 
-Codelab:  [Promises](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_promises.html)
+Codelab: <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_promises.html">Promises</a>
 
 <a id="intro" />
 
@@ -28,16 +28,16 @@ Codelab:  [Promises](https://google-developer-training.gitbooks.io/progressive-w
 
 
 
-[Promises](https://developers.google.com/web/fundamentals/getting-started/primers/promises) offer a better way to handle asynchronous code in JavaScript. Promises have been around for a while in the form of libraries, such as:
+<a href="https://developers.google.com/web/fundamentals/getting-started/primers/promises">Promises</a> offer a better way to handle asynchronous code in JavaScript. Promises have been around for a while in the form of libraries, such as:
 
-*  [Q](https://github.com/kriskowal/q)
-*  [when](https://github.com/cujojs/when)
-*  [WinJS](http://msdn.microsoft.com/en-us/library/windows/apps/br211867.aspx)
-*  [RSVP.js](https://github.com/tildeio/rsvp.js)
+* <a href="https://github.com/kriskowal/q">Q</a>
+* <a href="https://github.com/cujojs/when">when</a>
+* <a href="http://msdn.microsoft.com/en-us/library/windows/apps/br211867.aspx">WinJS</a>
+* <a href="https://github.com/tildeio/rsvp.js">RSVP.js</a>
 
-The promise libraries listed above and promises that are part of the ES2015 JavaScript specification (also referred to as ES6) are all   [Promises/A+](https://github.com/promises-aplus/promises-spec) compatible. 
+The promise libraries listed above and promises that are part of the ES2015 JavaScript specification (also referred to as ES6) are all  <a href="https://github.com/promises-aplus/promises-spec">Promises/A+</a> compatible. 
 
-See  [Can I Use](http://caniuse.com/#feat=promises) for an up-to-date list of browsers that support promises.
+See <a href="http://caniuse.com/#feat=promises">Can I Use</a> for an up-to-date list of browsers that support promises.
 
 <a id="why" />
 
@@ -309,7 +309,7 @@ However, this function does need to return the image passed into it so that it c
 
 ### Promise.all
 
-Often we want to take action only after a collection of asynchronous operations have completed successfully.  [<strong>Promise.all</strong>](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) returns a promise that resolves if all of the promises passed into it resolve. If any of the passed-in promises reject, then <code>Promise.all</code> rejects with the reason of the first promise that rejected. This is very useful for ensuring that a group of asynchronous actions complete before proceeding to another step. 
+Often we want to take action only after a collection of asynchronous operations have completed successfully. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all"><strong>Promise.all</strong></a> returns a promise that resolves if all of the promises passed into it resolve. If any of the passed-in promises reject, then <code>Promise.all</code> rejects with the reason of the first promise that rejected. This is very useful for ensuring that a group of asynchronous actions complete before proceeding to another step. 
 
 In the example below, <code>promise1</code> and <code>promise2</code> return promises. We want both of them to load before proceeding. Both promises are passing into <code>Promise.all`. If either request rejects, then `Promise.all</code> rejects with the value of the rejected promise. If both requests fulfill, <code>Promise.all</code> resolves with the values of both promises (as a list).
 
@@ -334,7 +334,7 @@ Promise.all([promise1, promise2]) // Array of promises to complete
 
 ### Promise.race
 
-Another promise method that you may see referenced is  [Promise.race](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race). <code>Promise.race</code> takes a list of promises and settles as soon as the first promise in the list settles. If the first promise resolves, <code>Promise.race</code> resolves with the corresponding value, if the first promise rejects, <code>Promise.race</code> rejects with the corresponding reason. The following code shows example usage of `Promise.race`:  
+Another promise method that you may see referenced is <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race">Promise.race</a>. <code>Promise.race</code> takes a list of promises and settles as soon as the first promise in the list settles. If the first promise resolves, <code>Promise.race</code> resolves with the corresponding value, if the first promise rejects, <code>Promise.race</code> rejects with the corresponding reason. The following code shows example usage of `Promise.race`:  
 
 ```
 Promise.race([promise1, promise2])
@@ -390,7 +390,7 @@ Promise.race([promise1, promise2])
 });
 ```
 
-This example appears to race the cache against the network, using the fastest returned resource. However, both the  [Cache API](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage) and  [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) can resolve with "bad" responses ( [fetch](https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch) resolves even for 404s, and  [caches.match](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/match) resolves with falsey values if a resource is not available). In this example, if a resource is not available in the cache (which typically responds faster than the network), <code>Promise.race</code> resolves with the falsey value from the cache, and ignores the network request (which may resolve). See the  [Cache & network race](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/#cache-and-network-race) section in the  [Offline Cookbook](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/) for an example of a race function that works as expected.
+This example appears to race the cache against the network, using the fastest returned resource. However, both the <a href="https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage">Cache API</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a> can resolve with "bad" responses (<a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch">fetch</a> resolves even for 404s, and <a href="https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/match">caches.match</a> resolves with falsey values if a resource is not available). In this example, if a resource is not available in the cache (which typically responds faster than the network), <code>Promise.race</code> resolves with the falsey value from the cache, and ignores the network request (which may resolve). See the <a href="https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/#cache-and-network-race">Cache & network race</a> section in the <a href="https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/">Offline Cookbook</a> for an example of a race function that works as expected.
 
 <a id="further" />
 
@@ -400,7 +400,7 @@ This example appears to race the cache against the network, using the fastest re
 
 
 
-*  [JavaScript Promises: an Introduction](https://developers.google.com/web/fundamentals/getting-started/primers/promises)
-*  [Promise - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+* <a href="https://developers.google.com/web/fundamentals/getting-started/primers/promises">JavaScript Promises: an Introduction</a>
+* <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise - MDN</a>
 
 

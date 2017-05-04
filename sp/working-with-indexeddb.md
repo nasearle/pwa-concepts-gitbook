@@ -8,29 +8,29 @@
 
 
 
-[<strong>Introduction</strong>](#introduction)
+<a href="#introduction"><strong>Introduction</strong></a>
 
-[<strong>What is IndexedDB?</strong>](#what)<strong>        </strong>
+<a href="#what"><strong>What is IndexedDB?</strong></a><strong>        </strong>
 
-[<strong>IndexedDB terms</strong>](#terms)<strong>        </strong>
+<a href="#terms"><strong>IndexedDB terms</strong></a><strong>        </strong>
 
-[<strong>Check for IndexedDB support</strong>](#support)<strong>        </strong>
+<a href="#support"><strong>Check for IndexedDB support</strong></a><strong>        </strong>
 
-[<strong>Opening a database</strong>](#open)<strong>        </strong>
+<a href="#open"><strong>Opening a database</strong></a><strong>        </strong>
 
-[<strong>Working with object stores</strong>](#stores)<strong>        </strong>
+<a href="#stores"><strong>Working with object stores</strong></a><strong>        </strong>
 
-[<strong>Working with data</strong>](#data)<strong>        </strong>
+<a href="#data"><strong>Working with data</strong></a><strong>        </strong>
 
-[<strong>Getting all the data</strong>](#get)<strong>        </strong>
+<a href="#get"><strong>Getting all the data</strong></a><strong>        </strong>
 
-[<strong>Using database versioning</strong>](#versioning)<strong>        </strong>
+<a href="#versioning"><strong>Using database versioning</strong></a><strong>        </strong>
 
-[<strong>Further reading</strong>](#resources)<strong>        </strong>
+<a href="#resources"><strong>Further reading</strong></a><strong>        </strong>
 
-[<strong>Appendix</strong>](#appendix)
+<a href="#appendix"><strong>Appendix</strong></a>
 
-Codelab:  [IndexedDB](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_indexeddb.html)
+Codelab: <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_indexeddb.html">IndexedDB</a>
 
 <a id="introduction" />
 
@@ -40,7 +40,7 @@ Codelab:  [IndexedDB](https://google-developer-training.gitbooks.io/progressive-
 
 
 
-This text guides you through the basics of the  [IndexedDB API](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API). We are using Jake Archibald's  [IndexedDB Promised](https://github.com/jakearchibald/indexeddb-promised) library, which is very similar to the IndexedDB API, but uses promises rather than events. This simplifies the API while maintaining its structure, so anything you learn using this library can be applied to the IndexedDB API directly.
+This text guides you through the basics of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API">IndexedDB API</a>. We are using Jake Archibald's <a href="https://github.com/jakearchibald/indexeddb-promised">IndexedDB Promised</a> library, which is very similar to the IndexedDB API, but uses promises rather than events. This simplifies the API while maintaining its structure, so anything you learn using this library can be applied to the IndexedDB API directly.
 
 <a id="what" />
 
@@ -54,7 +54,7 @@ IndexedDB is a large-scale, noSQL storage system. It lets you store just about a
 
 "IndexedDB is a low-level API for client-side storage of significant amounts of structured data, including files/blobs. This API uses indexes to enable high performance searches of this data. While DOM Storage is useful for storing smaller amounts of data, it is less useful for storing larger amounts of structured data. IndexedDB provides a solution."
 
-Each IndexedDB database is unique to an origin (typically, this is the site domain or subdomain), meaning it cannot access or be accessed by any other origin.  [Data storage limits](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Browser_storage_limits_and_eviction_criteria) are usually quite large, if they exist at all, but different browsers handle limits and data eviction differently. See the  [Further reading](#resources) section for more information.
+Each IndexedDB database is unique to an origin (typically, this is the site domain or subdomain), meaning it cannot access or be accessed by any other origin. <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Browser_storage_limits_and_eviction_criteria">Data storage limits</a> are usually quite large, if they exist at all, but different browsers handle limits and data eviction differently. See the <a href="#resources">Further reading</a> section for more information.
 
 <a id="terms" />
 
@@ -64,17 +64,17 @@ Each IndexedDB database is unique to an origin (typically, this is the site doma
 
 
 
-[Database](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase) - This is the highest level of IndexedDB. It contains the object stores, which in turn contain the data you would like to persist. You can create multiple databases with whatever names you choose, but generally there is one database per app.
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase">Database</a> - This is the highest level of IndexedDB. It contains the object stores, which in turn contain the data you would like to persist. You can create multiple databases with whatever names you choose, but generally there is one database per app.
 
-[Object store](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore) - An object store is an individual bucket to store data. You can think of object stores as being similar to tables in traditional relational databases. Typically, there is one object store for each 'type' (not JavaScript data type) of data you are storing. For example, given an app that persists blog posts and user profiles, you could imagine two object stores. Unlike tables in traditional databases, the actual JavaScript data types of data within the store do not need to be consistent (for example, if there are three people in the 'people' object store, their age properties could be 53, 'twenty-five', and  <em>*unknown*</em> ).
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore">Object store</a> - An object store is an individual bucket to store data. You can think of object stores as being similar to tables in traditional relational databases. Typically, there is one object store for each 'type' (not JavaScript data type) of data you are storing. For example, given an app that persists blog posts and user profiles, you could imagine two object stores. Unlike tables in traditional databases, the actual JavaScript data types of data within the store do not need to be consistent (for example, if there are three people in the 'people' object store, their age properties could be 53, 'twenty-five', and  <em>*unknown*</em> ).
 
-[Index](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex) - An Index is a kind of object store for organizing data in another object store (called the reference object store) by an individual property of the data. The index is used to retrieve records in the object store by this property. For example, if you're storing people, you may want to fetch them later by their name, age, or favorite animal.
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex">Index</a> - An Index is a kind of object store for organizing data in another object store (called the reference object store) by an individual property of the data. The index is used to retrieve records in the object store by this property. For example, if you're storing people, you may want to fetch them later by their name, age, or favorite animal.
 
 Operation - An interaction with the database.
 
-[Transaction](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction) - A transaction is wrapper around an operation, or group of operations, that ensures database integrity. If one of the actions within a transaction fail, none of them are applied and the database returns to the state it was in before the transaction began. All read or write operations in IndexedDB must be part of a transaction. This allows for atomic read-modify-write operations without worrying about other threads acting on the database at the same time.
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction">Transaction</a> - A transaction is wrapper around an operation, or group of operations, that ensures database integrity. If one of the actions within a transaction fail, none of them are applied and the database returns to the state it was in before the transaction began. All read or write operations in IndexedDB must be part of a transaction. This allows for atomic read-modify-write operations without worrying about other threads acting on the database at the same time.
 
-[Cursor](https://developer.mozilla.org/en-US/docs/Web/API/IDBCursor) - A mechanism for iterating over multiple records in database.
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBCursor">Cursor</a> - A mechanism for iterating over multiple records in database.
 
 <a id="support" />
 
@@ -84,7 +84,7 @@ Operation - An interaction with the database.
 
 
 
-Because IndexedDB isn't supported by all browsers, we need to check that the  [user's browser supports it](http://caniuse.com/#search=indexeddb) before using it. The easiest way is to check the window object:
+Because IndexedDB isn't supported by all browsers, we need to check that the <a href="http://caniuse.com/#search=indexeddb">user's browser supports it</a> before using it. The easiest way is to check the window object:
 
 ```
 if (!('indexedDB' in window)) {
@@ -142,7 +142,7 @@ We place our check for IndexedDB support at the top of the anonymous function. T
 
 A database typically contains one or more object stores. Object stores can be thought of as similar to tables in SQL databases and should contain objects of the same "type" (not JavaScript data type). For example, for a site persisting user profiles and notes, we can imagine a "people" object store containing "person" objects, and a "notes" object store. A well structured IndexedDB database should have one object store for each type of data you need to persist. 
 
-To ensure database integrity, object stores can only be created and removed in the callback function in `idb.open`. The callback receives an instance of UpgradeDB, a special object in the IDB Promised library that is used to create object stores. Call the  [createObjectStore](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/createObjectStore) method on UpgradeDB to create the object store: 
+To ensure database integrity, object stores can only be created and removed in the callback function in `idb.open`. The callback receives an instance of UpgradeDB, a special object in the IDB Promised library that is used to create object stores. Call the <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/createObjectStore">createObjectStore</a> method on UpgradeDB to create the object store: 
 
 ```
 upgradeDb.createObjectStore('storeName', options);
@@ -234,7 +234,7 @@ This code creates three object stores demonstrating the various ways of defining
 
 Indexes are a kind of object store used to retrieve data from the reference object store by a specified property. An index lives inside the reference object store and contains the same data, but uses the specified property as its key path instead of the reference store's primary key. Indexes must be made when you create your object stores and can also be used to define a unique constraint on your data.
 
-To create an index, call the  [createIndex](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/createIndex) method on an object store instance:
+To create an index, call the <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/createIndex">createIndex</a> method on an object store instance:
 
 ```
 objectStore.createIndex('indexName', 'property', options);
@@ -299,7 +299,7 @@ A transaction can be thought of as a safe wrapper around an operation or group o
 
 ### Creating data
 
-To create data, call the  [add](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/add) method on the object store and pass in the data you want to add. Add has an optional second argument that lets you define the primary key for the individual object on creation, but it should only be used if you have not specified the key path in `createObjectStore`. Here is a simple example:
+To create data, call the <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/add">add</a> method on the object store and pass in the data you want to add. Add has an optional second argument that lets you define the primary key for the individual object on creation, but it should only be used if you have not specified the key path in `createObjectStore`. Here is a simple example:
 
 ```
 someObjectStore.add(data, optionalKey);
@@ -336,7 +336,7 @@ We can then open the "store" object store on this transaction and assign it to t
 
 ### Reading data
 
-To read data, call the  [`get`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/get) method on the object store. The <code>get</code> method takes the primary key of the object you want to retrieve from the store. Here is a basic example:
+To read data, call the <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/get">`get`</a> method on the object store. The <code>get</code> method takes the primary key of the object you want to retrieve from the store. Here is a basic example:
 
 ```
 someObjectStore.get(primaryKey);
@@ -364,7 +364,7 @@ Once again, we start the operation by getting the database object and creating a
 
 ### Updating data
 
-To update data, call the  [`put`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/put) method on the object store. The <code>put</code> method is very similar to the <code>add</code> method and can be used instead of <code>add</code> to create data in the object store. Like <code>add`, `put</code> takes the data and an optional primary key:
+To update data, call the <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/put">`put`</a> method on the object store. The <code>put</code> method is very similar to the <code>add</code> method and can be used instead of <code>add</code> to create data in the object store. Like <code>add`, `put</code> takes the data and an optional primary key:
 
 ```
 someObjectStore.put(data, optionalKey);
@@ -395,7 +395,7 @@ To update an existing item in the object store, use the <code>put</code> method 
 
 ### Deleting data
 
-To delete data, call the  [`delete`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/delete) method on the object store.
+To delete data, call the <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/delete">`delete`</a> method on the object store.
 
 ```
 someObjectStore.delete(primaryKey);
@@ -434,7 +434,7 @@ The simplest way to retrieve all of the data is to call the <code>getAll</code> 
 someObjectStore.getAll(optionalConstraint);
 ```
 
-This method returns all the objects in the object store matching the specified key or key range (see  [Working with ranges and indexes](#ranges)), or all objects in the store if no parameter is given. As with all other database operations, this operation happens inside a transaction. Here is a short example:
+This method returns all the objects in the object store matching the specified key or key range (see <a href="#ranges">Working with ranges and indexes</a>), or all objects in the store if no parameter is given. As with all other database operations, this operation happens inside a transaction. Here is a short example:
 
 ```
 dbPromise.then(function(db) {
@@ -452,7 +452,7 @@ Here we are calling <code>getAll</code> on the "store" object store. This return
 
 Another way to retrieve all of the data is to use a cursor. A cursor selects each object in an object store or index one by one, letting you do something with the data as it is selected. Cursors, like the other database operations, work within transactions.
 
-We create the cursor by calling the  [openCursor](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/openCursor) method on the object store, like this:
+We create the cursor by calling the <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/openCursor">openCursor</a> method on the object store, like this:
 
 ```
 someObjectStore.openCursor(optionalKeyRange, optionalDirection);
@@ -605,14 +605,14 @@ Assuming the database we created in the previous example still exists in the bro
 
 ### IndexedDB Documentation
 
-*  [Using IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB) - MDN
-*  [Basic Concepts Behind indexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Concepts_Behind_IndexedDB) - MDN
-*  [Indexed Database API](https://www.w3.org/TR/IndexedDB/) - W3C
+* <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB">Using IndexedDB</a> - MDN
+* <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Concepts_Behind_IndexedDB">Basic Concepts Behind indexedDB</a> - MDN
+* <a href="https://www.w3.org/TR/IndexedDB/">Indexed Database API</a> - W3C
 
 ### Data storage limits
 
-*  [Working with quota on mobile browsers](http://www.html5rocks.com/en/tutorials/offline/quota-research/)
-*  [Browser storage limits and eviction criteria](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Browser_storage_limits_and_eviction_criteria)
+* <a href="http://www.html5rocks.com/en/tutorials/offline/quota-research/">Working with quota on mobile browsers</a>
+* <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Browser_storage_limits_and_eviction_criteria">Browser storage limits and eviction criteria</a>
 
 <a id="appendix" />
 

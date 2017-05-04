@@ -8,23 +8,23 @@
 
 
 
-[<strong>Introduction</strong>](#introduction)
+<a href="#introduction"><strong>Introduction</strong></a>
 
-[<strong>What is gulp?</strong>](#what)
+<a href="#what"><strong>What is gulp?</strong></a>
 
-[<strong>How to set up gulp</strong>](#how)<strong>        </strong>
+<a href="#how"><strong>How to set up gulp</strong></a><strong>        </strong>
 
-[<strong>Creating tasks</strong>](#tasks)<strong>        </strong>
+<a href="#tasks"><strong>Creating tasks</strong></a><strong>        </strong>
 
-[<strong>Examples</strong>](#examples)
+<a href="#examples"><strong>Examples</strong></a>
 
-[<strong>More automation</strong>](#automation)
+<a href="#automation"><strong>More automation</strong></a>
 
-[<strong>Review</strong>](#review)
+<a href="#review"><strong>Review</strong></a>
 
-[<strong>Further reading</strong>](#resources)
+<a href="#resources"><strong>Further reading</strong></a>
 
-Codelab:  [Gulp Setup](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_gulp_setup.html)
+Codelab: <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_gulp_setup.html">Gulp Setup</a>
 
 <a id="introduction" />
 
@@ -34,7 +34,7 @@ Codelab:  [Gulp Setup](https://google-developer-training.gitbooks.io/progressive
 
 
 
-Modern web development has many repetitive tasks like running a local server, minifying code, optimizing images, preprocessing CSS and more. This text discusses  [gulp](http://gulpjs.com/), a build tool for automating these tasks.
+Modern web development has many repetitive tasks like running a local server, minifying code, optimizing images, preprocessing CSS and more. This text discusses <a href="http://gulpjs.com/">gulp</a>, a build tool for automating these tasks.
 
 <a id="what" />
 
@@ -44,7 +44,7 @@ Modern web development has many repetitive tasks like running a local server, mi
 
 
 
-[Gulp](http://gulpjs.com/) is a cross-platform, streaming task runner that lets developers automate many development tasks. At a high level, gulp reads files as streams and pipes the streams to different tasks. These tasks are code-based and use plugins. The tasks modify the files, building source files into production files. To get an idea of what gulp can do check the  [list of gulp recipes](https://github.com/gulpjs/gulp/blob/master/docs/recipes/README.md) on GitHub.
+<a href="http://gulpjs.com/">Gulp</a> is a cross-platform, streaming task runner that lets developers automate many development tasks. At a high level, gulp reads files as streams and pipes the streams to different tasks. These tasks are code-based and use plugins. The tasks modify the files, building source files into production files. To get an idea of what gulp can do check the <a href="https://github.com/gulpjs/gulp/blob/master/docs/recipes/README.md">list of gulp recipes</a> on GitHub.
 
 <a id="how" />
 
@@ -58,9 +58,9 @@ Setting up gulp for the first time requires a few steps.
 
 ### Node
 
-Gulp requires  [Node](https://nodejs.org/en/), and its package manager,  [npm](https://www.npmjs.com/), which installs the gulp plugins.
+Gulp requires <a href="https://nodejs.org/en/">Node</a>, and its package manager, <a href="https://www.npmjs.com/">npm</a>, which installs the gulp plugins.
 
-If you don't already have Node and npm installed, you can install them with  [Node Version Manager](https://github.com/creationix/nvm) (nvm). This tool lets developers install multiple versions of Node, and easily switch between them.
+If you don't already have Node and npm installed, you can install them with <a href="https://github.com/creationix/nvm">Node Version Manager</a> (nvm). This tool lets developers install multiple versions of Node, and easily switch between them.
 
 <div class="note">
 <strong>Note: </strong>If you have issues with a specific version of Node, you can <a href="https://github.com/creationix/nvm#usage">switch to another version</a> with a single command.
@@ -70,7 +70,7 @@ Nvm can then be used to install Node by running the following in the command lin
 
     nvm install node
 
-This also installs Node's package manager,  [npm](https://www.npmjs.com/). You can check that these are both installed by running the following commands from the command line:
+This also installs Node's package manager, <a href="https://www.npmjs.com/">npm</a>. You can check that these are both installed by running the following commands from the command line:
 
     node -v
 
@@ -90,7 +90,7 @@ Before installing gulp plugins, your application needs to be initialized. Do thi
 
     npm init
 
-This command begins the generation of a <strong>package.json</strong> file, prompting you with questions about your application. For simplicity these can all be left blank (either by skipping the prompts with the return key or by using <code>npm init -y</code> instead of the above command), but in production you could store  [application metadata](https://nodesource.com/blog/the-basics-of-package-json-in-node-js-and-npm/) here. The file looks like this (your values may be different):
+This command begins the generation of a <strong>package.json</strong> file, prompting you with questions about your application. For simplicity these can all be left blank (either by skipping the prompts with the return key or by using <code>npm init -y</code> instead of the above command), but in production you could store <a href="https://nodesource.com/blog/the-basics-of-package-json-in-node-js-and-npm/">application metadata</a> here. The file looks like this (your values may be different):
 
 #### package.json
 
@@ -171,7 +171,7 @@ var gulp = require('gulp');
 
 
 
-Gulp tasks are defined in the <strong>gulpfile.js</strong> file using  [`gulp.task`](https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulptaskname--deps--fn). A simple task looks like this: 
+Gulp tasks are defined in the <strong>gulpfile.js</strong> file using <a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulptaskname--deps--fn">`gulp.task`</a>. A simple task looks like this: 
 
 #### gulpfile.js
 
@@ -187,9 +187,9 @@ This code defines a <code>hello</code> task that can be executed by running the 
 
 A common pattern for gulp tasks is the following:
 
-1. Read some source files using  [`gulp.src`](https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpsrcglobs-options)
+1. Read some source files using <a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpsrcglobs-options">`gulp.src`</a>
 2. Process these files with one or more functions using Node's <code>pipe</code> functionality
-3. Write the modified files to a destination directory (creating the directory if doesn't exist) with  [`gulp.dest`](https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpdestpath-options)
+3. Write the modified files to a destination directory (creating the directory if doesn't exist) with <a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpdestpath-options">`gulp.dest`</a>
 
         gulp.task('task-name', function() {
           gulp.src('source-files') // 1
@@ -253,7 +253,7 @@ Uglifying (or minifying) JavaScript is a common developer chore. The following s
         
 
 
-3. Install the  [gulp-uglify](https://www.npmjs.com/package/gulp-uglify) package by running the following in the command line:
+3. Install the <a href="https://www.npmjs.com/package/gulp-uglify">gulp-uglify</a> package by running the following in the command line:
 
         npm install gulp-uglify --save-dev
         
@@ -286,9 +286,9 @@ The task reads all JavaScript files in the <strong>js</strong> directory (relati
 
 #### Prefix CSS & build sourcemaps
 
-Multiple plugins can be used in a single task. The following steps set up a gulp task to prefix CSS files and create  [sourcemaps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/) for them (assuming Node, npm, and the gulp command line tool are installed):
+Multiple plugins can be used in a single task. The following steps set up a gulp task to prefix CSS files and create <a href="http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/">sourcemaps</a> for them (assuming Node, npm, and the gulp command line tool are installed):
 
-1. As in the previous example, create a new project and install gulp,  [gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer), and  [gulp-sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps) by running the following in the command line (from the project's working directory):
+1. As in the previous example, create a new project and install gulp, <a href="https://www.npmjs.com/package/gulp-autoprefixer">gulp-autoprefixer</a>, and <a href="https://www.npmjs.com/package/gulp-sourcemaps">gulp-sourcemaps</a> by running the following in the command line (from the project's working directory):
 
         npm init
         npm install gulp --save-dev
@@ -343,7 +343,7 @@ Running <code>gulp</code> in the command line executes both <code>task1</code> a
 
 ### Gulp.watch
 
-Even with default tasks, running tasks each time a file is updated during development can become tedious.  [`gulp.watch`](https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpwatchglob--opts-tasks-or-gulpwatchglob--opts-cb) watches files and automatically runs tasks when the corresponding files change. For example, the following code in <strong>gulpfile.js</strong> watches CSS files and executes the <code>processCSS</code> task any time the files are updated:
+Even with default tasks, running tasks each time a file is updated during development can become tedious. <a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpwatchglob--opts-tasks-or-gulpwatchglob--opts-cb">`gulp.watch`</a> watches files and automatically runs tasks when the corresponding files change. For example, the following code in <strong>gulpfile.js</strong> watches CSS files and executes the <code>processCSS</code> task any time the files are updated:
 
 #### gulpfile.js
 
@@ -371,7 +371,7 @@ Running the following in the command line starts the watch:
 
 Using a build tool for the first time can be daunting with multiple tools to install and new files to create. Let's review what we've covered and how it all fits together.
 
-Because gulp and its plugins are node packages, gulp requires  [Node](https://nodejs.org/en/) and its package manager,  [npm](https://www.npmjs.com/). They are global tools so you only need to install them once on your machine, not each time you create a project. In this text, we used  [Node Version Manager](https://github.com/creationix/nvm) (nvm) to install Node and npm, but they could also have been installed directly. 
+Because gulp and its plugins are node packages, gulp requires <a href="https://nodejs.org/en/">Node</a> and its package manager, <a href="https://www.npmjs.com/">npm</a>. They are global tools so you only need to install them once on your machine, not each time you create a project. In this text, we used <a href="https://github.com/creationix/nvm">Node Version Manager</a> (nvm) to install Node and npm, but they could also have been installed directly. 
 
 Gulp runs from the command line, so it requires a command line tool to be installed. Like Node, it's a global tool, and only needs to be installed on your machine (not per project). 
 
@@ -389,8 +389,8 @@ With everything installed and tasks defined, gulp tasks can be run by executing 
 
 
 
-*  [Gulp's Getting Started guide](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
-*  [List of gulp Recipes](https://github.com/gulpjs/gulp/blob/master/docs/recipes/README.md)
-*  [Gulp Plugin Registry](http://gulpjs.com/plugins/)
+* <a href="https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md">Gulp's Getting Started guide</a>
+* <a href="https://github.com/gulpjs/gulp/blob/master/docs/recipes/README.md">List of gulp Recipes</a>
+* <a href="http://gulpjs.com/plugins/">Gulp Plugin Registry</a>
 
 

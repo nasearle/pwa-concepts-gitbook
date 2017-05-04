@@ -8,13 +8,13 @@
 
 
 
-[<strong>Introduction</strong>](#introduction)
+<a href="#introduction"><strong>Introduction</strong></a>
 
-[<strong>Where should offline data be stored?</strong>](#where)
+<a href="#where"><strong>Where should offline data be stored?</strong></a>
 
-[<strong>Using IndexedDB and the Cache interface</strong>](#examples)
+<a href="#examples"><strong>Using IndexedDB and the Cache interface</strong></a>
 
-[<strong>Further reading</strong>](#resources)
+<a href="#resources"><strong>Further reading</strong></a>
 
 <a id="introduction" />
 
@@ -34,15 +34,15 @@ Offline support and reliable performance are key features of Progressive Web App
 
 
 
-A general guideline for data storage is that URL addressable resources should be stored with the  [Cache](https://developer.mozilla.org/en-US/docs/Web/API/Cache) interface, and other data should be stored with  [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API). For example HTML, CSS, and JS files should be stored in the cache, while JSON data should be stored in IndexedDB. Note that this is only a guideline, not a firm rule. 
+A general guideline for data storage is that URL addressable resources should be stored with the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache">Cache</a> interface, and other data should be stored with <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API">IndexedDB</a>. For example HTML, CSS, and JS files should be stored in the cache, while JSON data should be stored in IndexedDB. Note that this is only a guideline, not a firm rule. 
 
 ### Why IndexedDB and the Cache interface?
 
-There are a  [variety of reasons](https://medium.com/dev-channel/offline-storage-for-progressive-web-apps-70d52695513c#.lm82vlyt8) to use IndexedDB and the Cache interface. Both are asynchronous and accessible in service workers, web workers, and the window interface. IndexedDB is  [widely supported](http://caniuse.com/#feat=indexeddb), and the Cache interface  [is supported](https://jakearchibald.github.io/isserviceworkerready/) in Chrome, Firefox, Opera, and Samsung Internet.
+There are a <a href="https://medium.com/dev-channel/offline-storage-for-progressive-web-apps-70d52695513c#.lm82vlyt8">variety of reasons</a> to use IndexedDB and the Cache interface. Both are asynchronous and accessible in service workers, web workers, and the window interface. IndexedDB is <a href="http://caniuse.com/#feat=indexeddb">widely supported</a>, and the Cache interface <a href="https://jakearchibald.github.io/isserviceworkerready/">is supported</a> in Chrome, Firefox, Opera, and Samsung Internet.
 
-In this text we use Jake Archibald's  [IndexedDB Promised](https://github.com/jakearchibald/indexeddb-promised) library, which enables promise syntax for IndexedDB. There are also  [other IndexedDB libraries](https://medium.com/dev-channel/offline-storage-for-progressive-web-apps-70d52695513c#.lm82vlyt8) that can be used to abstract some of the less convenient aspects of the API. 
+In this text we use Jake Archibald's <a href="https://github.com/jakearchibald/indexeddb-promised">IndexedDB Promised</a> library, which enables promise syntax for IndexedDB. There are also <a href="https://medium.com/dev-channel/offline-storage-for-progressive-web-apps-70d52695513c#.lm82vlyt8">other IndexedDB libraries</a> that can be used to abstract some of the less convenient aspects of the API. 
 
-Debugging support for IndexedDB is available in Chrome, Opera, Firefox and Safari. Debugging support for Cache Storage is available in Chrome, Opera, and Firefox. These are covered in [Tools for PWA Developers](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/tools_for_pwa_developers.html).
+Debugging support for IndexedDB is available in Chrome, Opera, Firefox and Safari. Debugging support for Cache Storage is available in Chrome, Opera, and Firefox. These are covered in <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/tools_for_pwa_developers.html">Tools for PWA Developers</a>.
 
 <div class="note">
 <strong>Note:</strong> Some developers have run into issues with Safari 10's IndexedDB implementation. Test your app to make sure it works on your target browser. File browser bugs with your browser's vendor so that browser implementors and library maintainers can investigate. 
@@ -64,7 +64,7 @@ Different browsers allow different amounts of offline storage. This table summar
 <tr><td colspan="1" rowspan="1">
 <p>Chrome, Opera, and Samsung Internet</p>
 </td><td colspan="1" rowspan="1">
-<p>Up to a  <a href="https://www.html5rocks.com/en/tutorials/offline/quota-research/">quota</a>. Check usage with the  <a href="https://www.w3.org/TR/quota-api/">Quota API</a></p>
+<p>Up to a <a href="https://www.html5rocks.com/en/tutorials/offline/quota-research/">quota</a>. Check usage with the <a href="https://www.w3.org/TR/quota-api/">Quota API</a></p>
 </td><td colspan="1" rowspan="1">
 <p>Storage is per origin not per API (local storage, session storage, service worker cache and IndexedDB all share the same space)</p>
 </td>
@@ -150,7 +150,7 @@ IndexedDB is a noSQL database. IndexedDB data is stored as key-value pairs in <s
 </tr></table>
 
 
-The data is organized by a <strong>`keypath`</strong>, which in this case is the item's <strong>`id`</strong> property. You can learn more about IndexedDB in the corresponding  [text](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-concepts/content/docs/working-with-indexeddb.html), or in the  [code lab](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_indexeddb.html).
+The data is organized by a <strong>`keypath`</strong>, which in this case is the item's <strong>`id`</strong> property. You can learn more about IndexedDB in the corresponding <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-concepts/content/docs/working-with-indexeddb.html">text</a>, or in the <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_indexeddb.html">code lab</a>.
 
 The following function could be used to create an IndexedDB object store like the example above:
 
@@ -170,7 +170,7 @@ function createDB() {
 ```
 
 <div class="note">
-<strong>Note:</strong> All IndexedDB code in this text uses Jake Archibald's  [IndexedDB Promised](https://github.com/jakearchibald/indexeddb-promised) library, which enables promise syntax for IndexedDB.
+<strong>Note:</strong> All IndexedDB code in this text uses Jake Archibald's <a href="https://github.com/jakearchibald/indexeddb-promised">IndexedDB Promised</a> library, which enables promise syntax for IndexedDB.
 </div>
 
 Here we create a  'products' database, version 1. Inside the 'products' database, we create a 'beverages' object store. This holds all of the beverage objects. The <code>beverages</code> object store has a keypath of <code>id`. This means that the objects in this store will be organized and accessed by the `id</code> property of the <code>beverage</code> objects. Finally, we add some example beverages to the object store.
@@ -277,9 +277,9 @@ This code adds a <code>fetch</code> listener on the service worker that attempts
 
 
 
-*  [Offline Storage for Progressive Web Apps](https://medium.com/dev-channel/offline-storage-for-progressive-web-apps-70d52695513c#.lm82vlyt8)
-*  [IndexedDB Promised](https://github.com/jakearchibald/indexeddb-promised)
-*  [Support for the Cache interface](https://jakearchibald.github.io/isserviceworkerready/#caches)
-*  [Support for IndexedDB](http://caniuse.com/#feat=indexeddb)
+* <a href="https://medium.com/dev-channel/offline-storage-for-progressive-web-apps-70d52695513c#.lm82vlyt8">Offline Storage for Progressive Web Apps</a>
+* <a href="https://github.com/jakearchibald/indexeddb-promised">IndexedDB Promised</a>
+* <a href="https://jakearchibald.github.io/isserviceworkerready/#caches">Support for the Cache interface</a>
+* <a href="http://caniuse.com/#feat=indexeddb">Support for IndexedDB</a>
 
 
