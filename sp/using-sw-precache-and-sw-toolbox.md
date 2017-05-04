@@ -323,7 +323,8 @@ We call the gulp task `'generate-service-worker'` and pass a callback to the fun
 * The `app/` prefix is removed from all file paths in `staticFileGlobs` so that the paths in the generated service worker are relative.
 
 <div class="note">
-<strong>Note:</strong> Incorporating `sw-toolbox` routes into your build is as simple as including the `sw-toolbox` module and a script containing your routes in the `importScripts` option of `swPrecache.write`.</div>
+<strong>Note:</strong> Incorporating `sw-toolbox` routes into your build is as simple as including the `sw-toolbox` module and a script containing your routes in the `importScripts` option of `swPrecache.write`.
+</div>
 
 <a id="cmdline">
 
@@ -348,7 +349,8 @@ sw-precache --root=dist --static-file-globs='dist/**/*.html'
 ```
 
 <div class="note">
-<strong>Note:</strong> Be sure to use quotes around parameter values that have special meanings to your shell (such as the * characters in the sample command line above, for example).</div>
+<strong>Note:</strong> Be sure to use quotes around parameter values that have special meanings to your shell (such as the * characters in the sample command line above, for example).
+</div>
 
 Finally, there's support for passing complex configurations using `--config <file>`. Any of the options from the file can be overridden through a command-line flag. We recommend using an external JavaScript file to define configurations using  [module.exports](https://nodejs.org/api/modules.html#modules_module_exports). For example, assume there's a <strong>path/to/sw-precache-config.js</strong> file that contains:
 

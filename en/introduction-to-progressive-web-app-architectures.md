@@ -67,7 +67,8 @@ The shell of the functionality is loaded and displayed to the user (and potentia
 The  [What is an Application Shell?](#what) section in this document goes into detail about using an app shell, which is the recommended approach to migrate existing single-page apps (SPAs) and structure your PWA. This architecture provides connectivity resilience and it is what makes a PWA feel like a native app to the user, giving it application-like interaction and navigation, and reliable performance.
 
 <div class="note">
-<strong>Note:</strong> If your website is a templated site (i.e. built using multiple templates combined with the actual text, images, and other resources that make up the site's content), then read Jeffrey Posnick's  [Offline-first for Your Templated Site](https://jeffy.info/2016/11/02/offline-first-for-your-templated-site-part-1.html) to learn different strategies for caching and serving templated sites.</div>
+<strong>Note:</strong> If your website is a templated site (i.e. built using multiple templates combined with the actual text, images, and other resources that make up the site's content), then read Jeffrey Posnick's  [Offline-first for Your Templated Site](https://jeffy.info/2016/11/02/offline-first-for-your-templated-site-part-1.html) to learn different strategies for caching and serving templated sites.
+</div>
 
 Service worker caching should be considered a progressive enhancement. If your web app follows the model of conditionally registering a service worker only if it is supported, then you get offline support on browsers with service workers. On browsers that do not support service workers the offline-specific code is never called and there is no overhead or breakage. 
 
@@ -88,7 +89,8 @@ Here is a high-level description of how it works:
 ![Service Worker Lifecycle](../img/c9f7d527c81ed1a1.png)
 
 <div class="note">
-<strong>Note:</strong> Once for every given version of a service worker, the service worker is registered and activated and, if necessary, performs cache cleanup of any out-of-date resources that are no longer needed in your shell. This only happens once for every given version of the service worker JavaScript file.</div>
+<strong>Note:</strong> Once for every given version of a service worker, the service worker is registered and activated and, if necessary, performs cache cleanup of any out-of-date resources that are no longer needed in your shell. This only happens once for every given version of the service worker JavaScript file.
+</div>
 
 <strong>What about browsers that do not support service workers?</strong>
 
@@ -214,7 +216,8 @@ Sites where you mostly navigate and view static content (such as news outlets) c
 <strong>Client-side rendering (CSR)</strong> is when JavaScript runs in the browser and manipulates the DOM. The benefit of CSR is it offloads page updates to the client so that screen updates occur  instantly when the user clicks, rather than waiting while the server is contacted for information about what to display. Thus, when data has changed after the initial page render, CSR can selectively re-render portions of the page (or reload the entire page) when new data is received from the server or following user interaction. 
 
 <div class="note">
-<strong>Note: </strong>As with SSR, the consequence of reloading the entire page is you end up replacing your entire DOM for each navigation. That means reparsing, rerendering, and laying out the resources on the page each time even if it's only a small portion of the page that changed. </div>
+<strong>Note: </strong>As with SSR, the consequence of reloading the entire page is you end up replacing your entire DOM for each navigation. That means reparsing, rerendering, and laying out the resources on the page each time even if it's only a small portion of the page that changed. 
+</div>
 
 Practically every website does some CSR, especially now with the strong trend toward mobile web usage. Any portion of a page that is animated or highly interactive (a draggable slider, a sortable table, a dropdown menu) likely uses client-side rendering.
 
@@ -227,7 +230,8 @@ Whenever possible, the best practice is to combine SSR and CSR so that you first
 This option presumes you can render the same way on the client and server. The reason server-side and client-side rendering is problematic is because they are typically done in different programming environments and in different languages. For websites that blend static, navigable content and app-like interactivity, this can become a huge pain.
 
 <div class="note">
-<strong>Note:</strong> If you are using a Universal JavaScript framework, the same templating code might run on both the server and the client but that is not a requirement for using the service worker and app shell model.</div>
+<strong>Note:</strong> If you are using a Universal JavaScript framework, the same templating code might run on both the server and the client but that is not a requirement for using the service worker and app shell model.
+</div>
 
 In an app shell architecture, a server-side component should be able to treat the content separately from how it is presented on the UI. Content could be added to a HTML layout during a SSR of the page, or it could be served up on its own to be dynamically pulled in. Static content sites such as news outlets can use PWAs and so can dynamic sites such as social media or shopping. What's important is that the app does something meaningful when offline. 
 
@@ -240,22 +244,26 @@ PWAs can be built with any architectural style (SSR, CSR, or a hybrid of the two
 1. Application shell (SSR both shell + content for entry page) + use JavaScript to fetch content for any further routes and do a "take over"
 
  <div class="note">
-<strong>Note: </strong>In the future, consider a server-side render of UI with Streams for body content model (even better). See <a href="https://jakearchibald.com/2016/streams-ftw/">https://jakearchibald.com/2016/streams-ftw/</a> to learn more.</div>
+<strong>Note: </strong>In the future, consider a server-side render of UI with Streams for body content model (even better). See <a href="https://jakearchibald.com/2016/streams-ftw/">https://jakearchibald.com/2016/streams-ftw/</a> to learn more.
+</div>
 
 <div class="note">
-<strong>Note:</strong> If you are building a PWA using Polymer leveraging this pattern, then it might be worth exploring SSR of content in the Light DOM.</div>
+<strong>Note:</strong> If you are building a PWA using Polymer leveraging this pattern, then it might be worth exploring SSR of content in the Light DOM.
+</div>
 
 2. Application shell (SSR) + use JavaScript to fetch content once the app shell is loaded
 
     SSR is optional. Your shell is likely to be highly static, but SSR provides slightly better performance in some cases.
 
  <div class="note">
-<strong>Note:</strong> If you are already considering  [Accelerated Mobile Pages (AMP)](https://www.ampproject.org/), you may be interested in an app shell (SSR) "viewer" + use AMP for leaf nodes (content). </div>
+<strong>Note:</strong> If you are already considering  [Accelerated Mobile Pages (AMP)](https://www.ampproject.org/), you may be interested in an app shell (SSR) "viewer" + use AMP for leaf nodes (content). 
+</div>
 
 3. Server-side rendering full page (full page caching)
 
  <div class="note">
-<strong>Note: </strong>For browsers that do not support service workers, we gracefully degrade to still server-side rendering content (for example, iOS). </div>
+<strong>Note: </strong>For browsers that do not support service workers, we gracefully degrade to still server-side rendering content (for example, iOS). 
+</div>
 
 4. Client-side rendering full page (full page caching, potential for JSON payload bootstrapping via server)
 
@@ -365,14 +373,16 @@ The next step might be caching the full-page HTML or caching the app shell to se
 Each milestone allows you to deploy separately, measure the potential performance gains from each step you explore, and progressively roll out a better PWA. 
 
 <div class="note">
-<strong>Note:</strong> Understanding the network traffic is key to successful migration. You can use the guidelines in  [Measure Resource Loading Times](https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/resource-loading) to get started using the Network DevTools panel.</div>
+<strong>Note:</strong> Understanding the network traffic is key to successful migration. You can use the guidelines in  [Measure Resource Loading Times](https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/resource-loading) to get started using the Network DevTools panel.
+</div>
 
 ### Migrating an Existing Site with Server Rendering to PWA
 
 Server-rendered pages can vary in complexity, either being (primarily) static HTML pages or involve more dynamic content. It is useful to think about how you might want to handle dynamic content as a number of different offline caching strategies can be used here. The  [Offline Cookbook](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/) is a good reference point once you moved your site over to  [HTTPS](https://developers.google.com/web/fundamentals/security/encrypt-in-transit/why-https), added a  [Web App manifest](https://developers.google.com/web/updates/2014/11/Support-for-installable-web-apps-with-webapp-manifest-in-chrome-38-for-Android) and can start crafting your service worker story.
 
 <div class="note">
-<strong>Note:</strong> If your website is a templated site (i.e. built using multiple templates combined with the actual text, images, and other resources that make up the site's content), then read Jake Archibald's  [Offline-first for Your Templated Site](https://jeffy.info/2016/11/02/offline-first-for-your-templated-site-part-1.html) to learn different strategies for caching and serving templated sites.</div>
+<strong>Note:</strong> If your website is a templated site (i.e. built using multiple templates combined with the actual text, images, and other resources that make up the site's content), then read Jake Archibald's  [Offline-first for Your Templated Site](https://jeffy.info/2016/11/02/offline-first-for-your-templated-site-part-1.html) to learn different strategies for caching and serving templated sites.
+</div>
 
 Once you decide on a strategy for caching then you must implement it. A SPA architecture is often recommended when using an app shell. When we refer to SPA (single-page apps), we're talking about apps that are loaded once and are then  *lived in*  for a long period of time. SPAs rely heavily on script and have entirely separate "server rendered" versions. Google's headline web apps (GMail, Inbox, Maps, Docs, Sheets, and so on) have been pioneers in this realm. These web apps are distinguished by managing a larger share of the state of the application on the client and then doing some form of synchronization on data sets. 
 
@@ -659,7 +669,8 @@ toolbox.router.get('/profile', toolbox.fastest);
 For more information about caching strategies, see the  [Offline Cookbook](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/).
 
 <div class="note">
-<strong>Note:</strong> If your website is a templated site (i.e. built using multiple templates combined with the actual text, images, and other resources that make up the site's content), then read Jake Archibald's  [Offline-first for Your Templated Site](https://jeffy.info/2016/11/02/offline-first-for-your-templated-site-part-1.html) to learn different strategies for caching and serving templated sites.</div>
+<strong>Note:</strong> If your website is a templated site (i.e. built using multiple templates combined with the actual text, images, and other resources that make up the site's content), then read Jake Archibald's  [Offline-first for Your Templated Site](https://jeffy.info/2016/11/02/offline-first-for-your-templated-site-part-1.html) to learn different strategies for caching and serving templated sites.
+</div>
 
 #### Exercise: Determine the Best Caching Strategy for Your App
 
@@ -790,7 +801,8 @@ Use the following table to identify which caching strategy provides the right ba
 
 
 <div class="note">
-<strong>Note:</strong> You can use `sw-precache` to handle the implementation for you. All of the standard caching strategies, along with control over advanced options like maximum cache size and age, are supported via the automatic inclusion of the `sw-toolbox` library. See the  [Service Worker Precache](https://github.com/GoogleChrome/sw-precache#runtimecaching-arrayobject) documentation on Github for a complete description and examples.</div>
+<strong>Note:</strong> You can use `sw-precache` to handle the implementation for you. All of the standard caching strategies, along with control over advanced options like maximum cache size and age, are supported via the automatic inclusion of the `sw-toolbox` library. See the  [Service Worker Precache](https://github.com/GoogleChrome/sw-precache#runtimecaching-arrayobject) documentation on Github for a complete description and examples.
+</div>
 
 Remember that `sw-precache` integrates with your build process, but `sw-toolbox` is loaded by your service worker at run time. `sw-toolbox` is the answer for dynamic, or runtime caching within your web apps. 
 
@@ -925,7 +937,8 @@ For an look at what's required to make your app work offline, see  [The Service 
 You can manually hand code an app shell or use the `sw-precache` service worker module to automatically generate it and minimize the amount of boilerplate code you must write.
 
 <div class="note">
-<strong>Note:</strong> The examples are provided for general information and illustrative purposes only. The actual resources used, such as jQuery, may be different for your application.</div>
+<strong>Note:</strong> The examples are provided for general information and illustrative purposes only. The actual resources used, such as jQuery, may be different for your application.
+</div>
 
 #### Caching the App Shell Manually
 

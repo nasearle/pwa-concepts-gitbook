@@ -63,7 +63,8 @@ If you only have one app, the simplest scenario is to create a single Google Ana
 A Google Analytics account can be created from  [analytics.google.com](https://analytics.google.com/). 
 
 <div class="note">
-<strong>Note: </strong>The Google Analytics UI is subject to updates and may not look exactly like the screenshots presented here.</div>
+<strong>Note: </strong>The Google Analytics UI is subject to updates and may not look exactly like the screenshots presented here.
+</div>
 
 #### If you already have a Google Analytics account
 
@@ -92,7 +93,8 @@ This is where you can set the name for your account, for example "PWA Training" 
 A property must be associated with a website (for web apps). The website name can be whatever you want, for example "GA Code Lab Site" or "My New App". The website URL should be the URL where your app is hosted.
 
 <div class="note">
-<strong>Note: </strong>Analytics will still work even if this URL does not match your site. The only thing that ties analytics data to your account is the value of your <strong>tracking / property ID</strong>. The site URL that you use to create your Google Analytics account is only used for things like automated testing. </div>
+<strong>Note: </strong>Analytics will still work even if this URL does not match your site. The only thing that ties analytics data to your account is the value of your <strong>tracking / property ID</strong>. The site URL that you use to create your Google Analytics account is only used for things like automated testing. 
+</div>
 
 You can set an industry category to get benchmarking information later (in other words, to compare your app with other apps in the same industry). You can set your timezone here as well. You may also see data sharing options, but these are not required.
 
@@ -162,17 +164,20 @@ The code so far provides the basic functionality of Google Analytics. A tracker 
 * Which internal links are clicked (based on the URL of the next pageview)
 
 <div class="note">
-<strong>Note: </strong>Tracker objects do not update themselves. If a user changes the size of the window, or if code running on the page updates the URL (such as in a single page app), tracker objects do not automatically capture this information. In order for the tracker object to reflect these changes, you must <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/accessing-trackers">manually update it</a>.</div>
+<strong>Note: </strong>Tracker objects do not update themselves. If a user changes the size of the window, or if code running on the page updates the URL (such as in a single page app), tracker objects do not automatically capture this information. In order for the tracker object to reflect these changes, you must <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/accessing-trackers">manually update it</a>.
+</div>
 
 ### Debugging and development
 
 Google Analytics offers the <strong>analytics.js</strong> library with a debug mode: <strong>analytics_debug.js</strong>. Using this version will log detailed messages to the console that break down each hit sent. It also logs warnings and errors for your tracking code. To use this version, replace <strong>analytics.js</strong> with <strong>analytics_debug.js</strong> (in all instances of your tracking snippet).
 
 <div class="note">
-<strong>Note:</strong> The debug version should not be used in production as it is a much larger file. </div>
+<strong>Note:</strong> The debug version should not be used in production as it is a much larger file. 
+</div>
 
 <div class="note">
-<strong>Note:</strong> You can also use the <a href="https://chrome.google.com/webstore/detail/google-analytics-debugger/jnkmfdileelhofjcijamephohjechhna">Chrome debugger extension</a>. </div>
+<strong>Note:</strong> You can also use the <a href="https://chrome.google.com/webstore/detail/google-analytics-debugger/jnkmfdileelhofjcijamephohjechhna">Chrome debugger extension</a>. 
+</div>
 
 #### For more information
 
@@ -242,7 +247,8 @@ ga('send', {
 Here the hit type is set to 'event' and values associated with the event are added as parameters. These values represent the `eventCategory`, `eventAction`, and `eventLabel`. All of these are arbitrary, and used to organize events. Sending these custom events allow us to deeply understand user interactions with our site.
 
 <div class="note">
-<strong>Note:</strong> Many of the <code>ga</code> commands are flexible and can use multiple signatures. You can see all method signatures in the <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/command-queue-reference">command queue reference</a>.</div>
+<strong>Note:</strong> Many of the <code>ga</code> commands are flexible and can use multiple signatures. You can see all method signatures in the <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/command-queue-reference">command queue reference</a>.
+</div>
 
 Event data can be viewed in the <strong>Reporting</strong> tab of the Google Analytics dashboard. Real-time events are found in the <strong>Events</strong> subsection, as shown below:
 
@@ -434,7 +440,8 @@ self.addEventListener('notificationclose', function(event) {
 Observe that we have used `event.waitUntil` to wrap an asynchronous operation. If unfamiliar, `event.waitUntil` extends the life of an event until the asynchronous actions inside of it have completed. This ensures that the service worker will not be terminated pre-emptively while waiting for an asynchronous action to complete.
 
 <div class="note">
-<strong>Note:</strong> Because this event uses the Measurement Protocol interface instead of <strong>analytics_debug.js</strong>, the debug console log won't appear. You can debug Measurement Protocol hits with <a href="https://developers.google.com/analytics/devguides/collection/protocol/v1/validating-hits"> hit validation</a>.</div>
+<strong>Note:</strong> Because this event uses the Measurement Protocol interface instead of <strong>analytics_debug.js</strong>, the debug console log won't appear. You can debug Measurement Protocol hits with <a href="https://developers.google.com/analytics/devguides/collection/protocol/v1/validating-hits"> hit validation</a>.
+</div>
 
 #### For more information
 
@@ -486,13 +493,16 @@ You can test this by  [simulating offline behavior](https://google-developer-tra
 Now disable offline mode, and refresh the page. Check <strong>IndexedDB</strong> again, and observe that the URL is no longer cached (and has been sent to analytics servers).
 
 <div class="note">
-<strong>Note:</strong> This strategy won't work for hits sent from a service worker since the service worker doesn't listen to fetch events from itself (that could cause some serious problems!). This may not be too important in many cases, because many of the hits that we would want to send from the service worker are tied to online events (like push notifications) anyways.</div>
+<strong>Note:</strong> This strategy won't work for hits sent from a service worker since the service worker doesn't listen to fetch events from itself (that could cause some serious problems!). This may not be too important in many cases, because many of the hits that we would want to send from the service worker are tied to online events (like push notifications) anyways.
+</div>
 
 <div class="note">
-<strong>Note:</strong> These events don't use <strong>analytics_debug.js</strong>, so the debug console logs don't appear.</div>
+<strong>Note:</strong> These events don't use <strong>analytics_debug.js</strong>, so the debug console logs don't appear.
+</div>
 
 <div class="note">
-<strong>Note:</strong> Some users have reported a bug in Chrome that recreates deleted databases on reload.</div>
+<strong>Note:</strong> Some users have reported a bug in Chrome that recreates deleted databases on reload.
+</div>
 
 #### For more information
 

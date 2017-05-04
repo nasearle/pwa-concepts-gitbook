@@ -287,7 +287,8 @@ function processImage(imageName, domNode) {
 ```
 
 <div class="note">
-<strong>Note:</strong> The promise chain continues executing after a `catch()` until it reaches the last `then()` or `catch()` in the chain.</div>
+<strong>Note:</strong> The promise chain continues executing after a `catch()` until it reaches the last `then()` or `catch()` in the chain.
+</div>
 
 ### Synchronous operations 
 
@@ -326,7 +327,8 @@ Promise.all([promise1, promise2]) // Array of promises to complete
 ```
 
 <div class="note">
-<strong>Note: </strong>Even if an input promise rejects, causing <code>Promise.all</code> to reject, the remaining input promises still settle. In other words, the remaining promises still execute, they simply are not returned by <code>Promise.all</code>.</div>
+<strong>Note: </strong>Even if an input promise rejects, causing <code>Promise.all</code> to reject, the remaining input promises still settle. In other words, the remaining promises still execute, they simply are not returned by <code>Promise.all</code>.
+</div>
 
 <a id="race" />
 

@@ -36,7 +36,8 @@ Because workers run separately from the main thread, service workers are indepen
 * The service worker can receive push messages from a server when the app is not active. This lets your app show push notifications to the user, even when it is not open in the browser.
 
  <div class="note">
-<strong>Note:</strong> Whether notifications are received when the browser itself is not running depends on how the browser is integrated with the OS. For instance on desktop OS's, Chrome and Firefox only receive notifications when the browser is running. However, Android is designed to wake up any browser when a push message is received and will always receive push messages regardless of browser state. See the  [FAQ](https://web-push-book.gauntface.com/chapter-07/01-faq/#why-doesnt-push-work-when-the-browser-is-closed) in Matt Gaunt's  [Web Push Book](https://web-push-book.gauntface.com/) for more information.</div>
+<strong>Note:</strong> Whether notifications are received when the browser itself is not running depends on how the browser is integrated with the OS. For instance on desktop OS's, Chrome and Firefox only receive notifications when the browser is running. However, Android is designed to wake up any browser when a push message is received and will always receive push messages regardless of browser state. See the  [FAQ](https://web-push-book.gauntface.com/chapter-07/01-faq/#why-doesnt-push-work-when-the-browser-is-closed) in Matt Gaunt's  [Web Push Book](https://web-push-book.gauntface.com/) for more information.
+</div>
 
 * The service worker can't access the DOM directly. To communicate with the page, the service worker uses the  [`postMessage()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) method to send data and a "message" event listener to receive data.
 
@@ -46,7 +47,8 @@ Things to note about a service worker:
 * Service workers only run over HTTPS. Because service workers can intercept network requests and modify responses, "man-in-the-middle" attacks could be very bad.
 
 <div class="note">
-<strong>Note: </strong>Services like <a href="https://letsencrypt.org/">Letsencrypt</a> let you procure SSL certificates for free to install on your server. </div>
+<strong>Note: </strong>Services like <a href="https://letsencrypt.org/">Letsencrypt</a> let you procure SSL certificates for free to install on your server. 
+</div>
 
 * The service worker becomes idle when not in use and restarts when it's next needed. You cannot rely on a global state persisting between events. If there is information that you need to persist and reuse across restarts, you can use  [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) databases.
 * Service workers make extensive use of promises, so if you're new to promises, then you should stop reading this and check out  [Promises, an introduction](https://developers.google.com/web/fundamentals/getting-started/primers/promises).
@@ -152,7 +154,8 @@ self.addEventListener('install', function(event) {
 Once a service worker has successfully installed, it transitions into the <strong>activation</strong> stage. If there are any open pages controlled by the previous service worker, the new service worker enters a `waiting` state. The new service worker only activates when there are no longer any pages loaded that are still using the old service worker. This ensures that only one version of the service worker is running at any given time. 
 
 <div class="note">
-<strong>Note: </strong>Simply refreshing the page is not sufficient to transfer control to a new service worker, because the new page will be requested before the the current page is unloaded, and there won't be a time when the old service worker is not in use.</div>
+<strong>Note: </strong>Simply refreshing the page is not sufficient to transfer control to a new service worker, because the new page will be requested before the the current page is unloaded, and there won't be a time when the old service worker is not in use.
+</div>
 
 When the new service worker activates, an `activate` event is triggered in the activating service worker. This event listener is a good place to clean up outdated caches (see the  [Offline Cookbook](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/#on-activate) for an example).
 

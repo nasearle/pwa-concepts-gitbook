@@ -47,7 +47,8 @@ Service workers can also use  [IndexedDB](https://developer.mozilla.org/en-US/do
 <div class="note">
 <strong>Note: </strong>The service worker's approach was driven by the problems the community had with Application Cache (AppCache), where a purely declarative approach to caching proved to be too inflexible. Unlike AppCache, service workers don't provide defaults making all behavior explicit. If a behavior is not written into your service worker, then the behavior does not happen. By explicitly coding behaviors in a service worker, the task of writing and debugging code is made easier.
 
-For an example of working with AppCache and the challenges developers face, see Jake Archibald's <a href="http://alistapart.com/article/application-cache-is-a-douchebag">Application Cache is a Douchebag</a> article. However, using AppCache is highly discouraged because it is in the process of being removed from the Web platform. Use service workers instead.</div>
+For an example of working with AppCache and the challenges developers face, see Jake Archibald's <a href="http://alistapart.com/article/application-cache-is-a-douchebag">Application Cache is a Douchebag</a> article. However, using AppCache is highly discouraged because it is in the process of being removed from the Web platform. Use service workers instead.
+</div>
 
 ### Improved performance
 
@@ -122,10 +123,12 @@ self.addEventListener('install', function(event) {
 This code starts by defining a cache name and a list of URLs to be cached (the static assets). It creates an install event listener that executes the code inside of it when the service worker installs. In this example, the code in the install listener opens a cache and stores the list of assets.
 
 <div class="note">
-<strong>Note:</strong> The `.` represents the current directory (for example, <strong>app/</strong>). If the user navigates to <strong>app/</strong>, the browser generally shows <strong>app/index.html</strong>. However, <strong>app/</strong> and <strong>app/index.html</strong> are separate URLs, so a 404 can still occur if the user navigates to <strong>app/</strong> and only <strong>app/index.html</strong> is available. We cache `.` as well as `index.html` to avoid this potential error.  </div>
+<strong>Note:</strong> The `.` represents the current directory (for example, <strong>app/</strong>). If the user navigates to <strong>app/</strong>, the browser generally shows <strong>app/index.html</strong>. However, <strong>app/</strong> and <strong>app/index.html</strong> are separate URLs, so a 404 can still occur if the user navigates to <strong>app/</strong> and only <strong>app/index.html</strong> is available. We cache `.` as well as `index.html` to avoid this potential error.  
+</div>
 
 <div class="note">
-<strong>Note: </strong>The `event.waitUntil` can be particularly confusing. This operation simply tells the browser not to preemptively terminate the service worker before the asynchronous operations inside of it have completed.</div>
+<strong>Note: </strong>The `event.waitUntil` can be particularly confusing. This operation simply tells the browser not to preemptively terminate the service worker before the asynchronous operations inside of it have completed.
+</div>
 
 ### Fetching from the cache
 
@@ -175,7 +178,8 @@ In the example, a fetch event listener is added to the service worker. When a re
 Not only does this prioritize getting resources from the cache instead of the network, but it also caches all future requests.
 
 <div class="note">
-We <code>clone</code> the response because the request is a stream that can only be consumed once. Since we want to put it in the cache and serve it to the user, we need to create a copy. See Jake Archibald's <a href="https://jakearchibald.com/2014/reading-responses/">What happens when you read a response</a> article for a more in-depth explanation.</div>
+We <code>clone</code> the response because the request is a stream that can only be consumed once. Since we want to put it in the cache and serve it to the user, we need to create a copy. See Jake Archibald's <a href="https://jakearchibald.com/2014/reading-responses/">What happens when you read a response</a> article for a more in-depth explanation.
+</div>
 
 ### What have we done?
 
@@ -184,7 +188,8 @@ When the app opens for the first time, the service worker is registered, install
 After the first user visit, the app will open even when offline!
 
 <div class="note">
-<strong>Note: </strong>You might be thinking, why didn't we just cache everything on install? Or, why did we cache anything on install if all fetched resources are cached? This is intended as an overview of how you can bring offline functionality to an app. In practice, there are a variety of caching strategies and tools that let you customize your app's offline experience. Check out the <a href="https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/">Offline Cookbook</a> for more info.</div>
+<strong>Note: </strong>You might be thinking, why didn't we just cache everything on install? Or, why did we cache anything on install if all fetched resources are cached? This is intended as an overview of how you can bring offline functionality to an app. In practice, there are a variety of caching strategies and tools that let you customize your app's offline experience. Check out the <a href="https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/">Offline Cookbook</a> for more info.
+</div>
 
 <a id="reading" />
 

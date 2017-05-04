@@ -59,7 +59,8 @@ self.addEventListener('install', function(event) {
 This event listener triggers when the service worker is first installed.
 
 <div class="note">
-<strong>Note: </strong>It is important to note that while this event is happening, any previous version of your service worker is still running and serving pages, so the things you do here must not disrupt that. For instance, this is not a good place to delete old caches, because the previous service worker may still be using them at this point.</div>
+<strong>Note: </strong>It is important to note that while this event is happening, any previous version of your service worker is still running and serving pages, so the things you do here must not disrupt that. For instance, this is not a good place to delete old caches, because the previous service worker may still be using them at this point.
+</div>
 
 [`event.waitUntil`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil) extends the lifetime of the `install` event until the passed promise resolves successfully. If the promise rejects, the installation is considered a failure and this service worker is abandoned (if an older version is running, it stays active). 
 
@@ -90,7 +91,8 @@ document.querySelector('.cache-article').addEventListener('click', function(even
 In the above example, when the user clicks an element with the `cache-article` class, we are getting the article ID, fetching the article with that ID, and adding the article to the cache.
 
 <div class="note">
-<strong>Note:</strong> The Cache API is available on the window object, meaning you don't need to involve the service worker to add things to the cache.</div>
+<strong>Note:</strong> The Cache API is available on the window object, meaning you don't need to involve the service worker to add things to the cache.
+</div>
 
 #### On network response
 
@@ -114,7 +116,8 @@ self.addEventListener('fetch', function(event) {
 This approach works best for resources that frequently update, such as a user's inbox or article contents. This is also useful for non-essential content such as avatars, but care is needed. If you do this for a range of URLs, be careful not to bloat the storage of your origin — if the user needs to reclaim disk space you don't want to be the prime candidate. Make sure you get rid of items in the cache you don't need any more.
 
 <div class="note">
-<strong>Note:</strong> To allow for efficient memory usage, you can only read a response/request's body once. In the code above, <code>.clone()</code> is used to create a copy of the response that can be read separately. See  [What happens when you read a response?](https://jakearchibald.com/2014/reading-responses/) for more information.</div>
+<strong>Note:</strong> To allow for efficient memory usage, you can only read a response/request's body once. In the code above, <code>.clone()</code> is used to create a copy of the response that can be read separately. See  [What happens when you read a response?](https://jakearchibald.com/2014/reading-responses/) for more information.
+</div>
 
 <a id="servefiles" />
 

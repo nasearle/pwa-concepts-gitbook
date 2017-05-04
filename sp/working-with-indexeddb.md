@@ -275,7 +275,8 @@ Here is an example:
 In this example, the "people" and "notes" object stores have indexes. To create the indexes, we first assign the result of `createObjectStore` (which is an object store object) to a variable so we can call `createIndex` on it.
 
 <div class="note">
-<strong>Note:</strong> Indexes are updated every time you write data to the reference object store. More indexes mean more work for IndexedDB.</div>
+<strong>Note:</strong> Indexes are updated every time you write data to the reference object store. More indexes mean more work for IndexedDB.
+</div>
 
 <a id="data" />
 
@@ -358,7 +359,8 @@ dbPromise.then(function(db) {
 Once again, we start the operation by getting the database object and creating a transaction. Note that this time it is a read-only transaction because we are not writing anything to the database inside the transaction (that is, using `put`, `add`, or `delete`). We then open the object store on the transaction and assign the resulting object store object to the `store` variable. Finally, we return the result of `store.get` and log this object to the console. 
 
 <div class="note">
-<strong>Note:</strong> If you try to get an object that doesn't exist, the success handler still executes, but the result is <code>undefined</code>.</div>
+<strong>Note:</strong> If you try to get an object that doesn't exist, the success handler still executes, but the result is <code>undefined</code>.
+</div>
 
 ### Updating data
 
@@ -555,7 +557,8 @@ The code first gets the values for the limits and checks if the limits exist. Th
 When we call `idb.open`, we can specify the database version number in the second parameter. If this version number is greater than the version of the existing database, the upgrade callback executes, allowing us to add object stores and indexes to the database. 
 
 <div class="note">
-<strong>Note:</strong> The browser throws an error if we try to create object stores or indexes that already exist in the database. We can wrap the calls to <code>createObjectStore</code> in <code>if</code> statements checking if the object store already exists using <code>upgradeDb.objectStoreNames.contains('objectStoreName')</code>. We can also use a <code>switch</code> statement on the <code>oldVersion</code> property as in the next example.</div>
+<strong>Note:</strong> The browser throws an error if we try to create object stores or indexes that already exist in the database. We can wrap the calls to <code>createObjectStore</code> in <code>if</code> statements checking if the object store already exists using <code>upgradeDb.objectStoreNames.contains('objectStoreName')</code>. We can also use a <code>switch</code> statement on the <code>oldVersion</code> property as in the next example.
+</div>
 
 The UpgradeDB object gets a special `oldVersion` method that returns the version number of the database existing in the browser. We can pass this version number into a `switch` statement to execute blocks of code inside the upgrade callback based on the existing database version number. Let's look at an example:
 

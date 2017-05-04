@@ -45,7 +45,8 @@ In this text we use Jake Archibald's  [IndexedDB Promised](https://github.com/ja
 Debugging support for IndexedDB is available in Chrome, Opera, Firefox and Safari. Debugging support for Cache Storage is available in Chrome, Opera, and Firefox. These are covered in [Tools for PWA Developers](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/tools_for_pwa_developers.html).
 
 <div class="note">
-<strong>Note:</strong> Some developers have run into issues with Safari 10's IndexedDB implementation. Test your app to make sure it works on your target browser. File browser bugs with your browser's vendor so that browser implementors and library maintainers can investigate. </div>
+<strong>Note:</strong> Some developers have run into issues with Safari 10's IndexedDB implementation. Test your app to make sure it works on your target browser. File browser bugs with your browser's vendor so that browser implementors and library maintainers can investigate. 
+</div>
 
 ### How Much Can You Store
 
@@ -169,12 +170,14 @@ function createDB() {
 ```
 
 <div class="note">
-<strong>Note:</strong> All IndexedDB code in this text uses Jake Archibald's  [IndexedDB Promised](https://github.com/jakearchibald/indexeddb-promised) library, which enables promise syntax for IndexedDB.</div>
+<strong>Note:</strong> All IndexedDB code in this text uses Jake Archibald's  [IndexedDB Promised](https://github.com/jakearchibald/indexeddb-promised) library, which enables promise syntax for IndexedDB.
+</div>
 
 Here we create a  'products' database, version 1. Inside the 'products' database, we create a 'beverages' object store. This holds all of the beverage objects. The `beverages` object store has a keypath of `id`. This means that the objects in this store will be organized and accessed by the `id` property of the `beverage` objects. Finally, we add some example beverages to the object store.
 
 <div class="note">
-<strong>Note:</strong> If you're familiar with IndexedDB, you may be asking why we didn't use a transaction when creating and populating the database. In IndexedDB, a transaction is built into the database creation operation. </div>
+<strong>Note:</strong> If you're familiar with IndexedDB, you may be asking why we didn't use a transaction when creating and populating the database. In IndexedDB, a transaction is built into the database creation operation. 
+</div>
 
 The service worker activation event is a good time to create a database. Creating a database during the activation event means that it will only be created (or opened, if it already exists) when a new service worker takes over, rather than each time the app runs (which is inefficient). It's also likely better than using the service worker's installation event, since the old service worker will still be in control at that point, and there could be conflicts if a new database is mixed with an old service worker. The following code (in the service worker file) could be used to create the database shown earlier on service worker activation:
 
@@ -189,7 +192,8 @@ self.addEventListener('activate', function(event) {
 ```
 
 <div class="note">
-<strong>Note: </strong>`event.waitUntil` ensures that a service worker does not terminate during asynchronous operations.</div>
+<strong>Note: </strong>`event.waitUntil` ensures that a service worker does not terminate during asynchronous operations.
+</div>
 
 Once an IndexedDB database is created, data can then be read locally from IndexedDB rather than making network requests to a backend database. The following code could be used to retrieve data from the example database above:
 
@@ -210,7 +214,8 @@ function readDB() {
 Here we open the `products` database and create a new transaction on the `beverages` store of type `readonly` (we don't need to write data). We then access the store, and retrieve all of the items. These items can then be used to update the UI or perform whatever action is needed.
 
 <div class="note">
-<strong>Note:</strong> A transaction is wrapper around an operation, or group of operations, that ensures database integrity. If one of the actions within a transaction fail, none of them are applied and the database returns to the state it was in before the transaction began. All read or write operations in IndexedDB must be part of a transaction. This allows for atomic read-modify-write operations without worrying about other threads acting on the database at the same time.</div>
+<strong>Note:</strong> A transaction is wrapper around an operation, or group of operations, that ensures database integrity. If one of the actions within a transaction fail, none of them are applied and the database returns to the state it was in before the transaction began. All read or write operations in IndexedDB must be part of a transaction. This allows for atomic read-modify-write operations without worrying about other threads acting on the database at the same time.
+</div>
 
 ### Storing assets in the Cache interface
 

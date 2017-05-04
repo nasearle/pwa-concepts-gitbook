@@ -56,7 +56,8 @@ Lighthouse generates an HTML page with the results. An example page is shown bel
 ![Lighthouse report](../img/76f48671607bf2b2.png)
 
 <div class="note">
-<strong>Note: </strong>You can test it out on an example PWA, <a href="https://www.airhorner.com/">airhorner.com</a>.</div>
+<strong>Note: </strong>You can test it out on an example PWA, <a href="https://www.airhorner.com/">airhorner.com</a>.
+</div>
 
 <a id="commandline" />
 
@@ -71,7 +72,8 @@ If you want to run Lighthouse from the command line (for example, to integrate i
 You can download Node from  [nodejs.org](https://nodejs.org/en/) (select the version that best suits your environment and operating system). 
 
 <div class="note">
-<strong>Note:</strong> You need the --harmony <a href="http://stackoverflow.com/questions/13351965/what-does-node-harmony-do">flag</a> with Node v5+ or Node v4.</div>
+<strong>Note:</strong> You need the --harmony <a href="http://stackoverflow.com/questions/13351965/what-does-node-harmony-do">flag</a> with Node v5+ or Node v4.
+</div>
 
 To install Lighthouse's Node module from the command line, use the following command:
 
