@@ -150,7 +150,7 @@ IndexedDB is a noSQL database. IndexedDB data is stored as key-value pairs in <s
 </tr></table>
 
 
-The data is organized by a <strong>`keypath`</strong>, which in this case is the item's <strong>`id`</strong> property. You can learn more about IndexedDB in the corresponding <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-concepts/content/docs/working-with-indexeddb.html">text</a>, or in the <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_indexeddb.html">code lab</a>.
+The data is organized by a <strong><code>keypath</code></strong>, which in this case is the item's <strong><code>id</code></strong> property. You can learn more about IndexedDB in the corresponding <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-concepts/content/docs/working-with-indexeddb.html">text</a>, or in the <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_indexeddb.html">code lab</a>.
 
 The following function could be used to create an IndexedDB object store like the example above:
 
@@ -173,7 +173,7 @@ function createDB() {
 <strong>Note:</strong> All IndexedDB code in this text uses Jake Archibald's <a href="https://github.com/jakearchibald/indexeddb-promised">IndexedDB Promised</a> library, which enables promise syntax for IndexedDB.
 </div>
 
-Here we create a  'products' database, version 1. Inside the 'products' database, we create a 'beverages' object store. This holds all of the beverage objects. The <code>beverages</code> object store has a keypath of <code>id`. This means that the objects in this store will be organized and accessed by the `id</code> property of the <code>beverage</code> objects. Finally, we add some example beverages to the object store.
+Here we create a  'products' database, version 1. Inside the 'products' database, we create a 'beverages' object store. This holds all of the beverage objects. The <code>beverages</code> object store has a keypath of <code>id</code>. This means that the objects in this store will be organized and accessed by the <code>id</code> property of the <code>beverage</code> objects. Finally, we add some example beverages to the object store.
 
 <div class="note">
 <strong>Note:</strong> If you're familiar with IndexedDB, you may be asking why we didn't use a transaction when creating and populating the database. In IndexedDB, a transaction is built into the database creation operation. 
@@ -192,7 +192,7 @@ self.addEventListener('activate', function(event) {
 ```
 
 <div class="note">
-<strong>Note: </strong>`event.waitUntil` ensures that a service worker does not terminate during asynchronous operations.
+<strong>Note: </strong><code>event.waitUntil</code> ensures that a service worker does not terminate during asynchronous operations.
 </div>
 
 Once an IndexedDB database is created, data can then be read locally from IndexedDB rather than making network requests to a backend database. The following code could be used to retrieve data from the example database above:
@@ -277,9 +277,9 @@ This code adds a <code>fetch</code> listener on the service worker that attempts
 
 
 
-* <a href="https://medium.com/dev-channel/offline-storage-for-progressive-web-apps-70d52695513c#.lm82vlyt8">Offline Storage for Progressive Web Apps</a>
-* <a href="https://github.com/jakearchibald/indexeddb-promised">IndexedDB Promised</a>
-* <a href="https://jakearchibald.github.io/isserviceworkerready/#caches">Support for the Cache interface</a>
-* <a href="http://caniuse.com/#feat=indexeddb">Support for IndexedDB</a>
+<em> <a href="https://medium.com/dev-channel/offline-storage-for-progressive-web-apps-70d52695513c#.lm82vlyt8">Offline Storage for Progressive Web Apps</a>
+</em> <a href="https://github.com/jakearchibald/indexeddb-promised">IndexedDB Promised</a>
+<em> <a href="https://jakearchibald.github.io/isserviceworkerready/#caches">Support for the Cache interface</a>
+</em> <a href="http://caniuse.com/#feat=indexeddb">Support for IndexedDB</a>
 
 

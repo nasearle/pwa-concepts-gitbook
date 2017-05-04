@@ -52,14 +52,14 @@ The Notification and Push API's are built on top of the <a href="https://develop
 
 
 
-* <strong>Notification</strong> – a message displayed to the user outside of the app's normal UI (i.e., the browser)
-* <strong>Push Message</strong> – a message sent from the server to the client
-* <strong>Push Notification</strong> – a notification created in response to a push message
-* <strong>Notifications API</strong> – an interface used to configure and display notifications to the user
-* <strong>Push API</strong> – an interface used to subscribe your app to a push service and receive push messages in the service worker
-* <strong>Web Push</strong> – an informal term referring to the process or components involved in the process of pushing messages from a server to a client on the web
-* <strong>Push Service</strong> – a system for routing push messages from a server to a client. Each browser implements its own push service.
-* <strong>Web Push Protocol</strong> – describes how an application server or user agent interacts with a push service
+<em> <strong>Notification</strong> – a message displayed to the user outside of the app's normal UI (i.e., the browser)
+</em> <strong>Push Message</strong> – a message sent from the server to the client
+<em> <strong>Push Notification</strong> – a notification created in response to a push message
+</em> <strong>Notifications API</strong> – an interface used to configure and display notifications to the user
+<em> <strong>Push API</strong> – an interface used to subscribe your app to a push service and receive push messages in the service worker
+</em> <strong>Web Push</strong> – an informal term referring to the process or components involved in the process of pushing messages from a server to a client on the web
+<em> <strong>Push Service</strong> – a system for routing push messages from a server to a client. Each browser implements its own push service.
+</em> <strong>Web Push Protocol</strong> – describes how an application server or user agent interacts with a push service
 
 <a id="understanding" />
 
@@ -85,7 +85,7 @@ When it receives a message, the service worker wakes up just long enough to disp
 
 The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API">Notifications API</a> lets us display notifications to the user. It is incredibly powerful and simple to use. Where possible, it uses the same mechanisms a native app would use, giving a completely native look and feel. 
 
-We can split the Notifications API into two core areas (these are non-technical and are not part of the spec). The  <em>*Invocation API *</em> controls how to make your notification appear, including styling and vibration. We create (or invoke) the notification from the page (or from the server, in the case of push notifications). The  <em>*Interaction API*</em>  controls what happens when the user engages with the notification. User interaction is handled in the service worker.
+We can split the Notifications API into two core areas (these are non-technical and are not part of the spec). The  <em>Invocation API </em> controls how to make your notification appear, including styling and vibration. We create (or invoke) the notification from the page (or from the server, in the case of push notifications). The  <em>Interaction API</em>  controls what happens when the user engages with the notification. User interaction is handled in the service worker.
 
 ### Request permission
 
@@ -99,13 +99,13 @@ Notification.requestPermission(function(status) {
 });
 ```
 
-We call the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/requestPermission">`requestPermission`</a> method on the global Notification object. This displays a pop-up message from the browser requesting permission to allow notifications. The user's response is stored along with your app, so calling this again returns the user's last choice. Once the user grants permission, the app can display notifications. 
+We call the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/requestPermission"><code>requestPermission</code></a> method on the global Notification object. This displays a pop-up message from the browser requesting permission to allow notifications. The user's response is stored along with your app, so calling this again returns the user's last choice. Once the user grants permission, the app can display notifications. 
 
 <a id="shownotification" />
 
 ### Display a notification
 
-We can show a notification from the app's main script with the <a href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification">`showNotification`</a> method (the "Invocation API"). Here is an example:
+We can show a notification from the app's main script with the <a href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification"><code>showNotification</code></a> method (the "Invocation API"). Here is an example:
 
 #### main.js
 
@@ -150,10 +150,10 @@ function displayNotification() {
 }
 ```
 
-* The <code>body</code> option adds a main description to the notification. It should give the user enough information to decide how to act on it.
-* The <code>icon</code> option attaches an image to make the notification more visually appealing, but also more relevant to the user.  For example, if it's a message from their friend you might include an image of the sender's avatar.
-* The <code>vibrate</code> option specifies a vibration pattern for a phone receiving the notification. In our example, a phone would vibrate for 100 milliseconds, pause for 50 milliseconds, and then vibrate again for 100 milliseconds.
-* The <code>data</code> option attaches custom data to the notification, so that the service worker can retrieve it when the user interacts with the notification. For instance, adding a unique "id" or "key" option to the data allows us to determine which notification was clicked when the service worker handles the click event.
+<em> The <code>body</code> option adds a main description to the notification. It should give the user enough information to decide how to act on it.
+</em> The <code>icon</code> option attaches an image to make the notification more visually appealing, but also more relevant to the user.  For example, if it's a message from their friend you might include an image of the sender's avatar.
+<em> The <code>vibrate</code> option specifies a vibration pattern for a phone receiving the notification. In our example, a phone would vibrate for 100 milliseconds, pause for 50 milliseconds, and then vibrate again for 100 milliseconds.
+</em> The <code>data</code> option attaches custom data to the notification, so that the service worker can retrieve it when the user interacts with the notification. For instance, adding a unique "id" or "key" option to the data allows us to determine which notification was clicked when the service worker handles the click event.
 
 Here is a <a href="https://tests.peter.sh/notification-generator/">useful tool</a> that allows you to experiment with all of the different notification options.
 
@@ -194,7 +194,7 @@ Actions can have an identifier string, a title containing text to be shown to th
 
 ### Listen for events
 
-Displaying a notification was the first step. Now we need to handle user interactions in the service worker (using the "Interaction API"). Once the user has seen your notification they can either  <em>*dismiss*</em>  it or  <em>*act on*</em>  it.
+Displaying a notification was the first step. Now we need to handle user interactions in the service worker (using the "Interaction API"). Once the user has seen your notification they can either  <em>dismiss</em>  it or  <em>act on</em>  it.
 
 #### The notificationclose event
 
@@ -260,8 +260,8 @@ Notice we check for the <code>close</code> action first and handle the <code>exp
 
 The <a href="https://notifications.spec.whatwg.org/">notification spec</a> is constantly evolving with the authors and browser vendors constantly adding new features and increasing the possibilities of what you can do with the Notifications API. Note that:
 
-* Not all browsers implement the Notifications API to the same level 
-* Operating systems may not support the same features for notifications
+<em> Not all browsers implement the Notifications API to the same level 
+</em> Operating systems may not support the same features for notifications
 
 We need to build our sites and apps defensively, yet progressively so that our experiences work well everywhere. Let's look at what we can do to create a consistent experience.
 
@@ -281,8 +281,8 @@ if ('Notification' in window && navigator.serviceWorker) {
 
 Here are some things you can do when the user's browser doesn't support the Notifications API:
 
-* Offer a simple inline "notification" on your web page. This works well when the user has the page open.
-* Integrate with another service, such as an SMS provider or email provider to provide timely alerts to the user.
+<em> Offer a simple inline "notification" on your web page. This works well when the user has the page open.
+</em> Integrate with another service, such as an SMS provider or email provider to provide timely alerts to the user.
 
 ### Check for permission
 
@@ -292,11 +292,11 @@ Always check for permission to use the Notifications API. It is important to kee
 
 ```
 if (Notification.permission === "granted") { 
-  /* do our magic */
+  /<em> do our magic </em>/
 } else if (Notification.permission === "blocked") {
- /* the user has previously denied push. Can't reprompt. */ 
+ /<em> the user has previously denied push. Can't reprompt. </em>/ 
 } else {
-  /* show a prompt to the user */
+  /<em> show a prompt to the user </em>/
 }
 ```
 
@@ -304,7 +304,7 @@ if (Notification.permission === "granted") {
 
 The action buttons and images differ significantly across platforms. For example, some OSs may display a limited number of actions and others may not make actions directly visible to the user.
 
-You can check the maximum number of action buttons that can be displayed by calling <code>Notification.maxActions`. Do this when you create notifications so you can adapt them if needed. You can also check this in the `notificationclick</code> handler in the service worker to determine the right response.
+You can check the maximum number of action buttons that can be displayed by calling <code>Notification.maxActions</code>. Do this when you create notifications so you can adapt them if needed. You can also check this in the <code>notificationclick</code> handler in the service worker to determine the right response.
 
 A good practice is to assume that the system cannot support any actions other than the notification click. This means that you must design your notification to handle the default click and have it execute the default response. You can then layer on some customization for each action.
 
@@ -404,11 +404,11 @@ self.addEventListener('push', function(e) {
 
 This code is very similar to what we have covered before in this tutorial, the difference being that this is happening inside the service worker in response to a <code>push</code> event, instead of in the app's main script. 
 
-Another important difference is that the <code>showNotification</code> method is wrapped in an <a href="https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil">`e.waitUntil` method</a>. This extends the lifetime of the push event until the <code>showNotification</code> promise resolves. In general, we use the <code>waitUntil</code> method to ensure the service worker doesn't terminate before an asynchronous operation has completed.
+Another important difference is that the <code>showNotification</code> method is wrapped in an <a href="https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil"><code>e.waitUntil</code> method</a>. This extends the lifetime of the push event until the <code>showNotification</code> promise resolves. In general, we use the <code>waitUntil</code> method to ensure the service worker doesn't terminate before an asynchronous operation has completed.
 
 ### Subscribing to Push Notifications
 
-Before we can send a push message we must first subscribe to a push service. Subscribing returns a subscription object, or <code>subscription`. The `subscription</code> is a critical piece of the process to send push messages. It tells us, the developer, to which push service we should send our push messages (remember, each browser will provide their own push service). The subscription also details which client the push service should route the messages to. Finally, the <code>subscription</code> contains the public key to encrypt the data so that it is delivered securely to the user.
+Before we can send a push message we must first subscribe to a push service. Subscribing returns a subscription object, or <code>subscription</code>. The <code>subscription</code> is a critical piece of the process to send push messages. It tells us, the developer, to which push service we should send our push messages (remember, each browser will provide their own push service). The subscription also details which client the push service should route the messages to. Finally, the <code>subscription</code> contains the public key to encrypt the data so that it is delivered securely to the user.
 
 It is your job to take this <code>subscription</code> object and store it somewhere on your system. For instance, you might store it in a database attached to a user object. In our examples, we will log results to the console.
 
@@ -466,9 +466,9 @@ function subscribeUser() {
 
 It's best practice to call the <code>subscribeUser()</code> function in response to a user action signalling they would like to subscribe to push messages from our app.
 
-In the above example we call the <a href="https://developer.mozilla.org/en-US/docs/Web/API/PushManager/subscribe">`subscribe` method</a> on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/PushManager">`pushManager`</a> and log the subscription object to the console.
+In the above example we call the <a href="https://developer.mozilla.org/en-US/docs/Web/API/PushManager/subscribe"><code>subscribe</code> method</a> on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/PushManager"><code>pushManager</code></a> and log the subscription object to the console.
 
-Notice we are passing a flag named <code>userVisibleOnly</code> to the subscribe method. By setting this to `true`, the browser ensures that every incoming message has a matching (and visible) notification. 
+Notice we are passing a flag named <code>userVisibleOnly</code> to the subscribe method. By setting this to <code>true</code>, the browser ensures that every incoming message has a matching (and visible) notification. 
 
 <div class="note">
 <strong>Note: </strong>In the current implementation of Chrome, whenever we receive a push message and we don't have our site visible in the browser we must display a notification. That is, we can't do it silently without the user knowing. If we don't display a notification the browser automatically creates one to let the user know that the app is doing work in the background.
@@ -512,8 +512,8 @@ For Chrome to route FCM messages to the correct service worker, it needs to know
 
 To get FCM to push a notification without a payload to your web client, the request must include the following:
 
-* The subscription endpoint URL
-* The public Server key. FCM uses this to check whether the server making the requests is actually allowed to send messages to the receiving user.
+<em> The subscription endpoint URL
+</em> The public Server key. FCM uses this to check whether the server making the requests is actually allowed to send messages to the receiving user.
 
 A production site or app normally sets up a service to interact with FCM from your server. Check out the <a href="https://developers.google.com/web/fundamentals/engage-and-retain/push-notifications/">Web Fundamentals documentation</a> for more information. 
 
@@ -596,7 +596,7 @@ We are using Mozilla's <a href="https://www.npmjs.com/package/web-push">web-push
 webpush.sendNotification(pushSubscription, payload, options)
 ```
 
-The first argument is the the <code>subscription</code> object. The second argument  is the <code>payload`. The third is an `options</code> object that contains various options to configure the message. See <a href="https://github.com/web-push-libs/web-push/">the documentation</a> for details.
+The first argument is the the <code>subscription</code> object. The second argument  is the <code>payload</code>. The third is an <code>options</code> object that contains various options to configure the message. See <a href="https://github.com/web-push-libs/web-push/">the documentation</a> for details.
 
 While we recommend using a library, this is a new feature and there are many popular languages that don't yet have any libraries. Here is a list of some available <a href="https://github.com/web-push-libs">web-push libraries</a> for various languages. If you do need to implement encryption manually, use Peter Beverloo's <a href="https://tests.peter.sh/push-encryption-verifier/">encryption verifier</a>.
 
@@ -638,16 +638,20 @@ This example passes the subscription object, payload, and server key into the <c
 
 The Web Push Protocol has been designed to respect the user's privacy by keeping users anonymous and not requiring strong authentication between your app and the push service. This presents some challenges: 
 
-* An unauthenticated push service is exposed to a greater risk of denial of service attack
-* Any application server in possession of the endpoint is able to send messages to your users
-* There's no way for the push service to contact the developer if there are problems
+<em> An unauthenticated push service is exposed to a greater risk of denial of service attack
+</em> Any application server in possession of the endpoint is able to send messages to your users
+<em> There's no way for the push service to contact the developer if there are problems
 
 The solution is to have the publisher optionally identify themselves using the <a href="https://tools.ietf.org/html/draft-ietf-webpush-vapid-01">Voluntary Application Server Identification for Web Push (VAPID) protocol</a>. At a minimum, this provides a stable identity for the application server, though this could also include contact information, such as an email address.
 
 The spec lists several benefits of using VAPID:
- <em>*  *A consistent identity can be used by a push service to establish behavioral expectations for an application server. Significant deviations from an established norm can then be used to trigger exception handling procedures.*</em>  <em>*  *Voluntarily-provided contact information can be used to contact an application server operator in the case of exceptional situations.*</em>  <em>*  *Experience with push service deployment has shown that software errors or unusual circumstances can cause large increases in push message volume.  Contacting the operator of the application server has proven to be valuable.*</em>  <em>*  *Even in the absence of usable contact information, an application server that has a well-established reputation might be given preference over an unidentified application server when choosing whether to discard a push message.*</em> 
 
-Using VAPID also lets you avoid the FCM-specific steps for sending a push message. You no longer need a Firebase project, a <code>gcm_sender_id`, or an `Authorization</code> header.
+</em>  <em>A consistent identity can be used by a push service to establish behavioral expectations for an application server. Significant deviations from an established norm can then be used to trigger exception handling procedures.</em> 
+<em>  </em>Voluntarily-provided contact information can be used to contact an application server operator in the case of exceptional situations.<em> 
+</em>  <em>Experience with push service deployment has shown that software errors or unusual circumstances can cause large increases in push message volume.  Contacting the operator of the application server has proven to be valuable.</em> 
+<em>  </em>Even in the absence of usable contact information, an application server that has a well-established reputation might be given preference over an unidentified application server when choosing whether to discard a push message.<em> 
+
+Using VAPID also lets you avoid the FCM-specific steps for sending a push message. You no longer need a Firebase project, a <code>gcm_sender_id</code>, or an <code>Authorization</code> header.
 
 ### Using VAPID
 
@@ -667,7 +671,7 @@ Let's look at these steps in detail.
 
 Here's the relevant section from the spec regarding the format of the VAPID public/private keys:
 
- <em>*Application servers SHOULD generate and maintain a signing key pair usable with elliptic curve digital signature (ECDSA) over the P-256 curve.*</em> 
+ </em>Application servers SHOULD generate and maintain a signing key pair usable with elliptic curve digital signature (ECDSA) over the P-256 curve.<em> 
 
 You can see how to do this in the <a href="https://github.com/web-push-libs/web-push">web-push node library</a>:
 
@@ -716,7 +720,7 @@ The <code>Authorization</code> header is a signed <a href="https://jwt.io/">JSON
 
 A JWT is a way of sharing a JSON object with a second party in such a way that the sending party can sign it and the receiving party can verify the signature is from the expected sender. The structure of a JWT is three encrypted strings, joined with a single dot between them.
 
-`<JWTHeader>.<Payload>.<Signature> `
+<code><JWTHeader>.<Payload>.<Signature> </code>
 
 ##### JWT header
 
@@ -735,19 +739,19 @@ This is then base64 url encoded and forms the first part of the JWT.
 
 The Payload is another JSON object containing the following:
 
-* Audience ("`aud`")
-* This is the origin of the push service (NOT the origin of your site). In JavaScript, you could do the following to get the audience: <code>const audience = new URL(subscription.endpoint).origin</code>
-* Expiration Time ("`exp`")
-* This is the number of seconds until the request should be regarded as expired. This MUST be within 24 hours of the request being made, in UTC.
-* Subject ("`sub`")
-* The subject needs to be a URL or a mailto: URL. This provides a point of contact in case the push service needs to contact the message sender.
+</em> Audience ("<code>aud</code>")
+<em> This is the origin of the push service (NOT the origin of your site). In JavaScript, you could do the following to get the audience: <code>const audience = new URL(subscription.endpoint).origin</code>
+</em> Expiration Time ("<code>exp</code>")
+<em> This is the number of seconds until the request should be regarded as expired. This MUST be within 24 hours of the request being made, in UTC.
+</em> Subject ("<code>sub</code>")
+<em> The subject needs to be a URL or a mailto: URL. This provides a point of contact in case the push service needs to contact the message sender.
 
 An example payload could look like the following:
 
 ```
 {  
     "aud": "http://push-service.example.com",  
-    "exp": Math.floor((Date.now() / 1000) + (12 <em>* 60 *</em> 60)),  
+    "exp": Math.floor((Date.now() / 1000) + (12 </em> 60 <em> 60)),  
     "sub": "mailto: my-email@some-url.com"  
 }
 ```
@@ -849,10 +853,10 @@ For instance, an incoming chat is a real-time and synchronous form of communicat
 
 In particular, you should:
 
-* Keep it short 
-* Make the title and content specific
-* Keep important information on the top and to the left
-* Make the desired action the most prominent
+</em> Keep it short 
+<em> Make the title and content specific
+</em> Keep important information on the top and to the left
+<em> Make the desired action the most prominent
 
 Because users often give notifications only a quick glance, you can make their lives easier with a well-chosen title, description, and icon. If possible, make the icon match the context of the notification so users can identify it without reading.
 
@@ -878,9 +882,9 @@ The same applies to the push notifications. If you ask the user for permission t
 
 The following interaction patterns are good times to ask for permission to show notifications:
 
-* When the user is configuring their communication settings, you can offer push notifications as one of the options.
-* After the user completes a critical action that needs to deliver timely and relevant updates to the user. For example, if the user purchased an item from your site, you can offer to notify the user of delivery updates.
-* When the user returns to your site they are likely to be a satisfied user and more understanding of the value of your service.
+</em> When the user is configuring their communication settings, you can offer push notifications as one of the options.
+<em> After the user completes a critical action that needs to deliver timely and relevant updates to the user. For example, if the user purchased an item from your site, you can offer to notify the user of delivery updates.
+</em> When the user returns to your site they are likely to be a satisfied user and more understanding of the value of your service.
 
 Another pattern that works well is to offer a very subtle promotion area on the screen that asks the user if they would like to enable notifications. Be careful not to distract too much from your site's main content. Clearly explain the benefits of what notifications offers the user.
 
@@ -936,7 +940,7 @@ The <code>clients</code> global in the service worker lists all of the active pu
 
 If there are no clients active, the user must be in another app. We should show a notification in this case. 
 
-If there  <em>*are*</em>  active clients it means that the user has your site open in one or more windows. The best practice is to relay the message to each of those windows.
+If there  <em>are</em>  active clients it means that the user has your site open in one or more windows. The best practice is to relay the message to each of those windows.
 
 ### Hiding Notifications on Page Focus
 
@@ -959,7 +963,7 @@ self.addEventListener('notificationclick', function(e) {
 });
 ```
 
-If you don't want to clear all of the notifications, you can filter based on the tag by passing it into `getNotifications`:
+If you don't want to clear all of the notifications, you can filter based on the tag by passing it into <code>getNotifications</code>:
 
 #### serviceworker.js
 
@@ -977,7 +981,7 @@ self.addEventListener('notificationclick', function(e) {
 });
 ```
 
-You could also filter out the notifications directly inside the promise returned from `getNotifications`. For example, there might be some custom data attached to the notification that you could use as your filter-criteria.
+You could also filter out the notifications directly inside the promise returned from <code>getNotifications</code>. For example, there might be some custom data attached to the notification that you could use as your filter-criteria.
 
 ### Notifications and Tabs
 
@@ -1005,7 +1009,7 @@ self.addEventListener('notificationclick', function(e) {
 });
 ```
 
-The code above looks for the first window with <code>visibilityState</code> set to `visible`.  If one is found it navigates that client to the correct URL and focuses the window. If a window that suits our needs is not found, it opens a new window.
+The code above looks for the first window with <code>visibilityState</code> set to <code>visible</code>.  If one is found it navigates that client to the correct URL and focuses the window. If a window that suits our needs is not found, it opens a new window.
 
 ### Managing Notifications at the Server
 
@@ -1052,7 +1056,7 @@ We don't want to display redundant notifications that have been removed elsewher
 There are a number of options available to solve this:
 
 1. <strong>Show the old notification</strong>, even if it's no longer relevant. This looks like a small glitch of the clients being out of sync.
-2. <strong>Handle the push message without triggering a notification</strong>. Chrome allows sites to  <em>*very occasionally*</em>  handle a push message without triggering a notification. If this case occurs extremely rarely it may be OK to do nothing.
+2. <strong>Handle the push message without triggering a notification</strong>. Chrome allows sites to  <em>very occasionally</em>  handle a push message without triggering a notification. If this case occurs extremely rarely it may be OK to do nothing.
 3. Ignore the message from the server and <strong>replace the notification with a fallback</strong> to be displayed if no other is available. For example, rather than display the information from an email the user has already read you could say "We've updated your inbox".
 
 <a id="resources"/>
@@ -1065,52 +1069,52 @@ There are a number of options available to solve this:
 
 #### Your first push notifications
 
-* <a href="https://developers.google.com/web/fundamentals/getting-started/push-notifications/">Adding Push Notifications to a Web App</a> 
-* <a href="https://codelabs.developers.google.com/codelabs/push-notifications/index.html?index=..%2F..%2Findex#0">Adding Push Notifications to a Web App (Codelab)</a>
-* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Push_API/Using_the_Push_API">Using the Push API</a>
+<em> <a href="https://developers.google.com/web/fundamentals/getting-started/push-notifications/">Adding Push Notifications to a Web App</a> 
+</em> <a href="https://codelabs.developers.google.com/codelabs/push-notifications/index.html?index=..%2F..%2Findex#0">Adding Push Notifications to a Web App (Codelab)</a>
+<em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Push_API/Using_the_Push_API">Using the Push API</a>
 
 #### When to use push notifications
 
-* <a href="https://developers.google.com/web/fundamentals/engage-and-retain/push-notifications/">Web Push Notifications: Timely, Relevant, and Precise</a>
+</em> <a href="https://developers.google.com/web/fundamentals/engage-and-retain/push-notifications/">Web Push Notifications: Timely, Relevant, and Precise</a>
 
 #### Demos
 
-* <a href="https://gauntface.github.io/simple-push-demo/">Push demo</a>
-* <a href="https://tests.peter.sh/notification-generator/#actions=8">Notification Generator</a>
+<em> <a href="https://gauntface.github.io/simple-push-demo/">Push demo</a>
+</em> <a href="https://tests.peter.sh/notification-generator/#actions=8">Notification Generator</a>
 
 #### Messaging concepts and options
 
-* <a href="https://developers.google.com/cloud-messaging/concept-options#ttl">Setting the lifespan of a message</a>
+<em> <a href="https://developers.google.com/cloud-messaging/concept-options#ttl">Setting the lifespan of a message</a>
 
 #### Web-push documentation
 
-* <a href="https://www.npmjs.com/package/web-push">web-push - Web Push library for Node.js</a>
+</em> <a href="https://www.npmjs.com/package/web-push">web-push - Web Push library for Node.js</a>
 
 #### Web Push Libraries
 
-* <a href="https://github.com/web-push-libs">web-push-libs</a> 
+<em> <a href="https://github.com/web-push-libs">web-push-libs</a> 
 
 #### VAPID
 
-* <a href="https://tools.ietf.org/html/draft-thomson-webpush-vapid-02">Voluntary Application Server Identification for Web Push</a>
-* <a href="https://blog.mozilla.org/services/2016/04/04/using-vapid-with-webpush/">Using VAPID with WebPush - Mozilla Cloud Services</a>
-* <a href="https://blog.mozilla.org/services/2016/08/23/sending-vapid-identified-webpush-notifications-via-mozillas-push-service/">Sending VAPID identified WebPush Notifications via Mozilla's Push Service - Mozilla Cloud Services</a>
-* <a href="https://github.com/web-push-libs/vapid">Easy VAPID generation</a>
-* <a href="https://web-push-libs.github.io/vapid/js/">VAPID verification</a>
+</em> <a href="https://tools.ietf.org/html/draft-thomson-webpush-vapid-02">Voluntary Application Server Identification for Web Push</a>
+<em> <a href="https://blog.mozilla.org/services/2016/04/04/using-vapid-with-webpush/">Using VAPID with WebPush - Mozilla Cloud Services</a>
+</em> <a href="https://blog.mozilla.org/services/2016/08/23/sending-vapid-identified-webpush-notifications-via-mozillas-push-service/">Sending VAPID identified WebPush Notifications via Mozilla's Push Service - Mozilla Cloud Services</a>
+<em> <a href="https://github.com/web-push-libs/vapid">Easy VAPID generation</a>
+</em> <a href="https://web-push-libs.github.io/vapid/js/">VAPID verification</a>
 
 #### Encryption
 
-* <a href="https://developers.google.com/web/updates/2016/03/web-push-encryption">Web Push Payload Encryption</a>
-* <a href="https://tests.peter.sh/push-encryption-verifier/">Push Encryption Verifier</a>
-* <a href="https://tools.ietf.org/html/draft-ietf-webpush-encryption-01">Message Encryption for Web Push</a>
+<em> <a href="https://developers.google.com/web/updates/2016/03/web-push-encryption">Web Push Payload Encryption</a>
+</em> <a href="https://tests.peter.sh/push-encryption-verifier/">Push Encryption Verifier</a>
+<em> <a href="https://tools.ietf.org/html/draft-ietf-webpush-encryption-01">Message Encryption for Web Push</a>
 
 #### JWT Signing
 
-* <a href="https://jwt.io/#libraries-io">Libraries for Token Signing/Verification</a>
+</em> <a href="https://jwt.io/#libraries-io">Libraries for Token Signing/Verification</a>
 
 #### Firebase Cloud Messaging
 
-* <a href="https://firebase.google.com/docs/cloud-messaging/">Firebase Cloud Messaging</a>
-* <a href="https://firebase.google.com/docs/cloud-messaging/chrome/client">Set Up a JavaScript Firebase Cloud Messaging Client App</a>
+<em> <a href="https://firebase.google.com/docs/cloud-messaging/">Firebase Cloud Messaging</a>
+</em> <a href="https://firebase.google.com/docs/cloud-messaging/chrome/client">Set Up a JavaScript Firebase Cloud Messaging Client App</a>
 
 

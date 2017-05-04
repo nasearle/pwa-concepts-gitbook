@@ -24,7 +24,7 @@ Codelab: <a href="https://google-developer-training.gitbooks.io/progressive-web-
 
 
 
-The Service Worker API comes with a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache">Cache interface</a>, that lets you create stores of responses keyed by request. While this interface was intended for service workers it is actually exposed on the window, and can be accessed from anywhere in your scripts. The entry point is `caches`.
+The Service Worker API comes with a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache">Cache interface</a>, that lets you create stores of responses keyed by request. While this interface was intended for service workers it is actually exposed on the window, and can be accessed from anywhere in your scripts. The entry point is <code>caches</code>.
 
 You are responsible for implementing how your script (service worker) handles updates to the cache. All updates to items in the cache must be explicitly requested; items will not expire and must be deleted. 
 
@@ -32,7 +32,7 @@ You are responsible for implementing how your script (service worker) handles up
 
 ### Storing resources
 
-In this section, we outline a few common patterns for caching resources:  <em>*on service worker install*</em> ,  <em>*on user interaction*</em> , and  <em>*on network response*</em> . There are a few patterns we don't cover here. See the <a href="https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/">Offline Cookbook</a> for a more complete list.
+In this section, we outline a few common patterns for caching resources:  <em>on service worker install</em> ,  <em>on user interaction</em> , and  <em>on network response</em> . There are a few patterns we don't cover here. See the <a href="https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/">Offline Cookbook</a> for a more complete list.
 
 #### On install - caching the application shell
 
@@ -62,9 +62,9 @@ This event listener triggers when the service worker is first installed.
 <strong>Note: </strong>It is important to note that while this event is happening, any previous version of your service worker is still running and serving pages, so the things you do here must not disrupt that. For instance, this is not a good place to delete old caches, because the previous service worker may still be using them at this point.
 </div>
 
-<a href="https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil">`event.waitUntil`</a> extends the lifetime of the <code>install</code> event until the passed promise resolves successfully. If the promise rejects, the installation is considered a failure and this service worker is abandoned (if an older version is running, it stays active). 
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil"><code>event.waitUntil</code></a> extends the lifetime of the <code>install</code> event until the passed promise resolves successfully. If the promise rejects, the installation is considered a failure and this service worker is abandoned (if an older version is running, it stays active). 
 
-`cache.addAll` will reject if any of the resources fail to cache. This means the service worker will only install if all of the resources in <code>cache.addAll</code> have been cached.
+<code>cache.addAll</code> will reject if any of the resources fail to cache. This means the service worker will only install if all of the resources in <code>cache.addAll</code> have been cached.
 
 #### On user interaction
 
@@ -125,11 +125,11 @@ This approach works best for resources that frequently update, such as a user's 
 
 To serve content from the cache and make your app available offline you need to intercept network requests and respond with files stored in the cache. There are several approaches to this: 
 
-* cache only
-* network only 
-* cache falling back to network 
-* network falling back to cache
-* cache then network
+<em> cache only
+</em> network only 
+<em> cache falling back to network 
+</em> network falling back to cache
+<em> cache then network
 
 There are a few approaches we don't cover here. See Jake Archibald's <a href="https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/">Offline Cookbook</a> for a full list.
 
@@ -157,7 +157,7 @@ self.addEventListener('fetch', function(event) {
 });
 ```
 
-Alternatively, simply don't call `event.respondWith`, which will result in default browser behaviour.
+Alternatively, simply don't call <code>event.respondWith</code>, which will result in default browser behaviour.
 
 <a id="cachefallback" />
 
@@ -193,7 +193,7 @@ self.addEventListener('fetch', function(event) {
 });
 ```
 
-Here we first send the request to the network using `fetch()`, and only if it fails do we look for a response in the cache. 
+Here we first send the request to the network using <code>fetch()</code>, and only if it fails do we look for a response in the cache. 
 
 <a id="cachethen" />
 
@@ -304,7 +304,7 @@ self.addEventListener('fetch', function(event) {
 });
 ```
 
-Network response errors do not throw an error in the <code>fetch</code> promise. Instead, <code>fetch</code> returns the response object containing the error code of the network error. This means we handle network errors in a <code>.then</code> instead of a `.catch`.
+Network response errors do not throw an error in the <code>fetch</code> promise. Instead, <code>fetch</code> returns the response object containing the error code of the network error. This means we handle network errors in a <code>.then</code> instead of a <code>.catch</code>.
 
 <a id="remove" />
 
@@ -358,7 +358,7 @@ if ('caches' in window) {
 
 ### Creating the cache
 
-An origin can have multiple named Cache objects. To create a cache or open a connection to an existing cache we use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/open">`caches.open`</a> method. 
+An origin can have multiple named Cache objects. To create a cache or open a connection to an existing cache we use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/open"><code>caches.open</code></a> method. 
 
 ```
 caches.open(cacheName)
@@ -374,7 +374,7 @@ The Cache API comes with several methods that let us create and manipulate data 
 
 #### Create data
 
-There are three methods we can use to add data to the cache. These are <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache/add">`add`</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache/addAll">`addAll`</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache/put">`put`</a>. In practice, we will call these methods on the cache object returned from `caches.open()`. For example:
+There are three methods we can use to add data to the cache. These are <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache/add"><code>add</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache/addAll"><code>addAll</code></a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache/put"><code>put</code></a>. In practice, we will call these methods on the cache object returned from <code>caches.open()</code>. For example:
 
 ```
 caches.open('example-cache').then(function(cache) {
@@ -382,13 +382,13 @@ caches.open('example-cache').then(function(cache) {
 });
 ```
 
-`Caches.open` returns the <code>example-cache</code> Cache object, which is passed to the callback in <code>.then`. We call the `add</code> method on this object to add the file to that cache.
+<code>Caches.open</code> returns the <code>example-cache</code> Cache object, which is passed to the callback in <code>.then</code>. We call the <code>add</code> method on this object to add the file to that cache.
 
-`cache.add(request)` - The add method takes a URL, retrieves it, and adds the resulting response object to the given cache. The key for that object will be the request, so we can retrieve this response object again later by this request.
+<code>cache.add(request)</code> - The add method takes a URL, retrieves it, and adds the resulting response object to the given cache. The key for that object will be the request, so we can retrieve this response object again later by this request.
 
-`cache.addAll(requests)` - This method is the same as add except it takes an array of URLs and adds them to the cache. If any of the files fail to be added to the cache, the whole operation will fail and none of the files will be added.
+<code>cache.addAll(requests)</code> - This method is the same as add except it takes an array of URLs and adds them to the cache. If any of the files fail to be added to the cache, the whole operation will fail and none of the files will be added.
 
-`cache.put(request, response)` - This method takes both the request and response object and adds them to the cache. This lets you manually insert the response object. Often, you will just want to <code>fetch()</code> one or more requests and then add the result straight to your cache. In such cases you are better off just using <code>cache.add</code> or `cache.addAll`, as they are shorthand functions for one or more of these operations:
+<code>cache.put(request, response)</code> - This method takes both the request and response object and adds them to the cache. This lets you manually insert the response object. Often, you will just want to <code>fetch()</code> one or more requests and then add the result straight to your cache. In such cases you are better off just using <code>cache.add</code> or <code>cache.addAll</code>, as they are shorthand functions for one or more of these operations:
 
 ```
 fetch(url).then(function (response) {
@@ -398,16 +398,16 @@ fetch(url).then(function (response) {
 
 #### Match data
 
-There are a couple of methods to search for specific content in the cache: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache/match">`match`</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache/matchAll">`matchAll`</a>. These can be called on the <code>caches</code> object to search through all of the existing caches, or on a specific cache returned from `caches.open()`.
+There are a couple of methods to search for specific content in the cache: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache/match"><code>match</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache/matchAll"><code>matchAll</code></a>. These can be called on the <code>caches</code> object to search through all of the existing caches, or on a specific cache returned from <code>caches.open()</code>.
 
-`caches.match(request, options)` -  This method returns a Promise that resolves to the response object associated with the first matching request in the cache or caches. It returns <code>undefined</code> if no match is found. The first parameter is the request, and the second is an optional list of options to refine the search. Here are the options as defined by MDN:
+<code>caches.match(request, options)</code> -  This method returns a Promise that resolves to the response object associated with the first matching request in the cache or caches. It returns <code>undefined</code> if no match is found. The first parameter is the request, and the second is an optional list of options to refine the search. Here are the options as defined by MDN:
 
-* <code>ignoreSearch`: A Boolean that specifies whether to ignore the query string in the URL.  For example, if set to `true</code> the <code>?value=bar</code> part of <code>http://foo.com/?value=bar</code> would be ignored when performing a match. It defaults to `false`.
-* `ignoreMethod`: A Boolean that, when set to `true`, prevents matching operations from validating the Request HTTP method (normally only GET and HEAD are allowed.) It defaults to false.
-* <code>ignoreVary`: A Boolean that when set to `true</code> tells the matching operation not to perform VARY header matching — that is, if the URL matches you will get a match regardless of whether the Response object has a VARY header. It defaults to `false`.
-* `cacheName`: A DOMString that represents a specific cache to search within. Note that this option is ignored by `Cache.match()`.
+</em> <code>ignoreSearch</code>: A Boolean that specifies whether to ignore the query string in the URL.  For example, if set to <code>true</code> the <code>?value=bar</code> part of <code>http://foo.com/?value=bar</code> would be ignored when performing a match. It defaults to <code>false</code>.
+<em> <code>ignoreMethod</code>: A Boolean that, when set to <code>true</code>, prevents matching operations from validating the Request HTTP method (normally only GET and HEAD are allowed.) It defaults to false.
+</em> <code>ignoreVary</code>: A Boolean that when set to <code>true</code> tells the matching operation not to perform VARY header matching — that is, if the URL matches you will get a match regardless of whether the Response object has a VARY header. It defaults to <code>false</code>.
+<em> <code>cacheName</code>: A DOMString that represents a specific cache to search within. Note that this option is ignored by <code>Cache.match()</code>.
 
-`caches.matchAll(request, options)` -  This method is the same as <code>.match</code> except that it returns all of the matching responses from the cache instead of just the first. For example, if your app has cached some images contained in an image folder, we could return all images and perform some operation on them like this:
+<code>caches.matchAll(request, options)</code> -  This method is the same as <code>.match</code> except that it returns all of the matching responses from the cache instead of just the first. For example, if your app has cached some images contained in an image folder, we could return all images and perform some operation on them like this:
 
 ```
 caches.open('example-cache').then(function(cache) {
@@ -421,11 +421,11 @@ caches.open('example-cache').then(function(cache) {
 
 #### Delete data
 
-We can delete items in the cache with `cache.delete(request, options)`. This method finds the item in the cache matching the request, deletes it, and returns a Promise that resolves to `true`. If it doesn't find the item, it resolves to false. It also has the same optional options parameter available to it as the match method.
+We can delete items in the cache with <code>cache.delete(request, options)</code>. This method finds the item in the cache matching the request, deletes it, and returns a Promise that resolves to <code>true</code>. If it doesn't find the item, it resolves to false. It also has the same optional options parameter available to it as the match method.
 
 #### Retrieve keys
 
-Finally, we can get a list of cache keys using <code>cache.keys(request, options)`. This returns a Promise that resolves to an array of cache keys. These will be returned in the same order they were inserted into the cache. Both parameters are optional. If nothing is passed, `cache.keys</code> returns all of the requests in the cache. If a request is passed, it returns all of the matching requests from the cache. The options are the same as those in the previous methods.
+Finally, we can get a list of cache keys using <code>cache.keys(request, options)</code>. This returns a Promise that resolves to an array of cache keys. These will be returned in the same order they were inserted into the cache. Both parameters are optional. If nothing is passed, <code>cache.keys</code> returns all of the requests in the cache. If a request is passed, it returns all of the matching requests from the cache. The options are the same as those in the previous methods.
 
 The keys method can also be called on the caches entry point to return the keys for the caches themselves. This lets you purge outdated caches in one go.
 
@@ -439,11 +439,11 @@ The keys method can also be called on the caches entry point to return the keys 
 
 #### Learn about the Cache API
 
-* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache">Cache</a> - MDN
-* <a href="https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/">The Offline Cookbook</a>
+</em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache">Cache</a> - MDN
+<em> <a href="https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/">The Offline Cookbook</a>
 
 #### Learn about using service workers
 
-* <a href="https://developers.google.com/web/fundamentals/getting-started/primers/service-workers">Using Service Workers</a>
+</em> <a href="https://developers.google.com/web/fundamentals/getting-started/primers/service-workers">Using Service Workers</a>
 
 

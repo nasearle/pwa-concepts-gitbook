@@ -66,7 +66,7 @@ Each IndexedDB database is unique to an origin (typically, this is the site doma
 
 <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase">Database</a> - This is the highest level of IndexedDB. It contains the object stores, which in turn contain the data you would like to persist. You can create multiple databases with whatever names you choose, but generally there is one database per app.
 
-<a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore">Object store</a> - An object store is an individual bucket to store data. You can think of object stores as being similar to tables in traditional relational databases. Typically, there is one object store for each 'type' (not JavaScript data type) of data you are storing. For example, given an app that persists blog posts and user profiles, you could imagine two object stores. Unlike tables in traditional databases, the actual JavaScript data types of data within the store do not need to be consistent (for example, if there are three people in the 'people' object store, their age properties could be 53, 'twenty-five', and  <em>*unknown*</em> ).
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore">Object store</a> - An object store is an individual bucket to store data. You can think of object stores as being similar to tables in traditional relational databases. Typically, there is one object store for each 'type' (not JavaScript data type) of data you are storing. For example, given an app that persists blog posts and user profiles, you could imagine two object stores. Unlike tables in traditional databases, the actual JavaScript data types of data within the store do not need to be consistent (for example, if there are three people in the 'people' object store, their age properties could be 53, 'twenty-five', and  <em>unknown</em> ).
 
 <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex">Index</a> - An Index is a kind of object store for organizing data in another object store (called the reference object store) by an individual property of the data. The index is used to retrieve records in the object store by this property. For example, if you're storing people, you may want to fetch them later by their name, age, or favorite animal.
 
@@ -109,7 +109,7 @@ With IndexedDB you can create multiple databases with any names you choose. In g
 idb.open(name, version, upgradeCallback)
 ```
 
-This method returns a promise that resolves to a database object. When using `idb.open`, you provide a name, version number, and an optional callback to set up the database. 
+This method returns a promise that resolves to a database object. When using <code>idb.open</code>, you provide a name, version number, and an optional callback to set up the database. 
 
 Here is an example of <code>idb.open</code> in context:
 
@@ -142,7 +142,7 @@ We place our check for IndexedDB support at the top of the anonymous function. T
 
 A database typically contains one or more object stores. Object stores can be thought of as similar to tables in SQL databases and should contain objects of the same "type" (not JavaScript data type). For example, for a site persisting user profiles and notes, we can imagine a "people" object store containing "person" objects, and a "notes" object store. A well structured IndexedDB database should have one object store for each type of data you need to persist. 
 
-To ensure database integrity, object stores can only be created and removed in the callback function in `idb.open`. The callback receives an instance of UpgradeDB, a special object in the IDB Promised library that is used to create object stores. Call the <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/createObjectStore">createObjectStore</a> method on UpgradeDB to create the object store: 
+To ensure database integrity, object stores can only be created and removed in the callback function in <code>idb.open</code>. The callback receives an instance of UpgradeDB, a special object in the IDB Promised library that is used to create object stores. Call the <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/createObjectStore">createObjectStore</a> method on UpgradeDB to create the object store: 
 
 ```
 upgradeDb.createObjectStore('storeName', options);
@@ -178,7 +178,7 @@ Again, we first check the browser for IndexedDB support. This time we include th
 
 When you define object stores, you can define how data is uniquely identified in the store using the primary key. You can define a primary key by either defining a key path, or by using a key generator. 
 
-A  <em>*key path*</em>  is a property that always exists and contains a unique value. For example, in the case of a "people" object store we could choose the email address as the key path. 
+A  <em>key path</em>  is a property that always exists and contains a unique value. For example, in the case of a "people" object store we could choose the email address as the key path. 
 
 ```
 upgradeDb.createObjectStore('people', {keyPath: 'email'});
@@ -186,7 +186,7 @@ upgradeDb.createObjectStore('people', {keyPath: 'email'});
 
 This example creates an object store called "people" and assigns the "email" property as the primary key. 
 
-You could also use a key generator, such as `autoIncrement`. The key generator creates a unique value for every object added to the object store. By default, if we don't specify a key, IndexedDB creates a key and stores it separately from the data.
+You could also use a key generator, such as <code>autoIncrement</code>. The key generator creates a unique value for every object added to the object store. By default, if we don't specify a key, IndexedDB creates a key and stores it separately from the data.
 
 ```
 upgradeDb.createObjectStore('notes', {autoIncrement:true});
@@ -240,7 +240,7 @@ To create an index, call the <a href="https://developer.mozilla.org/en-US/docs/W
 objectStore.createIndex('indexName', 'property', options);
 ```
 
-This method creates and returns an index object. <code>createIndex</code> takes the name of the new index as the first argument, and the second argument refers to the property on the data you want to index. The final argument lets you define two options that determine how the index operates:  <em>*unique*</em>  and  <em>*multiEntry*</em> . If  <em>*unique*</em>  is set to true, the index does not allow duplicate values for a single key.  <em>*multiEntry*</em>  determines how <code>createIndex</code> behaves when the indexed property is an array. If it's set to true, <code>createIndex</code> adds an entry in the index for each array element. Otherwise, it adds a single entry containing the array.
+This method creates and returns an index object. <code>createIndex</code> takes the name of the new index as the first argument, and the second argument refers to the property on the data you want to index. The final argument lets you define two options that determine how the index operates:  <em>unique</em>  and  <em>multiEntry</em> . If  <em>unique</em>  is set to true, the index does not allow duplicate values for a single key.  <em>multiEntry</em>  determines how <code>createIndex</code> behaves when the indexed property is an array. If it's set to true, <code>createIndex</code> adds an entry in the index for each array element. Otherwise, it adds a single entry containing the array.
 
 Here is an example:
 
@@ -299,7 +299,7 @@ A transaction can be thought of as a safe wrapper around an operation or group o
 
 ### Creating data
 
-To create data, call the <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/add">add</a> method on the object store and pass in the data you want to add. Add has an optional second argument that lets you define the primary key for the individual object on creation, but it should only be used if you have not specified the key path in `createObjectStore`. Here is a simple example:
+To create data, call the <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/add">add</a> method on the object store and pass in the data you want to add. Add has an optional second argument that lets you define the primary key for the individual object on creation, but it should only be used if you have not specified the key path in <code>createObjectStore</code>. Here is a simple example:
 
 ```
 someObjectStore.add(data, optionalKey);
@@ -328,21 +328,21 @@ dbPromise.then(function(db) {
 });
 ```
 
-First, we get the database object. We call <code>.then</code> on <code>dbPromise`, which resolves to the database object, and pass this object to the callback function in `.then`. Because `dbPromise</code> (`idb.open`) is a promise, we can safely assume that when <code>.then</code> executes, the database is open and all object stores and indexes are ready for use. 
+First, we get the database object. We call <code>.then</code> on <code>dbPromise</code>, which resolves to the database object, and pass this object to the callback function in <code>.then</code>. Because <code>dbPromise</code> (<code>idb.open</code>) is a promise, we can safely assume that when <code>.then</code> executes, the database is open and all object stores and indexes are ready for use. 
 
-The next step is to open a transaction by calling the <code>transaction</code> method on the database object. This method takes a list of names of object stores and indexes, which defines the scope of the transaction (in our example it is just the "store" object store). The transaction method also has an optional second argument for the mode, which can be <code>readonly</code> or `readwrite`. This option is read-only by default.
+The next step is to open a transaction by calling the <code>transaction</code> method on the database object. This method takes a list of names of object stores and indexes, which defines the scope of the transaction (in our example it is just the "store" object store). The transaction method also has an optional second argument for the mode, which can be <code>readonly</code> or <code>readwrite</code>. This option is read-only by default.
 
-We can then open the "store" object store on this transaction and assign it to the <code>store</code> variable. Now when we call <code>store.add`, the add operation occurs within the transaction. Finally, we return `tx.complete</code> and log a success message once the transaction has completed.
+We can then open the "store" object store on this transaction and assign it to the <code>store</code> variable. Now when we call <code>store.add</code>, the add operation occurs within the transaction. Finally, we return <code>tx.complete</code> and log a success message once the transaction has completed.
 
 ### Reading data
 
-To read data, call the <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/get">`get`</a> method on the object store. The <code>get</code> method takes the primary key of the object you want to retrieve from the store. Here is a basic example:
+To read data, call the <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/get"><code>get</code></a> method on the object store. The <code>get</code> method takes the primary key of the object you want to retrieve from the store. Here is a basic example:
 
 ```
 someObjectStore.get(primaryKey);
 ```
 
-As with <code>add`, the `get</code> method returns a promise and must happen within a transaction.
+As with <code>add</code>, the <code>get</code> method returns a promise and must happen within a transaction.
 
 Let's look at an example of the <code>get</code> method:
 
@@ -356,7 +356,7 @@ dbPromise.then(function(db) {
 });
 ```
 
-Once again, we start the operation by getting the database object and creating a transaction. Note that this time it is a read-only transaction because we are not writing anything to the database inside the transaction (that is, using <code>put`, `add`, or `delete`). We then open the object store on the transaction and assign the resulting object store object to the `store</code> variable. Finally, we return the result of <code>store.get</code> and log this object to the console. 
+Once again, we start the operation by getting the database object and creating a transaction. Note that this time it is a read-only transaction because we are not writing anything to the database inside the transaction (that is, using <code>put</code>, <code>add</code>, or <code>delete</code>). We then open the object store on the transaction and assign the resulting object store object to the <code>store</code> variable. Finally, we return the result of <code>store.get</code> and log this object to the console. 
 
 <div class="note">
 <strong>Note:</strong> If you try to get an object that doesn't exist, the success handler still executes, but the result is <code>undefined</code>.
@@ -364,13 +364,13 @@ Once again, we start the operation by getting the database object and creating a
 
 ### Updating data
 
-To update data, call the <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/put">`put`</a> method on the object store. The <code>put</code> method is very similar to the <code>add</code> method and can be used instead of <code>add</code> to create data in the object store. Like <code>add`, `put</code> takes the data and an optional primary key:
+To update data, call the <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/put"><code>put</code></a> method on the object store. The <code>put</code> method is very similar to the <code>add</code> method and can be used instead of <code>add</code> to create data in the object store. Like <code>add</code>, <code>put</code> takes the data and an optional primary key:
 
 ```
 someObjectStore.put(data, optionalKey);
 ```
 
-Again, this method returns a promise and occurs inside a transaction. As with <code>add`, we need to be careful to check `transaction.complete</code> if we want to be sure that the operation was actually carried out. 
+Again, this method returns a promise and occurs inside a transaction. As with <code>add</code>, we need to be careful to check <code>transaction.complete</code> if we want to be sure that the operation was actually carried out. 
 
 Here is an example using the <code>put</code> method:
 
@@ -395,7 +395,7 @@ To update an existing item in the object store, use the <code>put</code> method 
 
 ### Deleting data
 
-To delete data, call the <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/delete">`delete`</a> method on the object store.
+To delete data, call the <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/delete"><code>delete</code></a> method on the object store.
 
 ```
 someObjectStore.delete(primaryKey);
@@ -458,7 +458,7 @@ We create the cursor by calling the <a href="https://developer.mozilla.org/en-US
 someObjectStore.openCursor(optionalKeyRange, optionalDirection);
 ```
 
-This method returns a promise for a cursor object representing the first object in the object store or <code>undefined</code> if there is no object. To move on to the next object in the object store, we call <code>cursor.continue`. This moves the cursor object onto the next object or returns `undefined</code> if there isn't another object. We put this inside a loop to move through all of the entries in the store one by one. The optional key range in the <code>openCursor</code> method limits <code>cursor.continue</code> to a subset of the objects in the store. The direction option can be <code>next</code> or <code>prev</code> specifying forward or backward traversal through the data.
+This method returns a promise for a cursor object representing the first object in the object store or <code>undefined</code> if there is no object. To move on to the next object in the object store, we call <code>cursor.continue</code>. This moves the cursor object onto the next object or returns <code>undefined</code> if there isn't another object. We put this inside a loop to move through all of the entries in the store one by one. The optional key range in the <code>openCursor</code> method limits <code>cursor.continue</code> to a subset of the objects in the store. The direction option can be <code>next</code> or <code>prev</code> specifying forward or backward traversal through the data.
 
 The next example uses a cursor to iterate through all the items in the "store" object store and log them to the console:
 
@@ -479,9 +479,9 @@ dbPromise.then(function(db) {
 });
 ```
 
-As usual, we start by getting the database object, creating a transaction, and opening an object store. We call the <code>openCursor</code> method on the object store and pass the cursor object to the callback function in <code>.then`. This time we name the callback function "logItems" so we can call it from inside the function and make a loop. The line `if (!cursor) return;</code> breaks the loop if <code>cursor.continue</code> returns <code>undefined</code> (that is, runs out of items to select). 
+As usual, we start by getting the database object, creating a transaction, and opening an object store. We call the <code>openCursor</code> method on the object store and pass the cursor object to the callback function in <code>.then</code>. This time we name the callback function "logItems" so we can call it from inside the function and make a loop. The line <code>if (!cursor) return;</code> breaks the loop if <code>cursor.continue</code> returns <code>undefined</code> (that is, runs out of items to select). 
 
-The cursor object contains a <code>key</code> property that represents the primary key for the item. It also contains a <code>value</code> property that represents the data. At the end of <code>logItems`, we return `cursor.continue().then(logItems)`. `cursor.continue</code> that resolves to a cursor object representing the next item in the store or <code>undefined</code> if it doesn't exist. This is passed to the callback function in <code>.then,</code> which we have chosen to be <code>logItems,`so that the function loops. `logItems</code> continues to call itself until <code>cursor.continue</code> runs out of objects.
+The cursor object contains a <code>key</code> property that represents the primary key for the item. It also contains a <code>value</code> property that represents the data. At the end of <code>logItems</code>, we return <code>cursor.continue().then(logItems)</code>. <code>cursor.continue</code> that resolves to a cursor object representing the next item in the store or <code>undefined</code> if it doesn't exist. This is passed to the callback function in <code>.then,</code> which we have chosen to be <code>logItems,</code>so that the function loops. <code>logItems</code> continues to call itself until <code>cursor.continue</code> runs out of objects.
 
 <a id="ranges" />
 
@@ -489,7 +489,7 @@ The cursor object contains a <code>key</code> property that represents the prima
 
 We can get all the data in a couple of different ways, but what if we want only a subset of the data based on a particular property? This is where indexes come in. Indexes let us fetch the data in an object store by a property other than the primary key. We can create an index on any property (which becomes the keypath for the index), specify a range on that property, and get the data within the range using the <code>getAll</code> method or a cursor.
 
-We define the range using the <code>IDBKeyRange</code> object. This object has four methods that are used to define the limits of the range: <code>upperBound`, `lowerBound`, `bound</code> (which means both), and <code>only`. As expected, the `upperBound</code> and <code>lowerBound</code> methods specify the upper and lower limits of the range. 
+We define the range using the <code>IDBKeyRange</code> object. This object has four methods that are used to define the limits of the range: <code>upperBound</code>, <code>lowerBound</code>, <code>bound</code> (which means both), and <code>only</code>. As expected, the <code>upperBound</code> and <code>lowerBound</code> methods specify the upper and lower limits of the range. 
 
 ```
 IDBKeyRange.lowerBound(indexKey);
@@ -509,7 +509,7 @@ The <code>bound</code> method is used to specify both an upper and lower limit, 
 IDBKeyRange.bound(lowerIndexKey, upperIndexKey);
 ```
 
-The range for these functions is inclusive by default, but can be specified as exclusive by passing <code>false</code> in the second argument (or the third in the case of `bound`). An inclusive range includes the data at the limits of the range. An exclusive range does not.
+The range for these functions is inclusive by default, but can be specified as exclusive by passing <code>false</code> in the second argument (or the third in the case of <code>bound</code>). An inclusive range includes the data at the limits of the range. An exclusive range does not.
 
 Let's look at an example. For this demo, we have created an index on the "price" property in the "store" object store. We have also added a small form with two inputs for the upper and lower limits of the range. Imagine we are passing in the lower and upper bounds to the function as floating point numbers representing prices:
 
@@ -554,7 +554,7 @@ The code first gets the values for the limits and checks if the limits exist. Th
 
 
 
-When we call `idb.open`, we can specify the database version number in the second parameter. If this version number is greater than the version of the existing database, the upgrade callback executes, allowing us to add object stores and indexes to the database. 
+When we call <code>idb.open</code>, we can specify the database version number in the second parameter. If this version number is greater than the version of the existing database, the upgrade callback executes, allowing us to add object stores and indexes to the database. 
 
 <div class="note">
 <strong>Note:</strong> The browser throws an error if we try to create object stores or indexes that already exist in the database. We can wrap the calls to <code>createObjectStore</code> in <code>if</code> statements checking if the object store already exists using <code>upgradeDb.objectStoreNames.contains('objectStoreName')</code>. We can also use a <code>switch</code> statement on the <code>oldVersion</code> property as in the next example.
@@ -574,7 +574,7 @@ var dbPromise = idb.open('test-db7', 2, function(upgradeDb) {
 });
 ```
 
-In the example we have set the newest version of the database at 2. When this code first executes, since the database doesn't yet exist in the browser, <code>upgradeDb.oldVersion</code> is 0 and the <code>switch</code> statement starts at `case 0`. In our example, this results in a "store" object store being added to the database. Usually, in switch statements, there is a break after each case, but we are deliberately not doing that here. This way, if the existing database is a few versions behind (or if it doesn't exist), the code continues through the rest of the case blocks until it has executed all the latest changes. So in our example, the browser continues executing through `case 1`, creating a "price" index on the "store" object store. Once this has finished executing, the database in the browser is at version 2 and contains a "store" object store with a "price" index.
+In the example we have set the newest version of the database at 2. When this code first executes, since the database doesn't yet exist in the browser, <code>upgradeDb.oldVersion</code> is 0 and the <code>switch</code> statement starts at <code>case 0</code>. In our example, this results in a "store" object store being added to the database. Usually, in switch statements, there is a break after each case, but we are deliberately not doing that here. This way, if the existing database is a few versions behind (or if it doesn't exist), the code continues through the rest of the case blocks until it has executed all the latest changes. So in our example, the browser continues executing through <code>case 1</code>, creating a "price" index on the "store" object store. Once this has finished executing, the database in the browser is at version 2 and contains a "store" object store with a "price" index.
 
 Let's say we now want to create a "description" index on the "store" object store. We need to update the version number and add a case, like this:
 
@@ -593,7 +593,7 @@ var dbPromise = idb.open('test-db7', 3, function(upgradeDb) {
 });
 ```
 
-Assuming the database we created in the previous example still exists in the browser, when this executes <code>upgradeDb.oldVersion</code> is 2. <code>case 0</code> and <code>case 1</code> are skipped and the browser executes the code in `case 2`, which creates a "description" index. Once all this has finished, the browser has a database at version 3 containing a "store" object store with "price" and "description" indexes.
+Assuming the database we created in the previous example still exists in the browser, when this executes <code>upgradeDb.oldVersion</code> is 2. <code>case 0</code> and <code>case 1</code> are skipped and the browser executes the code in <code>case 2</code>, which creates a "description" index. Once all this has finished, the browser has a database at version 3 containing a "store" object store with "price" and "description" indexes.
 
 <a id="resources" />
 
@@ -605,13 +605,13 @@ Assuming the database we created in the previous example still exists in the bro
 
 ### IndexedDB Documentation
 
-* <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB">Using IndexedDB</a> - MDN
-* <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Concepts_Behind_IndexedDB">Basic Concepts Behind indexedDB</a> - MDN
-* <a href="https://www.w3.org/TR/IndexedDB/">Indexed Database API</a> - W3C
+<em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB">Using IndexedDB</a> - MDN
+</em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Concepts_Behind_IndexedDB">Basic Concepts Behind indexedDB</a> - MDN
+<em> <a href="https://www.w3.org/TR/IndexedDB/">Indexed Database API</a> - W3C
 
 ### Data storage limits
 
-* <a href="http://www.html5rocks.com/en/tutorials/offline/quota-research/">Working with quota on mobile browsers</a>
+</em> <a href="http://www.html5rocks.com/en/tutorials/offline/quota-research/">Working with quota on mobile browsers</a>
 * <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Browser_storage_limits_and_eviction_criteria">Browser storage limits and eviction criteria</a>
 
 <a id="appendix" />
@@ -626,7 +626,7 @@ Assuming the database we created in the previous example still exists in the bro
 
 The IndexedDB Promised library sits on top of the IndexedDB API, translating its requests into promises. The overall structure is the same between the library and the API and, in general, the actual syntax for the database operations is the same and they will act the same way. But there are a few differences because of the differences between requests and promises, which we will cover here.
 
-All database interactions in the IndexedDB API are requests and have associated <code>onsuccess</code> and <code>onerror</code> event handlers. These are similar to the <code>.then</code> and <code>.catch</code> promise functions. The <code>indexedDB.open</code> method in the raw API also gets a special event handler, <code>onupgradeneeded`, which is used to create the object stores and indexes. This is equivalent to the upgrade callback in `idb.open</code> in the Promised library. In fact, if you look through the Promised library, you will find the upgrade callback is just a convenient wrapper for the <code>onupgradeneeded</code> event handler.
+All database interactions in the IndexedDB API are requests and have associated <code>onsuccess</code> and <code>onerror</code> event handlers. These are similar to the <code>.then</code> and <code>.catch</code> promise functions. The <code>indexedDB.open</code> method in the raw API also gets a special event handler, <code>onupgradeneeded</code>, which is used to create the object stores and indexes. This is equivalent to the upgrade callback in <code>idb.open</code> in the Promised library. In fact, if you look through the Promised library, you will find the upgrade callback is just a convenient wrapper for the <code>onupgradeneeded</code> event handler.
 
 Let's look at an example of the IndexedDB API. In this example we will open a database, add an object store, and add one item to the object store:
 

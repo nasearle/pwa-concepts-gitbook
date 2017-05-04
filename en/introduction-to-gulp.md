@@ -171,7 +171,7 @@ var gulp = require('gulp');
 
 
 
-Gulp tasks are defined in the <strong>gulpfile.js</strong> file using <a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulptaskname--deps--fn">`gulp.task`</a>. A simple task looks like this: 
+Gulp tasks are defined in the <strong>gulpfile.js</strong> file using <a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulptaskname--deps--fn"><code>gulp.task</code></a>. A simple task looks like this: 
 
 #### gulpfile.js
 
@@ -187,9 +187,9 @@ This code defines a <code>hello</code> task that can be executed by running the 
 
 A common pattern for gulp tasks is the following:
 
-1. Read some source files using <a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpsrcglobs-options">`gulp.src`</a>
+1. Read some source files using <a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpsrcglobs-options"><code>gulp.src</code></a>
 2. Process these files with one or more functions using Node's <code>pipe</code> functionality
-3. Write the modified files to a destination directory (creating the directory if doesn't exist) with <a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpdestpath-options">`gulp.dest`</a>
+3. Write the modified files to a destination directory (creating the directory if doesn't exist) with <a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpdestpath-options"><code>gulp.dest</code></a>
 
         gulp.task('task-name', function() {
           gulp.src('source-files') // 1
@@ -339,17 +339,17 @@ Let's add the following code to <strong>gulpfile.js</strong> to set <code>task1<
 gulp.task('default', ['task1', 'task2']);
 ```
 
-Running <code>gulp</code> in the command line executes both <code>task1</code> and `task2`.
+Running <code>gulp</code> in the command line executes both <code>task1</code> and <code>task2</code>.
 
 ### Gulp.watch
 
-Even with default tasks, running tasks each time a file is updated during development can become tedious. <a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpwatchglob--opts-tasks-or-gulpwatchglob--opts-cb">`gulp.watch`</a> watches files and automatically runs tasks when the corresponding files change. For example, the following code in <strong>gulpfile.js</strong> watches CSS files and executes the <code>processCSS</code> task any time the files are updated:
+Even with default tasks, running tasks each time a file is updated during development can become tedious. <a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpwatchglob--opts-tasks-or-gulpwatchglob--opts-cb"><code>gulp.watch</code></a> watches files and automatically runs tasks when the corresponding files change. For example, the following code in <strong>gulpfile.js</strong> watches CSS files and executes the <code>processCSS</code> task any time the files are updated:
 
 #### gulpfile.js
 
 ```
 gulp.task('watch', function() {
-  gulp.watch('styles/**/*.css', ['processCSS']);
+  gulp.watch('styles/**/<em>.css', ['processCSS']);
 });
 ```
 
@@ -375,11 +375,11 @@ Because gulp and its plugins are node packages, gulp requires <a href="https://n
 
 Gulp runs from the command line, so it requires a command line tool to be installed. Like Node, it's a global tool, and only needs to be installed on your machine (not per project). 
 
-When you want to use gulp in a project, you start by initializing the project with <code>npm init`. This creates a file called <strong>package.json</strong>. The <strong>package.json</strong> file tracks the Node packages that are installed for that project. Each time a new package is installed, such as the gulp-uglify plugin, <strong>package.json</strong> is updated with the `--save-dev</code> flag. If the project is stored in version control or transferred without including all of the packages (a best practice), the packages can be quickly re-installed with `npm install`. This reads <strong>package.json</strong> and installs all required packages. 
+When you want to use gulp in a project, you start by initializing the project with <code>npm init</code>. This creates a file called <strong>package.json</strong>. The <strong>package.json</strong> file tracks the Node packages that are installed for that project. Each time a new package is installed, such as the gulp-uglify plugin, <strong>package.json</strong> is updated with the <code>--save-dev</code> flag. If the project is stored in version control or transferred without including all of the packages (a best practice), the packages can be quickly re-installed with <code>npm install</code>. This reads <strong>package.json</strong> and installs all required packages. 
 
 Once plugins are installed, they need to be included in the <strong>gulpfile.js</strong> file. This file is where all gulp code belongs. This file is also where gulp tasks are defined. Gulp tasks use JavaScript code and the imported functions from plugins to perform various tasks on files. 
 
-With everything installed and tasks defined, gulp tasks can be run by executing command line commands (such as `gulp uglify`).
+With everything installed and tasks defined, gulp tasks can be run by executing command line commands (such as <code>gulp uglify</code>).
 
 <a id="resources" />
 
@@ -389,8 +389,8 @@ With everything installed and tasks defined, gulp tasks can be run by executing 
 
 
 
-* <a href="https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md">Gulp's Getting Started guide</a>
-* <a href="https://github.com/gulpjs/gulp/blob/master/docs/recipes/README.md">List of gulp Recipes</a>
-* <a href="http://gulpjs.com/plugins/">Gulp Plugin Registry</a>
+</em> <a href="https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md">Gulp's Getting Started guide</a>
+<em> <a href="https://github.com/gulpjs/gulp/blob/master/docs/recipes/README.md">List of gulp Recipes</a>
+</em> <a href="http://gulpjs.com/plugins/">Gulp Plugin Registry</a>
 
 

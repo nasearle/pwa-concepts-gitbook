@@ -30,10 +30,10 @@ Codelab: <a href="https://google-developer-training.gitbooks.io/progressive-web-
 
 <a href="https://developers.google.com/web/fundamentals/getting-started/primers/promises">Promises</a> offer a better way to handle asynchronous code in JavaScript. Promises have been around for a while in the form of libraries, such as:
 
-* <a href="https://github.com/kriskowal/q">Q</a>
-* <a href="https://github.com/cujojs/when">when</a>
-* <a href="http://msdn.microsoft.com/en-us/library/windows/apps/br211867.aspx">WinJS</a>
-* <a href="https://github.com/tildeio/rsvp.js">RSVP.js</a>
+<em> <a href="https://github.com/kriskowal/q">Q</a>
+</em> <a href="https://github.com/cujojs/when">when</a>
+<em> <a href="http://msdn.microsoft.com/en-us/library/windows/apps/br211867.aspx">WinJS</a>
+</em> <a href="https://github.com/tildeio/rsvp.js">RSVP.js</a>
 
 The promise libraries listed above and promises that are part of the ES2015 JavaScript specification (also referred to as ES6) are all  <a href="https://github.com/promises-aplus/promises-spec">Promises/A+</a> compatible. 
 
@@ -53,9 +53,9 @@ Asynchronous APIs are common in JavaScript to access the network or disk, to com
 
 Using events to report asynchronous results has some major drawbacks:
 
-* It fragments your code into many pieces scattered among event handlers.
-* It's possible to get into race conditions between defining the handlers and receiving the events.
-* It often requires creating a class or using globals just to maintain state.
+<em> It fragments your code into many pieces scattered among event handlers.
+</em> It's possible to get into race conditions between defining the handlers and receiving the events.
+<em> It often requires creating a class or using globals just to maintain state.
 
 These make error handling difficult. For an example, look at any XMLHttpRequest code.
 
@@ -79,8 +79,8 @@ function isUserTooYoung(id, callback) {
 
 The callback approach has two problems: 
 
-* The more callbacks that you use in a callback chain, the harder it is to read and analyze its behavior. 
-* Error handling becomes problematic. For example, what happens if a function receives an illegal value and/or throws an exception?
+</em> The more callbacks that you use in a callback chain, the harder it is to read and analyze its behavior. 
+<em> Error handling becomes problematic. For example, what happens if a function receives an illegal value and/or throws an exception?
 
 ### Using promises
 
@@ -133,11 +133,11 @@ function loadImage(url) {
 
 A promise is in one of these states:
 
-* Pending - The promise's outcome hasn't yet been determined, because the asynchronous operation that will produce its result hasn't completed yet.
-* Fulfilled - The operation resolved and the promise has a value.
-* Rejected - The operation failed and the promise will never be fulfilled. A failed promise has a reason indicating why it failed.
+</em> Pending - The promise's outcome hasn't yet been determined, because the asynchronous operation that will produce its result hasn't completed yet.
+<em> Fulfilled - The operation resolved and the promise has a value.
+</em> Rejected - The operation failed and the promise will never be fulfilled. A failed promise has a reason indicating why it failed.
 
-You may also hear the term  <em>*settled*</em> : it represents a promise that has been acted upon, and is either fulfilled or rejected.
+You may also hear the term  <em>settled</em> : it represents a promise that has been acted upon, and is either fulfilled or rejected.
 
 <a id="howto" />
 
@@ -155,7 +155,7 @@ Here's a typical pattern for creating a promise:
 var promise = new Promise(function(resolve, reject) {
   // do a thing, possibly async, then...
 
-  if (/* everything turned out fine */) {
+  if (/<em> everything turned out fine </em>/) {
     resolve("Stuff worked!");
   }
   else {
@@ -190,7 +190,7 @@ promise.then(function(result) {
 })
 ```
 
-There's nothing special about `catch()`, it's equivalent to `then(undefined, func)`, but it's more readable. <strong>Note that the two code examples above do not behave the same way</strong>. The latter example is equivalent to:
+There's nothing special about <code>catch()</code>, it's equivalent to <code>then(undefined, func)</code>, but it's more readable. <strong>Note that the two code examples above do not behave the same way</strong>. The latter example is equivalent to:
 
 ```
 promise.then(function(response) {
@@ -200,7 +200,7 @@ promise.then(function(response) {
 })
 ```
 
-The difference is subtle, but extremely useful. Promise rejections skip forward to the next <code>then()</code> with a rejection callback (or <code>catch()`, since they're equivalent). With `then(func1, func2)`, `func1</code> or <code>func2</code> will be called, never both. But with <code>then(func1).catch(func2)`, both will be called if `func1</code> rejects, as they're separate steps in the chain. 
+The difference is subtle, but extremely useful. Promise rejections skip forward to the next <code>then()</code> with a rejection callback (or <code>catch()</code>, since they're equivalent). With <code>then(func1, func2)</code>, <code>func1</code> or <code>func2</code> will be called, never both. But with <code>then(func1).catch(func2)</code>, both will be called if <code>func1</code> rejects, as they're separate steps in the chain. 
 
 ### Promise chains: then and catch
 
@@ -210,7 +210,7 @@ We can attach additional functions to a promise using <code>then()</code> and <c
 
 The <code>then()</code> method schedules a function to be called when the previous promise is fulfilled. When the promise is fulfilled, <code>.then()</code> extracts the promise's value (the value the promise resolves to), executes the callback function, and wraps the returned value in a new promise.
 
-Think of <code>then()</code> as the <code>try</code> portion of a <code>try`/`catch</code> block.
+Think of <code>then()</code> as the <code>try</code> portion of a <code>try</code>/<code>catch</code> block.
 
 Remember our earlier example that calls several actions in a row:
 
@@ -223,7 +223,7 @@ function isUserTooYoung(id) {
 }
 ```
 
-Calling <code>.then()</code> gets the returned value from the previous promise. It returns a promise that can be passed to follow-on functions, or a value that can be acted upon or returned and used as a parameter in follow-on functions. You can chain any number of actions using `.then().`
+Calling <code>.then()</code> gets the returned value from the previous promise. It returns a promise that can be passed to follow-on functions, or a value that can be acted upon or returned and used as a parameter in follow-on functions. You can chain any number of actions using <code>.then().</code>
 
 #### Catch
 
@@ -231,9 +231,9 @@ Promises also provide a mechanism to simplify error handling. When a promise rej
 
 Think of the part of the chain preceding <code>catch</code> as being wrapped in an implicit <code>try { }</code> block.
 
-In the following example, we load an image using <code>loadImage()</code> and apply a series of conversions using <code>then()`. If at any point we get an error (if either the original promise or any of the subsequent steps rejects) we jump to the `catch()</code> statement. 
+In the following example, we load an image using <code>loadImage()</code> and apply a series of conversions using <code>then()</code>. If at any point we get an error (if either the original promise or any of the subsequent steps rejects) we jump to the <code>catch()</code> statement. 
 
-Only the last <code>then()</code> statement will attach the image to the DOM. Until then, we <code>return</code> the same image so that the image will be passed to the next `then()`.
+Only the last <code>then()</code> statement will attach the image to the DOM. Until then, we <code>return</code> the same image so that the image will be passed to the next <code>then()</code>.
 
 ```
 function processImage(imageName, domNode) {
@@ -311,7 +311,7 @@ However, this function does need to return the image passed into it so that it c
 
 Often we want to take action only after a collection of asynchronous operations have completed successfully. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all"><strong>Promise.all</strong></a> returns a promise that resolves if all of the promises passed into it resolve. If any of the passed-in promises reject, then <code>Promise.all</code> rejects with the reason of the first promise that rejected. This is very useful for ensuring that a group of asynchronous actions complete before proceeding to another step. 
 
-In the example below, <code>promise1</code> and <code>promise2</code> return promises. We want both of them to load before proceeding. Both promises are passing into <code>Promise.all`. If either request rejects, then `Promise.all</code> rejects with the value of the rejected promise. If both requests fulfill, <code>Promise.all</code> resolves with the values of both promises (as a list).
+In the example below, <code>promise1</code> and <code>promise2</code> return promises. We want both of them to load before proceeding. Both promises are passing into <code>Promise.all</code>. If either request rejects, then <code>Promise.all</code> rejects with the value of the rejected promise. If both requests fulfill, <code>Promise.all</code> resolves with the values of both promises (as a list).
 
 ```
 var promise1 = getJSON('/users.json');
@@ -334,7 +334,7 @@ Promise.all([promise1, promise2]) // Array of promises to complete
 
 ### Promise.race
 
-Another promise method that you may see referenced is <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race">Promise.race</a>. <code>Promise.race</code> takes a list of promises and settles as soon as the first promise in the list settles. If the first promise resolves, <code>Promise.race</code> resolves with the corresponding value, if the first promise rejects, <code>Promise.race</code> rejects with the corresponding reason. The following code shows example usage of `Promise.race`:  
+Another promise method that you may see referenced is <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race">Promise.race</a>. <code>Promise.race</code> takes a list of promises and settles as soon as the first promise in the list settles. If the first promise resolves, <code>Promise.race</code> resolves with the corresponding value, if the first promise rejects, <code>Promise.race</code> rejects with the corresponding reason. The following code shows example usage of <code>Promise.race</code>:  
 
 ```
 Promise.race([promise1, promise2])
@@ -400,7 +400,7 @@ This example appears to race the cache against the network, using the fastest re
 
 
 
-* <a href="https://developers.google.com/web/fundamentals/getting-started/primers/promises">JavaScript Promises: an Introduction</a>
-* <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise - MDN</a>
+<em> <a href="https://developers.google.com/web/fundamentals/getting-started/primers/promises">JavaScript Promises: an Introduction</a>
+</em> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise - MDN</a>
 
 

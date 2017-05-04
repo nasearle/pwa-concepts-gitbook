@@ -28,10 +28,10 @@ How do I tell if all of my Progressive Web App (PWA) features are in order? <a h
 
 Lighthouse tests if your app:
 
-* Can load in offline or flaky network conditions
-* Is relatively fast
-* Is served from a secure origin
-* Uses certain accessibility best practices
+<em> Can load in offline or flaky network conditions
+</em> Is relatively fast
+<em> Is served from a secure origin
+</em> Uses certain accessibility best practices
 
 Lighthouse is available as a Chrome extension for Chrome 52 (and later) and a command line tool. 
 
@@ -49,11 +49,11 @@ When installed it places an <img src="../img/91e97511ef44e440.png" style="width:
 
 Run Lighthouse on your application by selecting the icon and choosing <strong>Generate report</strong> (with your app open in the browser page).
 
-!<a href="../img/92c3177801055abb.png">Lighthouse extension showing generate report button</a>
+![Lighthouse extension showing generate report button](../img/92c3177801055abb.png)
 
 Lighthouse generates an HTML page with the results. An example page is shown below. 
 
-!<a href="../img/76f48671607bf2b2.png">Lighthouse report</a>
+![Lighthouse report](../img/76f48671607bf2b2.png)
 
 <div class="note">
 <strong>Note: </strong>You can test it out on an example PWA, <a href="https://www.airhorner.com/">airhorner.com</a>.

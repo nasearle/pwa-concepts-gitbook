@@ -76,11 +76,11 @@ fetch('examples/example.json')
 
 We pass the path for the resource we want to retrieve as a parameter to fetch. In this case this is <strong>examples/example.json</strong>. The fetch call returns a promise that resolves to a response object. 
 
-When the promise resolves, the response is passed to <code>.then`. This is where the response could be used. If the request does not complete, `.catch</code> takes over and is passed the corresponding error.
+When the promise resolves, the response is passed to <code>.then</code>. This is where the response could be used. If the request does not complete, <code>.catch</code> takes over and is passed the corresponding error.
 
-Response objects represent the response to a request. They contain the requested resource and useful properties and methods. For example, <code>response.ok`, `response.status`, and `response.statusText</code> can all be used to evaluate the status of the response. 
+Response objects represent the response to a request. They contain the requested resource and useful properties and methods. For example, <code>response.ok</code>, <code>response.status</code>, and <code>response.statusText</code> can all be used to evaluate the status of the response. 
 
-Evaluating the success of responses is particularly important when using fetch because bad responses (like 404s) still resolve. The only time a fetch promise will reject is if the request was unable to complete. The previous code segment would only fall back to .`catch` if there was no network connection, but not if the response was bad (like a 404). If the previous code were updated to validate responses it would look like:
+Evaluating the success of responses is particularly important when using fetch because bad responses (like 404s) still resolve. The only time a fetch promise will reject is if the request was unable to complete. The previous code segment would only fall back to .<code>catch</code> if there was no network connection, but not if the response was bad (like a 404). If the previous code were updated to validate responses it would look like:
 
 #### main.js
 
@@ -168,23 +168,23 @@ fetchJSON('examples/example.json');
 
  To summarize what's happening:
 
-Step 1. Fetch is called on a resource, <strong>examples/example.json</strong>. Fetch returns a promise that will resolve to a response object. When the promise resolves, the response object is passed to `validateResponse`.
+Step 1. Fetch is called on a resource, <strong>examples/example.json</strong>. Fetch returns a promise that will resolve to a response object. When the promise resolves, the response object is passed to <code>validateResponse</code>.
 
-Step 2. <code>validateResponse</code> checks if the response is valid (is it a 200-299?). If it isn't, an error is thrown, skipping the rest of the <code>then</code> blocks and triggering the <code>catch</code> block. This is particularly important. Without this check bad responses are passed down the chain and could break later code that may rely on receiving a valid response. If the response is valid, it is passed to `readResponseAsJSON`.
+Step 2. <code>validateResponse</code> checks if the response is valid (is it a 200-299?). If it isn't, an error is thrown, skipping the rest of the <code>then</code> blocks and triggering the <code>catch</code> block. This is particularly important. Without this check bad responses are passed down the chain and could break later code that may rely on receiving a valid response. If the response is valid, it is passed to <code>readResponseAsJSON</code>.
 
 <div class="note">
 <strong>Note:</strong> You can also handle any network status code using the <code>status</code> property of the <code>response</code> object. This lets you respond with custom pages for different errors or handle other responses that are not <code>ok</code> (i.e., not 200-299), but still usable (e.g., status codes in the 300 range). See <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-concepts/content/docs/caching-files-with-service-worker.html#generic-fallback">Caching files with the service worker</a> for an example of a custom response to a 404.
 </div>
 
-Step 3. <code>readResponseAsJSON</code> reads the body of the response using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/json">Response.json()</a> method. This method returns a promise that resolves to JSON. Once this promise resolves, the JSON data is passed to <code>logResult`. (Can you think of what would happen if the promise from `response.json()</code> rejects?)
+Step 3. <code>readResponseAsJSON</code> reads the body of the response using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/json">Response.json()</a> method. This method returns a promise that resolves to JSON. Once this promise resolves, the JSON data is passed to <code>logResult</code>. (Can you think of what would happen if the promise from <code>response.json()</code> rejects?)
 
-Step 4. Finally, the JSON data from the original request to <strong>examples/example.json</strong> is logged by `logResult`. 
+Step 4. Finally, the JSON data from the original request to <strong>examples/example.json</strong> is logged by <code>logResult</code>. 
 
 #### For more information
 
-* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response">Response interface</a>
-* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/json">Response.json()</a>
-* <a href="https://docs.google.com/document/d/1H3GaE6JQhydNaPzII9hgGZL-uL73VvgQ02FYijeK0js/edit#">Promise chaining</a>
+<em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response">Response interface</a>
+</em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/json">Response.json()</a>
+<em> <a href="https://docs.google.com/document/d/1H3GaE6JQhydNaPzII9hgGZL-uL73VvgQ02FYijeK0js/edit#">Promise chaining</a>
 
 ### Example: fetching images
 
@@ -217,7 +217,7 @@ function fetchImage(pathToResource) {
 fetchImage('examples/kitten.jpg');
 ```
 
-In this example an image (<strong>examples/kitten.jpg)</strong> is fetched. As in the previous example, the response is validated with <code>validateResponse`. The response is then read as a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob">Blob</a> (instead of as JSON), and an image element is created and appended to the page, and the image's `src</code> attribute is set to a data URL representing the Blob.
+In this example an image (<strong>examples/kitten.jpg)</strong> is fetched. As in the previous example, the response is validated with <code>validateResponse</code>. The response is then read as a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob">Blob</a> (instead of as JSON), and an image element is created and appended to the page, and the image's <code>src</code> attribute is set to a data URL representing the Blob.
 
 <div class="note">
 <strong>Note:</strong> The <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL">URL object's</a> <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL">createObjectURL() method</a> is used to generate a data URL representing the Blob. This is important to note as you cannot set an image's source directly to a Blob. The Blob must first be converted into a data URL.
@@ -225,9 +225,9 @@ In this example an image (<strong>examples/kitten.jpg)</strong> is fetched. As i
 
 #### For more information
 
-* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob">Blobs</a>
-* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/blob">Response.blob()</a>
-* <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL">URL object</a>
+</em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob">Blobs</a>
+<em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/blob">Response.blob()</a>
+</em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL">URL object</a>
 
 ### Example: fetching text
 
@@ -257,7 +257,7 @@ function fetchText(pathToResource) {
 fetchText('examples/words.txt');
 ```
 
-In this example a text file is being fetched, <strong>examples/words.txt</strong>. Like the previous two exercises, the response is validated with `validateResponse`. Then the response is read as text, and appended to the page.
+In this example a text file is being fetched, <strong>examples/words.txt</strong>. Like the previous two exercises, the response is validated with <code>validateResponse</code>. Then the response is read as text, and appended to the page.
 
 <div class="note">
 <strong>Note:</strong> It may be tempting to fetch HTML and append that using the <code>innerHTML</code> attribute, but be careful -- this can expose your site to <a href="https://www.google.com/about/appsecurity/learning/xss/">cross site scripting attacks</a>!
@@ -265,7 +265,7 @@ In this example a text file is being fetched, <strong>examples/words.txt</strong
 
 #### For more information
 
-* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/text">Response.text()</a>
+<em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/text">Response.text()</a>
 
 <div class="note">
 <strong>Note:</strong> For completeness, the methods we have used are actually methods of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body">Body</a>, a Fetch API <a href="https://developer.mozilla.org/en-US/docs/Glossary/mixin">mixin</a> that is implemented in the Response object.  
@@ -279,7 +279,7 @@ In this example a text file is being fetched, <strong>examples/words.txt</strong
 
 
 
-`fetch()` can also receive a second optional parameter, `init`, that allows you to create custom settings for the request, such as the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods">request method</a>, cache mode, credentials, <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch">and more</a>.
+<code>fetch()</code> can also receive a second optional parameter, <code>init</code>, that allows you to create custom settings for the request, such as the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods">request method</a>, cache mode, credentials, <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch">and more</a>.
 
 <a id="head" />
 
@@ -374,7 +374,7 @@ fetch('/someurl', {
 });
 ```
 
-Here we are creating a Headers object where the <code>Content-Type</code> header has the value of <code>text/plain</code> and a custom <code>X-Custom-Header</code> header has the value of `hello world`. 
+Here we are creating a Headers object where the <code>Content-Type</code> header has the value of <code>text/plain</code> and a custom <code>X-Custom-Header</code> header has the value of <code>hello world</code>. 
 
 <div class="note">
 <strong>Note: </strong>Only some headers, like <code>Content-Type</code> can be modified. Others, like <code>Content-Length</code> and <code>Origin</code> are <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#Guard">guarded</a>, and cannot be modified (for security reasons).
@@ -384,8 +384,8 @@ Custom headers on <a href="#cors">cross-origin</a> requests must be supported by
 
 #### For more information
 
-* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Headers">Headers</a>
-* <a href="https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request">Preflight checks</a>
+</em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Headers">Headers</a>
+<em> <a href="https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request">Preflight checks</a>
 
 <a id="cors" />
 
@@ -415,7 +415,7 @@ There have been attempts to work around the same-origin policy (such as <a href=
 
 If the server you are requesting from doesn't support CORS, you should get an error in the console indicating that the cross-origin request is blocked due to the CORS <code>Access-Control-Allow-Origin</code> header being missing. 
 
-You can use <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch">`no-cors`</a> mode to request opaque resources. <a href="https://fetch.spec.whatwg.org/#concept-filtered-response-opaque">Opaque responses</a> can't be accessed with JavaScript but the response can still be served or cached by a service worker. Using <code>no-cors</code> mode with fetch is relatively simple. To update the above example with <code>no-cors`, we pass in the `init</code> object with <code>mode</code> set to `no-cors`:
+You can use <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch"><code>no-cors</code></a> mode to request opaque resources. <a href="https://fetch.spec.whatwg.org/#concept-filtered-response-opaque">Opaque responses</a> can't be accessed with JavaScript but the response can still be served or cached by a service worker. Using <code>no-cors</code> mode with fetch is relatively simple. To update the above example with <code>no-cors</code>, we pass in the <code>init</code> object with <code>mode</code> set to <code>no-cors</code>:
 
 #### main.js
 
@@ -431,7 +431,7 @@ fetch('http://bar.com/data.json', {
 
 #### For more information
 
-* <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">Cross Origin Resource Sharing</a>
+</em> <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">Cross Origin Resource Sharing</a>
 
 <a id="furtherreading" />
 
@@ -441,12 +441,12 @@ fetch('http://bar.com/data.json', {
 
 
 
-* <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_fetch_api.html">Fetch API Codelab</a>
-* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Learn more about the Fetch API</a>
-* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">Learn more about Using Fetch</a>
-* <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch">Learn more about GlobalFetch.fetch()</a>
-* <a href="https://developers.google.com/web/updates/2015/03/introduction-to-fetch">Get an Introduction to Fetch</a>
-* <a href="https://davidwalsh.name/fetch">David Welsh's blog on fetch</a>
+<em> <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_fetch_api.html">Fetch API Codelab</a>
+</em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Learn more about the Fetch API</a>
+<em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">Learn more about Using Fetch</a>
+</em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch">Learn more about GlobalFetch.fetch()</a>
+<em> <a href="https://developers.google.com/web/updates/2015/03/introduction-to-fetch">Get an Introduction to Fetch</a>
+</em> <a href="https://davidwalsh.name/fetch">David Welsh's blog on fetch</a>
 * <a href="https://jakearchibald.com/2015/thats-so-fetch/">Jake Archibald's blog on fetch</a>
 
 

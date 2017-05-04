@@ -28,7 +28,7 @@ Codelab: <a href="https://google-developer-training.gitbooks.io/progressive-web-
 
 
 
-In this text we'll cover <code>sw-precache</code> and <code>sw-toolbox`, two packages created by Google to automate the creation of service workers, and to make the creation of custom caching routes easier. We'll explore how to use `sw-precache</code> from the command line, how to build routes using <code>sw-toolbox,</code> and how to integrate both tools into a gulp-based workflow.
+In this text we'll cover <code>sw-precache</code> and <code>sw-toolbox</code>, two packages created by Google to automate the creation of service workers, and to make the creation of custom caching routes easier. We'll explore how to use <code>sw-precache</code> from the command line, how to build routes using <code>sw-toolbox,</code> and how to integrate both tools into a gulp-based workflow.
 
 <a id="routes">
 
@@ -38,9 +38,9 @@ In this text we'll cover <code>sw-precache</code> and <code>sw-toolbox`, two pac
 
 
 
-`sw-toolbox` simplifies the process of intercepting network requests in the service worker and performing some caching strategy with the request/response.
+<code>sw-toolbox</code> simplifies the process of intercepting network requests in the service worker and performing some caching strategy with the request/response.
 
-To use <code>sw-toolbox</code> you define  <em>*routes*</em>  and include them in your service worker. Routes behave like <code>fetch</code> event listeners, but are a more convenient way of creating custom handlers for specific requests.
+To use <code>sw-toolbox</code> you define  <em>routes</em>  and include them in your service worker. Routes behave like <code>fetch</code> event listeners, but are a more convenient way of creating custom handlers for specific requests.
 
 Routes look like this:
 
@@ -48,9 +48,9 @@ Routes look like this:
 toolbox.router.get(urlPattern, handler, options)
 ```
 
-A route intercepts requests that match the specified URL pattern and HTTP request method, and responds according to the rules defined in the request handler. The HTTP request method is called on <code>toolbox.router</code> (in the example above it's <code>get`) and can be any of the methods defined <a href="https://googlechrome.github.io/sw-toolbox/api.html#main">here</a>. The `options</code> parameter lets us define a cache to use for that route, as well as a network timeout if the handler is the built-in `toolbox.networkFirst`. See the <a href="https://googlechrome.github.io/sw-toolbox/api.html#main">Tutorial: API</a> for more details.
+A route intercepts requests that match the specified URL pattern and HTTP request method, and responds according to the rules defined in the request handler. The HTTP request method is called on <code>toolbox.router</code> (in the example above it's <code>get</code>) and can be any of the methods defined <a href="https://googlechrome.github.io/sw-toolbox/api.html#main">here</a>. The <code>options</code> parameter lets us define a cache to use for that route, as well as a network timeout if the handler is the built-in <code>toolbox.networkFirst</code>. See the <a href="https://googlechrome.github.io/sw-toolbox/api.html#main">Tutorial: API</a> for more details.
 
-`sw-toolbox` has five built-in handlers to cover the most common caching strategies (see the <a href="https://googlechrome.github.io/sw-toolbox/api.html#main">Tutorial: API</a> for the full list and the <a href="#strategies">Caching strategies table</a> below for a quick reference). For more information about caching strategies see the <a href="https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/">Offline Cookbook</a>.
+<code>sw-toolbox</code> has five built-in handlers to cover the most common caching strategies (see the <a href="https://googlechrome.github.io/sw-toolbox/api.html#main">Tutorial: API</a> for the full list and the <a href="#strategies">Caching strategies table</a> below for a quick reference). For more information about caching strategies see the <a href="https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/">Offline Cookbook</a>.
 
 Let's look at an example:
 
@@ -64,8 +64,8 @@ To define "wildcards" (URL patterns for matching more than one file), or if you 
 
 #### For more information
 
-* <a href="https://googlechrome.github.io/sw-toolbox/usage.html#main">sw-toolbox Tutorial: Usage</a>
-* <a href="https://googlechrome.github.io/sw-toolbox/api.html#main">sw-toolbox Tutorial: API</a>
+<em> <a href="https://googlechrome.github.io/sw-toolbox/usage.html#main">sw-toolbox Tutorial: Usage</a>
+</em> <a href="https://googlechrome.github.io/sw-toolbox/api.html#main">sw-toolbox Tutorial: API</a>
 
 ### Express-style Routing
 
@@ -76,7 +76,7 @@ To use Express-style URL patterns, pass the pattern into the route as a string. 
 For example:
 
 ```
-toolbox.router.get('img/**/*.{png,jpg}', global.toolbox.cacheFirst);
+toolbox.router.get('img/**/<em>.{png,jpg}', global.toolbox.cacheFirst);
 ```
 
 This intercepts all  <code>GET</code> requests for any <code>png</code> or <code>jpg</code> file under the <strong>img</strong> folder, regardless of depth. It handles the request according to the "cache first" strategy, first looking in the cache for the response. If that fails, the request is sent to the network and, if that succeeds, the response is added to the cache.
@@ -84,7 +84,7 @@ This intercepts all  <code>GET</code> requests for any <code>png</code> or <code
 Here is another example:
 
 ```
-toolbox.router.get('/.*fly$/', global.toolbox.cacheFirst);
+toolbox.router.get('/.</em>fly$/', global.toolbox.cacheFirst);
 ```
 
 This matches any content that ends with fly (like butterfly or dragonfly) using the cache first strategy:
@@ -94,12 +94,12 @@ To match a request from another domain using Express-style routing, we must defi
 For example:
 
 ```
-toolbox.router.get('/(.*)', global.toolbox.cacheFirst, {
+toolbox.router.get('/(.<em>)', global.toolbox.cacheFirst, {
   origin: /\.googleapis\.com$/
 });
 ```
 
-This matches all files (`'/(.*)'`) with an origin that ends with ".googleapis.com", and uses the "cache first" strategy.
+This matches all files (<code>'/(.</em>)'</code>) with an origin that ends with ".googleapis.com", and uses the "cache first" strategy.
 
 ### Regular Expression Routing
 
@@ -121,14 +121,14 @@ toolbox.router.post(/^https://api.flickr.com\//, global.toolbox.networkFirst);
 
 ### Cache Control
 
-`sw-toolbox` also gives us the ability to control the cache and its characteristics. The Express route below handles requests ending with googleapis.com using the cache first strategy. In addition to handling the origin we customize the cache itself. 
+<code>sw-toolbox</code> also gives us the ability to control the cache and its characteristics. The Express route below handles requests ending with googleapis.com using the cache first strategy. In addition to handling the origin we customize the cache itself. 
 
-* We give it a name ("googleapis")
-* We give it a maximum size of 10 items (indicated by the <code>maxEntries</code> parameter)
-* We set the content to expire in 86400 seconds (24 hours)
+<em> We give it a name ("googleapis")
+</em> We give it a maximum size of 10 items (indicated by the <code>maxEntries</code> parameter)
+<em> We set the content to expire in 86400 seconds (24 hours)
 
 ```
-toolbox.router.get('/(.*)', global.toolbox.cacheFirst, {
+toolbox.router.get('/(.</em>)', global.toolbox.cacheFirst, {
   cache: {
     name: 'googleapis',
     maxEntries: 10,
@@ -218,7 +218,7 @@ The example below demonstrates some <code>sw-toolbox</code> strategies to cache 
   'use strict';
 
   // Example 1
-  global.toolbox.router.get('/(.*)', global.toolbox.cacheFirst, {
+  global.toolbox.router.get('/(.<em>)', global.toolbox.cacheFirst, {
     cache: {
       name: 'googleapis',
       maxEntries: 20,
@@ -250,7 +250,7 @@ The example below demonstrates some <code>sw-toolbox</code> strategies to cache 
   });
 
   // Example 5
-  global.toolbox.router.get('/*', global.toolbox.cacheFirst);
+  global.toolbox.router.get('/</em>', global.toolbox.cacheFirst);
 })(self);
 ```
 
@@ -272,7 +272,7 @@ Example 5 presents our default route. If the request did not match any prior rou
 
 
 
-`sw-precache` is a module for generating a service worker that precaches resources. It integrates with your build process. <code>sw-precache</code> gives you fine control over the behavior of the generated service worker. At the time of creation we can specify files to precache, scripts to import, and many other options that determine how the service worker behaves (see the <a href="https://github.com/GoogleChrome/sw-precache">sw-precache Github page</a> for more information).
+<code>sw-precache</code> is a module for generating a service worker that precaches resources. It integrates with your build process. <code>sw-precache</code> gives you fine control over the behavior of the generated service worker. At the time of creation we can specify files to precache, scripts to import, and many other options that determine how the service worker behaves (see the <a href="https://github.com/GoogleChrome/sw-precache">sw-precache Github page</a> for more information).
 
 ### Integrating sw-precache into a gulp build system
 
@@ -283,13 +283,13 @@ var swPrecache = require('sw-precache');
 ```
 
 
-We then create a gulp task and call <code>write</code> on `swPrecache`. The write method looks like this:
+We then create a gulp task and call <code>write</code> on <code>swPrecache</code>. The write method looks like this:
 
 ```
 swPrecache.write(filePath, options, callback)
 ```
 
-`filePath` is the location of the file to write the service worker to. <code>options</code> is an object that defines the behavior of the generated service worker (see the <a href="https://github.com/GoogleChrome/sw-precache#options-parameter">documentation on Github</a> for the full list of options). The callback is always executed. This is for gulp to know when an async operation has completed. If there is an error, it is passed to the callback. If no error is found, null is passed to the callback.
+<code>filePath</code> is the location of the file to write the service worker to. <code>options</code> is an object that defines the behavior of the generated service worker (see the <a href="https://github.com/GoogleChrome/sw-precache#options-parameter">documentation on Github</a> for the full list of options). The callback is always executed. This is for gulp to know when an async operation has completed. If there is an error, it is passed to the callback. If no error is found, null is passed to the callback.
 
 Let's look at an example:
 
@@ -301,7 +301,7 @@ gulp.task('generate-service-worker', function(callback) {
        'app/index.html',
        'app/js/main.js',
        'app/css/main.css',
-       'app/img/**/*.{svg,png,jpg,gif}'
+       'app/img/**/<em>.{svg,png,jpg,gif}'
      ],
     // 2
     importScripts: [
@@ -316,14 +316,14 @@ gulp.task('generate-service-worker', function(callback) {
 
 We call the gulp task <code>'generate-service-worker'</code> and pass a callback to the function to make it asynchronous.
 
-`swPrecache.write` generates a service worker with the following options:
+<code>swPrecache.write</code> generates a service worker with the following options:
 
-* The resources in <code>staticFileGlobs</code> are precached, meaning the generated service worker will contain an <code>install</code> event handler that caches the resources.
-* The scripts in <code>importScripts</code> are included in the generated service worker inside an <code>importScripts</code> method. In the example we are including the <code>sw-toolbox</code> module and a script containing our routes.
-* The <code>app/</code> prefix is removed from all file paths in <code>staticFileGlobs</code> so that the paths in the generated service worker are relative.
+</em> The resources in <code>staticFileGlobs</code> are precached, meaning the generated service worker will contain an <code>install</code> event handler that caches the resources.
+<em> The scripts in <code>importScripts</code> are included in the generated service worker inside an <code>importScripts</code> method. In the example we are including the <code>sw-toolbox</code> module and a script containing our routes.
+</em> The <code>app/</code> prefix is removed from all file paths in <code>staticFileGlobs</code> so that the paths in the generated service worker are relative.
 
 <div class="note">
-<strong>Note:</strong> Incorporating <code>sw-toolbox</code> routes into your build is as simple as including the <code>sw-toolbox</code> module and a script containing your routes in the <code>importScripts</code> option of `swPrecache.write`.
+<strong>Note:</strong> Incorporating <code>sw-toolbox</code> routes into your build is as simple as including the <code>sw-toolbox</code> module and a script containing your routes in the <code>importScripts</code> option of <code>swPrecache.write</code>.
 </div>
 
 <a id="cmdline">
@@ -345,14 +345,14 @@ sw-precache
 Alternatively, if you'd like to only precache <code>.html</code> files that live within <strong>dist/</strong>, which is a subdirectory of the current directory, you could run:
 
 ```
-sw-precache --root=dist --static-file-globs='dist/**/*.html'
+sw-precache --root=dist --static-file-globs='dist/**/<em>.html'
 ```
 
 <div class="note">
-<strong>Note:</strong> Be sure to use quotes around parameter values that have special meanings to your shell (such as the * characters in the sample command line above, for example).
+<strong>Note:</strong> Be sure to use quotes around parameter values that have special meanings to your shell (such as the </em> characters in the sample command line above, for example).
 </div>
 
-Finally, there's support for passing complex configurations using `--config <file>`. Any of the options from the file can be overridden through a command-line flag. We recommend using an external JavaScript file to define configurations using <a href="https://nodejs.org/api/modules.html#modules_module_exports">module.exports</a>. For example, assume there's a <strong>path/to/sw-precache-config.js</strong> file that contains:
+Finally, there's support for passing complex configurations using <code>--config <file></code>. Any of the options from the file can be overridden through a command-line flag. We recommend using an external JavaScript file to define configurations using <a href="https://nodejs.org/api/modules.html#modules_module_exports">module.exports</a>. For example, assume there's a <strong>path/to/sw-precache-config.js</strong> file that contains:
 
 ```
 module.exports = {
@@ -378,7 +378,7 @@ sw-precache --config=path/to/sw-precache-config.js --verbose
 
 This provides the most flexibility, such as providing a regular expression for the <code>runtimeCaching.urlPattern</code> option.
 
-`sw-precache` also supports passing in a JSON file for `--config`, though this provides less flexibility:
+<code>sw-precache</code> also supports passing in a JSON file for <code>--config</code>, though this provides less flexibility:
 
 ```
 {
@@ -390,7 +390,7 @@ This provides the most flexibility, such as providing a regular expression for t
   ],
   "stripPrefix": "app/",
   "runtimeCaching": [{
-    "urlPattern": "/express/style/path/(.*)",
+    "urlPattern": "/express/style/path/(.<em>)",
     "handler": "networkFirst"
   }]
 }
@@ -406,15 +406,15 @@ This provides the most flexibility, such as providing a regular expression for t
 
 #### Documentation
 
-* <a href="https://github.com/GoogleChrome/sw-precache">sw-precache - Github</a>
-* <a href="https://www.npmjs.com/package/sw-precache">sw-precache - npm</a>
-* <a href="https://github.com/GoogleChrome/sw-toolbox">sw-toolbox - Github</a>
-* <a href="https://googlechrome.github.io/sw-toolbox/usage.html#main">sw-toolbox Usage Tutorial</a>
-* <a href="https://googlechrome.github.io/sw-toolbox/api.html#main">sw-toolbox API Tutorial</a>
+</em> <a href="https://github.com/GoogleChrome/sw-precache">sw-precache - Github</a>
+<em> <a href="https://www.npmjs.com/package/sw-precache">sw-precache - npm</a>
+</em> <a href="https://github.com/GoogleChrome/sw-toolbox">sw-toolbox - Github</a>
+<em> <a href="https://googlechrome.github.io/sw-toolbox/usage.html#main">sw-toolbox Usage Tutorial</a>
+</em> <a href="https://googlechrome.github.io/sw-toolbox/api.html#main">sw-toolbox API Tutorial</a>
 
 #### URL Patterns
 
-* <a href="http://regexr.com/">RegExr</a>
-* <a href="https://expressjs.com/en/guide/routing.html">Express Routing</a>
+<em> <a href="http://regexr.com/">RegExr</a>
+</em> <a href="https://expressjs.com/en/guide/routing.html">Express Routing</a>
 
 
