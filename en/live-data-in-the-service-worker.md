@@ -150,14 +150,12 @@ IndexedDB is a noSQL database. IndexedDB data is stored as key-value pairs in <s
 </tr></table>
 
 
-The data is organized by a <strong><code>keypath</code></strong>, which in this case is the item's <strong><code>id</code></strong> property. You can learn more about IndexedDB in the corresponding  [text](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-concepts/content/docs/working-with-indexeddb.html), or in the  [code lab](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_indexeddb.html).
+The data is organized by a <strong>`keypath`</strong>, which in this case is the item's <strong>`id`</strong> property. You can learn more about IndexedDB in the corresponding  [text](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-concepts/content/docs/working-with-indexeddb.html), or in the  [code lab](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_indexeddb.html).
 
 The following function could be used to create an IndexedDB object store like the example above:
 
 #### service-worker.js
-
-<code></code>`
-function createDB() {
+ <code>`</code> function createDB() {
   idb.open('products', 1, function(upgradeDB) {
     var store = upgradeDB.createObjectStore('beverages', {
       keyPath: 'id'
@@ -166,14 +164,12 @@ function createDB() {
     store.put({id: 321, name: 'pepsi', price: 8.99, quantity: 100});
     store.put({id: 222, name: 'water', price: 11.99, quantity: 300});
   });
-}
-<code></code>`
-
+} <code>`</code> 
 <div class="note">
 <strong>Note:</strong> All IndexedDB code in this text uses Jake Archibald's  [IndexedDB Promised](https://github.com/jakearchibald/indexeddb-promised) library, which enables promise syntax for IndexedDB.
 </div>
 
-Here we create a  'products' database, version 1. Inside the 'products' database, we create a 'beverages' object store. This holds all of the beverage objects. The <code>beverages</code> object store has a keypath of <code>id</code>. This means that the objects in this store will be organized and accessed by the <code>id</code> property of the <code>beverage</code> objects. Finally, we add some example beverages to the object store.
+Here we create a  'products' database, version 1. Inside the 'products' database, we create a 'beverages' object store. This holds all of the beverage objects. The <code>beverages</code> object store has a keypath of <code>id`. This means that the objects in this store will be organized and accessed by the `id</code> property of the <code>beverage</code> objects. Finally, we add some example beverages to the object store.
 
 <div class="note">
 <strong>Note:</strong> If you're familiar with IndexedDB, you may be asking why we didn't use a transaction when creating and populating the database. In IndexedDB, a transaction is built into the database creation operation. 
@@ -182,25 +178,19 @@ Here we create a  'products' database, version 1. Inside the 'products' database
 The service worker activation event is a good time to create a database. Creating a database during the activation event means that it will only be created (or opened, if it already exists) when a new service worker takes over, rather than each time the app runs (which is inefficient). It's also likely better than using the service worker's installation event, since the old service worker will still be in control at that point, and there could be conflicts if a new database is mixed with an old service worker. The following code (in the service worker file) could be used to create the database shown earlier on service worker activation:
 
 #### service-worker.js
-
-<code></code>`
-self.addEventListener('activate', function(event) {
+ <code>`</code> self.addEventListener('activate', function(event) {
   event.waitUntil(
     createDB()
   );
-});
-<code></code>`
-
+}); <code>`</code> 
 <div class="note">
-<strong>Note: </strong><code>event.waitUntil</code> ensures that a service worker does not terminate during asynchronous operations.
+<strong>Note: </strong>`event.waitUntil` ensures that a service worker does not terminate during asynchronous operations.
 </div>
 
 Once an IndexedDB database is created, data can then be read locally from IndexedDB rather than making network requests to a backend database. The following code could be used to retrieve data from the example database above:
 
 #### service-worker.js
-
-<code></code>`
-function readDB() {
+ <code>`</code> function readDB() {
   idb.open('products', 1).then(function(db) {
     var tx = db.transaction(['beverages'], 'readonly');
     var store = tx.objectStore('beverages');
@@ -208,9 +198,7 @@ function readDB() {
   }).then(function(items) {
     // Use beverage data
   });
-}
-<code></code>`
-
+} <code>`</code> 
 Here we open the <code>products</code> database and create a new transaction on the <code>beverages</code> store of type <code>readonly</code> (we don't need to write data). We then access the store, and retrieve all of the items. These items can then be used to update the UI or perform whatever action is needed.
 
 <div class="note">
@@ -222,9 +210,7 @@ Here we open the <code>products</code> database and create a new transaction on 
 URL addressable resources are comparatively simple to store with the Cache interface. The following code shows an example of caching multiple resources:
 
 #### service-worker.js
-
-<code></code>`
-function cacheAssets() {
+ <code>`</code> function cacheAssets() {
   return caches.open('cache-v1')
   .then(function(cache) {
     return cache.addAll([
@@ -235,38 +221,28 @@ function cacheAssets() {
       'img/coke.jpg'
     ]);
   });
-}
-<code></code>`
-
+} <code>`</code> 
 This code opens a <code>cache-v1</code> cache, and stores <strong>index.html</strong>, <strong>main.css</strong>, <strong>offline.js</strong>, and <strong>coke.jpg</strong>.
 
 The service worker installation event is a good time to cache static assets like these. This ensures that all the resources a service worker is expected to have are cached when the service worker is installed. The following code (in the service worker file) could be used to cache these types of files during the service worker install event:
 
 #### service-worker.js
-
-<code></code>`
-self.addEventListener('install', function(event) {
+ <code>`</code> self.addEventListener('install', function(event) {
   event.waitUntil(
     cacheAssets()
   );
-});
-<code></code>`
-
+}); <code>`</code> 
 Once assets are cached, they can be retrieved during fetch events. The following code (in the service worker file) allows resources to be fetched from the cache instead of the network:
 
 #### service-worker.js
-
-<code></code>`
-self.addEventListener('fetch', function(event) {
+ <code>`</code> self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request).then(function(response) {
       // Check cache but fall back to network
       return response || fetch(event.request);
     })
   );
-});
-<code></code>`
-
+}); <code>`</code> 
 This code adds a <code>fetch</code> listener on the service worker that attempts to get resources from the cache before going to the network. If the resource isn't found in the cache, a regular network request is still made. 
 
 <a id="resources" />
