@@ -12,9 +12,9 @@
 
 <a href="#what"><strong>What is gulp?</strong></a>
 
-<a href="#how"><strong>How to set up gulp</strong></a><strong>        </strong>
+<a href="#how"><strong>How to set up gulp</strong></a> 
 
-<a href="#tasks"><strong>Creating tasks</strong></a><strong>        </strong>
+<a href="#tasks"><strong>Creating tasks</strong></a> 
 
 <a href="#examples"><strong>Examples</strong></a>
 
@@ -349,7 +349,7 @@ Even with default tasks, running tasks each time a file is updated during develo
 
 ```
 gulp.task('watch', function() {
-  gulp.watch('styles/**/<em>.css', ['processCSS']);
+  gulp.watch('styles/**/*.css', ['processCSS']);
 });
 ```
 
@@ -389,8 +389,8 @@ With everything installed and tasks defined, gulp tasks can be run by executing 
 
 
 
-</em> <a href="https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md">Gulp's Getting Started guide</a>
-<em> <a href="https://github.com/gulpjs/gulp/blob/master/docs/recipes/README.md">List of gulp Recipes</a>
-</em> <a href="http://gulpjs.com/plugins/">Gulp Plugin Registry</a>
+* <a href="https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md">Gulp's Getting Started guide</a>
+* <a href="https://github.com/gulpjs/gulp/blob/master/docs/recipes/README.md">List of gulp Recipes</a>
+* <a href="http://gulpjs.com/plugins/">Gulp Plugin Registry</a>
 
 

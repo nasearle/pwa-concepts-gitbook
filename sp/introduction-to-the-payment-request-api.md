@@ -52,18 +52,18 @@ Any system that improves or solves one or more of those problems is a welcome ch
 
 The Payment Request API's open-web approach is designed:
 
-<em> For developers to minimize the need to fill out checkout forms and improve user's payment experience from the ground up. This API follows the recommendations in the <a href="https://www.w3.org/TR/payment-request/">W3C Payment Request API specification</a> published by the <a href="https://www.w3.org/Payments/WG/">Web Payments Working Group</a>. 
-</em> For users to check out, make a payment, or fill in forms with minimal use of the mobile device keyboard. 
+* For developers to minimize the need to fill out checkout forms and improve user's payment experience from the ground up. This API follows the recommendations in the <a href="https://www.w3.org/TR/payment-request/">W3C Payment Request API specification</a> published by the <a href="https://www.w3.org/Payments/WG/">Web Payments Working Group</a>. 
+* For users to check out, make a payment, or fill in forms with minimal use of the mobile device keyboard. 
 
 The API uses securely cached data to facilitate payment interaction between the user and the merchant's site. The API also gets the data necessary to process transactions as quickly as possible.
 
 The Payment Request API is a standards-based way to enable checkout on the web that:
 
-<em> Provides a native user interface for users to select or add a payment method, a shipping address, a shipping option, and contact information in an easy, fast, and secure way.
-</em> Provides standardized (JavaScript) APIs for developers to obtain user's payment preferences in a consistent format.
-<em> Brings secure, tokenized payments to the web (browser as middleman) using secure origin,  HTTPS.
-</em> Always returns a payment credential that a merchant can use to get paid (credit card, push payment, token, etc).
-<em> Is designed so that additional functionality can be added in, depending on your particular product requirements (shipping information, email, and phone number collection).
+* Provides a native user interface for users to select or add a payment method, a shipping address, a shipping option, and contact information in an easy, fast, and secure way.
+* Provides standardized (JavaScript) APIs for developers to obtain user's payment preferences in a consistent format.
+* Brings secure, tokenized payments to the web (browser as middleman) using secure origin,  HTTPS.
+* Always returns a payment credential that a merchant can use to get paid (credit card, push payment, token, etc).
+* Is designed so that additional functionality can be added in, depending on your particular product requirements (shipping information, email, and phone number collection).
 
 ### Goals of the Payment Request API
 
@@ -71,10 +71,10 @@ The Payment Request API is an open and cross-browser standard that replaces trad
 
 It vastly improves user workflow during the purchase process, providing a more consistent user experience and enabling web merchants to easily leverage disparate payment methods. The Payment Request API is neither a new payment method, nor does it integrate directly with payment processors. Rather, it is a process layer whose goals are to:
 
-</em> Allow the browser act as intermediary among merchants, users, and payment methods
-<em> Standardize the payment communication flow as much as possible
-</em> Seamlessly support different secure payment methods
-<em> Eventually work on any browser, device, or platform, including mobile devices and otherwise (as of this writing the Payment Request API is available on Chrome for Android (v53), Samsung Internet (v5.0), and partially supported on Edge (v15), but other third-party solutions will be supported in the future)
+* Allow the browser act as intermediary among merchants, users, and payment methods
+* Standardize the payment communication flow as much as possible
+* Seamlessly support different secure payment methods
+* Eventually work on any browser, device, or platform, including mobile devices and otherwise (as of this writing the Payment Request API is available on Chrome for Android (v53), Samsung Internet (v5.0), and partially supported on Edge (v15), but other third-party solutions will be supported in the future)
 
 Best of all, the browser acts as an intermediary, storing all the information necessary for a fast checkout so users can just confirm and pay with a single tap or click.
 
@@ -82,13 +82,13 @@ Best of all, the browser acts as an intermediary, storing all the information ne
 
 Payment Request demos are available at these URLs:
 
-</em> Demo: <a href="https://emerald-eon.appspot.com/">https://emerald-eon.appspot.com/</a>
-<em> Polymer Shop demo: <a href="https://polykart-credential-payment.appspot.com/">https://polykart-credential-payment.appspot.com/</a>
-</em> Simple demos and sample code: <a href="https://googlechrome.github.io/samples/paymentrequest/">https://googlechrome.github.io/samples/paymentrequest/</a>
-<em> Deep dive documentation: <a href="https://developers.google.com/web/fundamentals/discovery-and-monetization/payment-request/deep-dive-into-payment-request">https://developers.google.com/web/fundamentals/discovery-and-monetization/payment-request/deep-dive-into-payment-request</a>
-</em> Samsung Internet demos: 
-<em> <a href="https://samsunginter.net/examples/payment-request-demo-simple/">https://samsunginter.net/examples/payment-request-demo-simple/</a>
-</em> <a href="https://samsunginter.net/examples/payment-request-demo-options/">https://samsunginter.net/examples/payment-request-demo-options/</a>
+* Demo: <a href="https://emerald-eon.appspot.com/">https://emerald-eon.appspot.com/</a>
+* Polymer Shop demo: <a href="https://polykart-credential-payment.appspot.com/">https://polykart-credential-payment.appspot.com/</a>
+* Simple demos and sample code: <a href="https://googlechrome.github.io/samples/paymentrequest/">https://googlechrome.github.io/samples/paymentrequest/</a>
+* Deep dive documentation: <a href="https://developers.google.com/web/fundamentals/discovery-and-monetization/payment-request/deep-dive-into-payment-request">https://developers.google.com/web/fundamentals/discovery-and-monetization/payment-request/deep-dive-into-payment-request</a>
+* Samsung Internet demos: 
+* <a href="https://samsunginter.net/examples/payment-request-demo-simple/">https://samsunginter.net/examples/payment-request-demo-simple/</a>
+* <a href="https://samsunginter.net/examples/payment-request-demo-options/">https://samsunginter.net/examples/payment-request-demo-options/</a>
 
 <a id="howitworks" />
 
@@ -132,9 +132,9 @@ From the user's perspective, all the previously tedious interaction—request, a
 
 To learn more about Payment Request API, see these documents and resources:
 
-<em> <a href="http://ift.tt/1WHbRmb">Official specification</a>
-</em> <a href="http://ift.tt/2alR15H">Payment Request API integration guide</a>
-<em> <a href="http://ift.tt/2ayc1cO">Demo</a>
-</em> <a href="http://ift.tt/2alPZ9Q">Simple demos and sample code</a>
+* <a href="http://ift.tt/1WHbRmb">Official specification</a>
+* <a href="http://ift.tt/2alR15H">Payment Request API integration guide</a>
+* <a href="http://ift.tt/2ayc1cO">Demo</a>
+* <a href="http://ift.tt/2alPZ9Q">Simple demos and sample code</a>
 
 

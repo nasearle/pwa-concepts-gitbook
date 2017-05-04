@@ -8,15 +8,15 @@
 
 
 
-<a href="#whatisfetch"><strong>What is fetch?</strong></a><strong>        </strong>
+<a href="#whatisfetch"><strong>What is fetch?</strong></a> 
 
-<a href="#makerequest"><strong>Making a request</strong></a><strong>        </strong>
+<a href="#makerequest"><strong>Making a request</strong></a> 
 
-<a href="#readresponse"><strong>Reading the response object</strong></a><strong>        </strong>
+<a href="#readresponse"><strong>Reading the response object</strong></a> 
 
 <a href="#makecustomrequest"><strong>Making custom requests</strong></a>
 
-<a href="#cors"><strong>Cross-origin requests</strong></a><strong>        </strong>
+<a href="#cors"><strong>Cross-origin requests</strong></a> 
 
 <a href="#furtherreading"><strong>Further reading</strong></a>
 
@@ -182,9 +182,9 @@ Step 4. Finally, the JSON data from the original request to <strong>examples/exa
 
 #### For more information
 
-<em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response">Response interface</a>
-</em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/json">Response.json()</a>
-<em> <a href="https://docs.google.com/document/d/1H3GaE6JQhydNaPzII9hgGZL-uL73VvgQ02FYijeK0js/edit#">Promise chaining</a>
+* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response">Response interface</a>
+* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/json">Response.json()</a>
+* <a href="https://docs.google.com/document/d/1H3GaE6JQhydNaPzII9hgGZL-uL73VvgQ02FYijeK0js/edit#">Promise chaining</a>
 
 ### Example: fetching images
 
@@ -225,9 +225,9 @@ In this example an image (<strong>examples/kitten.jpg)</strong> is fetched. As i
 
 #### For more information
 
-</em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob">Blobs</a>
-<em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/blob">Response.blob()</a>
-</em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL">URL object</a>
+* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob">Blobs</a>
+* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/blob">Response.blob()</a>
+* <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL">URL object</a>
 
 ### Example: fetching text
 
@@ -265,7 +265,7 @@ In this example a text file is being fetched, <strong>examples/words.txt</strong
 
 #### For more information
 
-<em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/text">Response.text()</a>
+* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/text">Response.text()</a>
 
 <div class="note">
 <strong>Note:</strong> For completeness, the methods we have used are actually methods of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body">Body</a>, a Fetch API <a href="https://developer.mozilla.org/en-US/docs/Glossary/mixin">mixin</a> that is implemented in the Response object.  
@@ -384,8 +384,8 @@ Custom headers on <a href="#cors">cross-origin</a> requests must be supported by
 
 #### For more information
 
-</em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Headers">Headers</a>
-<em> <a href="https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request">Preflight checks</a>
+* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Headers">Headers</a>
+* <a href="https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request">Preflight checks</a>
 
 <a id="cors" />
 
@@ -431,7 +431,7 @@ fetch('http://bar.com/data.json', {
 
 #### For more information
 
-</em> <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">Cross Origin Resource Sharing</a>
+* <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">Cross Origin Resource Sharing</a>
 
 <a id="furtherreading" />
 
@@ -441,12 +441,12 @@ fetch('http://bar.com/data.json', {
 
 
 
-<em> <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_fetch_api.html">Fetch API Codelab</a>
-</em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Learn more about the Fetch API</a>
-<em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">Learn more about Using Fetch</a>
-</em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch">Learn more about GlobalFetch.fetch()</a>
-<em> <a href="https://developers.google.com/web/updates/2015/03/introduction-to-fetch">Get an Introduction to Fetch</a>
-</em> <a href="https://davidwalsh.name/fetch">David Welsh's blog on fetch</a>
+* <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_fetch_api.html">Fetch API Codelab</a>
+* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Learn more about the Fetch API</a>
+* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">Learn more about Using Fetch</a>
+* <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch">Learn more about GlobalFetch.fetch()</a>
+* <a href="https://developers.google.com/web/updates/2015/03/introduction-to-fetch">Get an Introduction to Fetch</a>
+* <a href="https://davidwalsh.name/fetch">David Welsh's blog on fetch</a>
 * <a href="https://jakearchibald.com/2015/thats-so-fetch/">Jake Archibald's blog on fetch</a>
 
 

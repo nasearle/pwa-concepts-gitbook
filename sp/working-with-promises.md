@@ -8,13 +8,13 @@
 
 
 
-<a href="#intro"><strong>Introduction</strong></a><strong>        </strong>
+<a href="#intro"><strong>Introduction</strong></a> 
 
-<a href="#why"><strong>Why use promises?</strong></a><strong>        </strong>
+<a href="#why"><strong>Why use promises?</strong></a> 
 
-<a href="#terms"><strong>Promise terminology</strong></a><strong>        </strong>
+<a href="#terms"><strong>Promise terminology</strong></a> 
 
-<a href="#howto"><strong>How to use promises</strong></a><strong>        </strong>
+<a href="#howto"><strong>How to use promises</strong></a> 
 
 <a href="#further"><strong>Further reading</strong></a>
 
@@ -30,10 +30,10 @@ Codelab: <a href="https://google-developer-training.gitbooks.io/progressive-web-
 
 <a href="https://developers.google.com/web/fundamentals/getting-started/primers/promises">Promises</a> offer a better way to handle asynchronous code in JavaScript. Promises have been around for a while in the form of libraries, such as:
 
-<em> <a href="https://github.com/kriskowal/q">Q</a>
-</em> <a href="https://github.com/cujojs/when">when</a>
-<em> <a href="http://msdn.microsoft.com/en-us/library/windows/apps/br211867.aspx">WinJS</a>
-</em> <a href="https://github.com/tildeio/rsvp.js">RSVP.js</a>
+* <a href="https://github.com/kriskowal/q">Q</a>
+* <a href="https://github.com/cujojs/when">when</a>
+* <a href="http://msdn.microsoft.com/en-us/library/windows/apps/br211867.aspx">WinJS</a>
+* <a href="https://github.com/tildeio/rsvp.js">RSVP.js</a>
 
 The promise libraries listed above and promises that are part of the ES2015 JavaScript specification (also referred to as ES6) are all  <a href="https://github.com/promises-aplus/promises-spec">Promises/A+</a> compatible. 
 
@@ -53,9 +53,9 @@ Asynchronous APIs are common in JavaScript to access the network or disk, to com
 
 Using events to report asynchronous results has some major drawbacks:
 
-<em> It fragments your code into many pieces scattered among event handlers.
-</em> It's possible to get into race conditions between defining the handlers and receiving the events.
-<em> It often requires creating a class or using globals just to maintain state.
+* It fragments your code into many pieces scattered among event handlers.
+* It's possible to get into race conditions between defining the handlers and receiving the events.
+* It often requires creating a class or using globals just to maintain state.
 
 These make error handling difficult. For an example, look at any XMLHttpRequest code.
 
@@ -79,8 +79,8 @@ function isUserTooYoung(id, callback) {
 
 The callback approach has two problems: 
 
-</em> The more callbacks that you use in a callback chain, the harder it is to read and analyze its behavior. 
-<em> Error handling becomes problematic. For example, what happens if a function receives an illegal value and/or throws an exception?
+* The more callbacks that you use in a callback chain, the harder it is to read and analyze its behavior. 
+* Error handling becomes problematic. For example, what happens if a function receives an illegal value and/or throws an exception?
 
 ### Using promises
 
@@ -133,9 +133,9 @@ function loadImage(url) {
 
 A promise is in one of these states:
 
-</em> Pending - The promise's outcome hasn't yet been determined, because the asynchronous operation that will produce its result hasn't completed yet.
-<em> Fulfilled - The operation resolved and the promise has a value.
-</em> Rejected - The operation failed and the promise will never be fulfilled. A failed promise has a reason indicating why it failed.
+* Pending - The promise's outcome hasn't yet been determined, because the asynchronous operation that will produce its result hasn't completed yet.
+* Fulfilled - The operation resolved and the promise has a value.
+* Rejected - The operation failed and the promise will never be fulfilled. A failed promise has a reason indicating why it failed.
 
 You may also hear the term  <em>settled</em> : it represents a promise that has been acted upon, and is either fulfilled or rejected.
 
@@ -400,7 +400,7 @@ This example appears to race the cache against the network, using the fastest re
 
 
 
-<em> <a href="https://developers.google.com/web/fundamentals/getting-started/primers/promises">JavaScript Promises: an Introduction</a>
-</em> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise - MDN</a>
+* <a href="https://developers.google.com/web/fundamentals/getting-started/primers/promises">JavaScript Promises: an Introduction</a>
+* <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise - MDN</a>
 
 

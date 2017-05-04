@@ -12,7 +12,7 @@
 
 <a href="#cacheapi"><strong>Using the Cache API</strong></a>        
 
-<a href="#moreresources"><strong>Further reading</strong></a><strong>        </strong>
+<a href="#moreresources"><strong>Further reading</strong></a> 
 
 Codelab: <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_caching_files_with_service_worker.html">Caching Files with Service Worker</a>
 
@@ -125,11 +125,11 @@ This approach works best for resources that frequently update, such as a user's 
 
 To serve content from the cache and make your app available offline you need to intercept network requests and respond with files stored in the cache. There are several approaches to this: 
 
-<em> cache only
-</em> network only 
-<em> cache falling back to network 
-</em> network falling back to cache
-<em> cache then network
+* cache only
+* network only 
+* cache falling back to network 
+* network falling back to cache
+* cache then network
 
 There are a few approaches we don't cover here. See Jake Archibald's <a href="https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/">Offline Cookbook</a> for a full list.
 
@@ -402,10 +402,10 @@ There are a couple of methods to search for specific content in the cache: <a hr
 
 <code>caches.match(request, options)</code> -  This method returns a Promise that resolves to the response object associated with the first matching request in the cache or caches. It returns <code>undefined</code> if no match is found. The first parameter is the request, and the second is an optional list of options to refine the search. Here are the options as defined by MDN:
 
-</em> <code>ignoreSearch</code>: A Boolean that specifies whether to ignore the query string in the URL.  For example, if set to <code>true</code> the <code>?value=bar</code> part of <code>http://foo.com/?value=bar</code> would be ignored when performing a match. It defaults to <code>false</code>.
-<em> <code>ignoreMethod</code>: A Boolean that, when set to <code>true</code>, prevents matching operations from validating the Request HTTP method (normally only GET and HEAD are allowed.) It defaults to false.
-</em> <code>ignoreVary</code>: A Boolean that when set to <code>true</code> tells the matching operation not to perform VARY header matching — that is, if the URL matches you will get a match regardless of whether the Response object has a VARY header. It defaults to <code>false</code>.
-<em> <code>cacheName</code>: A DOMString that represents a specific cache to search within. Note that this option is ignored by <code>Cache.match()</code>.
+* <code>ignoreSearch</code>: A Boolean that specifies whether to ignore the query string in the URL.  For example, if set to <code>true</code> the <code>?value=bar</code> part of <code>http://foo.com/?value=bar</code> would be ignored when performing a match. It defaults to <code>false</code>.
+* <code>ignoreMethod</code>: A Boolean that, when set to <code>true</code>, prevents matching operations from validating the Request HTTP method (normally only GET and HEAD are allowed.) It defaults to false.
+* <code>ignoreVary</code>: A Boolean that when set to <code>true</code> tells the matching operation not to perform VARY header matching — that is, if the URL matches you will get a match regardless of whether the Response object has a VARY header. It defaults to <code>false</code>.
+* <code>cacheName</code>: A DOMString that represents a specific cache to search within. Note that this option is ignored by <code>Cache.match()</code>.
 
 <code>caches.matchAll(request, options)</code> -  This method is the same as <code>.match</code> except that it returns all of the matching responses from the cache instead of just the first. For example, if your app has cached some images contained in an image folder, we could return all images and perform some operation on them like this:
 
@@ -439,11 +439,11 @@ The keys method can also be called on the caches entry point to return the keys 
 
 #### Learn about the Cache API
 
-</em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache">Cache</a> - MDN
-<em> <a href="https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/">The Offline Cookbook</a>
+* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache">Cache</a> - MDN
+* <a href="https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/">The Offline Cookbook</a>
 
 #### Learn about using service workers
 
-</em> <a href="https://developers.google.com/web/fundamentals/getting-started/primers/service-workers">Using Service Workers</a>
+* <a href="https://developers.google.com/web/fundamentals/getting-started/primers/service-workers">Using Service Workers</a>
 
 

@@ -10,23 +10,23 @@
 
 <a href="#introduction"><strong>Introduction</strong></a>
 
-<a href="#what"><strong>What is IndexedDB?</strong></a><strong>        </strong>
+<a href="#what"><strong>What is IndexedDB?</strong></a> 
 
-<a href="#terms"><strong>IndexedDB terms</strong></a><strong>        </strong>
+<a href="#terms"><strong>IndexedDB terms</strong></a> 
 
-<a href="#support"><strong>Check for IndexedDB support</strong></a><strong>        </strong>
+<a href="#support"><strong>Check for IndexedDB support</strong></a> 
 
-<a href="#open"><strong>Opening a database</strong></a><strong>        </strong>
+<a href="#open"><strong>Opening a database</strong></a> 
 
-<a href="#stores"><strong>Working with object stores</strong></a><strong>        </strong>
+<a href="#stores"><strong>Working with object stores</strong></a> 
 
-<a href="#data"><strong>Working with data</strong></a><strong>        </strong>
+<a href="#data"><strong>Working with data</strong></a> 
 
-<a href="#get"><strong>Getting all the data</strong></a><strong>        </strong>
+<a href="#get"><strong>Getting all the data</strong></a> 
 
-<a href="#versioning"><strong>Using database versioning</strong></a><strong>        </strong>
+<a href="#versioning"><strong>Using database versioning</strong></a> 
 
-<a href="#resources"><strong>Further reading</strong></a><strong>        </strong>
+<a href="#resources"><strong>Further reading</strong></a> 
 
 <a href="#appendix"><strong>Appendix</strong></a>
 
@@ -605,13 +605,13 @@ Assuming the database we created in the previous example still exists in the bro
 
 ### IndexedDB Documentation
 
-<em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB">Using IndexedDB</a> - MDN
-</em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Concepts_Behind_IndexedDB">Basic Concepts Behind indexedDB</a> - MDN
-<em> <a href="https://www.w3.org/TR/IndexedDB/">Indexed Database API</a> - W3C
+* <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB">Using IndexedDB</a> - MDN
+* <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Concepts_Behind_IndexedDB">Basic Concepts Behind indexedDB</a> - MDN
+* <a href="https://www.w3.org/TR/IndexedDB/">Indexed Database API</a> - W3C
 
 ### Data storage limits
 
-</em> <a href="http://www.html5rocks.com/en/tutorials/offline/quota-research/">Working with quota on mobile browsers</a>
+* <a href="http://www.html5rocks.com/en/tutorials/offline/quota-research/">Working with quota on mobile browsers</a>
 * <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Browser_storage_limits_and_eviction_criteria">Browser storage limits and eviction criteria</a>
 
 <a id="appendix" />

@@ -277,9 +277,9 @@ This code adds a <code>fetch</code> listener on the service worker that attempts
 
 
 
-<em> <a href="https://medium.com/dev-channel/offline-storage-for-progressive-web-apps-70d52695513c#.lm82vlyt8">Offline Storage for Progressive Web Apps</a>
-</em> <a href="https://github.com/jakearchibald/indexeddb-promised">IndexedDB Promised</a>
-<em> <a href="https://jakearchibald.github.io/isserviceworkerready/#caches">Support for the Cache interface</a>
-</em> <a href="http://caniuse.com/#feat=indexeddb">Support for IndexedDB</a>
+* <a href="https://medium.com/dev-channel/offline-storage-for-progressive-web-apps-70d52695513c#.lm82vlyt8">Offline Storage for Progressive Web Apps</a>
+* <a href="https://github.com/jakearchibald/indexeddb-promised">IndexedDB Promised</a>
+* <a href="https://jakearchibald.github.io/isserviceworkerready/#caches">Support for the Cache interface</a>
+* <a href="http://caniuse.com/#feat=indexeddb">Support for IndexedDB</a>
 
 

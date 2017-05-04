@@ -8,11 +8,11 @@
 
 
 
-<a href="#whatisserviceworker"><strong>What is a service worker?</strong></a><strong>        </strong>
+<a href="#whatisserviceworker"><strong>What is a service worker?</strong></a> 
 
-<a href="#whatcantheydo"><strong>What can service workers do?</strong></a><strong>        </strong>
+<a href="#whatcantheydo"><strong>What can service workers do?</strong></a> 
 
-<a href="#lifecycle"><strong>Service worker lifecycle</strong></a><strong>        </strong>
+<a href="#lifecycle"><strong>Service worker lifecycle</strong></a> 
 
 <a href="#events"><strong>Service worker events</strong></a>
 
@@ -32,26 +32,26 @@ A <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">
 
 Because workers run separately from the main thread, service workers are independent of the application they are associated with. This has several consequences:
 
-<em> Because the service worker is not blocking (it's designed to be fully asynchronous) synchronous XHR and <code>localStorage</code> cannot be used in a service worker.
-</em> The service worker can receive push messages from a server when the app is not active. This lets your app show push notifications to the user, even when it is not open in the browser.
+* Because the service worker is not blocking (it's designed to be fully asynchronous) synchronous XHR and <code>localStorage</code> cannot be used in a service worker.
+* The service worker can receive push messages from a server when the app is not active. This lets your app show push notifications to the user, even when it is not open in the browser.
 
  <div class="note">
 <strong>Note:</strong> Whether notifications are received when the browser itself is not running depends on how the browser is integrated with the OS. For instance on desktop OS's, Chrome and Firefox only receive notifications when the browser is running. However, Android is designed to wake up any browser when a push message is received and will always receive push messages regardless of browser state. See the <a href="https://web-push-book.gauntface.com/chapter-07/01-faq/#why-doesnt-push-work-when-the-browser-is-closed">FAQ</a> in Matt Gaunt's <a href="https://web-push-book.gauntface.com/">Web Push Book</a> for more information.
 </div>
 
-<em> The service worker can't access the DOM directly. To communicate with the page, the service worker uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage"><code>postMessage()</code></a> method to send data and a "message" event listener to receive data.
+* The service worker can't access the DOM directly. To communicate with the page, the service worker uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage"><code>postMessage()</code></a> method to send data and a "message" event listener to receive data.
 
 Things to note about a service worker:
 
-</em> Service worker is a programmable network proxy that lets you control how network requests from your page are handled.
-<em> Service workers only run over HTTPS. Because service workers can intercept network requests and modify responses, "man-in-the-middle" attacks could be very bad.
+* Service worker is a programmable network proxy that lets you control how network requests from your page are handled.
+* Service workers only run over HTTPS. Because service workers can intercept network requests and modify responses, "man-in-the-middle" attacks could be very bad.
 
 <div class="note">
 <strong>Note: </strong>Services like <a href="https://letsencrypt.org/">Letsencrypt</a> let you procure SSL certificates for free to install on your server. 
 </div>
 
-</em> The service worker becomes idle when not in use and restarts when it's next needed. You cannot rely on a global state persisting between events. If there is information that you need to persist and reuse across restarts, you can use <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API">IndexedDB</a> databases.
-<em> Service workers make extensive use of promises, so if you're new to promises, then you should stop reading this and check out <a href="https://developers.google.com/web/fundamentals/getting-started/primers/promises">Promises, an introduction</a>.
+* The service worker becomes idle when not in use and restarts when it's next needed. You cannot rely on a global state persisting between events. If there is information that you need to persist and reuse across restarts, you can use <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API">IndexedDB</a> databases.
+* Service workers make extensive use of promises, so if you're new to promises, then you should stop reading this and check out <a href="https://developers.google.com/web/fundamentals/getting-started/primers/promises">Promises, an introduction</a>.
 
 <a id="whatcantheydo" />
 
@@ -77,10 +77,10 @@ Using the Fetch API inside a service worker, we can intercept network requests a
 
 Service workers provide the starting point for features that make web applications work like native apps. Some of these features are: 
 
-</em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API">Notifications API</a>: A way to display and interact with notifications using the operating system's native notification system.
-<em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Push_API">Push API: </a> An API that enables your app to subscribe to a push service and receive push messages. Push messages are delivered to a service worker, which can use the information in the message to update the local state or display a notification to the user. Because service workers run independently of the main app, they can receive and display notifications even when the browser is not running. 
-</em> <a href="https://developers.google.com/web/updates/2015/12/background-sync">Background Sync API</a>: Lets you defer actions until the user has stable connectivity. This is useful to ensure that whatever the user wants to send is actually sent. This API also allows servers to push periodic updates to the app so the app can update when it's next online
-<em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Channel_Messaging_API">Channel Messaging API</a>: Lets web workers and service workers communicate with each other and with the host application. Examples of this API include new content notification and updates that require user interaction.
+* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API">Notifications API</a>: A way to display and interact with notifications using the operating system's native notification system.
+* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Push_API">Push API: </a> An API that enables your app to subscribe to a push service and receive push messages. Push messages are delivered to a service worker, which can use the information in the message to update the local state or display a notification to the user. Because service workers run independently of the main app, they can receive and display notifications even when the browser is not running. 
+* <a href="https://developers.google.com/web/updates/2015/12/background-sync">Background Sync API</a>: Lets you defer actions until the user has stable connectivity. This is useful to ensure that whatever the user wants to send is actually sent. This API also allows servers to push periodic updates to the app so the app can update when it's next online
+* <a href="https://developer.mozilla.org/en-US/docs/Web/API/Channel_Messaging_API">Channel Messaging API</a>: Lets web workers and service workers communicate with each other and with the host application. Examples of this API include new content notification and updates that require user interaction.
 
 <a id="lifecycle" />
 
@@ -92,9 +92,9 @@ Service workers provide the starting point for features that make web applicatio
 
 A service worker goes through three steps in its lifecycle:
 
-</em> Registration
-<em> Installation
-</em> Activation
+* Registration
+* Installation
+* Activation
 
 ### Registration and scope
 
@@ -189,10 +189,10 @@ To examine service workers, navigate to the Service Worker section in your brows
 
 
 
-<em> A more detailed introduction to <a href="https://developers.google.com/web/fundamentals/instant-and-offline/service-worker/lifecycle">The Service Worker Lifecycle</a>
-</em> More on <a href="https://developers.google.com/web/fundamentals/instant-and-offline/service-worker/registration">Service Worker Registration</a>
-<em> <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_scripting_the_service_worker.html">Create your own service worker</a> (lab)
-</em> <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_offline_quickstart.html">Take a blog site offline</a> (lab)
+* A more detailed introduction to <a href="https://developers.google.com/web/fundamentals/instant-and-offline/service-worker/lifecycle">The Service Worker Lifecycle</a>
+* More on <a href="https://developers.google.com/web/fundamentals/instant-and-offline/service-worker/registration">Service Worker Registration</a>
+* <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_scripting_the_service_worker.html">Create your own service worker</a> (lab)
+* <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_offline_quickstart.html">Take a blog site offline</a> (lab)
 * <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_caching_files_with_service_worker.html">Cache files with Service Worker</a> (lab)
 
 

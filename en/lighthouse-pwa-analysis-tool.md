@@ -8,7 +8,7 @@
 
 
 
-<a href="#introduction"><strong>Introduction</strong></a><strong>        </strong>
+<a href="#introduction"><strong>Introduction</strong></a> 
 
 <a href="#extension"><strong>Running Lighthouse as a Chrome extension</strong></a>
 
@@ -28,10 +28,10 @@ How do I tell if all of my Progressive Web App (PWA) features are in order? <a h
 
 Lighthouse tests if your app:
 
-<em> Can load in offline or flaky network conditions
-</em> Is relatively fast
-<em> Is served from a secure origin
-</em> Uses certain accessibility best practices
+* Can load in offline or flaky network conditions
+* Is relatively fast
+* Is served from a secure origin
+* Uses certain accessibility best practices
 
 Lighthouse is available as a Chrome extension for Chrome 52 (and later) and a command line tool. 
 

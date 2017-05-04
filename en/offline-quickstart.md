@@ -8,11 +8,11 @@
 
 
 
-<a href="#why"><strong>Why build offline support?</strong></a><strong>        </strong>
+<a href="#why"><strong>Why build offline support?</strong></a> 
 
 <a href="#how"><strong>How do I take my app offline?</strong></a>
 
-<a href="#reading"><strong>Further reading</strong></a><strong>        </strong>
+<a href="#reading"><strong>Further reading</strong></a> 
 
 Codelab: <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_offline_quickstart.html">Offline Quickstart</a>
 
@@ -32,9 +32,9 @@ Service workers provide many new features to web applications, including program
 
 Some benefits of implementing service workers include:
 
-<em> Offline access
-</em> Improved performance
-<em> Access to advanced (browser independent) features
+* Offline access
+* Improved performance
+* Access to advanced (browser independent) features
 
 ### Offline access
 
@@ -170,10 +170,10 @@ function fetchAndCache(url) {
 
 In the example, a fetch event listener is added to the service worker. When a resource is requested (a fetch event), the service worker intercepts the request and runs this code. The code does the following:
 
-</em> Tries to match the request with the content of the cache and if the resource is in the cache, then returns it.
-<em> If the resource is not in the cache, attempts to get the resource from the network using fetch.
-</em> If the response is invalid, throws an error and logs a message to the console (<code>catch</code>).
-<em> If the response is valid, creates a copy of the response (<code>clone</code>), stores it in the cache, and then returns the original response.
+* Tries to match the request with the content of the cache and if the resource is in the cache, then returns it.
+* If the resource is not in the cache, attempts to get the resource from the network using fetch.
+* If the response is invalid, throws an error and logs a message to the console (<code>catch</code>).
+* If the response is valid, creates a copy of the response (<code>clone</code>), stores it in the cache, and then returns the original response.
 
 Not only does this prioritize getting resources from the cache instead of the network, but it also caches all future requests.
 
@@ -199,9 +199,9 @@ After the first user visit, the app will open even when offline!
 
 
 
-</em> <a href="https://jakearchibald.github.io/isserviceworkerready/">Is ServiceWorker Ready?</a>
-<em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker">ServiceWorker interface</a> (MDN)
-</em> <a href="https://developers.google.com/web/fundamentals/primers/service-worker/">Introduction to service workers</a>
+* <a href="https://jakearchibald.github.io/isserviceworkerready/">Is ServiceWorker Ready?</a>
+* <a href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker">ServiceWorker interface</a> (MDN)
+* <a href="https://developers.google.com/web/fundamentals/primers/service-worker/">Introduction to service workers</a>
 * <a href="https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent">Fetch Event</a> (MDN)
 
 
