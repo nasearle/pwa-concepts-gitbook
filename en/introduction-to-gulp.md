@@ -93,7 +93,9 @@ Before installing gulp plugins, your application needs to be initialized. Do thi
 This command begins the generation of a <strong>package.json</strong> file, prompting you with questions about your application. For simplicity these can all be left blank (either by skipping the prompts with the return key or by using <code>npm init -y</code> instead of the above command), but in production you could store  [application metadata](https://nodesource.com/blog/the-basics-of-package-json-in-node-js-and-npm/) here. The file looks like this (your values may be different):
 
 #### package.json
- <code>`</code> {
+
+```
+{
   "name": "test",
   "version": "1.0.0",
   "description": "",
@@ -103,7 +105,9 @@ This command begins the generation of a <strong>package.json</strong> file, prom
   },
   "author": "",
   "license": "ISC"
-} <code>`</code> 
+}
+```
+
 Don't worry if you don't understand what all of these values represent, they are not critical to learning gulp. 
 
 This file is used to track your project's packages. Tracking packages like this allows for quick reinstallation of all the packages and their dependencies in future builds (the <code>npm install</code> command will read <strong>package.json</strong> and automatically install everything listed).
@@ -129,7 +133,9 @@ The first plugin that you want to install is gulp itself. Do this by running the
 Gulp and its dependencies are then present in the the <strong>node_modules</strong> directory (inside the project directory). The <strong>package.json</strong> file is also updated to the following (your values may vary):
 
 #### package.json
- <code>`</code> {
+
+```
+{
   "name": "test",
   "version": "1.0.0",
   "description": "",
@@ -142,7 +148,9 @@ Gulp and its dependencies are then present in the the <strong>node_modules</stro
   "devDependencies": {
     "gulp": "^3.9.1"
   }
-} <code>`</code> 
+}
+```
+
 Note that there is now a <code>devDependencies</code> field with gulp and its current version listed.
 
 #### Gulpfile
@@ -150,7 +158,11 @@ Note that there is now a <code>devDependencies</code> field with gulp and its cu
 Once packages are installed (in <strong>node_modules</strong>), you are ready to use them. All gulp code is written in a <strong>gulpfile.js</strong> file. To use a package, start by including it in <strong>gulpfile.js</strong>. The following code in your gulpfile includes the gulp package that was installed in the previous section:
 
 #### gulpfile.js
- <code>`</code> var gulp = require('gulp'); <code>`</code> 
+
+```
+var gulp = require('gulp');
+```
+
 <a id="tasks" />
 
 
@@ -162,9 +174,13 @@ Once packages are installed (in <strong>node_modules</strong>), you are ready to
 Gulp tasks are defined in the <strong>gulpfile.js</strong> file using  [`gulp.task`](https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulptaskname--deps--fn). A simple task looks like this: 
 
 #### gulpfile.js
- <code>`</code> gulp.task('hello', function() {
+
+```
+gulp.task('hello', function() {
   console.log('Hello, World!');
-}); <code>`</code> 
+});
+```
+
 This code defines a <code>hello</code> task that can be executed by running the following from the command line:
 
     gulp hello
@@ -186,7 +202,9 @@ A common pattern for gulp tasks is the following:
 A complete gulpfile might look like this:
 
 #### gulpfile.js
- <code>`</code> // Include plugins
+
+```
+// Include plugins
 var gulp = require('gulp'); // Required
 var pluginA = require('pluginA');
 var pluginB = require('pluginB');
@@ -204,7 +222,9 @@ gulp.task('task-BC', function() {
   .pipe(pluginB())
   .pipe(pluginC())
   .pipe(gulp.dest('some-other-destination'));
-}); <code>`</code> 
+});
+```
+
 Where each installed plugin is included with <code>require()</code> and tasks are then defined using functions from the installed plugins. Note that functionality from multiple plugins can exist in a single task.
 
 <a id="examples" />
@@ -314,7 +334,11 @@ Usually, developers want to run multiple tasks each time an application is updat
 Let's add the following code to <strong>gulpfile.js</strong> to set <code>task1</code> and <code>task2</code> as default tasks:
 
 #### gulpfile.js
- <code>`</code> gulp.task('default', ['task1', 'task2']); <code>`</code> 
+
+```
+gulp.task('default', ['task1', 'task2']);
+```
+
 Running <code>gulp</code> in the command line executes both <code>task1</code> and `task2`.
 
 ### Gulp.watch
@@ -322,9 +346,13 @@ Running <code>gulp</code> in the command line executes both <code>task1</code> a
 Even with default tasks, running tasks each time a file is updated during development can become tedious.  [`gulp.watch`](https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpwatchglob--opts-tasks-or-gulpwatchglob--opts-cb) watches files and automatically runs tasks when the corresponding files change. For example, the following code in <strong>gulpfile.js</strong> watches CSS files and executes the <code>processCSS</code> task any time the files are updated:
 
 #### gulpfile.js
- <code>`</code> gulp.task('watch', function() {
+
+```
+gulp.task('watch', function() {
   gulp.watch('styles/**/*.css', ['processCSS']);
-}); <code>`</code> 
+});
+```
+
 Running the following in the command line starts the watch:
 
     gulp watch

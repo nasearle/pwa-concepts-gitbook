@@ -165,12 +165,14 @@ The app shell model is great but how does it work in browsers that do not suppor
 </td>
 </tr>
 <tr><td colspan="1" rowspan="1">
- <code>sw-precache</code> </td><td colspan="1" rowspan="1">
+<p><code>sw-precache</code></p>
+</td><td colspan="1" rowspan="1">
 <p>The <code>sw-precache</code> module integrates with your build process and generates code for caching and maintaining all the resources in your app shell. </p>
 </td>
 </tr>
 <tr><td colspan="1" rowspan="1">
- <code>sw-toolbox</code> </td><td colspan="1" rowspan="1">
+<p><code>sw-toolbox</code></p>
+</td><td colspan="1" rowspan="1">
 <p>The <code>sw-toolbox</code> library is loaded by your service worker at run time and provides pre-written tools for applying common caching strategies to different URL patterns.</p>
 </td>
 </tr>
@@ -503,7 +505,8 @@ Development with the service worker is not necessarily a trivial process. It is,
 The <code>sw-toolbox</code> library and <code>sw-precache</code> module go hand-in-hand and are built on top of the service worker primitives, like the Cache and Fetch APIs. These tools abstract low-level complexities and make it easier for developers to work with service workers. This section provides some simple examples of these tools, but the sw-precache and sw-toolbox  [codelabs](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_sw-precache_and_sw-toolbox.html) and accompanying  [Using sw-precache and sw-toolbox](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-concepts/content/docs/using-sw-precache-and-sw-toolbox.html) textbook provide more details and examples.
 
 #### The <code>sw-toolbox</code> Library
- <code>sw-toolbox</code> is loaded by your service worker at run time and provides pre-written tools for  applying common caching strategies to different URL patterns. Specifically, it provides common caching patterns and an expressive approach to using those strategies for runtime requests. ( [Caching Strategies Supported by `sw-toolbox`](#bestcaching) describes this in more detail.)
+
+`sw-toolbox` is loaded by your service worker at run time and provides pre-written tools for  applying common caching strategies to different URL patterns. Specifically, it provides common caching patterns and an expressive approach to using those strategies for runtime requests. ( [Caching Strategies Supported by `sw-toolbox`](#bestcaching) describes this in more detail.)
 
 ##### Setting Up <code>sw-toolbox</code> for Common Caching Strategies 
 
@@ -516,13 +519,18 @@ You can install <code>sw-toolbox</code> through <code>Bower`, `npm</code> or dir
     git clone https://github.com/GoogleChrome/sw-toolbox.git
 
 To load <code>sw-toolbox`, use `importScripts</code> in your service worker file. For example:
- <code>`</code> importScripts('js/sw-toolbox/sw-toolbox.js'); 
-// Update path to match your setup <code>`</code> 
+
+```
+importScripts('js/sw-toolbox/sw-toolbox.js'); 
+// Update path to match your setup
+```
+
 A full code example is shown later in the  [Using <code>sw-precache</code> to Create the App Shell](#swprecache) section.
 
 More usage information is available in the  [app-shell](https://github.com/GoogleChrome/sw-precache/tree/master/app-shell-demo) demo on Github. 
 
-##### Additional Caching Solutions with <code>sw-toolbox</code> 
+##### Additional Caching Solutions with `sw-toolbox`
+
 Besides applying common caching strategies, the <code>sw-toolbox</code> library is useful for solving a couple of additional problems that arise while fetching your content, making service worker caching even more useful in real world scenarios:  
 
 * <strong>"Lie-fi"</strong> is when the device is connected but the network connection is extremely unreliable or slow and the network request drags on and on before eventually failing. Users end up wasting precious seconds just waiting for the inevitable.
@@ -530,28 +538,37 @@ Besides applying common caching strategies, the <code>sw-toolbox</code> library 
     While your app shell should always be cached first, there might be some cases where you app uses the "network first" caching strategy to request the dynamic content used to populate your shell. You can avoid Lie-fi in those cases by using <code>sw-toolbox</code> to set an explicit network timeout. 
 
     The following example uses the <code>networkFirst</code> caching strategy to set the timeout to three seconds when fetching an image across the network. If, after those three seconds there is no response from the network, then the app automatically falls back to the cached content. 
- <code>`</code> toolbox.router.get(
+
+```
+toolbox.router.get(
     '/path/to/image', 
     toolbox.networkFirst,
     {networkTimeoutSeconds: 3}
-); <code>`</code> 
+);
+```
+
 * <strong>Cache expiration</strong> - As users go from page to page on your site you are probably caching the page-specific content such as the images associated with each page the user visits at run time. This ensures that the full page loads instantly (not just the app shell) on a repeat visit.
 
     But, if you keep adding to dynamic caches indefinitely then your app consumes an ever increasing amount of storage. So <code>sw-toolbox</code> actually manages cache expiration for you, saving you the trouble of implementing it yourself. 
 
     The following example configures <code>sw-toolbox</code> to use a dedicated cache for images with a maximum cache size of 6. Once the cache is full (as it is now) new images cause the least recently used images to be evicted. in addition to the  <em>*least recently used*</em>  expiration option, <code>sw-toolbox</code> also gives you a time-based expiration option where you can automatically expire everything once it reaches a certain age. 
- <code>`</code> toolbox.router.get(
+
+```
+toolbox.router.get(
     '/path/to/images/*', 
     toolbox.cacheFirst) ,
     {cache; {
       Name: 'images' ,
       maxEntries: 6
     }}
-); <code>`</code> 
+);
+```
+
 <a id="precachemodule" />
 
 #### The <code>sw-precache</code> Module
- <code>sw-precache</code> integrates with your build process and automatically generates the service worker code that takes care of caching and maintains all the resources in your app shell. The <code>sw-precache</code> module hooks into your existing node-based build process (e.g. <code>Gulp</code> or `Grunt`) and generates a list of versioned resources, along with the service worker code needed to precache them. Your site can start working offline and load faster even while online by virtue of caching.
+
+`sw-precache` integrates with your build process and automatically generates the service worker code that takes care of caching and maintains all the resources in your app shell. The <code>sw-precache</code> module hooks into your existing node-based build process (e.g. <code>Gulp</code> or `Grunt`) and generates a list of versioned resources, along with the service worker code needed to precache them. Your site can start working offline and load faster even while online by virtue of caching.
 
 Because <code>sw-precache</code> is a build-time code generation tool, it has direct access to all your local resources, and can efficiently calculate the hash of each to keep track of when things change. It uses those changes to trigger the appropriate service worker lifecycle events and re-downloads only modified resources, meaning that updates are small and efficient, without requiring the developer to manage versioning.
 
@@ -563,7 +580,8 @@ A code example is shown in the  [Using <code>sw-precache</code> to Create the Ap
 
 <a id="bestcaching" />
 
-### Caching Strategies Supported by <code>sw-toolbox</code> 
+### Caching Strategies Supported by `sw-toolbox`
+
 The best caching strategy for your dynamic content is not always clear-cut and there are many situations that can affect your strategy.  For example, when using video or large files, or you do not know the amount of storage on your customer devices, then that forces you to evaluate different strategies. 
 
 The gold standard for caching is to use a cache-first strategy for your app shell. If you implement the <code>sw-precache</code> API, then the details of caching are handled automatically for you. 
@@ -593,7 +611,8 @@ Use the following table to determine which caching strategy is most appropriate 
 </td><td colspan="1" rowspan="1">
 <p>When dealing with remote resources that are very unlikely to change, such as static images. </p>
 </td><td colspan="1" rowspan="1">
- <code>toolbox.cacheFirst</code> </td>
+<p><code>toolbox.cacheFirst</code></p>
+</td>
 </tr>
 <tr><td colspan="1" rowspan="1">
 <p>Network first, Cache fallback</p>
@@ -602,7 +621,8 @@ Use the following table to determine which caching strategy is most appropriate 
 </td><td colspan="1" rowspan="1">
 <p>When data must be as fresh as possible, such as a real-time API response, but you still want to display something as a fallback when the network is unavailable.</p>
 </td><td colspan="1" rowspan="1">
- <code>toolbox.networkFirst</code> </td>
+<p><code>toolbox.networkFirst</code></p>
+</td>
 </tr>
 <tr><td colspan="1" rowspan="1">
 <p>Cache/network race</p>
@@ -611,7 +631,8 @@ Use the following table to determine which caching strategy is most appropriate 
 </td><td colspan="1" rowspan="1">
 <p>When content is updated frequently, such as for articles, social media timelines, and game leaderboards. It can also be useful when chasing performance on devices with slow disk access where getting resources from the network might be quicker than pulling data from cache.</p>
 </td><td colspan="1" rowspan="1">
- <code>toolbox.fastest</code> </td>
+<p><code>toolbox.fastest</code></p>
+</td>
 </tr>
 <tr><td colspan="1" rowspan="1">
 <p>Network only</p>
@@ -620,7 +641,8 @@ Use the following table to determine which caching strategy is most appropriate 
 </td><td colspan="1" rowspan="1">
 <p>When only fresh data can be displayed on your site. </p>
 </td><td colspan="1" rowspan="1">
- <code>toolbox.networkOnly</code> </td>
+<p><code>toolbox.networkOnly</code></p>
+</td>
 </tr>
 <tr><td colspan="1" rowspan="1">
 <p>Cache only</p>
@@ -629,16 +651,21 @@ Use the following table to determine which caching strategy is most appropriate 
 </td><td colspan="1" rowspan="1">
 <p>When displaying static data on your site.</p>
 </td><td colspan="1" rowspan="1">
- <code>toolbox.cacheOnly</code> </td>
+<p><code>toolbox.cacheOnly</code></p>
+</td>
 </tr></table>
 
 
 While you can implement these strategies yourself manually, using <code>sw-toolbox</code> is recommended for caching your app's dynamic content. The last column in the table shows the <code>sw-toolbox</code> library that provides a canonical implementation of each strategy. If you do implement additional caching logic, put the code in a separate JavaScript file and include it using the <code>importScripts()</code> method.
 
 Note that you do not have to choose just one strategy. The <code>sw-toolbox</code> routing syntax allows you to apply different strategies to different URL patterns. For example:
- <code>`</code> toolbox.router.get('/images', toolbox.cacheFirst);
+
+```
+toolbox.router.get('/images', toolbox.cacheFirst);
 toolbox.router.get('/api', toolbox.networkFirst);
-toolbox.router.get('/profile', toolbox.fastest); <code>`</code> 
+toolbox.router.get('/profile', toolbox.fastest);
+```
+
 For more information about caching strategies, see the  [Offline Cookbook](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/).
 
 <div class="note">
@@ -848,7 +875,9 @@ It is a simple JSON file that provides developers with:
 * A way to declare a default orientation for their web application,and provide the ability to set the display mode for the application (e.g., in full screen). 
 
 The following manifest file is for the simple app shell at  [appspot.com](https://app-shell.appspot.com/).
- <code>`</code> {
+
+```
+{
   "short_name": "App shell",
   "name": "App shell",
   "start_url": "/index.html",
@@ -877,12 +906,18 @@ The following manifest file is for the simple app shell at  [appspot.com](https:
   "orientation": "portrait",
   "background_color": "#3E4EB8",
   "theme_color": "#2E3AA1"
-} <code>`</code> 
+}
+```
+
 To include the manifest file in your app, include a link tag in your index.html to tell the browser where to find your manifest file:
- <code>`</code> <!-- Add to your index.html -->
+
+```
+<!-- Add to your index.html -->
 
 <!-- Web Application Manifest -->
-<link rel="manifest" href="manifest.json"> <code>`</code> 
+<link rel="manifest" href="manifest.json">
+```
+
 <strong>Tip:</strong>
 
 * To read the W3C draft specification, see the  [W3C Web App Manifest](https://w3c.github.io/manifest/).
@@ -906,7 +941,9 @@ You can manually hand code an app shell or use the <code>sw-precache</code> serv
 </div>
 
 #### Caching the App Shell Manually
- <code>`</code> var cacheName = 'shell-content';
+
+```
+var cacheName = 'shell-content';
 var filesToCache = [
   '/css/bootstrap.css',
   '/css/main.css',
@@ -924,7 +961,9 @@ self.addEventListener('install', function(e) {
       return cache.addAll(filesToCache);
     })
   );
-}); <code>`</code> 
+});
+```
+
 <a id="swprecache" />
 
 #### Using <code>sw-precache</code> to Cache the App Shell
@@ -938,7 +977,9 @@ The  [`sw-precache Module`](#precachemodule) section in this document describes 
 To test the result of using <code>sw-precache</code> without changing your build system for every version of the experiment, you can run the <code>sw-precache</code> API at from the command line. 
 
 First, create a <code>sw-precache-config.json</code> file with our <code>sw-precache</code> configuration.  In this example <code>staticFileGlobs</code> indicates the path to each file that we want to precache and <code>stripPrefix</code> tells <code>sw-precache</code> what part of each file path to remove. 
- <code>`</code> {
+
+```
+{
   "staticFileGlobs": [
     "app/index.html",
     "app/js/main.js",
@@ -946,13 +987,19 @@ First, create a <code>sw-precache-config.json</code> file with our <code>sw-prec
     "app/img/**/*.{svg,png,jpg,gif}"
   ],
   "stripPrefix": "app/"
-} <code>`</code> 
+}
+```
+
 Once the <code>sw-precache</code> configuration is ready then run it with the following command:
- <code>$ sw-precache --config=path/to/sw-precache-config.json --verbose</code> 
+
+`$ sw-precache --config=path/to/sw-precache-config.json --verbose`
+
 ##### Using <code>sw-precache</code> From Gulp
 
 The following code example uses the <code>gulp</code> command to build a project. It first creates a <code>gulp</code> task that uses the <code>sw-precache</code> module to generate a <code>service-worker.js</code> file. The following code is added to the <code>gulp</code> file:
- <code>`</code> /*jshint node:true*/
+
+```
+/*jshint node:true*/
 (function() {
   'use strict';
 
@@ -983,16 +1030,22 @@ The following code example uses the <code>gulp</code> command to build a project
       stripPrefix: paths.src
     }, callback);
   });
-})(); <code>`</code> 
+})();
+```
+
 #### What Happens Next?
 
 When you run <code>gulp</code> you should see output similar to the following:
- <code>`</code> $ gulp generate-service-worker
+
+```
+$ gulp generate-service-worker
 [11:56:22] Using gulpfile ~/gulpfile.js
 [11:56:22] Starting 'generate-service-worker'...
 Total precache size is about 75.87 kB for 11 resources.
 [11:56:22] Finished 'generate-service-worker' after 49 ms
-$ <code>`</code> 
+$
+```
+
 This process generates a new <code>service-worker.js</code> file in the app directory of your project. All resources that are precached are fetched by a service worker running in a separate thread as soon as the service worker is installed. 
 
 Remember to rerun the API each time any of your app shell resources change to pick up the latest versions.

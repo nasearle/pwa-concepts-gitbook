@@ -120,7 +120,9 @@ Once you have created an account, you need to add the tracking snippet to your a
 Your tracking ID looks like <code>UA-XXXXXXXX-Y</code> and your tracking code snippet looks like:
 
 #### index.html
- <code>`</code> <script>
+
+```
+<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]) \
 .push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0]; \
 a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script', \
@@ -129,7 +131,9 @@ a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script', \
   ga('create', 'UA-XXXXXXXX-Y', 'auto');
   ga('send', 'pageview');
 
-</script> <code>`</code> 
+</script>
+```
+
 Your tracking ID is embedded into your tracking snippet. This snippet needs to be embedded into every page that you want to track. 
 
 When a page with the snippet loads, the tracking snippet script is executed. The IIFE ( [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately-invoked_function_expression)) in the script does two things:
@@ -230,12 +234,16 @@ Google Analytics supports custom events that allow for fine-grain analysis of us
 For example, the following code will send a custom event:
 
 #### main.js
- <code>`</code> ga('send', {
+
+```
+ga('send', {
   hitType: 'event',
   eventCategory: 'products',
   eventAction: 'purchase',
   eventLabel: 'Summer products launch'
-}); <code>`</code> 
+});
+```
+
 Here the hit type is set to 'event' and values associated with the event are added as parameters. These values represent the `eventCategory`, `eventAction`, and `eventLabel`. All of these are arbitrary, and used to organize events. Sending these custom events allow us to deeply understand user interactions with our site.
 
 <div class="note">
@@ -271,7 +279,9 @@ This interface allows us to make HTTP requests to send hits, regardless of the e
 A helper script, <strong>analytics-helper.js</strong> has the following code:
 
 #### analytics-helper.js
- <code>`</code> // Set this to your tracking ID
+
+```
+// Set this to your tracking ID
 var trackingId = 'UA-XXXXXXXX-Y';
 
 function sendAnalyticsEvent(eventAction, eventCategory) {
@@ -349,13 +359,17 @@ function sendAnalyticsEvent(eventAction, eventCategory) {
   .catch(function(err) {
     console.warn('Unable to send the analytics event', err);
   });
-} <code>`</code> 
+}
+```
+
 The script starts by creating a variable with your tracking ID (replace <code>UA-XXXXXXXX-Y</code> with your actual tracking ID). This ensures that hits are sent to your account and property, just like in the analytics snippet. 
 
 The <code>sendAnalyticsEvent</code> helper function starts by checking that the tracking ID is set and that the function is being called with the correct parameters. After checking that the client is subscribed to push, the hit data is created in the <code>payloadData</code> variable:
 
 #### analytics-helper.js
- <code>`</code> var payloadData = {
+
+```
+var payloadData = {
   // Version Number
   v: 1,
   // Client ID
@@ -370,41 +384,59 @@ The <code>sendAnalyticsEvent</code> helper function starts by checking that the 
   ea: eventAction,
   // Event Label
   el: 'serviceworker'
-}; <code>`</code> 
+};
+```
+
 Again, the <strong>version number</strong>, <strong>client ID</strong>, <strong>tracking ID</strong>, and <strong>hit type</strong> parameters are  [required by the API](https://developers.google.com/analytics/devguides/collection/protocol/v1/devguide). The <code>eventCategory`, `eventAction`, and `eventLabel</code> are the same parameters that we have been using with the command queue interface.
 
 Next, the hit data is  [formatted into a URI](https://developers.google.com/analytics/devguides/collection/protocol/v1/reference) with the following code:
 
 #### analytics-helper.js
- <code>`</code> var payloadString = Object.keys(payloadData)
+
+```
+var payloadString = Object.keys(payloadData)
 .filter(function(analyticsKey) {
   return payloadData[analyticsKey];
 })
 .map(function(analyticsKey) {
   return analyticsKey + '=' + encodeURIComponent(payloadData[analyticsKey]);
 })
-.join('&'); <code>`</code> 
+.join('&');
+```
+
 Finally the data is sent to the  [API endpoint](https://developers.google.com/analytics/devguides/collection/protocol/v1/reference) (<strong>https://www.google-analytics.com/collect</strong>) with the following code:
 
 #### analytics-helper.js
- <code>`</code> return fetch('https://www.google-analytics.com/collect', {
+
+```
+return fetch('https://www.google-analytics.com/collect', {
   method: 'post',
   body: payloadString
-}); <code>`</code> 
+});
+```
+
 This sends the hit with the  [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) using a POST request. The body of the request is the hit data.
 
 Now we can import the helper script functionality into a service worker by adding the following code to the service worker file:
 
 #### sw.js
- <code>`</code> self.importScripts('path/to/analytics-helper.js'); <code>`</code> 
+
+```
+self.importScripts('path/to/analytics-helper.js');
+```
+
 Where <code>path/to/analytics-helper.js</code> is the path to the <strong>analytics-helper.js</strong> file. Now we should be able to send custom events from the service worker by making calls to the <code>sendAnalyticsEvent</code> function. For example, to send a custom "notification close" event, we could add code like this to the service worker file:
 
 #### sw.js
- <code>`</code> self.addEventListener('notificationclose', function(event) {
+
+```
+self.addEventListener('notificationclose', function(event) {
   event.waitUntil(
     sendAnalyticsEvent('close', 'notification')
   );
-}); <code>`</code> 
+});
+```
+
 Observe that we have used <code>event.waitUntil</code> to wrap an asynchronous operation. If unfamiliar, <code>event.waitUntil</code> extends the life of an event until the asynchronous actions inside of it have completed. This ensures that the service worker will not be terminated pre-emptively while waiting for an asynchronous action to complete.
 
 <div class="note">
@@ -428,18 +460,30 @@ Observe that we have used <code>event.waitUntil</code> to wrap an asynchronous o
 With the help of service workers, analytics data can be stored when users are offline and sent at a later time when they have reconnected based on an  [npm package](https://www.npmjs.com/package/sw-offline-google-analytics).
 
 Install the package with the following command-line command:
- <code>`</code> npm install sw-offline-google-analytics <code>`</code> 
+
+```
+npm install sw-offline-google-analytics
+```
+
 This imports the  [node](https://nodejs.org/en/) module.
 
 In your service worker file, add the following code:
 
 #### sw.js
- <code>`</code> importScripts('path/to/offline-google-analytics-import.js');
-goog.offlineGoogleAnalytics.initialize(); <code>`</code> 
+
+```
+importScripts('path/to/offline-google-analytics-import.js');
+goog.offlineGoogleAnalytics.initialize();
+```
+
 Where <code>path/to/offline-google-analytics-import.js</code> is the path to the <strong>offline-google-analytics-import.js</strong> file in the node module. This will likely look something like:
 
 #### sw.js
- <code>`</code> node_modules/sw-offline-google-analytics/offline-google-analytics-import.js <code>`</code> 
+
+```
+node_modules/sw-offline-google-analytics/offline-google-analytics-import.js
+```
+
 We import and initialize the <strong>offline-google-analytics-import.js</strong> library. This library adds a fetch event handler to the service worker that only listens for requests made to the Google Analytics domain. The handler attempts to send Google Analytics data first by network requests. If the network request fails, the request is stored in  [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API). The requests are then sent later when connectivity is re-established.
 
 You can test this by  [simulating offline behavior](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/tools_for_pwa_developers.html#offline), and then firing hit events. You will see an error in the console since you are offline and can't make requests to Google Analytics servers. Then  [check IndexedDB](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/tools_for_pwa_developers.html#indexeddb). Open <strong>offline-google-analytics</strong>. You should see URLs cached in <strong>urls</strong> (you may need to click the refresh icon inside the indexedDB interface). These are the stored hits.

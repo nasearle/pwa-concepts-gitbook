@@ -101,7 +101,9 @@ A service worker goes through three steps in its lifecycle:
 To <strong>install</strong> a service worker, you need to <strong>register</strong> it in your main JavaScript code. Registration tells the browser where your service worker is located, and to start installing it in the background. Let's look at an example:
 
 #### main.js
- <code>`</code> if ('serviceWorker' in navigator) {
+
+```
+if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/service-worker.js')
   .then(function(registration) {
     console.log('Registration successful, scope is:', registration.scope);
@@ -109,7 +111,9 @@ To <strong>install</strong> a service worker, you need to <strong>register</stro
   .catch(function(error) {
     console.log('Service worker registration failed, error:', error);
   });
-} <code>`</code> 
+}
+```
+
 This code starts by checking for browser support by examining <code>navigator.serviceWorker`. The service worker is then registered with `navigator.serviceWorker.register`, which returns a promise that resolves when the service worker has been successfully registered. The `scope</code> of the service worker is then logged with `registration.scope`. 
 
 The <code>scope</code> of the service worker determines which files the service worker controls, in other words, from which path the service worker will intercept requests. The default scope is the location of the service worker file, and extends to all directories below. So if <strong>service-worker.js</strong> is located in the root directory, the service worker will control requests from all files at this domain.
@@ -117,9 +121,13 @@ The <code>scope</code> of the service worker determines which files the service 
 You can also set an arbitrary scope by passing in an additional parameter when registering. For example:
 
 #### main.js
- <code>`</code> navigator.serviceWorker.register('/service-worker.js', {
+
+```
+navigator.serviceWorker.register('/service-worker.js', {
   scope: '/app/'
-}); <code>`</code> 
+});
+```
+
 In this case we are setting the scope of the service worker to <code>/app/`, which means the service worker will control requests from pages like `/app/`, `/app/lower/</code> and <code>/app/lower/lower`, but not from pages like `/app</code> or `/`, which are higher. 
 
 If the service worker is already installed, <code>navigator.serviceWorker.register</code> returns the registration object of the currently active service worker.
@@ -131,10 +139,14 @@ Once the the browser registers a service worker, <strong>installation</strong> c
 A service worker installation triggers an <code>install</code> event in the installing service worker. We can include an <code>install</code> event listener in the service worker to perform some task when the service worker installs. For instance, during the install, service workers can precache parts of a web app so that it loads instantly the next time a user opens it (see  [caching the application shell](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/#on-install-as-dependency)). So, after that first load, you're going to benefit from instant repeat loads and your time to interactivity is going to be even better in those cases. An example of an installation event listener looks like this: 
 
 #### service-worker.js
- <code>`</code> // Listen for install event, set callback
+
+```
+// Listen for install event, set callback
 self.addEventListener('install', function(event) {
     // Perform some task
-}); <code>`</code> 
+});
+```
+
 <a id="activation" />
 
 ### Activation
@@ -148,9 +160,13 @@ Once a service worker has successfully installed, it transitions into the <stron
 When the new service worker activates, an <code>activate</code> event is triggered in the activating service worker. This event listener is a good place to clean up outdated caches (see the  [Offline Cookbook](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/#on-activate) for an example).
 
 #### service-worker.js
- <code>`</code> self.addEventListener('activate', function(event) {
+
+```
+self.addEventListener('activate', function(event) {
   // Perform some task
-}); <code>`</code> 
+});
+```
+
 Once activated, the service worker controls all pages that load within its scope, and starts listening for events from those pages. However, pages in your app that were loaded before the service worker activation will not be under service worker control. The new service worker will only take over when you close and reopen your app, or if the service worker calls  [`clients.claim()`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/claim). Until then, requests from this page will not be intercepted by the new service worker. This is intentional as a way to ensure consistency in your site.
 
 <a id="events" />
