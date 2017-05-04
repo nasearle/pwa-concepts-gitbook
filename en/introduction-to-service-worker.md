@@ -8,15 +8,15 @@
 
 
 
-[<strong>What is a service worker?</strong> ](#whatisserviceworker)<strong>        </strong> 
+[<strong>What is a service worker?</strong>](#whatisserviceworker)<strong>        </strong>
 
-[<strong>What can service workers do?</strong> ](#whatcantheydo)<strong>        </strong> 
+[<strong>What can service workers do?</strong>](#whatcantheydo)<strong>        </strong>
 
-[<strong>Service worker lifecycle</strong> ](#lifecycle)<strong>        </strong> 
+[<strong>Service worker lifecycle</strong>](#lifecycle)<strong>        </strong>
 
-[<strong>Service worker events</strong> ](#events)
+[<strong>Service worker events</strong>](#events)
 
-[<strong>Further reading</strong> ](#resources)
+[<strong>Further reading</strong>](#resources)
 
 Codelab:  [Scripting the Service Worker](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_scripting_the_service_worker.html)
 
@@ -37,7 +37,7 @@ Because workers run separately from the main thread, service workers are indepen
 
  <div class="note">
 
-<strong>Note:</strong>  Whether notifications are received when the browser itself is not running depends on how the browser is integrated with the OS. For instance on desktop OS's, Chrome and Firefox only receive notifications when the browser is running. However, Android is designed to wake up any browser when a push message is received and will always receive push messages regardless of browser state. See the  [FAQ](https://web-push-book.gauntface.com/chapter-07/01-faq/#why-doesnt-push-work-when-the-browser-is-closed) in Matt Gaunt's  [Web Push Book](https://web-push-book.gauntface.com/) for more information.
+<strong>Note:</strong> Whether notifications are received when the browser itself is not running depends on how the browser is integrated with the OS. For instance on desktop OS's, Chrome and Firefox only receive notifications when the browser is running. However, Android is designed to wake up any browser when a push message is received and will always receive push messages regardless of browser state. See the  [FAQ](https://web-push-book.gauntface.com/chapter-07/01-faq/#why-doesnt-push-work-when-the-browser-is-closed) in Matt Gaunt's  [Web Push Book](https://web-push-book.gauntface.com/) for more information.
 
 </div>
 
@@ -50,7 +50,7 @@ Things to note about a service worker:
 
 <div class="note">
 
-<strong>Note: </strong> Services like <a href="https://letsencrypt.org/">Letsencrypt</a> let you procure SSL certificates for free to install on your server. 
+<strong>Note: </strong>Services like <a href="https://letsencrypt.org/">Letsencrypt</a> let you procure SSL certificates for free to install on your server. 
 
 </div>
 
@@ -102,7 +102,7 @@ A service worker goes through three steps in its lifecycle:
 
 ### Registration and scope
 
-To <strong>install</strong>  a service worker, you need to <strong>register</strong>  it in your main JavaScript code. Registration tells the browser where your service worker is located, and to start installing it in the background. Let's look at an example:
+To <strong>install</strong> a service worker, you need to <strong>register</strong> it in your main JavaScript code. Registration tells the browser where your service worker is located, and to start installing it in the background. Let's look at an example:
 
 #### main.js
 
@@ -120,7 +120,7 @@ if ('serviceWorker' in navigator) {
 
 This code starts by checking for browser support by examining `navigator.serviceWorker`. The service worker is then registered with `navigator.serviceWorker.register`, which returns a promise that resolves when the service worker has been successfully registered. The `scope` of the service worker is then logged with `registration.scope`. 
 
-The `scope` of the service worker determines which files the service worker controls, in other words, from which path the service worker will intercept requests. The default scope is the location of the service worker file, and extends to all directories below. So if <strong>service-worker.js</strong>  is located in the root directory, the service worker will control requests from all files at this domain.
+The `scope` of the service worker determines which files the service worker controls, in other words, from which path the service worker will intercept requests. The default scope is the location of the service worker file, and extends to all directories below. So if <strong>service-worker.js</strong> is located in the root directory, the service worker will control requests from all files at this domain.
 
 You can also set an arbitrary scope by passing in an additional parameter when registering. For example:
 
@@ -138,7 +138,7 @@ If the service worker is already installed, `navigator.serviceWorker.register` r
 
 ### Installation
 
-Once the the browser registers a service worker, <strong>installation</strong>  can be attempted. This occurs if the service worker is considered to be new by the browser, either because the site currently doesn't have a registered service worker, or because there is a byte difference between the new service worker and the previously installed one. 
+Once the the browser registers a service worker, <strong>installation</strong> can be attempted. This occurs if the service worker is considered to be new by the browser, either because the site currently doesn't have a registered service worker, or because there is a byte difference between the new service worker and the previously installed one. 
 
 A service worker installation triggers an `install` event in the installing service worker. We can include an `install` event listener in the service worker to perform some task when the service worker installs. For instance, during the install, service workers can precache parts of a web app so that it loads instantly the next time a user opens it (see  [caching the application shell](/web/fundamentals/instant-and-offline/offline-cookbook/#on-install-as-dependency)). So, after that first load, you're going to benefit from instant repeat loads and your time to interactivity is going to be even better in those cases. An example of an installation event listener looks like this: 
 
@@ -155,11 +155,11 @@ self.addEventListener('install', function(event) {
 
 ### Activation
 
-Once a service worker has successfully installed, it transitions into the <strong>activation</strong>  stage. If there are any open pages controlled by the previous service worker, the new service worker enters a `waiting` state. The new service worker only activates when there are no longer any pages loaded that are still using the old service worker. This ensures that only one version of the service worker is running at any given time. 
+Once a service worker has successfully installed, it transitions into the <strong>activation</strong> stage. If there are any open pages controlled by the previous service worker, the new service worker enters a `waiting` state. The new service worker only activates when there are no longer any pages loaded that are still using the old service worker. This ensures that only one version of the service worker is running at any given time. 
 
 <div class="note">
 
-<strong>Note: </strong> Simply refreshing the page is not sufficient to transfer control to a new service worker, because the new page will be requested before the the current page is unloaded, and there won't be a time when the old service worker is not in use.
+<strong>Note: </strong>Simply refreshing the page is not sufficient to transfer control to a new service worker, because the new page will be requested before the the current page is unloaded, and there won't be a time when the old service worker is not in use.
 
 </div>
 

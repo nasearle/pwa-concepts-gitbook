@@ -8,17 +8,17 @@
 
 
 
-[<strong>What is fetch?</strong> ](#whatisfetch)<strong>        </strong> 
+[<strong>What is fetch?</strong>](#whatisfetch)<strong>        </strong>
 
-[<strong>Making a request</strong> ](#makerequest)<strong>        </strong> 
+[<strong>Making a request</strong>](#makerequest)<strong>        </strong>
 
-[<strong>Reading the response object</strong> ](#readresponse)<strong>        </strong> 
+[<strong>Reading the response object</strong>](#readresponse)<strong>        </strong>
 
-[<strong>Making custom requests</strong> ](#makecustomrequest)
+[<strong>Making custom requests</strong>](#makecustomrequest)
 
-[<strong>Cross-origin requests</strong> ](#cors)<strong>        </strong> 
+[<strong>Cross-origin requests</strong>](#cors)<strong>        </strong>
 
-[<strong>Further reading</strong> ](#furtherreading)
+[<strong>Further reading</strong>](#furtherreading)
 
 Codelab:  [Fetch API](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_fetch_api.html)
 
@@ -34,7 +34,7 @@ The  [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) is 
 
 <div class="note">
 
-<strong>Note: </strong> Fetch supports the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">Cross Origin Resource Sharing (CORS)</a>. Testing generally requires running a local server. Note that although fetch does not require HTTPS, service workers do and so using fetch in a service worker requires HTTPS. Local servers are exempt from this.
+<strong>Note: </strong>Fetch supports the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">Cross Origin Resource Sharing (CORS)</a>. Testing generally requires running a local server. Note that although fetch does not require HTTPS, service workers do and so using fetch in a service worker requires HTTPS. Local servers are exempt from this.
 
 </div>
 
@@ -76,7 +76,7 @@ fetch('examples/example.json')
 });
 ```
 
-We pass the path for the resource we want to retrieve as a parameter to fetch. In this case this is <strong>examples/example.json</strong> . The fetch call returns a promise that resolves to a response object. 
+We pass the path for the resource we want to retrieve as a parameter to fetch. In this case this is <strong>examples/example.json</strong>. The fetch call returns a promise that resolves to a response object. 
 
 When the promise resolves, the response is passed to `.then`. This is where the response could be used. If the request does not complete, `.catch` takes over and is passed the corresponding error.
 
@@ -170,19 +170,19 @@ fetchJSON('examples/example.json');
 
  To summarize what's happening:
 
-Step 1. Fetch is called on a resource, <strong>examples/example.json</strong> . Fetch returns a promise that will resolve to a response object. When the promise resolves, the response object is passed to `validateResponse`.
+Step 1. Fetch is called on a resource, <strong>examples/example.json</strong>. Fetch returns a promise that will resolve to a response object. When the promise resolves, the response object is passed to `validateResponse`.
 
 Step 2. `validateResponse` checks if the response is valid (is it a 200-299?). If it isn't, an error is thrown, skipping the rest of the `then` blocks and triggering the `catch` block. This is particularly important. Without this check bad responses are passed down the chain and could break later code that may rely on receiving a valid response. If the response is valid, it is passed to `readResponseAsJSON`.
 
 <div class="note">
 
-<strong>Note:</strong>  You can also handle any network status code using the `status` property of the `response` object. This lets you respond with custom pages for different errors or handle other responses that are not `ok` (i.e., not 200-299), but still usable (e.g., status codes in the 300 range). See  [Caching files with the service worker](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-concepts/content/docs/caching-files-with-service-worker.html#generic-fallback) for an example of a custom response to a 404.
+<strong>Note:</strong> You can also handle any network status code using the `status` property of the `response` object. This lets you respond with custom pages for different errors or handle other responses that are not `ok` (i.e., not 200-299), but still usable (e.g., status codes in the 300 range). See  [Caching files with the service worker](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-concepts/content/docs/caching-files-with-service-worker.html#generic-fallback) for an example of a custom response to a 404.
 
 </div>
 
 Step 3. `readResponseAsJSON` reads the body of the response using the  [Response.json()](https://developer.mozilla.org/en-US/docs/Web/API/Body/json) method. This method returns a promise that resolves to JSON. Once this promise resolves, the JSON data is passed to `logResult`. (Can you think of what would happen if the promise from `response.json()` rejects?)
 
-Step 4. Finally, the JSON data from the original request to <strong>examples/example.json</strong>  is logged by `logResult`. 
+Step 4. Finally, the JSON data from the original request to <strong>examples/example.json</strong> is logged by `logResult`. 
 
 #### For more information
 
@@ -221,11 +221,11 @@ function fetchImage(pathToResource) {
 fetchImage('examples/kitten.jpg');
 ```
 
-In this example an image (<strong>examples/kitten.jpg)</strong>  is fetched. As in the previous example, the response is validated with `validateResponse`. The response is then read as a  [Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob) (instead of as JSON), and an image element is created and appended to the page, and the image's `src` attribute is set to a data URL representing the Blob.
+In this example an image (<strong>examples/kitten.jpg)</strong> is fetched. As in the previous example, the response is validated with `validateResponse`. The response is then read as a  [Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob) (instead of as JSON), and an image element is created and appended to the page, and the image's `src` attribute is set to a data URL representing the Blob.
 
 <div class="note">
 
-<strong>Note:</strong>  The <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL">URL object's</a> <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL">createObjectURL() method</a> is used to generate a data URL representing the Blob. This is important to note as you cannot set an image's source directly to a Blob. The Blob must first be converted into a data URL.
+<strong>Note:</strong> The <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL">URL object's</a> <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL">createObjectURL() method</a> is used to generate a data URL representing the Blob. This is important to note as you cannot set an image's source directly to a Blob. The Blob must first be converted into a data URL.
 
 </div>
 
@@ -263,11 +263,11 @@ function fetchText(pathToResource) {
 fetchText('examples/words.txt');
 ```
 
-In this example a text file is being fetched, <strong>examples/words.txt</strong> . Like the previous two exercises, the response is validated with `validateResponse`. Then the response is read as text, and appended to the page.
+In this example a text file is being fetched, <strong>examples/words.txt</strong>. Like the previous two exercises, the response is validated with `validateResponse`. Then the response is read as text, and appended to the page.
 
 <div class="note">
 
-<strong>Note:</strong>  It may be tempting to fetch HTML and append that using the <code>innerHTML</code> attribute, but be careful -- this can expose your site to <a href="https://www.google.com/about/appsecurity/learning/xss/">cross site scripting attacks</a>!
+<strong>Note:</strong> It may be tempting to fetch HTML and append that using the <code>innerHTML</code> attribute, but be careful -- this can expose your site to <a href="https://www.google.com/about/appsecurity/learning/xss/">cross site scripting attacks</a>!
 
 </div>
 
@@ -277,7 +277,7 @@ In this example a text file is being fetched, <strong>examples/words.txt</strong
 
 <div class="note">
 
-<strong>Note:</strong>  For completeness, the methods we have used are actually methods of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body">Body</a>, a Fetch API <a href="https://developer.mozilla.org/en-US/docs/Glossary/mixin">mixin</a> that is implemented in the Response object.  
+<strong>Note:</strong> For completeness, the methods we have used are actually methods of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body">Body</a>, a Fetch API <a href="https://developer.mozilla.org/en-US/docs/Glossary/mixin">mixin</a> that is implemented in the Response object.  
 
 </div>
 
@@ -309,7 +309,7 @@ fetch('examples/words.txt', {
 })
 ```
 
-This will make a HEAD request for <strong>examples/words.txt</strong> . 
+This will make a HEAD request for <strong>examples/words.txt</strong>. 
 
 You could use a HEAD request to check the size of a resource. For example:
 
@@ -334,11 +334,11 @@ function headRequest(pathToResource) {
 headRequest('examples/words.txt');
 ```
 
-Here the HEAD method is used to request the size (in bytes) of a resource (represented in the <strong>content-length</strong>  header) without actually loading the resource itself. In practice this could be used to determine if the full resource should be requested (or even how to request it).
+Here the HEAD method is used to request the size (in bytes) of a resource (represented in the <strong>content-length</strong> header) without actually loading the resource itself. In practice this could be used to determine if the full resource should be requested (or even how to request it).
 
 ### Example: POST requests
 
-Fetch can also send data to an API with POST requests. The following code sends a "title" and "message" (as a string) to <strong>someurl/comment</strong> :
+Fetch can also send data to an API with POST requests. The following code sends a "title" and "message" (as a string) to <strong>someurl/comment</strong>:
 
 #### main.js
 
@@ -351,7 +351,7 @@ fetch('someurl/comment', {
 
 <div class="note">
 
-<strong>Note: </strong> In production, remember to always encrypt any sensitive user data.
+<strong>Note: </strong>In production, remember to always encrypt any sensitive user data.
 
 </div>
 
@@ -390,7 +390,7 @@ Here we are creating a Headers object where the `Content-Type` header has the va
 
 <div class="note">
 
-<strong>Note: </strong> Only some headers, like <code>Content-Type</code> can be modified. Others, like <code>Content-Length</code> and <code>Origin</code> are <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#Guard">guarded</a>, and cannot be modified (for security reasons).
+<strong>Note: </strong>Only some headers, like <code>Content-Type</code> can be modified. Others, like <code>Content-Length</code> and <code>Origin</code> are <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#Guard">guarded</a>, and cannot be modified (for security reasons).
 
 </div>
 
@@ -409,7 +409,7 @@ Custom headers on [cross-origin](#cors) requests must be supported by the server
 
 
 
-Fetch (and XMLHttpRequest) follow the  [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy). This means that browsers restrict  [cross-origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) HTTP requests from within scripts.  A cross-origin request occurs when one domain (for example <strong>http://<span></span>foo.com/</strong> ) requests a resource from a separate domain (for example <strong>http://<span></span>bar.com/</strong> ). This code shows a simple example of a cross-origin request:
+Fetch (and XMLHttpRequest) follow the  [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy). This means that browsers restrict  [cross-origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) HTTP requests from within scripts.  A cross-origin request occurs when one domain (for example <strong>http://<span></span>foo.com/</strong>) requests a resource from a separate domain (for example <strong>http://<span></span>bar.com/</strong>). This code shows a simple example of a cross-origin request:
 
 #### main.js
 
@@ -423,7 +423,7 @@ fetch('http://bar.com/data.json')
 
 <div class="note">
 
-<strong>Note:</strong>  Cross-origin request restrictions are often a point of confusion. Many resources like images, stylesheets, and scripts are fetched cross-origin. However, these are exceptions to the same-origin policy. Cross-origin requests are still restricted <em>from within scripts</em>.
+<strong>Note:</strong> Cross-origin request restrictions are often a point of confusion. Many resources like images, stylesheets, and scripts are fetched cross-origin. However, these are exceptions to the same-origin policy. Cross-origin requests are still restricted <em>from within scripts</em>.
 
 </div>
 

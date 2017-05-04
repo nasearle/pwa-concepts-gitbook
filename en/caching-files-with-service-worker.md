@@ -8,11 +8,11 @@
 
 
 
-[<strong>Using the Cache API in the service worker</strong> ](#cacheinsw)        
+[<strong>Using the Cache API in the service worker</strong>](#cacheinsw)        
 
-[<strong>Using the Cache API</strong> ](#cacheapi)        
+[<strong>Using the Cache API</strong>](#cacheapi)        
 
-[<strong>Further reading</strong> ](#moreresources)<strong>        </strong> 
+[<strong>Further reading</strong>](#moreresources)<strong>        </strong>
 
 Codelab:  [Caching Files with Service Worker](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_caching_files_with_service_worker.html)
 
@@ -60,7 +60,7 @@ This event listener triggers when the service worker is first installed.
 
 <div class="note">
 
-<strong>Note: </strong> It is important to note that while this event is happening, any previous version of your service worker is still running and serving pages, so the things you do here must not disrupt that. For instance, this is not a good place to delete old caches, because the previous service worker may still be using them at this point.
+<strong>Note: </strong>It is important to note that while this event is happening, any previous version of your service worker is still running and serving pages, so the things you do here must not disrupt that. For instance, this is not a good place to delete old caches, because the previous service worker may still be using them at this point.
 
 </div>
 
@@ -94,7 +94,7 @@ In the above example, when the user clicks an element with the `cache-article` c
 
 <div class="note">
 
-<strong>Note:</strong>  The Cache API is available on the window object, meaning you don't need to involve the service worker to add things to the cache.
+<strong>Note:</strong> The Cache API is available on the window object, meaning you don't need to involve the service worker to add things to the cache.
 
 </div>
 
@@ -121,7 +121,7 @@ This approach works best for resources that frequently update, such as a user's 
 
 <div class="note">
 
-<strong>Note:</strong>  To allow for efficient memory usage, you can only read a response/request's body once. In the code above, <code>.clone()</code> is used to create a copy of the response that can be read separately. See  [What happens when you read a response?](https://jakearchibald.com/2014/reading-responses/) for more information.
+<strong>Note:</strong> To allow for efficient memory usage, you can only read a response/request's body once. In the code above, <code>.clone()</code> is used to create a copy of the response that can be read separately. See  [What happens when you read a response?](https://jakearchibald.com/2014/reading-responses/) for more information.
 
 </div>
 

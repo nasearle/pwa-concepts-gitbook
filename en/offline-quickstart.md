@@ -8,11 +8,11 @@
 
 
 
-[<strong>Why build offline support?</strong> ](#why)<strong>        </strong> 
+[<strong>Why build offline support?</strong>](#why)<strong>        </strong>
 
-[<strong>How do I take my app offline?</strong> ](#how)
+[<strong>How do I take my app offline?</strong>](#how)
 
-[<strong>Further reading</strong> ](#reading)<strong>        </strong> 
+[<strong>Further reading</strong>](#reading)<strong>        </strong>
 
 Codelab:  [Offline Quickstart](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_offline_quickstart.html)
 
@@ -40,13 +40,13 @@ Some benefits of implementing service workers include:
 
 Service workers can use the  [Cache ](https://developer.mozilla.org/en-US/docs/Web/API/Cache)interface to cache an application's assets. A service worker script can implement a number of  [caching strategies](/web/fundamentals/instant-and-offline/offline-cookbook/), allowing fine tuning of an app's offline and low-connectivity performance.
 
-The Cache interface's storage is controlled programmatically and <strong>is independent</strong>  of the browser's HTTP cache. Unlike the browser's HTTP cache, the Cache interface's storage is available offline. The service worker can use this to enable offline support in browsers. 
+The Cache interface's storage is controlled programmatically and <strong>is independent</strong> of the browser's HTTP cache. Unlike the browser's HTTP cache, the Cache interface's storage is available offline. The service worker can use this to enable offline support in browsers. 
 
 Service workers can also use  [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) to store data locally. This enables new features such as capturing user actions while offline and delivering them once connectivity returns. 
 
 <div class="note">
 
-<strong>Note: </strong> The service worker's approach was driven by the problems the community had with Application Cache (AppCache), where a purely declarative approach to caching proved to be too inflexible. Unlike AppCache, service workers don't provide defaults making all behavior explicit. If a behavior is not written into your service worker, then the behavior does not happen. By explicitly coding behaviors in a service worker, the task of writing and debugging code is made easier.
+<strong>Note: </strong>The service worker's approach was driven by the problems the community had with Application Cache (AppCache), where a purely declarative approach to caching proved to be too inflexible. Unlike AppCache, service workers don't provide defaults making all behavior explicit. If a behavior is not written into your service worker, then the behavior does not happen. By explicitly coding behaviors in a service worker, the task of writing and debugging code is made easier.
 
 For an example of working with AppCache and the challenges developers face, see Jake Archibald's <a href="http://alistapart.com/article/application-cache-is-a-douchebag">Application Cache is a Douchebag</a> article. However, using AppCache is highly discouraged because it is in the process of being removed from the Web platform. Use service workers instead.
 
@@ -126,13 +126,13 @@ This code starts by defining a cache name and a list of URLs to be cached (the s
 
 <div class="note">
 
-<strong>Note:</strong>  The `.` represents the current directory (for example, <strong>app/</strong> ). If the user navigates to <strong>app/</strong> , the browser generally shows <strong>app/index.html</strong> . However, <strong>app/</strong>  and <strong>app/index.html</strong>  are separate URLs, so a 404 can still occur if the user navigates to <strong>app/</strong>  and only <strong>app/index.html</strong>  is available. We cache `.` as well as `index.html` to avoid this potential error.  
+<strong>Note:</strong> The `.` represents the current directory (for example, <strong>app/</strong>). If the user navigates to <strong>app/</strong>, the browser generally shows <strong>app/index.html</strong>. However, <strong>app/</strong> and <strong>app/index.html</strong> are separate URLs, so a 404 can still occur if the user navigates to <strong>app/</strong> and only <strong>app/index.html</strong> is available. We cache `.` as well as `index.html` to avoid this potential error.  
 
 </div>
 
 <div class="note">
 
-<strong>Note: </strong> The `event.waitUntil` can be particularly confusing. This operation simply tells the browser not to preemptively terminate the service worker before the asynchronous operations inside of it have completed.
+<strong>Note: </strong>The `event.waitUntil` can be particularly confusing. This operation simply tells the browser not to preemptively terminate the service worker before the asynchronous operations inside of it have completed.
 
 </div>
 
@@ -197,7 +197,7 @@ After the first user visit, the app will open even when offline!
 
 <div class="note">
 
-<strong>Note: </strong> You might be thinking, why didn't we just cache everything on install? Or, why did we cache anything on install if all fetched resources are cached? This is intended as an overview of how you can bring offline functionality to an app. In practice, there are a variety of caching strategies and tools that let you customize your app's offline experience. Check out the <a href="/web/fundamentals/instant-and-offline/offline-cookbook/">Offline Cookbook</a> for more info.
+<strong>Note: </strong>You might be thinking, why didn't we just cache everything on install? Or, why did we cache anything on install if all fetched resources are cached? This is intended as an overview of how you can bring offline functionality to an app. In practice, there are a variety of caching strategies and tools that let you customize your app's offline experience. Check out the <a href="/web/fundamentals/instant-and-offline/offline-cookbook/">Offline Cookbook</a> for more info.
 
 </div>
 

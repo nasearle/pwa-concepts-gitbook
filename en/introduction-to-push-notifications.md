@@ -8,21 +8,21 @@
 
 
 
-[<strong>What Are Push Notifications?</strong> ](#what)<strong>        </strong> 
+[<strong>What Are Push Notifications?</strong>](#what)<strong>        </strong>
 
-[<strong>Push Notification Terms</strong> ](#terms)<strong>        </strong> 
+[<strong>Push Notification Terms</strong>](#terms)<strong>        </strong>
 
-[<strong>Understanding Push Notifications on the Web</strong> ](#understanding)<strong>        </strong> 
+[<strong>Understanding Push Notifications on the Web</strong>](#understanding)<strong>        </strong>
 
-[<strong>Notifications API</strong> ](#notificationapi)<strong>        </strong> 
+[<strong>Notifications API</strong>](#notificationapi)<strong>        </strong>
 
-[<strong>Designing with the Future in Mind</strong> ](#future)<strong>        </strong> 
+[<strong>Designing with the Future in Mind</strong>](#future)<strong>        </strong>
 
-[<strong>Push API</strong> ](#pushapi)<strong>        </strong> 
+[<strong>Push API</strong>](#pushapi)<strong>        </strong>
 
-[<strong>Best Practices</strong> ](#bestpractices)<strong>        </strong> 
+[<strong>Best Practices</strong>](#bestpractices)<strong>        </strong>
 
-[<strong>More Resources</strong> ](#resources)
+[<strong>More Resources</strong>](#resources)
 
 Codelab:  [Integrating Web Push](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_integrating_web_push.html)
 
@@ -42,7 +42,7 @@ The Notification and Push API's are built on top of the  [Service Worker API](ht
 
 <div class="note">
 
-<strong>Note: </strong> Service workers require secure origins so testing Push Notifications requires running a local server.
+<strong>Note: </strong>Service workers require secure origins so testing Push Notifications requires running a local server.
 
 </div>
 
@@ -54,14 +54,14 @@ The Notification and Push API's are built on top of the  [Service Worker API](ht
 
 
 
-* <strong>Notification</strong>  – a message displayed to the user outside of the app's normal UI (i.e., the browser)
-* <strong>Push Message</strong>  – a message sent from the server to the client
-* <strong>Push Notification</strong>  – a notification created in response to a push message
-* <strong>Notifications API</strong>  – an interface used to configure and display notifications to the user
-* <strong>Push API</strong>  – an interface used to subscribe your app to a push service and receive push messages in the service worker
-* <strong>Web Push</strong>  – an informal term referring to the process or components involved in the process of pushing messages from a server to a client on the web
-* <strong>Push Service</strong>  – a system for routing push messages from a server to a client. Each browser implements its own push service.
-* <strong>Web Push Protocol</strong>  – describes how an application server or user agent interacts with a push service
+* <strong>Notification</strong> – a message displayed to the user outside of the app's normal UI (i.e., the browser)
+* <strong>Push Message</strong> – a message sent from the server to the client
+* <strong>Push Notification</strong> – a notification created in response to a push message
+* <strong>Notifications API</strong> – an interface used to configure and display notifications to the user
+* <strong>Push API</strong> – an interface used to subscribe your app to a push service and receive push messages in the service worker
+* <strong>Web Push</strong> – an informal term referring to the process or components involved in the process of pushing messages from a server to a client on the web
+* <strong>Push Service</strong> – a system for routing push messages from a server to a client. Each browser implements its own push service.
+* <strong>Web Push Protocol</strong> – describes how an application server or user agent interacts with a push service
 
 <a id="understanding" />
 
@@ -125,7 +125,7 @@ Notice the `showNotification` method is called on the service worker registratio
 
 <div class="note">
 
-<strong>Note: </strong> You can also create a notification using a  [notification constructor](https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification). However, a notification created this way is not paired with a service worker and is therefore not interactive.
+<strong>Note: </strong>You can also create a notification using a  [notification constructor](https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification). However, a notification created this way is not paired with a service worker and is therefore not interactive.
 
 </div>
 
@@ -206,7 +206,7 @@ If the user dismisses the notification through a direct action on the notificati
 
 <div class="note">
 
-<strong>Note: </strong> If the user dismisses all notifications then, to save resources, an event is not raised in the service worker.
+<strong>Note: </strong>If the user dismisses all notifications then, to save resources, an event is not raised in the service worker.
 
 </div>
 
@@ -336,7 +336,7 @@ Native apps have been able to do this for a long time using a technology called 
 
 <div class="note">
 
-<strong>Note: </strong> Push and notification are different but complementary functions. A push is the action of the server supplying message information to a service worker; a notification is the action of the service worker sending the information to a user.
+<strong>Note: </strong>Push and notification are different but complementary functions. A push is the action of the server supplying message information to a service worker; a notification is the action of the service worker sending the information to a user.
 
 </div>
 
@@ -480,7 +480,7 @@ Notice we are passing a flag named `userVisibleOnly` to the subscribe method. By
 
 <div class="note">
 
-<strong>Note: </strong> In the current implementation of Chrome, whenever we receive a push message and we don't have our site visible in the browser we must display a notification. That is, we can't do it silently without the user knowing. If we don't display a notification the browser automatically creates one to let the user know that the app is doing work in the background.
+<strong>Note: </strong>In the current implementation of Chrome, whenever we receive a push message and we don't have our site visible in the browser we must display a notification. That is, we can't do it silently without the user knowing. If we don't display a notification the browser automatically creates one to let the user know that the app is doing work in the background.
 
 </div>
 
@@ -502,10 +502,10 @@ Chrome currently uses  [Firebase Cloud Messaging](https://firebase.google.com/do
 
 To use Firebase Cloud Messaging, you need to set up a project on  [Firebase](https://firebase.google.com/) (see the  [section on VAPID](#vapid) to get around this step). Here's how:
 
-1. In the  [Firebase console](https://console.firebase.google.com/), select <strong>Create New Project</strong> .
-2. Supply a project name and click <strong>Create Project</strong> .
-3. Click the Settings icon next to your project name in the Navigation panel and select <strong>Project Settings</strong> .
-4. Open the <strong>Cloud Messaging</strong>  tab. You can find your <strong>Server key</strong>  and <strong>Sender ID</strong>  in this page. Save these values.
+1. In the  [Firebase console](https://console.firebase.google.com/), select <strong>Create New Project</strong>.
+2. Supply a project name and click <strong>Create Project</strong>.
+3. Click the Settings icon next to your project name in the Navigation panel and select <strong>Project Settings</strong>.
+4. Open the <strong>Cloud Messaging</strong> tab. You can find your <strong>Server key</strong> and <strong>Sender ID</strong> in this page. Save these values.
 
 For Chrome to route FCM messages to the correct service worker, it needs to know the Sender ID. Supply this by adding a `gcm_sender_id` property to your app's  `manifest.json` file. For example, the manifest could look like this:
 
@@ -518,7 +518,7 @@ For Chrome to route FCM messages to the correct service worker, it needs to know
 
 <div class="note">
 
-<strong>Note: </strong> The <code>gcm_sender_id</code> is required for Chrome prior to version 52, Opera Android, and Samsung Browser.
+<strong>Note: </strong>The <code>gcm_sender_id</code> is required for Chrome prior to version 52, Opera Android, and Samsung Browser.
 
 </div>
 
@@ -677,7 +677,7 @@ Let's look at these steps in detail.
 
 <div class="note">
 
-<strong>Note: </strong> We recommend using a <a href="https://github.com/web-push-libs">library</a> to implement VAPID in your push messages. This spares you from the details of encryption and JWT signing. We show an <a href="#webpushvapid">example</a> using the <a href="https://github.com/web-push-libs/web-push">web-push library</a> for Node.js at the end of this section.
+<strong>Note: </strong>We recommend using a <a href="https://github.com/web-push-libs">library</a> to implement VAPID in your push messages. This spares you from the details of encryption and JWT signing. We show an <a href="#webpushvapid">example</a> using the <a href="https://github.com/web-push-libs/web-push">web-push library</a> for Node.js at the end of this section.
 
 </div>
 
@@ -714,11 +714,11 @@ serviceWorkerRegistration.pushManager.subscribe(
 );
 ```
 
-You'll know if it has worked by examining the endpoint in the resulting subscription object; if the origin is <strong>fcm.googleapis.com</strong> , it's working.
+You'll know if it has worked by examining the endpoint in the resulting subscription object; if the origin is <strong>fcm.googleapis.com</strong>, it's working.
 
 <div class="note">
 
-<strong>Note: </strong> Even though this is an FCM URL, use the <a href="https://tools.ietf.org/html/draft-ietf-webpush-protocol-12">Web Push Protocol</a> <strong>not</strong> the FCM protocol, this way your server-side code will work for any push service.
+<strong>Note: </strong>Even though this is an FCM URL, use the <a href="https://tools.ietf.org/html/draft-ietf-webpush-protocol-12">Web Push Protocol</a> <strong>not</strong> the FCM protocol, this way your server-side code will work for any push service.
 
 </div>
 
@@ -728,7 +728,7 @@ To send a message using VAPID, you make a normal Web Push Protocol request with 
 
 <div class="note">
 
-<strong>Note: </strong> This is where web push <a href="https://github.com/web-push-libs">libraries</a> really shine, as the process of signing and sending a message can be quite complex. We include an <a href="#webpushvapid">example</a> of sending a message with VAPID using the <a href="https://github.com/web-push-libs/web-push">web-push library</a> for Node.js at the end of this section.
+<strong>Note: </strong>This is where web push <a href="https://github.com/web-push-libs">libraries</a> really shine, as the process of signing and sending a message can be quite complex. We include an <a href="#webpushvapid">example</a> of sending a message with VAPID using the <a href="https://github.com/web-push-libs/web-push">web-push library</a> for Node.js at the end of this section.
 
 </div>
 
@@ -801,7 +801,7 @@ When you are sending a notification with encrypted data, you will already be usi
 
 <div class="note">
 
-<strong>Note:</strong>  There is a bug in Chrome prior to version 52 that requires the use of a semicolon instead of a comma in the Crypto-key header.
+<strong>Note:</strong> There is a bug in Chrome prior to version 52 that requires the use of a semicolon instead of a comma in the Crypto-key header.
 
 </div>
 
@@ -865,11 +865,11 @@ This lesson discusses best practices for implementing push notifications.
 
 Notifications should be timely, precise, and relevant. By following these three rules, you'll keep your users happier and increase their return visits.
 
-<strong>Timely</strong>  – The notification should display at the right time. Use notifications primarily for time-sensitive events, especially if these synchronous events involve other people.
+<strong>Timely</strong> – The notification should display at the right time. Use notifications primarily for time-sensitive events, especially if these synchronous events involve other people.
 
 For instance, an incoming chat is a real-time and synchronous form of communication (another user is actively waiting on your response). Calendar events are another good example of when to use a notification to grab the user's attention, because the event is imminent and often involves other people.
 
-<strong>Precise</strong>  – Offer enough information so that the user can make a decision without clicking through to the web page.
+<strong>Precise</strong> – Offer enough information so that the user can make a decision without clicking through to the web page.
 
 In particular, you should:
 
@@ -880,7 +880,7 @@ In particular, you should:
 
 Because users often give notifications only a quick glance, you can make their lives easier with a well-chosen title, description, and icon. If possible, make the icon match the context of the notification so users can identify it without reading.
 
-<strong>Relevant</strong>  – Make notifications relevant to the user's needs. If the user receives too many unimportant notifications, they might turn them all off. So keep it personal. If it's a chat notification, tell them who it's from.
+<strong>Relevant</strong> – Make notifications relevant to the user's needs. If the user receives too many unimportant notifications, they might turn them all off. So keep it personal. If it's a chat notification, tell them who it's from.
 
 Avoid notifications that are not directed specifically at the user, or information that is not truly time-sensitive. For instance, the asynchronous and undirected updates flowing through a social network generally do not warrant a real-time interruption.
 
@@ -1075,9 +1075,9 @@ We don't want to display redundant notifications that have been removed elsewher
 
 There are a number of options available to solve this:
 
-1. <strong>Show the old notification</strong> , even if it's no longer relevant. This looks like a small glitch of the clients being out of sync.
-2. <strong>Handle the push message without triggering a notification</strong> . Chrome allows sites to  *very occasionally*  handle a push message without triggering a notification. If this case occurs extremely rarely it may be OK to do nothing.
-3. Ignore the message from the server and <strong>replace the notification with a fallback</strong>  to be displayed if no other is available. For example, rather than display the information from an email the user has already read you could say "We've updated your inbox".
+1. <strong>Show the old notification</strong>, even if it's no longer relevant. This looks like a small glitch of the clients being out of sync.
+2. <strong>Handle the push message without triggering a notification</strong>. Chrome allows sites to  *very occasionally*  handle a push message without triggering a notification. If this case occurs extremely rarely it may be OK to do nothing.
+3. Ignore the message from the server and <strong>replace the notification with a fallback</strong> to be displayed if no other is available. For example, rather than display the information from an email the user has already read you could say "We've updated your inbox".
 
 <a id="resources"/>
 

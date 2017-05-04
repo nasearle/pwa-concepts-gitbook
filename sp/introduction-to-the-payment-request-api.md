@@ -8,15 +8,15 @@
 
 
 
-[<strong>About Web Payments</strong> ](#about)
+[<strong>About Web Payments</strong>](#about)
 
-[<strong>Introduction to the Payment Request API</strong> ](#introduction)
+[<strong>Introduction to the Payment Request API</strong>](#introduction)
 
-[<strong>How Payment Request Processing Works</strong> ](#howitworks)
+[<strong>How Payment Request Processing Works</strong>](#howitworks)
 
-[<strong>Using the Payment Request API</strong> ](#using)
+[<strong>Using the Payment Request API</strong>](#using)
 
-[<strong>Resources</strong> ](#resources)
+[<strong>Resources</strong>](#resources)
 
 The Payment Request API improves mobile web checkout (shopping cart) and accepts credit cards electronically (and eventually a number of other payment services and solutions in the wild). 
 
@@ -24,7 +24,7 @@ The Payment Request API allows merchants to easily collect payment information w
 
 <div class="note">
 
-<strong>Note:</strong>  The <a href="https://github.com/w3c/browser-payment-api">Payment Request API</a> is very new and still subject to developmental changes, especially while it is under development in the  [W3C Web Payments Working Group](https://www.w3.org/TR/payment-request/). Google tracks updates on <a class="https://developers.google.com/web/fundamentals/primers/payment-request/">this page</a>. Please keep checking back. Also on this page is <a class="https://storage.googleapis.com/prshim/v1/payment-shim.js">a shim</a> that you can embed on your site to paper over API differences for two major Chrome versions.
+<strong>Note:</strong> The <a href="https://github.com/w3c/browser-payment-api">Payment Request API</a> is very new and still subject to developmental changes, especially while it is under development in the  [W3C Web Payments Working Group](https://www.w3.org/TR/payment-request/). Google tracks updates on <a class="https://developers.google.com/web/fundamentals/primers/payment-request/">this page</a>. Please keep checking back. Also on this page is <a class="https://storage.googleapis.com/prshim/v1/payment-shim.js">a shim</a> that you can embed on your site to paper over API differences for two major Chrome versions.
 
 </div>
 

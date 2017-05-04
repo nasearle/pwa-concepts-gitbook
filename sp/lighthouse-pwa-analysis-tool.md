@@ -8,11 +8,11 @@
 
 
 
-[<strong>Introduction</strong> ](#introduction)<strong>        </strong> 
+[<strong>Introduction</strong>](#introduction)<strong>        </strong>
 
-[<strong>Running Lighthouse as a Chrome extension</strong> ](#extension)
+[<strong>Running Lighthouse as a Chrome extension</strong>](#extension)
 
-[<strong>Running Lighthouse from the command line</strong> ](#commandline)
+[<strong>Running Lighthouse from the command line</strong>](#commandline)
 
 Codelab:  [Auditing with Lighthouse](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_auditing_with_lighthouse.html)
 
@@ -47,7 +47,7 @@ Download the Lighthouse Chrome extension from the  [Chrome Web Store](http://chr
 
 When installed it places an <img src="../img/91e97511ef44e440.png" style="width:20px;height:20px;" alt="Lighthouse Icon ">  icon in your taskbar. 
 
-Run Lighthouse on your application by selecting the icon and choosing <strong>Generate report</strong>  (with your app open in the browser page).
+Run Lighthouse on your application by selecting the icon and choosing <strong>Generate report</strong> (with your app open in the browser page).
 
 ![Lighthouse extension showing generate report button](../img/92c3177801055abb.png)
 
@@ -57,7 +57,7 @@ Lighthouse generates an HTML page with the results. An example page is shown bel
 
 <div class="note">
 
-<strong>Note: </strong> You can test it out on an example PWA, <a href="https://www.airhorner.com/">airhorner.com</a>.
+<strong>Note: </strong>You can test it out on an example PWA, <a href="https://www.airhorner.com/">airhorner.com</a>.
 
 </div>
 
@@ -75,7 +75,7 @@ You can download Node from  [nodejs.org](https://nodejs.org/en/) (select the ver
 
 <div class="note">
 
-<strong>Note:</strong>  You need the --harmony <a href="http://stackoverflow.com/questions/13351965/what-does-node-harmony-do">flag</a> with Node v5+ or Node v4.
+<strong>Note:</strong> You need the --harmony <a href="http://stackoverflow.com/questions/13351965/what-does-node-harmony-do">flag</a> with Node v5+ or Node v4.
 
 </div>
 

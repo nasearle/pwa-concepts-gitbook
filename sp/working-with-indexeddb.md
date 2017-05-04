@@ -8,27 +8,27 @@
 
 
 
-[<strong>Introduction</strong> ](#introduction)
+[<strong>Introduction</strong>](#introduction)
 
-[<strong>What is IndexedDB?</strong> ](#what)<strong>        </strong> 
+[<strong>What is IndexedDB?</strong>](#what)<strong>        </strong>
 
-[<strong>IndexedDB terms</strong> ](#terms)<strong>        </strong> 
+[<strong>IndexedDB terms</strong>](#terms)<strong>        </strong>
 
-[<strong>Check for IndexedDB support</strong> ](#support)<strong>        </strong> 
+[<strong>Check for IndexedDB support</strong>](#support)<strong>        </strong>
 
-[<strong>Opening a database</strong> ](#open)<strong>        </strong> 
+[<strong>Opening a database</strong>](#open)<strong>        </strong>
 
-[<strong>Working with object stores</strong> ](#stores)<strong>        </strong> 
+[<strong>Working with object stores</strong>](#stores)<strong>        </strong>
 
-[<strong>Working with data</strong> ](#data)<strong>        </strong> 
+[<strong>Working with data</strong>](#data)<strong>        </strong>
 
-[<strong>Getting all the data</strong> ](#get)<strong>        </strong> 
+[<strong>Getting all the data</strong>](#get)<strong>        </strong>
 
-[<strong>Using database versioning</strong> ](#versioning)<strong>        </strong> 
+[<strong>Using database versioning</strong>](#versioning)<strong>        </strong>
 
-[<strong>Further reading</strong> ](#resources)<strong>        </strong> 
+[<strong>Further reading</strong>](#resources)<strong>        </strong>
 
-[<strong>Appendix</strong> ](#appendix)
+[<strong>Appendix</strong>](#appendix)
 
 Codelab:  [IndexedDB](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_indexeddb.html)
 
@@ -276,7 +276,7 @@ In this example, the "people" and "notes" object stores have indexes. To create 
 
 <div class="note">
 
-<strong>Note:</strong>  Indexes are updated every time you write data to the reference object store. More indexes mean more work for IndexedDB.
+<strong>Note:</strong> Indexes are updated every time you write data to the reference object store. More indexes mean more work for IndexedDB.
 
 </div>
 
@@ -362,7 +362,7 @@ Once again, we start the operation by getting the database object and creating a
 
 <div class="note">
 
-<strong>Note:</strong>  If you try to get an object that doesn't exist, the success handler still executes, but the result is <code>undefined</code>.
+<strong>Note:</strong> If you try to get an object that doesn't exist, the success handler still executes, but the result is <code>undefined</code>.
 
 </div>
 
@@ -562,7 +562,7 @@ When we call `idb.open`, we can specify the database version number in the secon
 
 <div class="note">
 
-<strong>Note:</strong>  The browser throws an error if we try to create object stores or indexes that already exist in the database. We can wrap the calls to <code>createObjectStore</code> in <code>if</code> statements checking if the object store already exists using <code>upgradeDb.objectStoreNames.contains('objectStoreName')</code>. We can also use a <code>switch</code> statement on the <code>oldVersion</code> property as in the next example.
+<strong>Note:</strong> The browser throws an error if we try to create object stores or indexes that already exist in the database. We can wrap the calls to <code>createObjectStore</code> in <code>if</code> statements checking if the object store already exists using <code>upgradeDb.objectStoreNames.contains('objectStoreName')</code>. We can also use a <code>switch</code> statement on the <code>oldVersion</code> property as in the next example.
 
 </div>
 

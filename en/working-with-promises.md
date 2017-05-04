@@ -8,15 +8,15 @@
 
 
 
-[<strong>Introduction</strong> ](#intro)<strong>        </strong> 
+[<strong>Introduction</strong>](#intro)<strong>        </strong>
 
-[<strong>Why use promises?</strong> ](#why)<strong>        </strong> 
+[<strong>Why use promises?</strong>](#why)<strong>        </strong>
 
-[<strong>Promise terminology</strong> ](#terms)<strong>        </strong> 
+[<strong>Promise terminology</strong>](#terms)<strong>        </strong>
 
-[<strong>How to use promises</strong> ](#howto)<strong>        </strong> 
+[<strong>How to use promises</strong>](#howto)<strong>        </strong>
 
-[<strong>Further reading</strong> ](#further)
+[<strong>Further reading</strong>](#further)
 
 Codelab:  [Promises](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_promises.html)
 
@@ -190,7 +190,7 @@ promise.then(function(result) {
 })
 ```
 
-There's nothing special about `catch()`, it's equivalent to `then(undefined, func)`, but it's more readable. <strong>Note that the two code examples above do not behave the same way</strong> . The latter example is equivalent to:
+There's nothing special about `catch()`, it's equivalent to `then(undefined, func)`, but it's more readable. <strong>Note that the two code examples above do not behave the same way</strong>. The latter example is equivalent to:
 
 ```
 promise.then(function(response) {
@@ -204,7 +204,7 @@ The difference is subtle, but extremely useful. Promise rejections skip forward 
 
 ### Promise chains: then and catch
 
-We can attach additional functions to a promise using `then()` and `catch()` to create a <strong>promise chain</strong> . In a promise chain, the output of one function serves as input for the next.
+We can attach additional functions to a promise using `then()` and `catch()` to create a <strong>promise chain</strong>. In a promise chain, the output of one function serves as input for the next.
 
 #### Then
 
@@ -288,7 +288,7 @@ function processImage(imageName, domNode) {
 
 <div class="note">
 
-<strong>Note:</strong>  The promise chain continues executing after a `catch()` until it reaches the last `then()` or `catch()` in the chain.
+<strong>Note:</strong> The promise chain continues executing after a `catch()` until it reaches the last `then()` or `catch()` in the chain.
 
 </div>
 
@@ -311,7 +311,7 @@ However, this function does need to return the image passed into it so that it c
 
 ### Promise.all
 
-Often we want to take action only after a collection of asynchronous operations have completed successfully.  [<strong>Promise.all</strong> ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) returns a promise that resolves if all of the promises passed into it resolve. If any of the passed-in promises reject, then `Promise.all` rejects with the reason of the first promise that rejected. This is very useful for ensuring that a group of asynchronous actions complete before proceeding to another step. 
+Often we want to take action only after a collection of asynchronous operations have completed successfully.  [<strong>Promise.all</strong>](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) returns a promise that resolves if all of the promises passed into it resolve. If any of the passed-in promises reject, then `Promise.all` rejects with the reason of the first promise that rejected. This is very useful for ensuring that a group of asynchronous actions complete before proceeding to another step. 
 
 In the example below, `promise1` and `promise2` return promises. We want both of them to load before proceeding. Both promises are passing into `Promise.all`. If either request rejects, then `Promise.all` rejects with the value of the rejected promise. If both requests fulfill, `Promise.all` resolves with the values of both promises (as a list).
 
@@ -330,7 +330,7 @@ Promise.all([promise1, promise2]) // Array of promises to complete
 
 <div class="note">
 
-<strong>Note: </strong> Even if an input promise rejects, causing <code>Promise.all</code> to reject, the remaining input promises still settle. In other words, the remaining promises still execute, they simply are not returned by <code>Promise.all</code>.
+<strong>Note: </strong>Even if an input promise rejects, causing <code>Promise.all</code> to reject, the remaining input promises still settle. In other words, the remaining promises still execute, they simply are not returned by <code>Promise.all</code>.
 
 </div>
 
