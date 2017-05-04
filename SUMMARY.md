@@ -14,6 +14,6 @@
 * [Using sw-precache and sw-toolbox](en/using-sw-precache-and-sw-toolbox.md)
 * [Introduction to Push Notifications](en/introduction-to-push-notifications.md)
 * [Integrating Analytics](en/integrating-analytics.md)
-* [Introduction to Payment Request API](en/introduction-to-payment-request-api.md)
+* [Introduction to Payment Request API](en/introduction-to-the-payment-request-api.md)
 * [PWA Terminology](en/pwa-terminology.md)
 
