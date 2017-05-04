@@ -8,27 +8,27 @@
 
 
 
-[__Introduction__](#introduction)
+[<strong>Introduction</strong> ](#introduction)
 
-[__What is IndexedDB?__](#what)__        __
+[<strong>What is IndexedDB?</strong> ](#what)<strong>        </strong> 
 
-[__IndexedDB terms__](#terms)__        __
+[<strong>IndexedDB terms</strong> ](#terms)<strong>        </strong> 
 
-[__Check for IndexedDB support__](#support)__        __
+[<strong>Check for IndexedDB support</strong> ](#support)<strong>        </strong> 
 
-[__Opening a database__](#open)__        __
+[<strong>Opening a database</strong> ](#open)<strong>        </strong> 
 
-[__Working with object stores__](#stores)__        __
+[<strong>Working with object stores</strong> ](#stores)<strong>        </strong> 
 
-[__Working with data__](#data)__        __
+[<strong>Working with data</strong> ](#data)<strong>        </strong> 
 
-[__Getting all the data__](#get)__        __
+[<strong>Getting all the data</strong> ](#get)<strong>        </strong> 
 
-[__Using database versioning__](#versioning)__        __
+[<strong>Using database versioning</strong> ](#versioning)<strong>        </strong> 
 
-[__Further reading__](#resources)__        __
+[<strong>Further reading</strong> ](#resources)<strong>        </strong> 
 
-[__Appendix__](#appendix)
+[<strong>Appendix</strong> ](#appendix)
 
 Codelab:  [IndexedDB](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_indexeddb.html)
 
@@ -276,7 +276,7 @@ In this example, the "people" and "notes" object stores have indexes. To create 
 
 <div class="note">
 
-__Note:__ Indexes are updated every time you write data to the reference object store. More indexes mean more work for IndexedDB.
+<strong>Note:</strong>  Indexes are updated every time you write data to the reference object store. More indexes mean more work for IndexedDB.
 
 </div>
 
@@ -362,7 +362,7 @@ Once again, we start the operation by getting the database object and creating a
 
 <div class="note">
 
-__Note:__ If you try to get an object that doesn't exist, the success handler still executes, but the result is <code>undefined</code>.
+<strong>Note:</strong>  If you try to get an object that doesn't exist, the success handler still executes, but the result is <code>undefined</code>.
 
 </div>
 
@@ -562,7 +562,7 @@ When we call `idb.open`, we can specify the database version number in the secon
 
 <div class="note">
 
-__Note:__ The browser throws an error if we try to create object stores or indexes that already exist in the database. We can wrap the calls to <code>createObjectStore</code> in <code>if</code> statements checking if the object store already exists using <code>upgradeDb.objectStoreNames.contains('objectStoreName')</code>. We can also use a <code>switch</code> statement on the <code>oldVersion</code> property as in the next example.
+<strong>Note:</strong>  The browser throws an error if we try to create object stores or indexes that already exist in the database. We can wrap the calls to <code>createObjectStore</code> in <code>if</code> statements checking if the object store already exists using <code>upgradeDb.objectStoreNames.contains('objectStoreName')</code>. We can also use a <code>switch</code> statement on the <code>oldVersion</code> property as in the next example.
 
 </div>
 

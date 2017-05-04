@@ -8,15 +8,15 @@
 
 
 
-[__Introduction__](#intro)__        __
+[<strong>Introduction</strong> ](#intro)<strong>        </strong> 
 
-[__Creating routes with sw-toolbox__](#routes)__        __
+[<strong>Creating routes with sw-toolbox</strong> ](#routes)<strong>        </strong> 
 
-[__Using sw-precache and sw-toolbox in a gulp build file__](#gulp)__        __
+[<strong>Using sw-precache and sw-toolbox in a gulp build file</strong> ](#gulp)<strong>        </strong> 
 
-[__Running sw-precache from the command line__](#cmdline)__        __
+[<strong>Running sw-precache from the command line</strong> ](#cmdline)<strong>        </strong> 
 
-[__Further reading__](#further)
+[<strong>Further reading</strong> ](#further)
 
 Codelab:  [sw-precache and sw-toolbox](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_sw-precache_and_sw-toolbox.html)
 
@@ -58,7 +58,7 @@ Let's look at an example:
 toolbox.router.get('/my-app/index.html', global.toolbox.networkFirst, {networkTimeoutSeconds: 5});
 ```
 
-This intercepts all `GET` requests for __/my-app/index.html__ and handles the request according to the built-in "network first" strategy. In this approach the request is first sent to the network, and if that succeeds the request/response pair is added to the cache. If it fails, it tries to get the response from the cache. We have set the `networkTimeoutSeconds` option to `5` so that the app fetches the response from the cache if the network doesn't respond within 5 seconds.
+This intercepts all `GET` requests for <strong>/my-app/index.html</strong>  and handles the request according to the built-in "network first" strategy. In this approach the request is first sent to the network, and if that succeeds the request/response pair is added to the cache. If it fails, it tries to get the response from the cache. We have set the `networkTimeoutSeconds` option to `5` so that the app fetches the response from the cache if the network doesn't respond within 5 seconds.
 
 To define "wildcards" (URL patterns for matching more than one file), or if you need to match a cross-origin request, sw-toolbox has two options: Express style routing and regular expression routing.
 
@@ -79,7 +79,7 @@ For example:
 toolbox.router.get('img/**/*.{png,jpg}', global.toolbox.cacheFirst);
 ```
 
-This intercepts all  `GET` requests for any `png` or `jpg` file under the __img__ folder, regardless of depth. It handles the request according to the "cache first" strategy, first looking in the cache for the response. If that fails, the request is sent to the network and, if that succeeds, the response is added to the cache.
+This intercepts all  `GET` requests for any `png` or `jpg` file under the <strong>img</strong>  folder, regardless of depth. It handles the request according to the "cache first" strategy, first looking in the cache for the response. If that fails, the request is sent to the network and, if that succeeds, the response is added to the cache.
 
 Here is another example:
 
@@ -89,7 +89,7 @@ toolbox.router.get('/.*fly$/', global.toolbox.cacheFirst);
 
 This matches any content that ends with fly (like butterfly or dragonfly) using the cache first strategy:
 
-To match a request from another domain using Express-style routing, we must define the `origin` property in the `options` object. The value could be either a string (which is checked for an exact match) or a RegExp object. In both cases, it's matched against the full origin of the URL (for example, __https://<span></span>example.com__).
+To match a request from another domain using Express-style routing, we must define the `origin` property in the `options` object. The value could be either a string (which is checked for an exact match) or a RegExp object. In both cases, it's matched against the full origin of the URL (for example, <strong>https://<span></span>example.com</strong> ).
 
 For example:
 
@@ -105,7 +105,7 @@ This matches all files (`'/(.*)'`) with an origin that ends with ".googleapis.co
 
 You can also use  [regular expressions](https://regex101.com/) to define the URL pattern in the route by passing a  [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) object as the first parameter. This RegExp is matched against the full request URL (request and path) to determine if the route applies to the request. This matching makes for easier cross-origin routing, since the origin and the path are matched without having to specify an `origin` like we did with Express style routes.
 
-This route handles all GET requests that end with __index.html__:
+This route handles all GET requests that end with <strong>index.html</strong> :
 
 ```
 toolbox.router.get(/index.html$/, function(request) {
@@ -113,7 +113,7 @@ toolbox.router.get(/index.html$/, function(request) {
 });
 ```
 
-This route handles all POST requests that begin with __https://<span></span>api.flickr.com/__: 
+This route handles all POST requests that begin with <strong>https://<span></span>api.flickr.com/</strong> : 
 
 ```
 toolbox.router.post(/^https://api.flickr.com\//, global.toolbox.networkFirst);
@@ -144,7 +144,7 @@ toolbox.router.get('/(.*)', global.toolbox.cacheFirst, {
 
 It's important to consider all of the caching strategies and find the right balance between speed and data freshness for each of your data sources. Use the following table to determine which caching strategy is most appropriate for the dynamic resources that populate your app shell.  
 
-__Table of Common Caching Strategies__
+<strong>Table of Common Caching Strategies</strong> 
 
 <table markdown="1">
 <tr><td colspan="1" rowspan="1">
@@ -254,7 +254,7 @@ The example below demonstrates some `sw-toolbox` strategies to cache different p
 })(self);
 ```
 
-Example 1 uses a cache first strategy to fetch content from the __googleapis.com__ domain. It will store up to 20 matches in the googleapis cache. 
+Example 1 uses a cache first strategy to fetch content from the <strong>googleapis.com</strong>  domain. It will store up to 20 matches in the googleapis cache. 
 
 Example 2 uses a cache first strategy to fetch all PNG and JPG images (those files that end with "png" or "jpg") from the `images-cache` cache. If it can't find the items in the cache, it fetches them from the network and adds them to the `images-cache` cache. When more than 50 items are stored in the cache, the oldest items are removed. 
 
@@ -324,7 +324,7 @@ We call the gulp task `'generate-service-worker'` and pass a callback to the fun
 
 <div class="note">
 
-__Note:__ Incorporating `sw-toolbox` routes into your build is as simple as including the `sw-toolbox` module and a script containing your routes in the `importScripts` option of `swPrecache.write`.
+<strong>Note:</strong>  Incorporating `sw-toolbox` routes into your build is as simple as including the `sw-toolbox` module and a script containing your routes in the `importScripts` option of `swPrecache.write`.
 
 </div>
 
@@ -338,13 +338,13 @@ __Note:__ Incorporating `sw-toolbox` routes into your build is as simple as incl
 
 You can use `sw-precache` from the command line when you want to test the result of using it, but don't want to have to change your build system for every version of the experiment. 
 
-Sensible defaults are assumed for options that are not provided. For example, if you are inside the top-level directory that contains your site's contents, and you'd like to generate a __service-worker.js__ file that will automatically precache all of the local files, you can simply run:
+Sensible defaults are assumed for options that are not provided. For example, if you are inside the top-level directory that contains your site's contents, and you'd like to generate a <strong>service-worker.js</strong>  file that will automatically precache all of the local files, you can simply run:
 
 ```
 sw-precache
 ```
 
-Alternatively, if you'd like to only precache `.html` files that live within __dist/__, which is a subdirectory of the current directory, you could run:
+Alternatively, if you'd like to only precache `.html` files that live within <strong>dist/</strong> , which is a subdirectory of the current directory, you could run:
 
 ```
 sw-precache --root=dist --static-file-globs='dist/**/*.html'
@@ -352,11 +352,11 @@ sw-precache --root=dist --static-file-globs='dist/**/*.html'
 
 <div class="note">
 
-__Note:__ Be sure to use quotes around parameter values that have special meanings to your shell (such as the * characters in the sample command line above, for example).
+<strong>Note:</strong>  Be sure to use quotes around parameter values that have special meanings to your shell (such as the * characters in the sample command line above, for example).
 
 </div>
 
-Finally, there's support for passing complex configurations using `--config <file>`. Any of the options from the file can be overridden through a command-line flag. We recommend using an external JavaScript file to define configurations using  [module.exports](https://nodejs.org/api/modules.html#modules_module_exports). For example, assume there's a __path/to/sw-precache-config.js__ file that contains:
+Finally, there's support for passing complex configurations using `--config <file>`. Any of the options from the file can be overridden through a command-line flag. We recommend using an external JavaScript file to define configurations using  [module.exports](https://nodejs.org/api/modules.html#modules_module_exports). For example, assume there's a <strong>path/to/sw-precache-config.js</strong>  file that contains:
 
 ```
 module.exports = {
