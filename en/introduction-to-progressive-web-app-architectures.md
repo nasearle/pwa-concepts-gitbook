@@ -253,15 +253,13 @@ PWAs can be built with any architectural style (SSR, CSR, or a hybrid of the two
 
  <div class="note">
 
-<strong>Notes:</strong>
+<strong>Note: </strong>In the future, consider a server-side render of UI with Streams for body content model (even better). See <a href="https://jakearchibald.com/2016/streams-ftw/">https://jakearchibald.com/2016/streams-ftw/</a> to learn more.
 
-<ul>
+</div>
 
-<li>In the future, consider a server-side render of UI with Streams for body content model (even better). See <a href="https://jakearchibald.com/2016/streams-ftw/">https://jakearchibald.com/2016/streams-ftw/</a> to learn more.</li>
+<div class="note">
 
-<li>If you are building a PWA using Polymer leveraging this pattern, then it might be worth exploring SSR of content in the Light DOM</li>
-
-</ul>
+<strong>Note:</strong> If you are building a PWA using Polymer leveraging this pattern, then it might be worth exploring SSR of content in the Light DOM.
 
 </div>
 
