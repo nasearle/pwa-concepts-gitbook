@@ -63,10 +63,7 @@ Gulp requires  [Node](https://nodejs.org/en/), and its package manager,  [npm](h
 If you don't already have Node and npm installed, you can install them with  [Node Version Manager](https://github.com/creationix/nvm) (nvm). This tool lets developers install multiple versions of Node, and easily switch between them.
 
 <div class="note">
-
-<strong>Note: </strong>If you have issues with a specific version of Node, you can <a href="https://github.com/creationix/nvm#usage">switch to another version</a> with a single command.
-
-</div>
+<strong>Note: </strong>If you have issues with a specific version of Node, you can <a href="https://github.com/creationix/nvm#usage">switch to another version</a> with a single command.</div>
 
 Nvm can then be used to install Node by running the following in the command line:
 
@@ -115,10 +112,7 @@ Don't worry if you don't understand what all of these values represent, they are
 This file is used to track your project's packages. Tracking packages like this allows for quick reinstallation of all the packages and their dependencies in future builds (the `npm install` command will read <strong>package.json</strong> and automatically install everything listed).
 
 <div class="note">
-
-<strong>Note:</strong> It is a best practice not to push packages to version control systems. It's better to use `npm install` and `package.json` to install project packages locally. 
-
-</div>
+<strong>Note:</strong> It is a best practice not to push packages to version control systems. It's better to use `npm install` and `package.json` to install project packages locally. </div>
 
 ### Installing packages
 
@@ -362,10 +356,7 @@ Running the following in the command line starts the watch:
     gulp watch
 
 <div class="note">
-
-<strong>Note:</strong> The watch task continues to execute once initiated. To stop the task, use <strong>Ctrl + C</strong> in the command line or close the command line window.
-
-</div>
+<strong>Note:</strong> The watch task continues to execute once initiated. To stop the task, use <strong>Ctrl + C</strong> in the command line or close the command line window.</div>
 
 <a id="review" />
 

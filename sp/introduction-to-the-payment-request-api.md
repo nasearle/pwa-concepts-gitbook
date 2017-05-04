@@ -23,10 +23,7 @@ The Payment Request API improves mobile web checkout (shopping cart) and accepts
 The Payment Request API allows merchants to easily collect payment information with minimal integration. 
 
 <div class="note">
-
-<strong>Note:</strong> The <a href="https://github.com/w3c/browser-payment-api">Payment Request API</a> is very new and still subject to developmental changes, especially while it is under development in the  [W3C Web Payments Working Group](https://www.w3.org/TR/payment-request/). Google tracks updates on <a class="https://developers.google.com/web/fundamentals/primers/payment-request/">this page</a>. Please keep checking back. Also on this page is <a class="https://storage.googleapis.com/prshim/v1/payment-shim.js">a shim</a> that you can embed on your site to paper over API differences for two major Chrome versions.
-
-</div>
+<strong>Note:</strong> The <a href="https://github.com/w3c/browser-payment-api">Payment Request API</a> is very new and still subject to developmental changes, especially while it is under development in the  [W3C Web Payments Working Group](https://www.w3.org/TR/payment-request/). Google tracks updates on <a class="https://developers.google.com/web/fundamentals/primers/payment-request/">this page</a>. Please keep checking back. Also on this page is <a class="https://storage.googleapis.com/prshim/v1/payment-shim.js">a shim</a> that you can embed on your site to paper over API differences for two major Chrome versions.</div>
 
 <a id="about" />
 
@@ -42,7 +39,7 @@ For businesses, checkout can be a complicated process to develop and complete. T
 
 Mobile users are likely to abandon online purchase forms that are user-intensive, difficult to use, slow to load and refresh, and require multiple steps to complete. This is because two primary components of online payments – security and convenience – often work at cross-purposes, where more of one typically means less of the other. 
 
-Any system that improves or solves one or more of those problems is a welcome change. We've found that forms and payments are completed 25% more when autofill is available, increasing odds for conversion. We started solving the problem already with  [Autofill](/web/updates/2015/06/checkout-faster-with-autofill), but now we're talking about a more comprehensive solution called the Payment Request API.
+Any system that improves or solves one or more of those problems is a welcome change. We've found that forms and payments are completed 25% more when autofill is available, increasing odds for conversion. We started solving the problem already with  [Autofill](https://developers.google.com/web/updates/2015/06/checkout-faster-with-autofill), but now we're talking about a more comprehensive solution called the Payment Request API.
 
 <a id="introduction" />
 
@@ -87,7 +84,7 @@ Payment Request demos are available at these URLs:
 * Demo:  [https://emerald-eon.appspot.com/](https://emerald-eon.appspot.com/)
 * Polymer Shop demo:  [https://polykart-credential-payment.appspot.com/](https://polykart-credential-payment.appspot.com/)
 * Simple demos and sample code:  [https://googlechrome.github.io/samples/paymentrequest/](https://googlechrome.github.io/samples/paymentrequest/)
-* Deep dive documentation:  [https://developers.google.com/web/fundamentals/discovery-and-monetization/payment-request/deep-dive-into-payment-request](/web/fundamentals/discovery-and-monetization/payment-request/deep-dive-into-payment-request)
+* Deep dive documentation:  [https://developers.google.com/web/fundamentals/discovery-and-monetization/payment-request/deep-dive-into-payment-request](https://developers.google.com/web/fundamentals/discovery-and-monetization/payment-request/deep-dive-into-payment-request)
 * Samsung Internet demos: 
 *  [https://samsunginter.net/examples/payment-request-demo-simple/](https://samsunginter.net/examples/payment-request-demo-simple/)
 *  [https://samsunginter.net/examples/payment-request-demo-options/](https://samsunginter.net/examples/payment-request-demo-options/)
@@ -120,9 +117,9 @@ From the user's perspective, all the previously tedious interaction—request, a
 
 
 
-[Bringing Easy and Fast Checkout with Payment Request API](/web/updates/2016/07/payment-request)
+[Bringing Easy and Fast Checkout with Payment Request API](https://developers.google.com/web/updates/2016/07/payment-request)
 
-[Payment Request API: an Integration Guide](/web/fundamentals/primers/payment-request/)
+[Payment Request API: an Integration Guide](https://developers.google.com/web/fundamentals/primers/payment-request/)
 
 <a id="resources" />
 

@@ -50,7 +50,7 @@ toolbox.router.get(urlPattern, handler, options)
 
 A route intercepts requests that match the specified URL pattern and HTTP request method, and responds according to the rules defined in the request handler. The HTTP request method is called on `toolbox.router` (in the example above it's `get`) and can be any of the methods defined  [here](https://googlechrome.github.io/sw-toolbox/api.html#main). The `options` parameter lets us define a cache to use for that route, as well as a network timeout if the handler is the built-in `toolbox.networkFirst`. See the  [Tutorial: API](https://googlechrome.github.io/sw-toolbox/api.html#main) for more details.
 
-`sw-toolbox` has five built-in handlers to cover the most common caching strategies (see the  [Tutorial: API](https://googlechrome.github.io/sw-toolbox/api.html#main) for the full list and the  [Caching strategies table](#strategies) below for a quick reference). For more information about caching strategies see the  [Offline Cookbook](/web/fundamentals/instant-and-offline/offline-cookbook/).
+`sw-toolbox` has five built-in handlers to cover the most common caching strategies (see the  [Tutorial: API](https://googlechrome.github.io/sw-toolbox/api.html#main) for the full list and the  [Caching strategies table](#strategies) below for a quick reference). For more information about caching strategies see the  [Offline Cookbook](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/).
 
 Let's look at an example:
 
@@ -323,10 +323,7 @@ We call the gulp task `'generate-service-worker'` and pass a callback to the fun
 * The `app/` prefix is removed from all file paths in `staticFileGlobs` so that the paths in the generated service worker are relative.
 
 <div class="note">
-
-<strong>Note:</strong> Incorporating `sw-toolbox` routes into your build is as simple as including the `sw-toolbox` module and a script containing your routes in the `importScripts` option of `swPrecache.write`.
-
-</div>
+<strong>Note:</strong> Incorporating `sw-toolbox` routes into your build is as simple as including the `sw-toolbox` module and a script containing your routes in the `importScripts` option of `swPrecache.write`.</div>
 
 <a id="cmdline">
 
@@ -351,10 +348,7 @@ sw-precache --root=dist --static-file-globs='dist/**/*.html'
 ```
 
 <div class="note">
-
-<strong>Note:</strong> Be sure to use quotes around parameter values that have special meanings to your shell (such as the * characters in the sample command line above, for example).
-
-</div>
+<strong>Note:</strong> Be sure to use quotes around parameter values that have special meanings to your shell (such as the * characters in the sample command line above, for example).</div>
 
 Finally, there's support for passing complex configurations using `--config <file>`. Any of the options from the file can be overridden through a command-line flag. We recommend using an external JavaScript file to define configurations using  [module.exports](https://nodejs.org/api/modules.html#modules_module_exports). For example, assume there's a <strong>path/to/sw-precache-config.js</strong> file that contains:
 

@@ -41,10 +41,7 @@ Push Notifications are assembled using two APIs: the  [Notifications API](https:
 The Notification and Push API's are built on top of the  [Service Worker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API), which responds to  push message events in the background and relays them to your application.
 
 <div class="note">
-
-<strong>Note: </strong>Service workers require secure origins so testing Push Notifications requires running a local server.
-
-</div>
+<strong>Note: </strong>Service workers require secure origins so testing Push Notifications requires running a local server.</div>
 
 <a id="terms" />
 
@@ -124,10 +121,7 @@ function displayNotification() {
 Notice the `showNotification` method is called on the service worker registration object. This creates the notification on the active service worker, so that events triggered by interactions with the notification are heard by the service worker.
 
 <div class="note">
-
-<strong>Note: </strong>You can also create a notification using a  [notification constructor](https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification). However, a notification created this way is not paired with a service worker and is therefore not interactive.
-
-</div>
+<strong>Note: </strong>You can also create a notification using a  [notification constructor](https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification). However, a notification created this way is not paired with a service worker and is therefore not interactive.</div>
 
 ### Add notification options
 
@@ -205,10 +199,7 @@ Displaying a notification was the first step. Now we need to handle user interac
 If the user dismisses the notification through a direct action on the notification (such as a swipe in Android), it raises a `notificationclose` event inside the service worker. 
 
 <div class="note">
-
-<strong>Note: </strong>If the user dismisses all notifications then, to save resources, an event is not raised in the service worker.
-
-</div>
+<strong>Note: </strong>If the user dismisses all notifications then, to save resources, an event is not raised in the service worker.</div>
 
 This event is important because it tells you how the user is interacting with your notifications. You might, for example, log the event to your analytics database. Or, you might use the event to synchronize your database and avoid re-notifying the user of the same event.
 
@@ -335,10 +326,7 @@ We have learned how to create a notification and display it to the user directly
 Native apps have been able to do this for a long time using a technology called Push Messaging. We can now do the same on the web through the Push API.
 
 <div class="note">
-
-<strong>Note: </strong>Push and notification are different but complementary functions. A push is the action of the server supplying message information to a service worker; a notification is the action of the service worker sending the information to a user.
-
-</div>
+<strong>Note: </strong>Push and notification are different but complementary functions. A push is the action of the server supplying message information to a service worker; a notification is the action of the service worker sending the information to a user.</div>
 
 Push messaging lets developers engage users by providing timely and customized content outside the context of the web page. It is one of the most critical APIs to come to the web, giving users the ability to engage with web experiences even when the browser is closed, without the need for a native app install.
 
@@ -479,10 +467,7 @@ In the above example we call the  [`subscribe` method](https://developer.mozilla
 Notice we are passing a flag named `userVisibleOnly` to the subscribe method. By setting this to `true`, the browser ensures that every incoming message has a matching (and visible) notification. 
 
 <div class="note">
-
-<strong>Note: </strong>In the current implementation of Chrome, whenever we receive a push message and we don't have our site visible in the browser we must display a notification. That is, we can't do it silently without the user knowing. If we don't display a notification the browser automatically creates one to let the user know that the app is doing work in the background.
-
-</div>
+<strong>Note: </strong>In the current implementation of Chrome, whenever we receive a push message and we don't have our site visible in the browser we must display a notification. That is, we can't do it silently without the user knowing. If we don't display a notification the browser automatically creates one to let the user know that the app is doing work in the background.</div>
 
 If the user doesn't accept the permission request or there's another error, the promise rejects.
 
@@ -498,7 +483,7 @@ The Web Push protocol is complex, but we don't need to understand all of the det
 
 ### Sending a Push Message Using Firebase Cloud Messaging
 
-Chrome currently uses  [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/) (FCM) as its push service.  [FCM recently adopted the Web Push protocol](/web/updates/2016/07/web-push-interop-wins). FCM is the successor to Google Cloud Messaging (GCM) and supports the same functionality and more. 
+Chrome currently uses  [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/) (FCM) as its push service.  [FCM recently adopted the Web Push protocol](https://developers.google.com/web/updates/2016/07/web-push-interop-wins). FCM is the successor to Google Cloud Messaging (GCM) and supports the same functionality and more. 
 
 To use Firebase Cloud Messaging, you need to set up a project on  [Firebase](https://firebase.google.com/) (see the  [section on VAPID](#vapid) to get around this step). Here's how:
 
@@ -517,17 +502,14 @@ For Chrome to route FCM messages to the correct service worker, it needs to know
 ```
 
 <div class="note">
-
-<strong>Note: </strong>The <code>gcm_sender_id</code> is required for Chrome prior to version 52, Opera Android, and Samsung Browser.
-
-</div>
+<strong>Note: </strong>The <code>gcm_sender_id</code> is required for Chrome prior to version 52, Opera Android, and Samsung Browser.</div>
 
 To get FCM to push a notification without a payload to your web client, the request must include the following:
 
 * The subscription endpoint URL
 * The public Server key. FCM uses this to check whether the server making the requests is actually allowed to send messages to the receiving user.
 
-A production site or app normally sets up a service to interact with FCM from your server. Check out the  [Web Fundamentals documentation](/web/fundamentals/engage-and-retain/push-notifications/) for more information. 
+A production site or app normally sets up a service to interact with FCM from your server. Check out the  [Web Fundamentals documentation](https://developers.google.com/web/fundamentals/engage-and-retain/push-notifications/) for more information. 
 
 We can test push messaging in our app using  [cURL](https://curl.haxx.se/docs/manpage.html). We can send an empty message, called a "tickle", to the push service, then the push service sends a message to the browser. If the notification displays, then we have done everything correctly and our app is ready to push messages from the server.
 
@@ -676,10 +658,7 @@ The process is pretty simple:
 Let's look at these steps in detail.
 
 <div class="note">
-
-<strong>Note: </strong>We recommend using a <a href="https://github.com/web-push-libs">library</a> to implement VAPID in your push messages. This spares you from the details of encryption and JWT signing. We show an <a href="#webpushvapid">example</a> using the <a href="https://github.com/web-push-libs/web-push">web-push library</a> for Node.js at the end of this section.
-
-</div>
+<strong>Note: </strong>We recommend using a <a href="https://github.com/web-push-libs">library</a> to implement VAPID in your push messages. This spares you from the details of encryption and JWT signing. We show an <a href="#webpushvapid">example</a> using the <a href="https://github.com/web-push-libs/web-push">web-push library</a> for Node.js at the end of this section.</div>
 
 #### Create a public/private key pair
 
@@ -717,20 +696,14 @@ serviceWorkerRegistration.pushManager.subscribe(
 You'll know if it has worked by examining the endpoint in the resulting subscription object; if the origin is <strong>fcm.googleapis.com</strong>, it's working.
 
 <div class="note">
-
-<strong>Note: </strong>Even though this is an FCM URL, use the <a href="https://tools.ietf.org/html/draft-ietf-webpush-protocol-12">Web Push Protocol</a> <strong>not</strong> the FCM protocol, this way your server-side code will work for any push service.
-
-</div>
+<strong>Note: </strong>Even though this is an FCM URL, use the <a href="https://tools.ietf.org/html/draft-ietf-webpush-protocol-12">Web Push Protocol</a> <strong>not</strong> the FCM protocol, this way your server-side code will work for any push service.</div>
 
 #### Sending a push message
 
 To send a message using VAPID, you make a normal Web Push Protocol request with two additional HTTP headers: an `Authorization` header and a `Crypto-Key` header. Let's look at these new headers in detail.
 
 <div class="note">
-
-<strong>Note: </strong>This is where web push <a href="https://github.com/web-push-libs">libraries</a> really shine, as the process of signing and sending a message can be quite complex. We include an <a href="#webpushvapid">example</a> of sending a message with VAPID using the <a href="https://github.com/web-push-libs/web-push">web-push library</a> for Node.js at the end of this section.
-
-</div>
+<strong>Note: </strong>This is where web push <a href="https://github.com/web-push-libs">libraries</a> really shine, as the process of signing and sending a message can be quite complex. We include an <a href="#webpushvapid">example</a> of sending a message with VAPID using the <a href="https://github.com/web-push-libs/web-push">web-push library</a> for Node.js at the end of this section.</div>
 
 ##### Authorization header
 
@@ -800,10 +773,7 @@ When you are sending a notification with encrypted data, you will already be usi
     p256ecdsa=BDd3_hVL9fZi9Ybo2UUzA284WG5FZR30_95YeZJsiApwXKpNcF1rRPF3foIiBHXRdJI2Qhumhf6_LFTeZaN
 
 <div class="note">
-
-<strong>Note:</strong> There is a bug in Chrome prior to version 52 that requires the use of a semicolon instead of a comma in the Crypto-key header.
-
-</div>
+<strong>Note:</strong> There is a bug in Chrome prior to version 52 that requires the use of a semicolon instead of a comma in the Crypto-key header.</div>
 
 <a id="vapidexamples" />
 
@@ -1089,13 +1059,13 @@ There are a number of options available to solve this:
 
 #### Your first push notifications
 
-*  [Adding Push Notifications to a Web App](/web/fundamentals/getting-started/push-notifications/) 
+*  [Adding Push Notifications to a Web App](https://developers.google.com/web/fundamentals/getting-started/push-notifications/) 
 *  [Adding Push Notifications to a Web App (Codelab)](https://codelabs.developers.google.com/codelabs/push-notifications/index.html?index=..%2F..%2Findex#0)
 *  [Using the Push API](https://developer.mozilla.org/en-US/docs/Web/API/Push_API/Using_the_Push_API)
 
 #### When to use push notifications
 
-*  [Web Push Notifications: Timely, Relevant, and Precise](/web/fundamentals/engage-and-retain/push-notifications/)
+*  [Web Push Notifications: Timely, Relevant, and Precise](https://developers.google.com/web/fundamentals/engage-and-retain/push-notifications/)
 
 #### Demos
 
@@ -1104,7 +1074,7 @@ There are a number of options available to solve this:
 
 #### Messaging concepts and options
 
-*  [Setting the lifespan of a message](/cloud-messaging/concept-options#ttl)
+*  [Setting the lifespan of a message](https://developers.google.com/cloud-messaging/concept-options#ttl)
 
 #### Web-push documentation
 
@@ -1124,7 +1094,7 @@ There are a number of options available to solve this:
 
 #### Encryption
 
-*  [Web Push Payload Encryption](/web/updates/2016/03/web-push-encryption)
+*  [Web Push Payload Encryption](https://developers.google.com/web/updates/2016/03/web-push-encryption)
 *  [Push Encryption Verifier](https://tests.peter.sh/push-encryption-verifier/)
 *  [Message Encryption for Web Push](https://tools.ietf.org/html/draft-ietf-webpush-encryption-01)
 
