@@ -117,11 +117,11 @@ Once you have created an account, you need to add the tracking snippet to your a
 
 ![Finding the snippet](../img/e6c84f2ccde27125.png)
 
-Your tracking ID looks like `UA-XXXXXXXX-Y` and your tracking code snippet looks like:
+Your tracking ID looks like <code>UA-XXXXXXXX-Y</code> and your tracking code snippet looks like:
 
 #### index.html
 
-```
+<code></code>`
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]) \
 .push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0]; \
@@ -132,18 +132,18 @@ a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script', \
   ga('send', 'pageview');
 
 </script>
-```
+<code></code>`
 
 Your tracking ID is embedded into your tracking snippet. This snippet needs to be embedded into every page that you want to track. 
 
 When a page with the snippet loads, the tracking snippet script is executed. The IIFE ( [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately-invoked_function_expression)) in the script does two things:
 
-* Creates another `script` tag that starts asynchronously downloading <strong>analytics.js</strong>, the library that does all of the analytics work. 
-* Initializes a global `ga` function, called the command queue. 
+* Creates another <code>script</code> tag that starts asynchronously downloading <strong>analytics.js</strong>, the library that does all of the analytics work. 
+* Initializes a global <code>ga</code> function, called the command queue. 
 
-The `ga` command queue is the main interface for using <strong>analytics.js</strong>. The command queue stores commands (in order) until <strong>analytics.js</strong> has loaded. Once <strong>analytics.js</strong> has loaded, the commands are executed sequentially. This functionality ensures that analytics can begin independent of the loading time of <strong>analytics.js</strong>. 
+The <code>ga</code> command queue is the main interface for using <strong>analytics.js</strong>. The command queue stores commands (in order) until <strong>analytics.js</strong> has loaded. Once <strong>analytics.js</strong> has loaded, the commands are executed sequentially. This functionality ensures that analytics can begin independent of the loading time of <strong>analytics.js</strong>. 
 
-Commands are added by calling `ga()`. The first argument passed is the command itself, which is a method of the <strong>analytics.js</strong> library. The remaining arguments are parameters for that method. 
+Commands are added by calling <code>ga()</code>. The first argument passed is the command itself, which is a method of the <strong>analytics.js</strong> library. The remaining arguments are parameters for that method. 
 
 The next lines add two commands to the queue. The first creates a new  [tracker object](https://developers.google.com/analytics/devguides/collection/analyticsjs/tracker-object-reference). Tracker objects track and store data. When the new tracker is created, the analytics library gets the user's IP address, user agent, and other page information, and stores it in the tracker. From this info Google Analytics can extract:
 
@@ -235,16 +235,16 @@ For example, the following code will send a custom event:
 
 #### main.js
 
-```
+<code></code>`
 ga('send', {
   hitType: 'event',
   eventCategory: 'products',
   eventAction: 'purchase',
   eventLabel: 'Summer products launch'
 });
-```
+<code></code>`
 
-Here the hit type is set to 'event' and values associated with the event are added as parameters. These values represent the `eventCategory`, `eventAction`, and `eventLabel`. All of these are arbitrary, and used to organize events. Sending these custom events allow us to deeply understand user interactions with our site.
+Here the hit type is set to 'event' and values associated with the event are added as parameters. These values represent the <code>eventCategory</code>, <code>eventAction</code>, and <code>eventLabel</code>. All of these are arbitrary, and used to organize events. Sending these custom events allow us to deeply understand user interactions with our site.
 
 <div class="note">
 <strong>Note:</strong> Many of the <code>ga</code> commands are flexible and can use multiple signatures. You can see all method signatures in the <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/command-queue-reference">command queue reference</a>.
@@ -272,15 +272,15 @@ You can view past events in the Google Analytics dashboard from the <strong>Repo
 
 
 
-Service workers do not have access to the analytics command queue, `ga`, because the command queue is in the main thread (not the service worker thread) and requires the `window` object. You need to use the  [Measurement Protocol](https://developers.google.com/analytics/devguides/collection/protocol/v1/) interface to send hits from the service worker.
+Service workers do not have access to the analytics command queue, <code>ga</code>, because the command queue is in the main thread (not the service worker thread) and requires the <code>window</code> object. You need to use the  [Measurement Protocol](https://developers.google.com/analytics/devguides/collection/protocol/v1/) interface to send hits from the service worker.
 
-This interface allows us to make HTTP requests to send hits, regardless of the execution context. This can be achieved by sending a URI containing your <strong>tracking ID</strong> and the custom event parameters (`eventCategory`, `eventAction`, and `eventLabel`) along with some  [required parameters](https://developers.google.com/analytics/devguides/collection/protocol/v1/devguide) (<strong>version number</strong>, <strong>client ID</strong>, and <strong>hit type)</strong> to the  [API endpoint](https://developers.google.com/analytics/devguides/collection/protocol/v1/reference) (<strong>https://www.google-analytics.com/collect</strong>). Let's look at an example using the Measurement Protocol interface to send hits related to push events in the service worker.
+This interface allows us to make HTTP requests to send hits, regardless of the execution context. This can be achieved by sending a URI containing your <strong>tracking ID</strong> and the custom event parameters (<code>eventCategory</code>, <code>eventAction</code>, and <code>eventLabel</code>) along with some  [required parameters](https://developers.google.com/analytics/devguides/collection/protocol/v1/devguide) (<strong>version number</strong>, <strong>client ID</strong>, and <strong>hit type)</strong> to the  [API endpoint](https://developers.google.com/analytics/devguides/collection/protocol/v1/reference) (<strong>https://www.google-analytics.com/collect</strong>). Let's look at an example using the Measurement Protocol interface to send hits related to push events in the service worker.
 
 A helper script, <strong>analytics-helper.js</strong> has the following code:
 
 #### analytics-helper.js
 
-```
+<code></code>`
 // Set this to your tracking ID
 var trackingId = 'UA-XXXXXXXX-Y';
 
@@ -360,15 +360,15 @@ function sendAnalyticsEvent(eventAction, eventCategory) {
     console.warn('Unable to send the analytics event', err);
   });
 }
-```
+<code></code>`
 
-The script starts by creating a variable with your tracking ID (replace `UA-XXXXXXXX-Y` with your actual tracking ID). This ensures that hits are sent to your account and property, just like in the analytics snippet. 
+The script starts by creating a variable with your tracking ID (replace <code>UA-XXXXXXXX-Y</code> with your actual tracking ID). This ensures that hits are sent to your account and property, just like in the analytics snippet. 
 
-The `sendAnalyticsEvent` helper function starts by checking that the tracking ID is set and that the function is being called with the correct parameters. After checking that the client is subscribed to push, the hit data is created in the `payloadData` variable:
+The <code>sendAnalyticsEvent</code> helper function starts by checking that the tracking ID is set and that the function is being called with the correct parameters. After checking that the client is subscribed to push, the hit data is created in the <code>payloadData</code> variable:
 
 #### analytics-helper.js
 
-```
+<code></code>`
 var payloadData = {
   // Version Number
   v: 1,
@@ -385,15 +385,15 @@ var payloadData = {
   // Event Label
   el: 'serviceworker'
 };
-```
+<code></code>`
 
-Again, the <strong>version number</strong>, <strong>client ID</strong>, <strong>tracking ID</strong>, and <strong>hit type</strong> parameters are  [required by the API](https://developers.google.com/analytics/devguides/collection/protocol/v1/devguide). The `eventCategory`, `eventAction`, and `eventLabel` are the same parameters that we have been using with the command queue interface.
+Again, the <strong>version number</strong>, <strong>client ID</strong>, <strong>tracking ID</strong>, and <strong>hit type</strong> parameters are  [required by the API](https://developers.google.com/analytics/devguides/collection/protocol/v1/devguide). The <code>eventCategory</code>, <code>eventAction</code>, and <code>eventLabel</code> are the same parameters that we have been using with the command queue interface.
 
 Next, the hit data is  [formatted into a URI](https://developers.google.com/analytics/devguides/collection/protocol/v1/reference) with the following code:
 
 #### analytics-helper.js
 
-```
+<code></code>`
 var payloadString = Object.keys(payloadData)
 .filter(function(analyticsKey) {
   return payloadData[analyticsKey];
@@ -402,18 +402,18 @@ var payloadString = Object.keys(payloadData)
   return analyticsKey + '=' + encodeURIComponent(payloadData[analyticsKey]);
 })
 .join('&');
-```
+<code></code>`
 
 Finally the data is sent to the  [API endpoint](https://developers.google.com/analytics/devguides/collection/protocol/v1/reference) (<strong>https://www.google-analytics.com/collect</strong>) with the following code:
 
 #### analytics-helper.js
 
-```
+<code></code>`
 return fetch('https://www.google-analytics.com/collect', {
   method: 'post',
   body: payloadString
 });
-```
+<code></code>`
 
 This sends the hit with the  [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) using a POST request. The body of the request is the hit data.
 
@@ -421,23 +421,23 @@ Now we can import the helper script functionality into a service worker by addin
 
 #### sw.js
 
-```
+<code></code>`
 self.importScripts('path/to/analytics-helper.js');
-```
+<code></code>`
 
-Where `path/to/analytics-helper.js` is the path to the <strong>analytics-helper.js</strong> file. Now we should be able to send custom events from the service worker by making calls to the `sendAnalyticsEvent` function. For example, to send a custom "notification close" event, we could add code like this to the service worker file:
+Where <code>path/to/analytics-helper.js</code> is the path to the <strong>analytics-helper.js</strong> file. Now we should be able to send custom events from the service worker by making calls to the <code>sendAnalyticsEvent</code> function. For example, to send a custom "notification close" event, we could add code like this to the service worker file:
 
 #### sw.js
 
-```
+<code></code>`
 self.addEventListener('notificationclose', function(event) {
   event.waitUntil(
     sendAnalyticsEvent('close', 'notification')
   );
 });
-```
+<code></code>`
 
-Observe that we have used `event.waitUntil` to wrap an asynchronous operation. If unfamiliar, `event.waitUntil` extends the life of an event until the asynchronous actions inside of it have completed. This ensures that the service worker will not be terminated pre-emptively while waiting for an asynchronous action to complete.
+Observe that we have used <code>event.waitUntil</code> to wrap an asynchronous operation. If unfamiliar, <code>event.waitUntil</code> extends the life of an event until the asynchronous actions inside of it have completed. This ensures that the service worker will not be terminated pre-emptively while waiting for an asynchronous action to complete.
 
 <div class="note">
 <strong>Note:</strong> Because this event uses the Measurement Protocol interface instead of <strong>analytics_debug.js</strong>, the debug console log won't appear. You can debug Measurement Protocol hits with <a href="https://developers.google.com/analytics/devguides/collection/protocol/v1/validating-hits"> hit validation</a>.
@@ -461,9 +461,9 @@ With the help of service workers, analytics data can be stored when users are of
 
 Install the package with the following command-line command:
 
-```
+<code></code>`
 npm install sw-offline-google-analytics
-```
+<code></code>`
 
 This imports the  [node](https://nodejs.org/en/) module.
 
@@ -471,18 +471,18 @@ In your service worker file, add the following code:
 
 #### sw.js
 
-```
+<code></code>`
 importScripts('path/to/offline-google-analytics-import.js');
 goog.offlineGoogleAnalytics.initialize();
-```
+<code></code>`
 
-Where `path/to/offline-google-analytics-import.js` is the path to the <strong>offline-google-analytics-import.js</strong> file in the node module. This will likely look something like:
+Where <code>path/to/offline-google-analytics-import.js</code> is the path to the <strong>offline-google-analytics-import.js</strong> file in the node module. This will likely look something like:
 
 #### sw.js
 
-```
+<code></code>`
 node_modules/sw-offline-google-analytics/offline-google-analytics-import.js
-```
+<code></code>`
 
 We import and initialize the <strong>offline-google-analytics-import.js</strong> library. This library adds a fetch event handler to the service worker that only listens for requests made to the Google Analytics domain. The handler attempts to send Google Analytics data first by network requests. If the network request fails, the request is stored in  [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API). The requests are then sent later when connectivity is re-established.
 

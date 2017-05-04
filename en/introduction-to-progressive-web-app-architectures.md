@@ -48,7 +48,7 @@ Service workers provide services such as:
 
 * Intercepting HTTP/HTTPS requests so your app can decide what gets served from a cache,the  local data store, or the network.
 
-    A service worker cannot access the DOM but it can access the  [Cache Storage API](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage), make network requests using the  [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), and persist data using the  [IndexedDB API](https://developer.mozilla.org/en/docs/Web/API/IndexedDB_API). Besides intercepting network requests, service workers can use `postMessage()` to communicate between the service worker and pages it controls (e.g. to request DOM updates).
+    A service worker cannot access the DOM but it can access the  [Cache Storage API](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage), make network requests using the  [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), and persist data using the  [IndexedDB API](https://developer.mozilla.org/en/docs/Web/API/IndexedDB_API). Besides intercepting network requests, service workers can use <code>postMessage()</code> to communicate between the service worker and pages it controls (e.g. to request DOM updates).
 
 * Receiving push messages from your server.
 
@@ -80,11 +80,11 @@ Here is a high-level description of how it works:
 
 1. When the user accesses your website the basic HTML, JavaScript, and CSS display. 
 
-    On the initial website visit, the page registers the service worker that controls future navigations on the site. Registration creates a new service worker instance and triggers the `install` event that the service worker responds to. When the service worker is installed, the app shell content is added to the cache. Once installed, the service worker controls future navigations on the site. Note that you can sometimes manually activate a new service worker using browsers' developer tools or programmatically with  [Service Worker APIs](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API).
+    On the initial website visit, the page registers the service worker that controls future navigations on the site. Registration creates a new service worker instance and triggers the <code>install</code> event that the service worker responds to. When the service worker is installed, the app shell content is added to the cache. Once installed, the service worker controls future navigations on the site. Note that you can sometimes manually activate a new service worker using browsers' developer tools or programmatically with  [Service Worker APIs](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API).
 
 2. After the shell content loads, the app requests content to populate the view. The app shell plus dynamic content equals the compete rendered page. 
 
-    Next, the SPA requests content (for example, via `XMLHttpRequest` or the  [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)) and page content is fetched and used to populate the view. Each request triggers a `fetch` event inside the service worker that can be handled any way you choose. Once those handlers complete, your service worker enters into an idle state. So, the service worker is idle until a network request fires off a new event. And, in response to a network request, a `fetch` event handler intercepts the request and responds as you see fit. After a period of idleness your service worker script is stopped automatically but when the next network request is made when the page is loaded again the service worker is started back up and can immediately respond to `fetch` events. 
+    Next, the SPA requests content (for example, via <code>XMLHttpRequest</code> or the  [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)) and page content is fetched and used to populate the view. Each request triggers a <code>fetch</code> event inside the service worker that can be handled any way you choose. Once those handlers complete, your service worker enters into an idle state. So, the service worker is idle until a network request fires off a new event. And, in response to a network request, a <code>fetch</code> event handler intercepts the request and responds as you see fit. After a period of idleness your service worker script is stopped automatically but when the next network request is made when the page is loaded again the service worker is started back up and can immediately respond to <code>fetch</code> events. 
 
 ![Service Worker Lifecycle](../img/c9f7d527c81ed1a1.png)
 
@@ -489,8 +489,8 @@ You can use  [Chrome Developer Tools](https://developer.chrome.com/devtools/docs
 * What data does the app get from the server (for example, product types and prices)?
 * What should the user be able to do when off-line?
 * How does your current non-PWA app display data? (for example, by getting it from a database and generating a HTML page on the server)?
-* Provide the data to a single-page app via HTTP/HTTPS (e.g. using `REST`)?
-* Provide the data to a single-page app via another mechanism (e.g. `Socket.io`)?
+* Provide the data to a single-page app via HTTP/HTTPS (e.g. using <code>REST</code>)?
+* Provide the data to a single-page app via another mechanism (e.g. <code>Socket.io</code>)?
 
 By using service workers, the appropriate architectural styles, APIs, and the appropriate caching strategies, you gain these benefits:
 
@@ -502,15 +502,15 @@ By using service workers, the appropriate architectural styles, APIs, and the ap
 
 Development with the service worker is not necessarily a trivial process. It is, by design, a low-level API and there can be a fair bit of code involved. While you could write your own service worker code, there are some libraries provided that automate many of the details for you while also following the best practices and avoiding common gotchas. 
 
-The `sw-toolbox` library and `sw-precache` module go hand-in-hand and are built on top of the service worker primitives, like the Cache and Fetch APIs. These tools abstract low-level complexities and make it easier for developers to work with service workers. This section provides some simple examples of these tools, but the sw-precache and sw-toolbox  [codelabs](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_sw-precache_and_sw-toolbox.html) and accompanying  [Using sw-precache and sw-toolbox](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-concepts/content/docs/using-sw-precache-and-sw-toolbox.html) textbook provide more details and examples.
+The <code>sw-toolbox</code> library and <code>sw-precache</code> module go hand-in-hand and are built on top of the service worker primitives, like the Cache and Fetch APIs. These tools abstract low-level complexities and make it easier for developers to work with service workers. This section provides some simple examples of these tools, but the sw-precache and sw-toolbox  [codelabs](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-codelabs/content/docs/lab_sw-precache_and_sw-toolbox.html) and accompanying  [Using sw-precache and sw-toolbox](https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-concepts/content/docs/using-sw-precache-and-sw-toolbox.html) textbook provide more details and examples.
 
-#### The `sw-toolbox` Library
+#### The <code>sw-toolbox</code> Library
 
-`sw-toolbox` is loaded by your service worker at run time and provides pre-written tools for  applying common caching strategies to different URL patterns. Specifically, it provides common caching patterns and an expressive approach to using those strategies for runtime requests. ( [Caching Strategies Supported by `sw-toolbox`](#bestcaching) describes this in more detail.)
+<code>sw-toolbox</code> is loaded by your service worker at run time and provides pre-written tools for  applying common caching strategies to different URL patterns. Specifically, it provides common caching patterns and an expressive approach to using those strategies for runtime requests. ( [Caching Strategies Supported by <code>sw-toolbox</code>](#bestcaching) describes this in more detail.)
 
-##### Setting Up `sw-toolbox` for Common Caching Strategies 
+##### Setting Up <code>sw-toolbox</code> for Common Caching Strategies 
 
-You can install `sw-toolbox` through `Bower`, `npm` or direct from  [`GitHub`](https://github.com/GoogleChrome/sw-toolbox):
+You can install <code>sw-toolbox</code> through <code>Bower</code>, <code>npm</code> or direct from  [<code>GitHub</code>](https://github.com/GoogleChrome/sw-toolbox):
 
     bower install --save sw-toolbox
     
@@ -518,42 +518,42 @@ You can install `sw-toolbox` through `Bower`, `npm` or direct from  [`GitHub`](h
     
     git clone https://github.com/GoogleChrome/sw-toolbox.git
 
-To load `sw-toolbox`, use `importScripts` in your service worker file. For example:
+To load <code>sw-toolbox</code>, use <code>importScripts</code> in your service worker file. For example:
 
-```
+<code></code>`
 importScripts('js/sw-toolbox/sw-toolbox.js'); 
 // Update path to match your setup
-```
+<code></code>`
 
-A full code example is shown later in the  [Using `sw-precache` to Create the App Shell](#swprecache) section.
+A full code example is shown later in the  [Using <code>sw-precache</code> to Create the App Shell](#swprecache) section.
 
 More usage information is available in the  [app-shell](https://github.com/GoogleChrome/sw-precache/tree/master/app-shell-demo) demo on Github. 
 
-##### Additional Caching Solutions with `sw-toolbox`
+##### Additional Caching Solutions with <code>sw-toolbox</code>
 
-Besides applying common caching strategies, the `sw-toolbox` library is useful for solving a couple of additional problems that arise while fetching your content, making service worker caching even more useful in real world scenarios:  
+Besides applying common caching strategies, the <code>sw-toolbox</code> library is useful for solving a couple of additional problems that arise while fetching your content, making service worker caching even more useful in real world scenarios:  
 
 * <strong>"Lie-fi"</strong> is when the device is connected but the network connection is extremely unreliable or slow and the network request drags on and on before eventually failing. Users end up wasting precious seconds just waiting for the inevitable.
 
-    While your app shell should always be cached first, there might be some cases where you app uses the "network first" caching strategy to request the dynamic content used to populate your shell. You can avoid Lie-fi in those cases by using `sw-toolbox` to set an explicit network timeout. 
+    While your app shell should always be cached first, there might be some cases where you app uses the "network first" caching strategy to request the dynamic content used to populate your shell. You can avoid Lie-fi in those cases by using <code>sw-toolbox</code> to set an explicit network timeout. 
 
-    The following example uses the `networkFirst` caching strategy to set the timeout to three seconds when fetching an image across the network. If, after those three seconds there is no response from the network, then the app automatically falls back to the cached content. 
+    The following example uses the <code>networkFirst</code> caching strategy to set the timeout to three seconds when fetching an image across the network. If, after those three seconds there is no response from the network, then the app automatically falls back to the cached content. 
 
-```
+<code></code>`
 toolbox.router.get(
     '/path/to/image', 
     toolbox.networkFirst,
     {networkTimeoutSeconds: 3}
 );
-```
+<code></code>`
 
 * <strong>Cache expiration</strong> - As users go from page to page on your site you are probably caching the page-specific content such as the images associated with each page the user visits at run time. This ensures that the full page loads instantly (not just the app shell) on a repeat visit.
 
-    But, if you keep adding to dynamic caches indefinitely then your app consumes an ever increasing amount of storage. So `sw-toolbox` actually manages cache expiration for you, saving you the trouble of implementing it yourself. 
+    But, if you keep adding to dynamic caches indefinitely then your app consumes an ever increasing amount of storage. So <code>sw-toolbox</code> actually manages cache expiration for you, saving you the trouble of implementing it yourself. 
 
-    The following example configures `sw-toolbox` to use a dedicated cache for images with a maximum cache size of 6. Once the cache is full (as it is now) new images cause the least recently used images to be evicted. in addition to the  *least recently used*  expiration option, `sw-toolbox` also gives you a time-based expiration option where you can automatically expire everything once it reaches a certain age. 
+    The following example configures <code>sw-toolbox</code> to use a dedicated cache for images with a maximum cache size of 6. Once the cache is full (as it is now) new images cause the least recently used images to be evicted. in addition to the  *least recently used*  expiration option, <code>sw-toolbox</code> also gives you a time-based expiration option where you can automatically expire everything once it reaches a certain age. 
 
-```
+<code></code>`
 toolbox.router.get(
     '/path/to/images/*', 
     toolbox.cacheFirst) ,
@@ -562,29 +562,29 @@ toolbox.router.get(
       maxEntries: 6
     }}
 );
-```
+<code></code>`
 
 <a id="precachemodule" />
 
-#### The `sw-precache` Module
+#### The <code>sw-precache</code> Module
 
-`sw-precache` integrates with your build process and automatically generates the service worker code that takes care of caching and maintains all the resources in your app shell. The `sw-precache` module hooks into your existing node-based build process (e.g. `Gulp` or `Grunt`) and generates a list of versioned resources, along with the service worker code needed to precache them. Your site can start working offline and load faster even while online by virtue of caching.
+<code>sw-precache</code> integrates with your build process and automatically generates the service worker code that takes care of caching and maintains all the resources in your app shell. The <code>sw-precache</code> module hooks into your existing node-based build process (e.g. <code>Gulp</code> or <code>Grunt</code>) and generates a list of versioned resources, along with the service worker code needed to precache them. Your site can start working offline and load faster even while online by virtue of caching.
 
-Because `sw-precache` is a build-time code generation tool, it has direct access to all your local resources, and can efficiently calculate the hash of each to keep track of when things change. It uses those changes to trigger the appropriate service worker lifecycle events and re-downloads only modified resources, meaning that updates are small and efficient, without requiring the developer to manage versioning.
+Because <code>sw-precache</code> is a build-time code generation tool, it has direct access to all your local resources, and can efficiently calculate the hash of each to keep track of when things change. It uses those changes to trigger the appropriate service worker lifecycle events and re-downloads only modified resources, meaning that updates are small and efficient, without requiring the developer to manage versioning.
 
-The service worker code generated by `sw-precache` caches and serves the resources that you configure as part of your build process. For mostly static sites, you can have it precache every image, HTML, JavaScript, and CSS file that makes up your site. Everything works offline, and loads fast on subsequent visits without any extra effort. For sites with lots of dynamic content, or many large images that are not always needed, precaching a subset of your site often makes the most sense.
+The service worker code generated by <code>sw-precache</code> caches and serves the resources that you configure as part of your build process. For mostly static sites, you can have it precache every image, HTML, JavaScript, and CSS file that makes up your site. Everything works offline, and loads fast on subsequent visits without any extra effort. For sites with lots of dynamic content, or many large images that are not always needed, precaching a subset of your site often makes the most sense.
 
-You can combine `sw-precache` with one of the service worker "recipes" or techniques outlined in the  [Offline Cookbook](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/) to provide a robust offline experience with sensible fallbacks. For example, when a large, uncached image is requested offline, serve up a smaller, cached placeholder image instead. You can also use wildcards to precache all of the resources that match a given pattern. There is no list of files or URLs that require manual maintenance.
+You can combine <code>sw-precache</code> with one of the service worker "recipes" or techniques outlined in the  [Offline Cookbook](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/) to provide a robust offline experience with sensible fallbacks. For example, when a large, uncached image is requested offline, serve up a smaller, cached placeholder image instead. You can also use wildcards to precache all of the resources that match a given pattern. There is no list of files or URLs that require manual maintenance.
 
-A code example is shown in the  [Using `sw-precache` to Create the App Shell](#swprecache) section. There is also a lot more information on the  [GitHub project page](https://github.com/jeffposnick/sw-precache), including a demo project with  [`gulpfile.js`](https://github.com/jeffposnick/sw-precache/blob/master/demo/gulpfile.js) and  [`Gruntfile.js`](https://github.com/jeffposnick/sw-precache/blob/master/demo/Gruntfile.js) samples, and a  [script](https://github.com/jeffposnick/sw-precache/blob/master/demo/app/js/service-worker-registration.js) you can use to register the generated service worker. To see it in action, look at the  [app-shell-demo on Github](https://github.com/GoogleChrome/sw-precache/tree/master/app-shell-demo). 
+A code example is shown in the  [Using <code>sw-precache</code> to Create the App Shell](#swprecache) section. There is also a lot more information on the  [GitHub project page](https://github.com/jeffposnick/sw-precache), including a demo project with  [<code>gulpfile.js</code>](https://github.com/jeffposnick/sw-precache/blob/master/demo/gulpfile.js) and  [<code>Gruntfile.js</code>](https://github.com/jeffposnick/sw-precache/blob/master/demo/Gruntfile.js) samples, and a  [script](https://github.com/jeffposnick/sw-precache/blob/master/demo/app/js/service-worker-registration.js) you can use to register the generated service worker. To see it in action, look at the  [app-shell-demo on Github](https://github.com/GoogleChrome/sw-precache/tree/master/app-shell-demo). 
 
 <a id="bestcaching" />
 
-### Caching Strategies Supported by `sw-toolbox`
+### Caching Strategies Supported by <code>sw-toolbox</code>
 
 The best caching strategy for your dynamic content is not always clear-cut and there are many situations that can affect your strategy.  For example, when using video or large files, or you do not know the amount of storage on your customer devices, then that forces you to evaluate different strategies. 
 
-The gold standard for caching is to use a cache-first strategy for your app shell. If you implement the `sw-precache` API, then the details of caching are handled automatically for you. 
+The gold standard for caching is to use a cache-first strategy for your app shell. If you implement the <code>sw-precache</code> API, then the details of caching are handled automatically for you. 
 
 Use the following table to determine which caching strategy is most appropriate for the dynamic resources that populate your app shell.
 
@@ -656,15 +656,15 @@ Use the following table to determine which caching strategy is most appropriate 
 </tr></table>
 
 
-While you can implement these strategies yourself manually, using `sw-toolbox` is recommended for caching your app's dynamic content. The last column in the table shows the `sw-toolbox` library that provides a canonical implementation of each strategy. If you do implement additional caching logic, put the code in a separate JavaScript file and include it using the `importScripts()` method.
+While you can implement these strategies yourself manually, using <code>sw-toolbox</code> is recommended for caching your app's dynamic content. The last column in the table shows the <code>sw-toolbox</code> library that provides a canonical implementation of each strategy. If you do implement additional caching logic, put the code in a separate JavaScript file and include it using the <code>importScripts()</code> method.
 
-Note that you do not have to choose just one strategy. The `sw-toolbox` routing syntax allows you to apply different strategies to different URL patterns. For example:
+Note that you do not have to choose just one strategy. The <code>sw-toolbox</code> routing syntax allows you to apply different strategies to different URL patterns. For example:
 
-```
+<code></code>`
 toolbox.router.get('/images', toolbox.cacheFirst);
 toolbox.router.get('/api', toolbox.networkFirst);
 toolbox.router.get('/profile', toolbox.fastest);
-```
+<code></code>`
 
 For more information about caching strategies, see the  [Offline Cookbook](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/).
 
@@ -801,17 +801,17 @@ Use the following table to identify which caching strategy provides the right ba
 
 
 <div class="note">
-<strong>Note:</strong> You can use `sw-precache` to handle the implementation for you. All of the standard caching strategies, along with control over advanced options like maximum cache size and age, are supported via the automatic inclusion of the `sw-toolbox` library. See the  [Service Worker Precache](https://github.com/GoogleChrome/sw-precache#runtimecaching-arrayobject) documentation on Github for a complete description and examples.
+<strong>Note:</strong> You can use <code>sw-precache</code> to handle the implementation for you. All of the standard caching strategies, along with control over advanced options like maximum cache size and age, are supported via the automatic inclusion of the <code>sw-toolbox</code> library. See the  [Service Worker Precache](https://github.com/GoogleChrome/sw-precache#runtimecaching-arrayobject) documentation on Github for a complete description and examples.
 </div>
 
-Remember that `sw-precache` integrates with your build process, but `sw-toolbox` is loaded by your service worker at run time. `sw-toolbox` is the answer for dynamic, or runtime caching within your web apps. 
+Remember that <code>sw-precache</code> integrates with your build process, but <code>sw-toolbox</code> is loaded by your service worker at run time. <code>sw-toolbox</code> is the answer for dynamic, or runtime caching within your web apps. 
 
 ### Considerations
 
-* Service worker caching should be considered a progressive enhancement. If your web app follows the model of conditionally registering a service worker only if it is supported (determined by `if('serviceWorker' in navigator)`), then you get offline support on browsers with service workers and on browsers that do not support service workers. The offline-specific code is never called and there is no overhead or breakage for older browsers.  [Registering a Service Worker](#register) shows an example of this.
+* Service worker caching should be considered a progressive enhancement. If your web app follows the model of conditionally registering a service worker only if it is supported (determined by <code>if('serviceWorker' in navigator)</code>), then you get offline support on browsers with service workers and on browsers that do not support service workers. The offline-specific code is never called and there is no overhead or breakage for older browsers.  [Registering a Service Worker](#register) shows an example of this.
 * All resources that are precached are fetched by a service worker running in a separate thread as soon as the service worker is installed. You should be judicious in what you cache, because listing files that are non essential (large images that are not shown on every page, for instance) result in browsers downloading more data than is strictly necessary.
-* Precaching does not make sense for all architectures (described in the  [PWA Architectural Styles and Patterns](#styles) section and also outlined in the  [Offline Cookbook](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/),). Several  [caching strategies](#bestcaching) are described later in this document that can be used in conjunction with the `sw-precache` module to provide the best experience for your users. If you do implement additional caching logic, put the code in a separate JavaScript file and include it using the `importScripts()` method.
-* The `sw-precache` library uses a cache-first strategy, which results in a copy of any cached content being returned without consulting the network. A useful pattern to adopt with this strategy is to display an alert to your users when new content is available, and give them an opportunity to reload the page to pick up that new content (which the service worker adds to the cache, and makes available at the next page load). The code for listening for a service worker update lives in the JavaScript for the page that registers the service worker. To see an example, go to this  [Github repository](https://github.com/GoogleChrome/sw-precache/blob/master/demo/app/js/service-worker-registration.js#L27). 
+* Precaching does not make sense for all architectures (described in the  [PWA Architectural Styles and Patterns](#styles) section and also outlined in the  [Offline Cookbook](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/),). Several  [caching strategies](#bestcaching) are described later in this document that can be used in conjunction with the <code>sw-precache</code> module to provide the best experience for your users. If you do implement additional caching logic, put the code in a separate JavaScript file and include it using the <code>importScripts()</code> method.
+* The <code>sw-precache</code> library uses a cache-first strategy, which results in a copy of any cached content being returned without consulting the network. A useful pattern to adopt with this strategy is to display an alert to your users when new content is available, and give them an opportunity to reload the page to pick up that new content (which the service worker adds to the cache, and makes available at the next page load). The code for listening for a service worker update lives in the JavaScript for the page that registers the service worker. To see an example, go to this  [Github repository](https://github.com/GoogleChrome/sw-precache/blob/master/demo/app/js/service-worker-registration.js#L27). 
 
 ### The Key to Designing UIs for PWAs
 
@@ -858,12 +858,12 @@ Structure your app for a clear distinction between the page shell and the dynami
 
 * Make sure your site is served using HTTPS
 
-    Service worker functionality is  [only available](https://www.chromium.org/Home/chromium-security/prefer-secure-origins-for-powerful-new-features) on pages that are accessed via HTTPS. (`http://localhost` also works well to facilitate testing.)
+    Service worker functionality is  [only available](https://www.chromium.org/Home/chromium-security/prefer-secure-origins-for-powerful-new-features) on pages that are accessed via HTTPS. (<code>http://localhost</code> also works well to facilitate testing.)
 
 * Create a web app manifest
-* Edit the `index.html` to tell the browser where to find the manifest
+* Edit the <code>index.html</code> to tell the browser where to find the manifest
 * Register the service worker 
-* Incorporate `sw-precache` into your node-based build script
+* Incorporate <code>sw-precache</code> into your node-based build script
 
 ### Use a Web App Manifest File
 
@@ -876,7 +876,7 @@ It is a simple JSON file that provides developers with:
 
 The following manifest file is for the simple app shell at  [appspot.com](https://app-shell.appspot.com/).
 
-```
+<code></code>`
 {
   "short_name": "App shell",
   "name": "App shell",
@@ -907,16 +907,16 @@ The following manifest file is for the simple app shell at  [appspot.com](https:
   "background_color": "#3E4EB8",
   "theme_color": "#2E3AA1"
 }
-```
+<code></code>`
 
 To include the manifest file in your app, include a link tag in your index.html to tell the browser where to find your manifest file:
 
-```
+<code></code>`
 <!-- Add to your index.html -->
 
 <!-- Web Application Manifest -->
 <link rel="manifest" href="manifest.json">
-```
+<code></code>`
 
 <strong>Tip:</strong>
 
@@ -928,13 +928,13 @@ To include the manifest file in your app, include a link tag in your index.html 
 
 ### Registering a Service Worker
 
-Service worker caching should be considered a progressive enhancement. If you follow the model of conditionally registering a service worker only when supported by the browser (determined by `if('serviceWorker' in navigator)`), you get offline support on browsers with service workers and on browsers that do not support service workers, the offline-specific code is never called. There's no overhead/breakage for older browsers.
+Service worker caching should be considered a progressive enhancement. If you follow the model of conditionally registering a service worker only when supported by the browser (determined by <code>if('serviceWorker' in navigator)</code>), you get offline support on browsers with service workers and on browsers that do not support service workers, the offline-specific code is never called. There's no overhead/breakage for older browsers.
 
 For an look at what's required to make your app work offline, see  [The Service Worker Lifecycle](https://developers.google.com/web/fundamentals/instant-and-offline/service-worker/lifecycle) and try the step-by-step PWA codelab  [Scripting the Service Worker](https://developers.google.com/web/fundamentals/instant-and-offline/service-worker/lifecycle). To see a complete, sophisticated implementation, see the service worker lifecycle management code in  [Github](https://github.com/GoogleChrome/sw-precache/blob/master/demo/app/js/service-worker-registration.js#L25).
 
 ### Caching the Application Shell
 
-You can manually hand code an app shell or use the `sw-precache` service worker module to automatically generate it and minimize the amount of boilerplate code you must write.
+You can manually hand code an app shell or use the <code>sw-precache</code> service worker module to automatically generate it and minimize the amount of boilerplate code you must write.
 
 <div class="note">
 <strong>Note:</strong> The examples are provided for general information and illustrative purposes only. The actual resources used, such as jQuery, may be different for your application.
@@ -942,7 +942,7 @@ You can manually hand code an app shell or use the `sw-precache` service worker 
 
 #### Caching the App Shell Manually
 
-```
+<code></code>`
 var cacheName = 'shell-content';
 var filesToCache = [
   '/css/bootstrap.css',
@@ -962,23 +962,23 @@ self.addEventListener('install', function(e) {
     })
   );
 });
-```
+<code></code>`
 
 <a id="swprecache" />
 
-#### Using `sw-precache` to Cache the App Shell
+#### Using <code>sw-precache</code> to Cache the App Shell
 
-The  [`sw-precache Module`](#precachemodule) section in this document describes this API in detail. This section describes how you can run the  [`sw-precache`](https://developer.mozilla.org/en-US/docs/Web/API/Cache) API as a command-line tool or as part of your build process. 
+The  [<code>sw-precache Module</code>](#precachemodule) section in this document describes this API in detail. This section describes how you can run the  [<code>sw-precache</code>](https://developer.mozilla.org/en-US/docs/Web/API/Cache) API as a command-line tool or as part of your build process. 
 
 <strong>Important:</strong> Every time you make changes to local files and are ready to deploy a new version of your site, re-run this step. To ensure this is done, include the task that generates your service worker code in your list of tasks that are automatically run as part of your deployment process. 
 
-##### Using `sw-precache` From the Command Line
+##### Using <code>sw-precache</code> From the Command Line
 
-To test the result of using `sw-precache` without changing your build system for every version of the experiment, you can run the `sw-precache` API at from the command line. 
+To test the result of using <code>sw-precache</code> without changing your build system for every version of the experiment, you can run the <code>sw-precache</code> API at from the command line. 
 
-First, create a `sw-precache-config.json` file with our `sw-precache` configuration.  In this example `staticFileGlobs` indicates the path to each file that we want to precache and `stripPrefix` tells `sw-precache` what part of each file path to remove. 
+First, create a <code>sw-precache-config.json</code> file with our <code>sw-precache</code> configuration.  In this example <code>staticFileGlobs</code> indicates the path to each file that we want to precache and <code>stripPrefix</code> tells <code>sw-precache</code> what part of each file path to remove. 
 
-```
+<code></code>`
 {
   "staticFileGlobs": [
     "app/index.html",
@@ -988,17 +988,17 @@ First, create a `sw-precache-config.json` file with our `sw-precache` configurat
   ],
   "stripPrefix": "app/"
 }
-```
+<code></code>`
 
-Once the `sw-precache` configuration is ready then run it with the following command:
+Once the <code>sw-precache</code> configuration is ready then run it with the following command:
 
-`$ sw-precache --config=path/to/sw-precache-config.json --verbose`
+<code>$ sw-precache --config=path/to/sw-precache-config.json --verbose</code>
 
-##### Using `sw-precache` From Gulp
+##### Using <code>sw-precache</code> From Gulp
 
-The following code example uses the `gulp` command to build a project. It first creates a `gulp` task that uses the `sw-precache` module to generate a `service-worker.js` file. The following code is added to the `gulp` file:
+The following code example uses the <code>gulp</code> command to build a project. It first creates a <code>gulp</code> task that uses the <code>sw-precache</code> module to generate a <code>service-worker.js</code> file. The following code is added to the <code>gulp</code> file:
 
-```
+<code></code>`
 /*jshint node:true*/
 (function() {
   'use strict';
@@ -1031,22 +1031,22 @@ The following code example uses the `gulp` command to build a project. It first 
     }, callback);
   });
 })();
-```
+<code></code>`
 
 #### What Happens Next?
 
-When you run `gulp` you should see output similar to the following:
+When you run <code>gulp</code> you should see output similar to the following:
 
-```
+<code></code>`
 $ gulp generate-service-worker
 [11:56:22] Using gulpfile ~/gulpfile.js
 [11:56:22] Starting 'generate-service-worker'...
 Total precache size is about 75.87 kB for 11 resources.
 [11:56:22] Finished 'generate-service-worker' after 49 ms
 $
-```
+<code></code>`
 
-This process generates a new `service-worker.js` file in the app directory of your project. All resources that are precached are fetched by a service worker running in a separate thread as soon as the service worker is installed. 
+This process generates a new <code>service-worker.js</code> file in the app directory of your project. All resources that are precached are fetched by a service worker running in a separate thread as soon as the service worker is installed. 
 
 Remember to rerun the API each time any of your app shell resources change to pick up the latest versions.
 
@@ -1097,7 +1097,7 @@ Using the architectures and technologies in this document means you now have a k
 
 Where does all of this leave you as a developer who wants to use PWA architectures? 
 
-If you are starting from scratch and want inspiration or just want to see a finished real-world example, look at Jeff Posnick's `iFixit` API demo (client):
+If you are starting from scratch and want inspiration or just want to see a finished real-world example, look at Jeff Posnick's <code>iFixit</code> API demo (client):
 
 *  [Source code on GitHub](https://github.com/GoogleChrome/sw-precache/tree/master/app-shell-demo)
 *  [Deployed example](https://ifixit-pwa.appspot.com/)
