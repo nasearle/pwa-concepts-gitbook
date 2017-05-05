@@ -1,0 +1,113 @@
+$brand-primary: #304FFE;
+
+// Global Styles
+body {
+  font-family: 'Roboto', sans-serif;
+}
+h1 {
+    color: #000000}
+
+img.center {
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px; 
+}
+
+img.pv {
+    width: 360px;
+    height: auto;
+}
+
+img.ph {
+    height: 360px;
+    width: auto;
+}
+
+img.ic {
+    height: 36px;
+    width: auto;
+}
+
+div.todo {
+  background-color: #FFFF00;
+}
+
+// Table of Contents
+.book-summary {
+  border-right: none;
+  background-color: $brand-primary;
+  color: #ffffff;
+  h2.title {
+    padding: 0 0 30px;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 25px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  ul.summary {
+    li {
+    color: #000000;
+    font-weight: bold;
+      >a {
+        color: #ffffff;
+      }
+      &.active {
+        >a {
+          background-color: #ffffff;
+          color: $brand-primary;
+        }
+      }
+    }
+  }
+}
+
+// Book Content
+.book-body {
+  .markdown-section {
+    h1, h2, h3, h4, h5, h6 {
+      color: $brand-primary;
+      font-weight: 400;
+    }
+    a {
+      color: $brand-primary;
+    }
+  }
+
+  .note {
+    padding: 20px;
+    margin: 20px 0;
+    background: rgba($brand-primary, 0.1);
+  }
+
+  // Code Samples
+  pre.prettyprint {
+    border: none;
+    padding: 15px;
+  }
+}
+
+// Page Navigation
+#anchors-navbar {
+  right: 0;
+  border: none;
+  box-shadow: none;
+  background-color: $brand-primary;
+  color: #fff;
+  ul {
+    padding-left: 10px;
+  }
+  &:hover {
+    background-color: #f0f0f0;
+    color: $brand-primary;
+  }
+}
+#goTop {
+  border: none;
+  box-shadow: none;
+  background-color: $brand-primary;
+  color: #fff;
+  bottom: 0;
+  right: 0;
+}
+
+

@@ -1,3 +1,11 @@
 {
-
+    "plugins": ["styles-sass", "ga"],
+    "pluginsConfig": {
+        "ga": {
+            "token": "UA-81734179-1"
+        }
+    },
+    "styles": {
+        "website": "./styles/website.scss"
+    }
 }

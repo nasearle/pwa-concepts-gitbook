@@ -1,0 +1,10 @@
+/* CSS for website */
+
+h1 {
+color: #000000}
+
+img.center {
+display: block;
+margin: 0 auto;
+margin-top: 10px;
+}
