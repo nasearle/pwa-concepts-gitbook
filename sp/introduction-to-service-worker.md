@@ -101,7 +101,6 @@ A service worker goes through three steps in its lifecycle:
 To <strong>install</strong> a service worker, you need to <strong>register</strong> it in your main JavaScript code. Registration tells the browser where your service worker is located, and to start installing it in the background. Let's look at an example:
 
 #### main.js
-
 ```
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/service-worker.js')
@@ -121,7 +120,6 @@ The <code>scope</code> of the service worker determines which files the service 
 You can also set an arbitrary scope by passing in an additional parameter when registering. For example:
 
 #### main.js
-
 ```
 navigator.serviceWorker.register('/service-worker.js', {
   scope: '/app/'
@@ -139,7 +137,6 @@ Once the the browser registers a service worker, <strong>installation</strong> c
 A service worker installation triggers an <code>install</code> event in the installing service worker. We can include an <code>install</code> event listener in the service worker to perform some task when the service worker installs. For instance, during the install, service workers can precache parts of a web app so that it loads instantly the next time a user opens it (see <a href="https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/#on-install-as-dependency">caching the application shell</a>). So, after that first load, you're going to benefit from instant repeat loads and your time to interactivity is going to be even better in those cases. An example of an installation event listener looks like this: 
 
 #### service-worker.js
-
 ```
 // Listen for install event, set callback
 self.addEventListener('install', function(event) {
@@ -160,7 +157,6 @@ Once a service worker has successfully installed, it transitions into the <stron
 When the new service worker activates, an <code>activate</code> event is triggered in the activating service worker. This event listener is a good place to clean up outdated caches (see the <a href="https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/#on-activate">Offline Cookbook</a> for an example).
 
 #### service-worker.js
-
 ```
 self.addEventListener('activate', function(event) {
   // Perform some task

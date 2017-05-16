@@ -39,7 +39,6 @@ The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch A
 You can check for browser support of fetch in the window interface. For example:
 
 #### main.js
-
 ```
 if (!('fetch' in window)) {
   console.log('Fetch API not found, try including the polyfill');
@@ -63,7 +62,6 @@ The <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch"
 Let's look at a simple example of fetching a JSON file:
 
 #### main.js
-
 ```
 fetch('examples/example.json')
 .then(function(response) {
@@ -83,7 +81,6 @@ Response objects represent the response to a request. They contain the requested
 Evaluating the success of responses is particularly important when using fetch because bad responses (like 404s) still resolve. The only time a fetch promise will reject is if the request was unable to complete. The previous code segment would only fall back to .<code>catch</code> if there was no network connection, but not if the response was bad (like a 404). If the previous code were updated to validate responses it would look like:
 
 #### main.js
-
 ```
 fetch('examples/example.json')
 .then(function(response) {
@@ -110,7 +107,6 @@ Now if the response object's <code>ok</code> property is false (indicating a non
 Responses must be read in order to access the body of the response. Response objects have <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response">methods</a> for doing this. For example, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/json">Response.json()</a> reads the response and returns a promise that resolves to JSON. Adding this step to the current example updates the code to:
 
 #### main.js
-
 ```
 fetch('examples/example.json')
 .then(function(response) {
@@ -132,7 +128,6 @@ fetch('examples/example.json')
 This code will be cleaner and easier to understand if it's abstracted into functions:
 
 #### main.js
-
 ```
 function logResult(result) {
   console.log(result);
@@ -164,7 +159,7 @@ function fetchJSON(pathToResource) {
 fetchJSON('examples/example.json');
 ```
 
-(This is <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-concepts/content/docs/working_with_promises.html">promise chaining</a>.)
+(This is <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-concepts/content/docs/working_with_promises.html#chaining">promise chaining</a>.)
 
  To summarize what's happening:
 
@@ -184,14 +179,13 @@ Step 4. Finally, the JSON data from the original request to <strong>examples/exa
 
 * <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response">Response interface</a>
 * <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/json">Response.json()</a>
-* <a href="https://docs.google.com/document/d/1H3GaE6JQhydNaPzII9hgGZL-uL73VvgQ02FYijeK0js/edit#">Promise chaining</a>
+* <a href="https://google-developer-training.gitbooks.io/progressive-web-apps-ilt-concepts/content/docs/working_with_promises.html#chaining">Promise chaining</a>
 
 ### Example: fetching images
 
 Let's look at an example of fetching an image and appending it to a web page. 
 
 #### main.js
-
 ```
 function readResponseAsBlob(response) {
   return response.blob();
@@ -234,7 +228,6 @@ In this example an image (<strong>examples/kitten.jpg)</strong> is fetched. As i
 Let's look at another example, this time fetching some text and inserting it into the page. 
 
 #### main.js
-
 ```
 function readResponseAsText(response) {
   return response.text();
@@ -292,7 +285,6 @@ HEAD requests are just like GET requests except the body of the response is empt
 To call an API with a HEAD request, set the method in the <code>init</code> parameter. For example:
 
 #### main.js
-
 ```
 fetch('examples/words.txt', {
   method: 'HEAD'
@@ -304,7 +296,6 @@ This will make a HEAD request for <strong>examples/words.txt</strong>.
 You could use a HEAD request to check the size of a resource. For example:
 
 #### main.js
-
 ```
 function checkSize(response) {
   var size = response.headers.get('content-length');
@@ -331,7 +322,6 @@ Here the HEAD method is used to request the size (in bytes) of a resource (repre
 Fetch can also send data to an API with POST requests. The following code sends a "title" and "message" (as a string) to <strong>someurl/comment</strong>:
 
 #### main.js
-
 ```
 fetch('someurl/comment', {
   method: 'POST',
@@ -348,7 +338,6 @@ The method is again specified with the <code>init</code> parameter. This is also
 The body data could also be extracted from a form using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData">FormData</a> interface. For example, the above code could be updated to:
 
 #### main.js
-
 ```
 // Assuming an HTML <form> with id of 'myForm'
 fetch('someurl/comment', {
@@ -362,7 +351,6 @@ fetch('someurl/comment', {
 The <code>init</code> parameter can be used with the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Headers">Headers</a> interface to perform various actions on HTTP request and response headers, including retrieving, setting, adding, and removing them. An example of reading response headers was shown in a <a href="#head">previous section</a>. The following code demonstrates how a custom <a href="https://developer.mozilla.org/en-US/docs/Web/API/Headers">Headers</a> object can be created and used with a fetch request:
 
 #### main.js
-
 ```
 var myHeaders = new Headers({
   'Content-Type': 'text/plain',
@@ -398,7 +386,6 @@ Custom headers on <a href="#cors">cross-origin</a> requests must be supported by
 Fetch (and XMLHttpRequest) follow the <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy">same-origin policy</a>. This means that browsers restrict <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">cross-origin</a> HTTP requests from within scripts.  A cross-origin request occurs when one domain (for example <strong>http://<span></span>foo.com/</strong>) requests a resource from a separate domain (for example <strong>http://<span></span>bar.com/</strong>). This code shows a simple example of a cross-origin request:
 
 #### main.js
-
 ```
 // From http://foo.com/
 fetch('http://bar.com/data.json') 
@@ -418,7 +405,6 @@ If the server you are requesting from doesn't support CORS, you should get an er
 You can use <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch"><code>no-cors</code></a> mode to request opaque resources. <a href="https://fetch.spec.whatwg.org/#concept-filtered-response-opaque">Opaque responses</a> can't be accessed with JavaScript but the response can still be served or cached by a service worker. Using <code>no-cors</code> mode with fetch is relatively simple. To update the above example with <code>no-cors</code>, we pass in the <code>init</code> object with <code>mode</code> set to <code>no-cors</code>:
 
 #### main.js
-
 ```
   // From http://foo.com/
 fetch('http://bar.com/data.json', {

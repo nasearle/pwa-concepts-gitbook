@@ -28,7 +28,7 @@ Codelab: <a href="https://google-developer-training.gitbooks.io/progressive-web-
 
 
 
-In this text we'll cover <code>sw-precache</code> and <code>sw-toolbox</code>, two packages created by Google to automate the creation of service workers, and to make the creation of custom caching routes easier. We'll explore how to use <code>sw-precache</code> from the command line, how to build routes using <code>sw-toolbox,</code> and how to integrate both tools into a gulp-based workflow.
+In this text we'll cover <code>sw-precache</code> and <code>sw-toolbox</code>, two Node packages created by Google to automate the creation of service workers, and to make the creation of custom caching routes easier. We'll explore how to use <code>sw-precache</code> from the command line, how to build routes using <code>sw-toolbox,</code> and how to integrate both tools into a gulp-based workflow.
 
 <a id="routes">
 
@@ -40,20 +40,33 @@ In this text we'll cover <code>sw-precache</code> and <code>sw-toolbox</code>, t
 
 <code>sw-toolbox</code> simplifies the process of intercepting network requests in the service worker and performing some caching strategy with the request/response.
 
+Before you can use <code>sw-toolbox</code>, you must first install the package in your project from the command line:
+```
+npm install sw-toolbox
+```
+
 To use <code>sw-toolbox</code> you define  <em>routes</em>  and include them in your service worker. Routes behave like <code>fetch</code> event listeners, but are a more convenient way of creating custom handlers for specific requests.
 
 Routes look like this:
-
 ```
 toolbox.router.get(urlPattern, handler, options)
 ```
 
 A route intercepts requests that match the specified URL pattern and HTTP request method, and responds according to the rules defined in the request handler. The HTTP request method is called on <code>toolbox.router</code> (in the example above it's <code>get</code>) and can be any of the methods defined <a href="https://googlechrome.github.io/sw-toolbox/api.html#main">here</a>. The <code>options</code> parameter lets us define a cache to use for that route, as well as a network timeout if the handler is the built-in <code>toolbox.networkFirst</code>. See the <a href="https://googlechrome.github.io/sw-toolbox/api.html#main">Tutorial: API</a> for more details.
 
+Routes can be added directly to an existing service worker, or written in a separate JavaScript file and imported into the service worker using the <code>importScripts</code> method. Before the routes can be used, the <code>sw-toolbox</code> Node script itself must also be imported into the service worker from the <strong>node_modules</strong> folder. For example, you could include the following snippet at the bottom of your service worker to import both the <code>sw-toolbox</code> package and a JavaScript file containing your custom routes:
+
+importScripts("./node_modules/sw-toolbox/sw-toolbox.js","./js/toolbox-script.js");
+
+<div class="note">
+Note: Be sure to include the sw-toolbox package as the first argument in importScripts, so that your custom routes' dependencies exist in the service worker before being called.
+</div>
+
+### Built-in Handlers
+
 <code>sw-toolbox</code> has five built-in handlers to cover the most common caching strategies (see the <a href="https://googlechrome.github.io/sw-toolbox/api.html#main">Tutorial: API</a> for the full list and the <a href="#strategies">Caching strategies table</a> below for a quick reference). For more information about caching strategies see the <a href="https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/">Offline Cookbook</a>.
 
 Let's look at an example:
-
 ```
 toolbox.router.get('/my-app/index.html', global.toolbox.networkFirst, {networkTimeoutSeconds: 5});
 ```
@@ -74,7 +87,6 @@ If you're familiar with <a href="http://expressjs.com/en/guide/routing.html">Exp
 To use Express-style URL patterns, pass the pattern into the route as a string. <code>sw-toolbox</code> then converts the URL to a regular expression via the <a href="https://github.com/pillarjs/path-to-regexp">path-to-regexp</a> library.
 
 For example:
-
 ```
 toolbox.router.get('img/**/*.{png,jpg}', global.toolbox.cacheFirst);
 ```
@@ -82,7 +94,6 @@ toolbox.router.get('img/**/*.{png,jpg}', global.toolbox.cacheFirst);
 This intercepts all  <code>GET</code> requests for any <code>png</code> or <code>jpg</code> file under the <strong>img</strong> folder, regardless of depth. It handles the request according to the "cache first" strategy, first looking in the cache for the response. If that fails, the request is sent to the network and, if that succeeds, the response is added to the cache.
 
 Here is another example:
-
 ```
 toolbox.router.get('/.*fly$/', global.toolbox.cacheFirst);
 ```
@@ -92,7 +103,6 @@ This matches any content that ends with fly (like butterfly or dragonfly) using 
 To match a request from another domain using Express-style routing, we must define the <code>origin</code> property in the <code>options</code> object. The value could be either a string (which is checked for an exact match) or a RegExp object. In both cases, it's matched against the full origin of the URL (for example, <strong>https://<span></span>example.com</strong>).
 
 For example:
-
 ```
 toolbox.router.get('/(.*)', global.toolbox.cacheFirst, {
   origin: /\.googleapis\.com$/
@@ -106,7 +116,6 @@ This matches all files (<code>'/(.*)'</code>) with an origin that ends with ".go
 You can also use <a href="https://regex101.com/">regular expressions</a> to define the URL pattern in the route by passing a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions">RegExp</a> object as the first parameter. This RegExp is matched against the full request URL (request and path) to determine if the route applies to the request. This matching makes for easier cross-origin routing, since the origin and the path are matched without having to specify an <code>origin</code> like we did with Express style routes.
 
 This route handles all GET requests that end with <strong>index.html</strong>:
-
 ```
 toolbox.router.get(/index.html$/, function(request) {
   return new Response('Handled a request for ' + request.url);
@@ -114,7 +123,6 @@ toolbox.router.get(/index.html$/, function(request) {
 ```
 
 This route handles all POST requests that begin with <strong>https://<span></span>api.flickr.com/</strong>: 
-
 ```
 toolbox.router.post(/^https://api.flickr.com\//, global.toolbox.networkFirst);
 ```
@@ -126,7 +134,6 @@ toolbox.router.post(/^https://api.flickr.com\//, global.toolbox.networkFirst);
 * We give it a name ("googleapis")
 * We give it a maximum size of 10 items (indicated by the <code>maxEntries</code> parameter)
 * We set the content to expire in 86400 seconds (24 hours)
-
 ```
 toolbox.router.get('/(.*)', global.toolbox.cacheFirst, {
   cache: {
@@ -212,7 +219,6 @@ It's important to consider all of the caching strategies and find the right bala
 
 
 The example below demonstrates some <code>sw-toolbox</code> strategies to cache different parts of an application.
-
 ```
 (function(global) {
   'use strict';
@@ -277,14 +283,12 @@ Example 5 presents our default route. If the request did not match any prior rou
 ### Integrating sw-precache into a gulp build system
 
 To use <code>sw-precache</code> in gulp, we first import the plugin at the top of the gulp file.
-
 ```
 var swPrecache = require('sw-precache');
 ```
 
 
 We then create a gulp task and call <code>write</code> on <code>swPrecache</code>. The write method looks like this:
-
 ```
 swPrecache.write(filePath, options, callback)
 ```
@@ -292,7 +296,6 @@ swPrecache.write(filePath, options, callback)
 <code>filePath</code> is the location of the file to write the service worker to. <code>options</code> is an object that defines the behavior of the generated service worker (see the <a href="https://github.com/GoogleChrome/sw-precache#options-parameter">documentation on Github</a> for the full list of options). The callback is always executed. This is for gulp to know when an async operation has completed. If there is an error, it is passed to the callback. If no error is found, null is passed to the callback.
 
 Let's look at an example:
-
 ```
 gulp.task('generate-service-worker', function(callback) {
   swPrecache.write('app/service-worker.js'), {
@@ -337,13 +340,11 @@ We call the gulp task <code>'generate-service-worker'</code> and pass a callback
 You can use <code>sw-precache</code> from the command line when you want to test the result of using it, but don't want to have to change your build system for every version of the experiment. 
 
 Sensible defaults are assumed for options that are not provided. For example, if you are inside the top-level directory that contains your site's contents, and you'd like to generate a <strong>service-worker.js</strong> file that will automatically precache all of the local files, you can simply run:
-
 ```
 sw-precache
 ```
 
 Alternatively, if you'd like to only precache <code>.html</code> files that live within <strong>dist/</strong>, which is a subdirectory of the current directory, you could run:
-
 ```
 sw-precache --root=dist --static-file-globs='dist/**/*.html'
 ```
@@ -353,7 +354,6 @@ sw-precache --root=dist --static-file-globs='dist/**/*.html'
 </div>
 
 Finally, there's support for passing complex configurations using <code>--config <file></code>. Any of the options from the file can be overridden through a command-line flag. We recommend using an external JavaScript file to define configurations using <a href="https://nodejs.org/api/modules.html#modules_module_exports">module.exports</a>. For example, assume there's a <strong>path/to/sw-precache-config.js</strong> file that contains:
-
 ```
 module.exports = {
   staticFileGlobs: [
@@ -371,7 +371,6 @@ module.exports = {
 ```
 
 We can pass the file to the command-line interface, also setting the verbose option:
-
 ```
 sw-precache --config=path/to/sw-precache-config.js --verbose
 ```
@@ -379,7 +378,6 @@ sw-precache --config=path/to/sw-precache-config.js --verbose
 This provides the most flexibility, such as providing a regular expression for the <code>runtimeCaching.urlPattern</code> option.
 
 <code>sw-precache</code> also supports passing in a JSON file for <code>--config</code>, though this provides less flexibility:
-
 ```
 {
   "staticFileGlobs": [

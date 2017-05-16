@@ -120,7 +120,6 @@ Once you have created an account, you need to add the tracking snippet to your a
 Your tracking ID looks like <code>UA-XXXXXXXX-Y</code> and your tracking code snippet looks like:
 
 #### index.html
-
 ```
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]) \
@@ -234,7 +233,6 @@ Google Analytics supports custom events that allow for fine-grain analysis of us
 For example, the following code will send a custom event:
 
 #### main.js
-
 ```
 ga('send', {
   hitType: 'event',
@@ -279,7 +277,6 @@ This interface allows us to make HTTP requests to send hits, regardless of the e
 A helper script, <strong>analytics-helper.js</strong> has the following code:
 
 #### analytics-helper.js
-
 ```
 // Set this to your tracking ID
 var trackingId = 'UA-XXXXXXXX-Y';
@@ -367,7 +364,6 @@ The script starts by creating a variable with your tracking ID (replace <code>UA
 The <code>sendAnalyticsEvent</code> helper function starts by checking that the tracking ID is set and that the function is being called with the correct parameters. After checking that the client is subscribed to push, the hit data is created in the <code>payloadData</code> variable:
 
 #### analytics-helper.js
-
 ```
 var payloadData = {
   // Version Number
@@ -392,7 +388,6 @@ Again, the <strong>version number</strong>, <strong>client ID</strong>, <strong>
 Next, the hit data is <a href="https://developers.google.com/analytics/devguides/collection/protocol/v1/reference">formatted into a URI</a> with the following code:
 
 #### analytics-helper.js
-
 ```
 var payloadString = Object.keys(payloadData)
 .filter(function(analyticsKey) {
@@ -407,7 +402,6 @@ var payloadString = Object.keys(payloadData)
 Finally the data is sent to the <a href="https://developers.google.com/analytics/devguides/collection/protocol/v1/reference">API endpoint</a> (<strong>https://www.google-analytics.com/collect</strong>) with the following code:
 
 #### analytics-helper.js
-
 ```
 return fetch('https://www.google-analytics.com/collect', {
   method: 'post',
@@ -420,7 +414,6 @@ This sends the hit with the <a href="https://developer.mozilla.org/en-US/docs/We
 Now we can import the helper script functionality into a service worker by adding the following code to the service worker file:
 
 #### sw.js
-
 ```
 self.importScripts('path/to/analytics-helper.js');
 ```
@@ -428,7 +421,6 @@ self.importScripts('path/to/analytics-helper.js');
 Where <code>path/to/analytics-helper.js</code> is the path to the <strong>analytics-helper.js</strong> file. Now we should be able to send custom events from the service worker by making calls to the <code>sendAnalyticsEvent</code> function. For example, to send a custom "notification close" event, we could add code like this to the service worker file:
 
 #### sw.js
-
 ```
 self.addEventListener('notificationclose', function(event) {
   event.waitUntil(
@@ -460,7 +452,6 @@ Observe that we have used <code>event.waitUntil</code> to wrap an asynchronous o
 With the help of service workers, analytics data can be stored when users are offline and sent at a later time when they have reconnected based on an <a href="https://www.npmjs.com/package/sw-offline-google-analytics">npm package</a>.
 
 Install the package with the following command-line command:
-
 ```
 npm install sw-offline-google-analytics
 ```
@@ -470,7 +461,6 @@ This imports the <a href="https://nodejs.org/en/">node</a> module.
 In your service worker file, add the following code:
 
 #### sw.js
-
 ```
 importScripts('path/to/offline-google-analytics-import.js');
 goog.offlineGoogleAnalytics.initialize();
@@ -479,7 +469,6 @@ goog.offlineGoogleAnalytics.initialize();
 Where <code>path/to/offline-google-analytics-import.js</code> is the path to the <strong>offline-google-analytics-import.js</strong> file in the node module. This will likely look something like:
 
 #### sw.js
-
 ```
 node_modules/sw-offline-google-analytics/offline-google-analytics-import.js
 ```

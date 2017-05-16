@@ -82,7 +82,6 @@ Let's walk through a simple example of taking an app offline.
 The first step in offline functionality is registering a service worker. Use the following code (which should be executed when your app loads) to register a service worker:
 
 #### index.html
-
 ```
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js')
@@ -102,7 +101,6 @@ This code starts by checking for browser support, and then registers the service
 A common strategy is to cache the site's static assets when the service worker installs. Then, after a user has visited your site for the first time, the static content can be retrieved from the cache on future visits. The following code (in the service worker file) shows how to do this:
 
 #### service-worker.js
-
 ```
 var CACHE_NAME = 'static-cache';
 var urlsToCache = [
@@ -135,7 +133,6 @@ This code starts by defining a cache name and a list of URLs to be cached (the s
 Now that there are assets in the cache, the service worker can use those resources instead of requesting them from the network:
 
 #### service-worker.js
-
 ```
 self.addEventListener('fetch', function(event) {
   event.respondWith(

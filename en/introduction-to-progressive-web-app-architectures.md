@@ -46,7 +46,7 @@ A service worker performs its functions without the need for an open web page or
 
 Service workers provide services such as: 
 
-* Intercepting HTTP/HTTPS requests so your app can decide what gets served from a cache,the  local data store, or the network.
+* Intercepting HTTP/HTTPS requests so your app can decide what gets served from a cache, the local data store, or the network.
 
     A service worker cannot access the DOM but it can access the <a href="https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage">Cache Storage API</a>, make network requests using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a>, and persist data using the <a href="https://developer.mozilla.org/en/docs/Web/API/IndexedDB_API">IndexedDB API</a>. Besides intercepting network requests, service workers can use <code>postMessage()</code> to communicate between the service worker and pages it controls (e.g. to request DOM updates).
 
@@ -117,7 +117,7 @@ The app shell model is great but how does it work in browsers that do not suppor
 <p>There are two types of cache in the browser: browser-managed cache and application-managed cache (service worker).</p>
 <ul>
 <li><strong>Browser-managed caches</strong> are a temporary storage location on your computer for files downloaded by your browser to display websites. Files that are cached locally include any documents that make up a website, such as HTML files, CSS style sheets, JavaScript scripts, as well as graphic images and other multimedia content. This cache is managed automatically by the browser and is not available offline.</li>
-<li><strong>Application-managed caches</strong> are created using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache">Cache API</a> independent of the browser-managed caches. This API is available to applications (via window.caches) and the service worker. Application- managed caches hold the same kinds of assets as a browser cache but are  accessible offline (e.g. by the service worker to enables offline support.) Code that uses the Cache API manages the contents of its own caches.</li>
+<li><strong>Application-managed caches</strong> are created using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache">Cache API</a> independent of the browser-managed caches. This API is available to applications (via <strong><code>window.caches</code></strong>) and the service worker. Application- managed caches hold the same kinds of assets as a browser cache but are accessible offline (e.g. by the service worker to enable offline support).This cache is managed by developers who implement scripts that use the Cache API to explicitly update items in named cache objects.</li>
 </ul>
 <p>Cache is a great tool you can use when building your app, as long as the cache you use is appropriate for each resource. Several caching strategies are described in the PWA <a href="#bestcaching">Caching Strategies</a> tutorial.</p>
 </td>
@@ -244,11 +244,11 @@ PWAs can be built with any architectural style (SSR, CSR, or a hybrid of the two
 1. Application shell (SSR both shell + content for entry page) + use JavaScript to fetch content for any further routes and do a "take over"
 
  <div class="note">
-<strong>Note: </strong>In the future, consider a server-side render of UI with Streams for body content model (even better). See <a href="https://jakearchibald.com/2016/streams-ftw/">https://jakearchibald.com/2016/streams-ftw/</a> to learn more.
+<strong> Note: </strong>In the future, consider a server-side render of UI with Streams for body content model (even better). See <a href="https://jakearchibald.com/2016/streams-ftw/">https://jakearchibald.com/2016/streams-ftw/</a> to learn more.
 </div>
 
  <div class="note">
-<strong>Note:</strong> If you are building a PWA using Polymer leveraging this pattern, then it might be worth exploring SSR of content in the Light DOM.
+<strong> Note:</strong> If you are building a PWA using Polymer leveraging this pattern, then it might be worth exploring SSR of content in the Light DOM.
 </div>
 
 2. Application shell (SSR) + use JavaScript to fetch content once the app shell is loaded
@@ -256,13 +256,13 @@ PWAs can be built with any architectural style (SSR, CSR, or a hybrid of the two
     SSR is optional. Your shell is likely to be highly static, but SSR provides slightly better performance in some cases.
 
  <div class="note">
-<strong>Note:</strong> If you are already considering <a href="https://www.ampproject.org/">Accelerated Mobile Pages (AMP)</a>, you may be interested in an app shell (SSR) "viewer" + use AMP for leaf nodes (content). 
+<strong> Note:</strong> If you are already considering <a href="https://www.ampproject.org/">Accelerated Mobile Pages (AMP)</a>, you may be interested in an app shell (SSR) "viewer" + use AMP for leaf nodes (content). 
 </div>
 
 3. Server-side rendering full page (full page caching)
 
  <div class="note">
-<strong>Note: </strong>For browsers that do not support service workers, we gracefully degrade to still server-side rendering content (for example, iOS). 
+<strong> Note: </strong>For browsers that do not support service workers, we gracefully degrade to still server-side rendering content (for example, iOS). 
 </div>
 
 4. Client-side rendering full page (full page caching, potential for JSON payload bootstrapping via server)
@@ -519,7 +519,6 @@ You can install <code>sw-toolbox</code> through <code>Bower</code>, <code>npm</c
     git clone https://github.com/GoogleChrome/sw-toolbox.git
 
 To load <code>sw-toolbox</code>, use <code>importScripts</code> in your service worker file. For example:
-
 ```
 importScripts('js/sw-toolbox/sw-toolbox.js'); 
 // Update path to match your setup
@@ -538,7 +537,6 @@ Besides applying common caching strategies, the <code>sw-toolbox</code> library 
     While your app shell should always be cached first, there might be some cases where you app uses the "network first" caching strategy to request the dynamic content used to populate your shell. You can avoid Lie-fi in those cases by using <code>sw-toolbox</code> to set an explicit network timeout. 
 
     The following example uses the <code>networkFirst</code> caching strategy to set the timeout to three seconds when fetching an image across the network. If, after those three seconds there is no response from the network, then the app automatically falls back to the cached content. 
-
 ```
 toolbox.router.get(
     '/path/to/image', 
@@ -552,7 +550,6 @@ toolbox.router.get(
     But, if you keep adding to dynamic caches indefinitely then your app consumes an ever increasing amount of storage. So <code>sw-toolbox</code> actually manages cache expiration for you, saving you the trouble of implementing it yourself. 
 
     The following example configures <code>sw-toolbox</code> to use a dedicated cache for images with a maximum cache size of 6. Once the cache is full (as it is now) new images cause the least recently used images to be evicted. in addition to the  <em>least recently used</em>  expiration option, <code>sw-toolbox</code> also gives you a time-based expiration option where you can automatically expire everything once it reaches a certain age. 
-
 ```
 toolbox.router.get(
     '/path/to/images/*', 
@@ -659,7 +656,6 @@ Use the following table to determine which caching strategy is most appropriate 
 While you can implement these strategies yourself manually, using <code>sw-toolbox</code> is recommended for caching your app's dynamic content. The last column in the table shows the <code>sw-toolbox</code> library that provides a canonical implementation of each strategy. If you do implement additional caching logic, put the code in a separate JavaScript file and include it using the <code>importScripts()</code> method.
 
 Note that you do not have to choose just one strategy. The <code>sw-toolbox</code> routing syntax allows you to apply different strategies to different URL patterns. For example:
-
 ```
 toolbox.router.get('/images', toolbox.cacheFirst);
 toolbox.router.get('/api', toolbox.networkFirst);
@@ -875,7 +871,6 @@ It is a simple JSON file that provides developers with:
 * A way to declare a default orientation for their web application,and provide the ability to set the display mode for the application (e.g., in full screen). 
 
 The following manifest file is for the simple app shell at <a href="https://app-shell.appspot.com/">appspot.com</a>.
-
 ```
 {
   "short_name": "App shell",
@@ -910,7 +905,6 @@ The following manifest file is for the simple app shell at <a href="https://app-
 ```
 
 To include the manifest file in your app, include a link tag in your index.html to tell the browser where to find your manifest file:
-
 ```
 <!-- Add to your index.html -->
 
@@ -941,7 +935,6 @@ You can manually hand code an app shell or use the <code>sw-precache</code> serv
 </div>
 
 #### Caching the App Shell Manually
-
 ```
 var cacheName = 'shell-content';
 var filesToCache = [
@@ -977,7 +970,6 @@ The <a href="#precachemodule"><code>sw-precache Module</code></a> section in thi
 To test the result of using <code>sw-precache</code> without changing your build system for every version of the experiment, you can run the <code>sw-precache</code> API at from the command line. 
 
 First, create a <code>sw-precache-config.json</code> file with our <code>sw-precache</code> configuration.  In this example <code>staticFileGlobs</code> indicates the path to each file that we want to precache and <code>stripPrefix</code> tells <code>sw-precache</code> what part of each file path to remove. 
-
 ```
 {
   "staticFileGlobs": [
@@ -997,7 +989,6 @@ Once the <code>sw-precache</code> configuration is ready then run it with the fo
 ##### Using <code>sw-precache</code> From Gulp
 
 The following code example uses the <code>gulp</code> command to build a project. It first creates a <code>gulp</code> task that uses the <code>sw-precache</code> module to generate a <code>service-worker.js</code> file. The following code is added to the <code>gulp</code> file:
-
 ```
 /<em>jshint node:true</em>/
 (function() {
@@ -1036,7 +1027,6 @@ The following code example uses the <code>gulp</code> command to build a project
 #### What Happens Next?
 
 When you run <code>gulp</code> you should see output similar to the following:
-
 ```
 $ gulp generate-service-worker
 [11:56:22] Using gulpfile ~/gulpfile.js

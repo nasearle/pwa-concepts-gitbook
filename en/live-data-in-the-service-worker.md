@@ -155,7 +155,6 @@ The data is organized by a <strong><code>keypath</code></strong>, which in this 
 The following function could be used to create an IndexedDB object store like the example above:
 
 #### service-worker.js
-
 ```
 function createDB() {
   idb.open('products', 1, function(upgradeDB) {
@@ -182,7 +181,6 @@ Here we create a  'products' database, version 1. Inside the 'products' database
 The service worker activation event is a good time to create a database. Creating a database during the activation event means that it will only be created (or opened, if it already exists) when a new service worker takes over, rather than each time the app runs (which is inefficient). It's also likely better than using the service worker's installation event, since the old service worker will still be in control at that point, and there could be conflicts if a new database is mixed with an old service worker. The following code (in the service worker file) could be used to create the database shown earlier on service worker activation:
 
 #### service-worker.js
-
 ```
 self.addEventListener('activate', function(event) {
   event.waitUntil(
@@ -198,7 +196,6 @@ self.addEventListener('activate', function(event) {
 Once an IndexedDB database is created, data can then be read locally from IndexedDB rather than making network requests to a backend database. The following code could be used to retrieve data from the example database above:
 
 #### service-worker.js
-
 ```
 function readDB() {
   idb.open('products', 1).then(function(db) {
@@ -222,7 +219,6 @@ Here we open the <code>products</code> database and create a new transaction on 
 URL addressable resources are comparatively simple to store with the Cache interface. The following code shows an example of caching multiple resources:
 
 #### service-worker.js
-
 ```
 function cacheAssets() {
   return caches.open('cache-v1')
@@ -243,7 +239,6 @@ This code opens a <code>cache-v1</code> cache, and stores <strong>index.html</st
 The service worker installation event is a good time to cache static assets like these. This ensures that all the resources a service worker is expected to have are cached when the service worker is installed. The following code (in the service worker file) could be used to cache these types of files during the service worker install event:
 
 #### service-worker.js
-
 ```
 self.addEventListener('install', function(event) {
   event.waitUntil(
@@ -255,7 +250,6 @@ self.addEventListener('install', function(event) {
 Once assets are cached, they can be retrieved during fetch events. The following code (in the service worker file) allows resources to be fetched from the cache instead of the network:
 
 #### service-worker.js
-
 ```
 self.addEventListener('fetch', function(event) {
   event.respondWith(

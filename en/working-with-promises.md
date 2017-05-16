@@ -62,7 +62,6 @@ These make error handling difficult. For an example, look at any XMLHttpRequest 
 ### The old way: using callbacks
 
 Another solution is to use callbacks, typically with anonymous functions. An example might look like the following:
-
 ```
 function isUserTooYoung(id, callback) {
   openDatabase(function(db) {
@@ -85,7 +84,6 @@ The callback approach has two problems:
 ### Using promises
 
 Promises provide a standardized way to manage asynchronous operations and handle errors. The above example becomes much simpler using promises:
-
 ```
 function isUserTooYoung(id) {
   return openDatabase() // returns a promise
@@ -110,7 +108,6 @@ Notice that there are several calls to <code>.then()</code> in a row. Each call 
 When working with promises you may hear terminology commonly associated with callbacks or other asynchronous code.
 
 In the following example, we convert the asynchronous task of setting an image <code>src</code> attribute into a promise.
-
 ```
 function loadImage(url) {
   // wrap image loading in a promise
@@ -150,7 +147,6 @@ You may also hear the term  <em>settled</em> : it represents a promise that has 
 ### Writing a simple promise
 
 Here's a typical pattern for creating a promise:
-
 ```
 var promise = new Promise(function(resolve, reject) {
   // do a thing, possibly async, then...
@@ -169,7 +165,6 @@ The promise constructor takes one argument—a callback with two parameters: res
 Like <code>throw</code> in plain old JavaScript, it's customary, but not required, to reject with an <code>Error</code> object. The benefit of <code>Error</code> objects is that they capture a stack trace, making debugging tools more helpful.
 
 Here's one way to use that promise:
-
 ```
 promise.then(function(result) {
   console.log("Success!", result); // "Stuff worked!"
@@ -181,7 +176,6 @@ promise.then(function(result) {
 The <code>then()</code> method takes two arguments, a callback for a success case, and another for the failure case. Both are optional, so you can add a callback for the success or failure case only.
 
 A more common practice is to use <code>.then()</code> for success cases and <code>.catch()</code> for errors.
-
 ```
 promise.then(function(result) {
   console.log("Success!", result);
@@ -191,7 +185,6 @@ promise.then(function(result) {
 ```
 
 There's nothing special about <code>catch()</code>, it's equivalent to <code>then(undefined, func)</code>, but it's more readable. <strong>Note that the two code examples above do not behave the same way</strong>. The latter example is equivalent to:
-
 ```
 promise.then(function(response) {
   console.log("Success!", response);
@@ -201,6 +194,8 @@ promise.then(function(response) {
 ```
 
 The difference is subtle, but extremely useful. Promise rejections skip forward to the next <code>then()</code> with a rejection callback (or <code>catch()</code>, since they're equivalent). With <code>then(func1, func2)</code>, <code>func1</code> or <code>func2</code> will be called, never both. But with <code>then(func1).catch(func2)</code>, both will be called if <code>func1</code> rejects, as they're separate steps in the chain. 
+
+<a id="chaining" />
 
 ### Promise chains: then and catch
 
@@ -213,7 +208,6 @@ The <code>then()</code> method schedules a function to be called when the previo
 Think of <code>then()</code> as the <code>try</code> portion of a <code>try</code>/<code>catch</code> block.
 
 Remember our earlier example that calls several actions in a row:
-
 ```
 function isUserTooYoung(id) {
   return openDatabase() // returns a promise
@@ -234,7 +228,6 @@ Think of the part of the chain preceding <code>catch</code> as being wrapped in 
 In the following example, we load an image using <code>loadImage()</code> and apply a series of conversions using <code>then()</code>. If at any point we get an error (if either the original promise or any of the subsequent steps rejects) we jump to the <code>catch()</code> statement. 
 
 Only the last <code>then()</code> statement will attach the image to the DOM. Until then, we <code>return</code> the same image so that the image will be passed to the next <code>then()</code>.
-
 ```
 function processImage(imageName, domNode) {
   // returns an image for the next step. The function called in
@@ -262,7 +255,6 @@ function processImage(imageName, domNode) {
 ```
 
 You can use multiple catches in a promise chain to "recover" from errors in a promise chain. For example, the following code continues on with a fallback image if <code>processImage</code> or <code>scaleToFit</code> rejects:
-
 ```
 function processImage(imageName, domNode) {
   return loadImage(imageName)
@@ -295,7 +287,6 @@ function processImage(imageName, domNode) {
 Not all promise-related functions have to return a promise. If the functions in a promise chain are synchronous, they don't need to return a promise.
 
 The <code>scaleToFit</code> function is part of the image processing chain and doesn't return a promise: 
-
 ```
 function scaleToFit(width, height, image) {
   image.width = width;
@@ -312,7 +303,6 @@ However, this function does need to return the image passed into it so that it c
 Often we want to take action only after a collection of asynchronous operations have completed successfully. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all"><strong>Promise.all</strong></a> returns a promise that resolves if all of the promises passed into it resolve. If any of the passed-in promises reject, then <code>Promise.all</code> rejects with the reason of the first promise that rejected. This is very useful for ensuring that a group of asynchronous actions complete before proceeding to another step. 
 
 In the example below, <code>promise1</code> and <code>promise2</code> return promises. We want both of them to load before proceeding. Both promises are passing into <code>Promise.all</code>. If either request rejects, then <code>Promise.all</code> rejects with the value of the rejected promise. If both requests fulfill, <code>Promise.all</code> resolves with the values of both promises (as a list).
-
 ```
 var promise1 = getJSON('/users.json');
 var promise2 = getJSON('/articles.json');
@@ -335,7 +325,6 @@ Promise.all([promise1, promise2]) // Array of promises to complete
 ### Promise.race
 
 Another promise method that you may see referenced is <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race">Promise.race</a>. <code>Promise.race</code> takes a list of promises and settles as soon as the first promise in the list settles. If the first promise resolves, <code>Promise.race</code> resolves with the corresponding value, if the first promise rejects, <code>Promise.race</code> rejects with the corresponding reason. The following code shows example usage of <code>Promise.race</code>:  
-
 ```
 Promise.race([promise1, promise2])
 .then(function(value) {
@@ -349,7 +338,6 @@ Promise.race([promise1, promise2])
 If one of the promises resolves first, the <code>then</code> block executes and logs the value of the resolved promise. If one of the promises rejects first, the <code>catch</code> block executes and logs the reason for the promise rejection.
 
 It may still be tempting, however, to use <code>Promise.race</code> to race promises, as the name suggests. Consider the following example:
-
 ```
 var promise1 = new Promise(function(resolve, reject) {
   // something that fails
@@ -371,7 +359,6 @@ Promise.race([promise1, promise2])
 At first glance it looks like this code races two promises—one that rejects, and another that resolves—and uses the first one to return. However, <code>Promise.race</code> rejects immediately if one of the supplied promises rejects, even if another supplied promise resolves later. So if <code>promise1</code> rejects before <code>promise2</code> resolves, <code>promise.All</code> will reject even though <code>promise2</code> supplies a valid value. <code>Promise.race</code> by itself can't be used to reliably return the first promise that resolves.
 
 Another pattern that may be appealing is the following:
-
 ```
 var promise1 = new Promise(function(resolve, reject) {
   // get a resource from the Cache
